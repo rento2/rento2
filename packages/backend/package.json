@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.3.7",
+    "@types/proxy-addr": "^2.0.0",
     "@types/source-map-support": "^0.5.4",
     "@types/supertest": "^2.0.11",
     "adonis-preset-ts": "^2.1.0",
