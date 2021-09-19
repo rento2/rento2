@@ -11,6 +11,7 @@
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
+    "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "typescript": "^4.4.3",
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "ts-standard | snazzy",
+    "lint-fix": "ts-standard --fix | snazzy"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "snazzy": "^9.0.0",
+    "ts-standard": "^10.0.0"
   }
 }
