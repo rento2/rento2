@@ -22,6 +22,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "paths": {
       "App/*": [
         "./app/*"
