@@ -25,7 +25,7 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('health', async ({ response }) => {
+Route.get('/health', async ({ response }) => {
   const report = await HealthCheck.getReport()
 
   return report.healthy
