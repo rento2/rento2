@@ -1,0 +1,52 @@
+version: '3.9' # optional since v1.27.0
+
+networks:
+  rento2:
+    name: rento2
+
+volumes:
+  dbdata:
+    name: rento2_dbdata
+  pgadmin:
+    name: rento2_pgadmin
+
+services:
+  db:
+    image: postgres:13
+    container_name: rento2_postgres
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    env_file: .env
+    # Best not use for production, this is insecure
+    environment:
+      POSTGRES_PASSWORD: ${PG_ROOT_PASSWORD}
+      POSTGRES_USER: ${PG_ROOT_USER}
+      APP_DB_USER: ${PG_USER}
+      APP_DB_PASSWORD: ${PG_PASSWORD}
+      APP_DB_NAME: ${PG_DB_NAME}
+    ports:
+      - ${PG_PORT}:5432
+    networks:
+      rento2:
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+
+  pgadmin:
+    image: dpage/pgadmin4:5
+    container_name: rento2_pgadmin
+    env_file: .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - ${PGADMIN_PORT}:80
+    networks:
+      rento2:
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
