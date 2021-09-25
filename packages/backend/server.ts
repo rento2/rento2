@@ -16,7 +16,7 @@ import { Ignitor } from '@adonisjs/core/build/standalone'
 
 sourceMapSupport.install({ handleUncaughtExceptions: false })
 
-// eslint-disable-next-line  @typescript-eslint/no-floating-promises
 new Ignitor(__dirname)
   .httpServer()
   .start()
+  .catch(() => console.log('Failed to start Ignitor'))
