@@ -21,9 +21,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-ci": "CI=true react-scripts test",
     "eject": "react-scripts eject",
     "lint": "ts-standard | snazzy",
-    "lint-fix": "ts-standard --fix | snazzy"
+    "lint-fix": "ts-standard --fix | snazzy",
+    "precommit": "npm run lint && npm run test-ci"
   },
   "eslintConfig": {
     "extends": [
