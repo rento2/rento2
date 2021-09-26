@@ -1,27 +1,18 @@
-import logo from './logo.svg'
-// import { ReactComponent as Logo } from './logo.svg'
-import './App.module.scss'
+import { Suspense, lazy } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-function App (): JSX.Element {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        {/* <Logo className='App-logo' title='logo' /> */}
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
-}
+const Home = lazy(async () => await import('./routes/Home/Home'))
+const Logo = lazy(async () => await import('./routes/Logo/Logo'))
+
+const App = () => (
+  <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route exact path='/' render={(props) => <Home {...props} name='john' />} />
+        <Route path='/logo' component={Logo} />
+      </Switch>
+    </Suspense>
+  </Router>
+)
 
 export default App
