@@ -8,7 +8,7 @@ import {
   ListProps
 } from 'react-admin'
 
-import { IGenericObj } from 'common/interfaces'
+import { IGenericObj } from 'common'
 
 const PostTitle: FC<IGenericObj> = ({ record }) => {
   return <span>Post {record != null ? `"${record.title as string}"` : ''}</span>
