@@ -18,6 +18,7 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
+    "node-sass": "^6.0.1",
     "snazzy": "^9.0.0",
     "ts-standard": "^10.0.0"
   },
