@@ -1,4 +1,4 @@
-export default {
+const authProvider = {
   // called when the user attempts to log in
   login: async ({ username }: { username: string }) => {
     localStorage.setItem('username', username)
@@ -27,3 +27,5 @@ export default {
   // called when the user navigates to a new location, to check for permissions / roles
   getPermissions: async () => await Promise.resolve()
 }
+
+export default authProvider
