@@ -1,18 +1,7 @@
-import { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Admin } from 'react-admin'
+import jsonServerProvider from 'ra-data-json-server'
 
-const Home = lazy(async () => await import('./routes/Home/Home'))
-const Logo = lazy(async () => await import('./routes/Logo/Logo'))
-
-const App = (): JSX.Element => (
-  <Router>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} name='john' />} />
-        <Route path='/logo' component={Logo} />
-      </Switch>
-    </Suspense>
-  </Router>
-)
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com')
+const App = (): JSX.Element => <Admin dataProvider={dataProvider} />
 
 export default App
