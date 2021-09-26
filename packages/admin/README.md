@@ -1,3 +1,8 @@
+# Todo
+- Add 'Cache-Control' header (https://create-react-app.dev/docs/production-build#static-file-caching)
+- Configure command for test coverage (https://create-react-app.dev/docs/running-tests#coverage-reporting)
+- Enable Snapshot testing (https://create-react-app.dev/docs/running-tests#snapshot-testing)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
