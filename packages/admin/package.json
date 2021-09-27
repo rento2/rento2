@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "lint": "ts-standard | snazzy",
     "lint-fix": "ts-standard --fix | snazzy",
-    "precommit": "npm run lint && npm run test-precommit"
+    "precommit": "npm run lint-fix && npm run test-precommit"
   },
   "eslintConfig": {
     "extends": [
