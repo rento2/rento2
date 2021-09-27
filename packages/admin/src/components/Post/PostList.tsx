@@ -44,7 +44,7 @@ const PostList: FC<ListProps> = props => {
           <EditButton />
         </Datagrid>)}
     </List>
-  );
+  )
 }
 
 export default PostList
