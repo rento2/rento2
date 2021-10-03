@@ -4,3 +4,4 @@
 - Add https://www.npmjs.com/package/lint-staged
 - Add React Storybook
 - Add https://www.npmjs.com/package/source-map-explorer
+- Add artillery for stress tests (https://artillery.io/)
