@@ -21,8 +21,8 @@
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
-    "@types/node": "^16.10.2",
-    "@types/react": "^17.0.26",
-    "typescript": "^4.4.3"
+    "@types/node": "^16.11.4",
+    "@types/react": "^17.0.32",
+    "typescript": "^4.4.4"
   }
 }
