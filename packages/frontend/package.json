@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "ts-standard | snazzy",
+    "lint-fix": "ts-standard --fix | snazzy",
+    "precommit": "npm run lint"
   },
   "dependencies": {
     "date-fns": "^2.24.0",
@@ -23,6 +26,8 @@
   "devDependencies": {
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.32",
+    "snazzy": "^9.0.0",
+    "ts-standard": "^10.0.0",
     "typescript": "^4.4.4"
   }
 }
