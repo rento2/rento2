@@ -6,6 +6,7 @@ import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const postData = await getPostData(params!['id'] as string)
   return {
     props: {
@@ -22,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default function Post({
+export default function Post ({
   postData
 }: {
   postData: {
@@ -30,7 +31,7 @@ export default function Post({
     date: string
     contentHtml: string
   }
-}) {
+}): JSX.Element {
   return (
     <Layout>
       <Head>

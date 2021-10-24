@@ -28,6 +28,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "allowJs": true
   },
   "include": [
     "next-env.d.ts",
