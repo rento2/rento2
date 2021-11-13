@@ -52,6 +52,9 @@ export default function Home ({
             </li>
           ))}
         </ul>
+        <Link href="/form">
+            <a>Форма</a>
+        </Link>
       </section>
     </Layout>
   )
