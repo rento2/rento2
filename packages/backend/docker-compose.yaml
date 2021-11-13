@@ -11,7 +11,7 @@ volumes:
 services:
   mysql:
     image: mysql:8.0
-    container_name: rento_mysql
+    container_name: rento2_mysql
     command: --default-authentication-plugin=mysql_native_password
     env_file: .env
     volumes:
