@@ -35,6 +35,7 @@
     "@adonisjs/core": "^5.3.4",
     "@adonisjs/lucid": "^16.0.2",
     "@adonisjs/repl": "^3.1.6",
+    "axios": "^0.24.0",
     "luxon": "^2.0.2",
     "mysql": "^2.18.1",
     "proxy-addr": "^2.0.7",
