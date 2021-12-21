@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Prosto+One&display=swap');
+
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: 'Prosto One', cursive;
+
+@mixin headline-regular-72 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 79px;
+}
+
+@mixin headline-regular-48 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 59px;
+}
+
+@mixin headline-regular-36 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 43px;
+}
+
+@mixin headline-regular-24 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@mixin headline-regular-18 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@mixin subtitle-bold-14 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@mixin subtitle-bold-12 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+@mixin subtitle-semiBold-18 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@mixin body-semiBold-16 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+@mixin body-medium-18 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@mixin body-medium-16 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin body-medium-14 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@mixin body-medium-12 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@mixin body-regular-24 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@mixin body-regular-18 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@mixin body-regular-16 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+
+@mixin headline1 {
+  font-family: $font-family-secondary;
+  @include headline-regular-72;
+}
+
+@mixin headline2 {
+  font-family: $font-family-secondary;
+  @include headline-regular-48;
+}
+
+@mixin headline3 {
+  font-family: $font-family-secondary;
+  @include headline-regular-36;
+}
+
+@mixin headline4 {
+  font-family: $font-family-secondary;
+  @include headline-regular-24;
+}
+
+@mixin headline5 {
+  font-family: $font-family-secondary;
+  @include headline-regular-18;
+}
