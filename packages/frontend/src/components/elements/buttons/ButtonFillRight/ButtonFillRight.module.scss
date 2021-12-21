@@ -1,0 +1,39 @@
+@use '../../../../styles/core/colors' as *;
+@use '../../../../styles/core/typography' as *;
+@use '../../../../styles/core/breakpoints' as *;
+
+.button {
+  width: 210px;
+  height: 100%;
+  padding: 20px 30px;
+  border: 2px solid transparent;
+  border-radius: 35px 0px 0px 35px;
+  outline: none;
+  transition: border 100ms ease-in;
+  background: $iris-500;
+  color: $neutral-0;
+  @include body-semiBold-16;
+
+  @include bp-929 {
+    display: none;
+  }
+
+  &:focus,
+  &:hover {
+    border: 2px solid $neutral-0;
+    color: $neutral-0;
+    box-shadow: 0px 0px 20px rgba(41, 43, 51, 0.25);
+
+    @include bp-1059 {
+      width: 210px;
+      padding: 20px 25px 20px 35px;
+      border-radius: 30px 0px 0px 30px;
+    }
+  }
+
+  &:active {
+    border: 2px solid transparent;
+    box-shadow: none;
+    color: $iris-200;
+  }
+}
