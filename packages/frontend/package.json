@@ -11,6 +11,8 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "antd": "^4.17.4",
+    "axios": "^0.24.0",
     "date-fns": "^2.24.0",
     "gray-matter": "^4.0.3",
     "next": "^11.0.0",
