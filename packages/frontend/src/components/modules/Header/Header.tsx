@@ -1,6 +1,6 @@
 import Image from 'next/dist/client/image'
 import Link from 'next/dist/client/link'
-import ButtonFillRight from '../../elements/buttons/ButtonFillRight/ButtonFillRight'
+import ButtonCustomizable from '../../elements/buttons/ButtonCustomizable/ButtonCustomizable'
 import styles from './Header.module.scss'
 
 export default function Header (): JSX.Element {
@@ -35,7 +35,15 @@ export default function Header (): JSX.Element {
             </li>
           </ul>
         </nav>
-        <ButtonFillRight text='+7 (966) 032-17-63' phone='tel:+79660321763' tagManager='phone' />
+        <ButtonCustomizable
+          title={'+7 (966) 032-17-63'}
+          link={'tel:+79660321763'}
+          tagManager={'phone'}
+          classes={'button ' +
+          'button-decoration__round ' +
+          'button-decoration__size-small'}
+          type={'button-link'}
+        />
 
         {/* Мобильное меню */}
         <div className={styles['mobile-menu']} id='owner-menu-wrapper'>

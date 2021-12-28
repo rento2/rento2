@@ -1,0 +1,32 @@
+.button {
+
+  /* half rounded buttons */
+  &-decoration__round-left,
+  &-decoration__round-right {
+    width: 210px;
+  }
+
+  &-decoration__round-left {
+    border-radius: 35px 0 0 35px;
+  }
+
+  &-decoration__round-right {
+    border-radius: 35px 35px 0 0;
+  }
+
+  /* rounded buttons */
+  &-decoration__round {
+    width: 240px;
+    border-radius: 35px;
+  }
+
+  /* size buttons */
+  &-decoration__size-small {
+    width: 140px;
+    height: 40px;
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
