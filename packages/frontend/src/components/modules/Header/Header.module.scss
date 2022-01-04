@@ -3,146 +3,138 @@
   top: 0;
   left: 0;
   z-index: 4; //такой индекс из-за анимации с листами бумаги
-  height: 100vh;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
   display: none;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
 
   &__inner {
-      border: none;
-      min-height: 350px;
-      border-radius: 0;
-      background-color: $neutral-0;
+    min-height: 350px;
+    background-color: $neutral-0;
+    border: 0;
+    border-radius: 0;
   }
 
   &__btn-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 23px;
-      height: 23px;
-      padding: 0;
-      border: 0;
-      background: inherit;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 23px;
+    height: 23px;
+    padding: 0;
+    background: inherit;
+    border: 0;
 
-      @include bp-399 {
-          top: 28px;
-          right: 28px;
-      }
+    @include bp-399 {
+      top: 28px;
+      right: 28px;
+    }
   }
 
   &__img-close {
-      width: 23px;
-      height: 23px;
+    width: 23px;
+    height: 23px;
   }
 
   &__nav-wrapper {
-      padding: 60px 0 50px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0 50px;
+    margin: 0 auto;
+    text-align: center;
 
-      @include bp-399 {
-          padding: 60px 0 40px;
-      }
+    @include bp-399 {
+      padding: 60px 0 40px;
+    }
   }
 
   &__item {
-      @include font(16px, 20px, 500);
-      height: 60px;
-      border-top: 1px solid $iris-200;
-      padding: 20px 0;
-      width: calc(100vw - 40px);
+    @include font(16px, 20px, 500);
+    width: calc(100vw - 40px);
+    height: 60px;
+    padding: 20px 0;
+    border-top: 1px solid $iris-200;
+
+    @include bp-399 {
+      height: 56px;
+    }
+
+    &:last-child {
+      margin: 0 0 29px;
+      border-bottom: 1px solid $iris-200;
 
       @include bp-399 {
-          height: 56px;
+        margin: 0 0 40px;
       }
-
-      &:last-child {
-          margin: 0 0 29px;
-          border-bottom: 1px solid $iris-200;
-
-          @include bp-399 {
-              margin: 0 0 40px;
-          }
-      }
+    }
   }
 
   &__phone {
-      width: 160px;
-      height: 40px;
-      padding: 11px 22px;
-      border: 2px solid transparent;
-      border-radius: 35px;
-      outline: none;
-      background-color: $iris-500;
+    @include font(12px, 17px, 700);
+    width: 160px;
+    height: 40px;
+    padding: 11px 22px;
+    color: $neutral-0;
+    background-color: $iris-500;
+    border: 2px solid transparent;
+    border-radius: 35px;
+    outline: none;
+
+    &:focus,
+    &:hover {
       color: $neutral-0;
-      @include font(12px, 17px, 700);
+      border: 2px solid $neutral-0;
+    }
 
-      &:focus,
-      &:hover {
-          border: 2px solid $neutral-0;
-          color: $neutral-0;
-      }
-
-      &:active {
-          color: $iris-200;
-      }
+    &:active {
+      color: $iris-200;
+    }
   }
 
   &__btn-open {
-      display: none;
-      border: none;
-      background: inherit;
-      padding: 0;
-      margin: 0 40px 0 0;
+    display: none;
+    padding: 0;
+    margin: 0 40px 0 0;
+    background: inherit;
+    border: 0;
 
-      @include bp-929 {
-          display: block;
-      }
+    @include bp-929 {
+      display: block;
+    }
 
-      @include bp-699 {
-          margin: 0 22px 0 0;
-      }
+    @include bp-699 {
+      margin: 0 22px 0 0;
+    }
   }
 }
 
 .header {
-  box-shadow: 0px 0px 50px rgba(41, 43, 51, 0.1);
   position: sticky;
   top: 0;
   z-index: 11;
-  background-color: $neutral-0;
   width: 100%;
+  background-color: $neutral-0;
+  box-shadow: 0 0 50px rgba(41, 43, 51, 0.1);
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
     max-width: 1440px;
+    height: 60px;
     margin: 0 auto;
 
     @include bp-699 {
-        height: 48px;
+      height: 48px;
     }
   }
 
   &__logo {
-    width: 83px;
-    color: $iris-500;
-    margin: 0 0 0 82px;
     @include font(14px, 18px, 500);
-
-    &-img {
-      @include bp-699 {
-        width: 65px;
-        height: 12px;
-        display: block;
-      }
-    }
+    width: 83px;
+    margin: 0 0 0 82px;
+    color: $iris-500;
 
     @include bp-1059 {
       margin: 0 0 0 45px;
@@ -151,6 +143,14 @@
     @include bp-699 {
       @include font(12px, 16px, 500);
       margin: 0 20px 0 19px;
+    }
+
+    &-img {
+      @include bp-699 {
+        display: block;
+        width: 65px;
+        height: 12px;
+      }
     }
   }
 
@@ -182,21 +182,21 @@
 
   &__link {
     position: relative;
-    padding: 10px 0 10px;
     display: block;
+    padding: 10px 0;
     outline: none;
 
     &::after {
       position: absolute;
+      right: 0;
       bottom: 0;
       left: 0;
-      right: 0;
-      margin: auto;
       width: 0%;
-      content: '.';
-      color: transparent;
-      background: $iris-500;
       height: 2px;
+      margin: auto;
+      color: transparent;
+      content: '.';
+      background: $iris-500;
     }
 
     &:focus::after,
@@ -224,14 +224,14 @@
 
       &:focus,
       &:hover {
-      color: $iris-500;
-    }
+        color: $iris-500;
+      }
     }
   }
 
   &__link,
   &__link::after {
-      transition: all 500ms ease-in;
+    transition: all 500ms ease-in;
   }
 
   // &__phone {
