@@ -12,5 +12,8 @@
     "precommit:backend": "cd packages/backend && npm run precommit",
     "precommit:frontend": "cd packages/frontend && npm run precommit",
     "precommit": "npm-run-all precommit:*"
+  },
+  "dependencies": {
+    "lint": "^0.7.0"
   }
 }
