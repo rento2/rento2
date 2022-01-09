@@ -1,0 +1,11 @@
+@use '../../../../styles/core/colors' as *;
+@use '../../../../styles/core/typography'as *;
+@use '../../../../styles/core/breakpoints' as *;
+
+.title{
+  font-family: $font-family-secondary;
+  width: 170px;
+  height: 22px;
+  color: $gray-blue-500;
+  margin: 59px 0 0 100px;
+}

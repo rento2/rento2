@@ -9,7 +9,9 @@ export default function SideMenu (): JSX.Element {
         <ul className={style['list']}>
           <li className={style['item']}>
             <Link href='/docs/faq'>
-              <a className={style['active']}>Частые вопросы</a>
+              <a className={style['active']}>
+                Частые вопросы
+              </a>
             </Link>
           </li>
           <li>
