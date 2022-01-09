@@ -29,7 +29,7 @@ export default function SideMenu (): JSX.Element {
           <li>
             <Link href='/docs/rules'>
               <a className={style['item']}>
-                Образцы документов
+                Образцы документов.
               </a>
             </Link>
           </li>
