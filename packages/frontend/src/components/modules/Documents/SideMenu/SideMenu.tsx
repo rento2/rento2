@@ -9,27 +9,27 @@ export default function SideMenu (): JSX.Element {
         <ul className={style['list']}>
           <li className={style['item']}>
             <Link href='/docs/faq'>
-              <a className={style['active']}>Частые вопросы.</a>
+              <a className={style['active']}>Частые вопросы</a>
             </Link>
           </li>
           <li>
             <Link href='/docs/privacy'>
               <a className={style['item']}>
-                Политика обработки персональных данных.
+                Политика обработки персональных данных
               </a>
             </Link>
           </li>
           <li>
             <Link href='/docs/agreements'>
               <a className={style['item']}>
-                Пользовательское соглашение.
+                Пользовательское соглашение
               </a>
             </Link>
           </li>
           <li>
             <Link href='/docs/rules'>
               <a className={style['item']}>
-                Образцы документов.
+                Образцы документов
               </a>
             </Link>
           </li>
