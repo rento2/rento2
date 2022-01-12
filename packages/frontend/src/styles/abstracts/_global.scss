@@ -4,13 +4,13 @@
 
 html,
 body {
-  color: $gray-blue-500;
   font-family: $font-family-primary;
+  color: $gray-blue-500;
 }
 
 a {
-  text-decoration: none;
   color: $gray-blue-500;
+  text-decoration: none;
 
   &:hover {
     color: $iris-700;
@@ -51,8 +51,8 @@ a {
 
 .flex-center {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .flex-s-b {
@@ -64,9 +64,9 @@ a {
   position: absolute;
   width: 1px;
   height: 1px;
-  margin: -1px;
   padding: 0;
+  margin: -1px;
   overflow: hidden;
-  border: 0;
   clip: rect(0 0 0 0);
+  border: 0;
 }

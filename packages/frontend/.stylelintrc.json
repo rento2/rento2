@@ -1,0 +1,27 @@
+{
+  "extends": ["stylelint-config-sass-guidelines", "stylelint-config-recess-order"],
+  "rules": {
+    "max-nesting-depth": 3,
+    "declaration-no-important": true,
+    "shorthand-property-no-redundant-values": true,
+    "selector-max-empty-lines": 0,
+    "block-closing-brace-empty-line-before": "never",
+    "block-closing-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always",
+    "block-opening-brace-newline-after": "always",
+    "max-empty-lines": 1,
+    "function-max-empty-lines": 0,
+    "function-whitespace-after": "always",
+    "unit-case": "lower",
+    "property-case": "lower",
+    "value-keyword-case": "lower",
+    "value-list-max-empty-lines": 0,
+    "declaration-empty-line-before": "never",
+    "selector-attribute-quotes": "always",
+    "selector-pseudo-class-parentheses-space-inside": "never",
+    "no-empty-first-line": true,
+    "no-duplicate-selectors": true,
+    "no-extra-semicolons": true,
+    "order/properties-alphabetical-order": null
+  }
+}

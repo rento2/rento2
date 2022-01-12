@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "ts-standard | snazzy",
     "lint-fix": "ts-standard --fix | snazzy",
-    "precommit": "npm run lint"
+    "lint:styles": "stylelint **/*{.css,.scss} | snazzy",
+    "lint:styles-fix": "stylelint **/*{.css,.scss} --fix | snazzy",
+    "precommit": "npm run lint && npm run lint:styles"
   },
   "dependencies": {
     "antd": "^4.17.4",
@@ -29,7 +31,16 @@
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.32",
     "snazzy": "^9.0.0",
+    "stylelint": "^14.2.0",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-order": "^5.0.0",
     "ts-standard": "^10.0.0",
     "typescript": "^4.4.4"
+  },
+  "ts-standard": {
+    "ignore": [
+      "next-env.d.ts"
+    ]
   }
 }
