@@ -1,9 +1,5 @@
-@use '../../../../styles/core/colors' as *;
-@use '../../../../styles/core/typography'as *;
-@use '../../../../styles/core/breakpoints' as *;
-
 .title{
-  font-family: $font-family-secondary;
+  font-size: $font-family-secondary;
   width: 170px;
   height: 22px;
   color: $gray-blue-500;
