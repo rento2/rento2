@@ -1,3 +1,7 @@
+@use '../../../../styles/core/colors' as *;
+@use '../../../../styles/core/typography'as *;
+@use '../../../../styles/core/breakpoints' as *;
+
 .list {
   display: flex;
   flex-direction: column;
