@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "ts-standard | snazzy",
     "lint-fix": "ts-standard --fix | snazzy",
-    "lint:styles": "stylelint **/*{.css,.scss} | snazzy",
-    "lint:styles-fix": "stylelint **/*{.css,.scss} --fix | snazzy",
+    "lint:styles": "stylelint **/*{.css,.scss}",
+    "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
     "precommit": "npm run lint && npm run lint:styles"
   },
   "dependencies": {
