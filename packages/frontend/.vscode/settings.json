@@ -1,3 +1,7 @@
 {
-  "standard.autoFixOnSave":true
+  "standard.autoFixOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "stylelint.validate": ["css", "scss"]
 }
