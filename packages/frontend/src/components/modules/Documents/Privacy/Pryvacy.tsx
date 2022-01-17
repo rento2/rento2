@@ -1,4 +1,4 @@
-import Docs from '../AppDoc/appdoc'
+import Docs from '@modules/documents/AppDoc/Appdoc'
 
 export default function Privacy (): JSX.Element {
   return (

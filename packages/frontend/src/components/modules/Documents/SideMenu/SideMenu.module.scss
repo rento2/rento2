@@ -1,39 +1,25 @@
-@use '../../../../styles/core/colors' as *;
-@use '../../../../styles/core/typography'as *;
-@use '../../../../styles/core/breakpoints' as *;
-
 .list {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 318px;
   max-height: 260px;
-  margin-top: 62px;
+  padding-right: 36px;
 }
 
 .item {
+  @include body-medium-14;
   display: flex;
   flex-wrap: wrap;
-  font-family: Montserrat;
-  color: $gray-blue-300;
-  @include body-medium-14;
   max-width: 195px;
   margin-bottom: 24px;
-  &:hover {
-    color: $gray-blue-300;
-  }
-}
-
-.active {
-  @include body-medium-14;
-  color: $iris-500;
+  color: $gray-blue-300;
 }
 
 .border {
   display: flex;
   justify-content: center;
-  margin-left: -100px;
-  width: 318px;
   height: 1018px;
+  padding-top: 62px;
   border-right: 2px solid $neutral-50;
 }

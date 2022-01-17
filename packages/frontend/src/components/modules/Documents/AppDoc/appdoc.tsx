@@ -1,7 +1,6 @@
-import Footer from '../../Footer/Footer'
-import Header from '../../Header/Header'
-import SideMenu from '../SideMenu/SideMenu'
-import style from './appdocs.module.scss'
+import SideMenu from '@modules/documents/SideMenu/SideMenu'
+import style from './Appdocs.module.scss'
+import Layout from '@layouts/Layout'
 
 export default function Docs ({
   children
@@ -10,12 +9,12 @@ export default function Docs ({
 }): JSX.Element {
   return (
     <>
-      <Header />
-      <div className={[style['flexWrapper'], 'container'].join(' ')}>
-        <SideMenu />
-        <div className={style['flexBox']}>{children}</div>
-      </div>
-      <Footer />
+      <Layout>
+        <div className={[style['flex-wrapper'], 'container'].join(' ')}>
+          <SideMenu />
+          <div className={style['flexBox']}>{children}</div>
+        </div>
+      </Layout>
     </>
   )
 }

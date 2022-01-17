@@ -1,0 +1,53 @@
+.wrapper-box {
+  display: flex;
+  flex-direction: column;
+  width: 844px;
+  max-height: 730px;
+  margin: 24px 0 0 100px;
+}
+
+.wrapper-ul {
+  width: 100%;
+  max-height: max-content;
+  border: 1px solid $neutral-50;
+  border-right: hidden;
+
+  &:first-child {
+    border-top: 2px solid $neutral-50;
+  }
+
+  &:last-child {
+    border-bottom: 2px solid $neutral-50;
+  }
+}
+
+.item-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 70%;
+  padding: 23px  0 23px 40px;
+
+  .item-text-title {
+    @include body-medium-14;
+  }
+}
+
+.wrapper-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item-description {
+  display: none;
+  width: 90%;
+  padding: 0 40px 32px;
+}
+
+.item-button {
+  position: absolute;
+  top: 20px;
+  left: 773px;
+  cursor: pointer;
+}

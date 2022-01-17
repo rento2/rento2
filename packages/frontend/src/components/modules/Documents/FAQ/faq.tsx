@@ -1,10 +1,10 @@
-import DocAcardion from '../../../elements/accardions/docs-accardion'
-import Docs from '../AppDoc/appdoc'
 import style from './faq.module.scss'
-import { stateAcardionProps } from '../../../../components/elements/accardions/stateAcardion'
+import { stateAcardionProps } from '../../../elements/accordions/StateAccordion'
+import DocAccordion from '@elements/accordions/Docs-accordion'
+import Docs from '@modules/documents/AppDoc/Appdoc'
 
 export default function Faq (): JSX.Element {
-  const nnn: stateAcardionProps[] = [
+  const dateAcardion: stateAcardionProps[] = [
     {
       title: 'Я арендатор, сколько стоят ваши услуги?',
       description: 'У нас фиксированная комиссия на все квартиры 15000 рублей.',
@@ -52,9 +52,11 @@ export default function Faq (): JSX.Element {
     }
   ]
   return (
-    <Docs>
-      <h1 className={style['title']}>Частые вопросы</h1>
-      <DocAcardion state={nnn} />
-    </Docs>
+    <>
+      <Docs>
+        <h1 className={style['title']}>Частые вопросы</h1>
+        <DocAccordion state={dateAcardion} />
+      </Docs>
+    </>
   )
 }
