@@ -1,10 +1,1 @@
 node_modules
-package-lock.json
-packages/admin/package-lock.json
-packages/admin_superplate/package-lock.json
-packages/backend-nest/package-lock.json
-packages/frontend/next-env.d.ts
-packages/frontend/package-lock.json
-packages/frontend/package.json
-packages/backend/package-lock.json
-package.json
