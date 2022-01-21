@@ -1,7 +1,7 @@
 import { ITagName } from './ITagName'
 
 export interface IListProps {
-  type?: keyof ITagName // Должен быть обязательным параметром, отвечает за формирование правильной HTML структуры
+  type: keyof ITagName
   class?: string
   text?: string
   button?: {
@@ -9,6 +9,6 @@ export interface IListProps {
     classButton: string
     buttonType: string
   }
-  contents?: object[]
+  contents?: IListProps[]
   as?: string // Этот тип если нужно будет передать тег или компонент через пропс
 }

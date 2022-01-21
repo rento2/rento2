@@ -8,9 +8,8 @@ export const DocsList = (props: {items: IListProps[]}): JSX.Element => {
     <>
       {props.items.map((listItem: IListProps, index: number) => (
         <DocsListItem
-          // @ts-expect-error
           ref={listItemRef}
-          key={`${listItem?.type ?? ''}-${index}`}
+          key={`${listItem.type}-${index}`}
           {...listItem}
         />
       ))}

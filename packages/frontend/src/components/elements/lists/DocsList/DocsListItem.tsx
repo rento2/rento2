@@ -1,4 +1,4 @@
-import { FC, forwardRef } from 'react'
+import { forwardRef, Ref } from 'react'
 import { IListProps } from './types/IListProps'
 import classNames from 'classnames'
 import { AgreementShortButton } from '@modules/docs/AgreementShort/AgreementShortButton'
@@ -7,17 +7,15 @@ import styles from '@modules/docs/AgreementShort.module.scss'
 
 // TODO
 // Если уберется контекст или же будет необходимость использовать контекст в  этом компоненте, то лучше вместо AgreementShortButton использовать базовую кнопку, а в нее просто передать необходимый метод при клике по кнопке
-export const DocsListItem: FC<IListProps> = forwardRef<HTMLElement, IListProps>((props, ref) => {
+export const DocsListItem = forwardRef<HTMLElement, IListProps>((props, ref: Ref<HTMLElement>): JSX.Element => {
   const tagName: ITagName = {
     list: 'ol',
     item: 'li',
-    title: 'h4',
+    title: 'h3',
     description: 'span'
   }
 
-  // Проверка на null из-за того, что type в IListProps необязателен. Нужно его сделать обязательным параметром и убрать ошибки при вызове DocsListItem и указания key. Убрать ошибки с Component
-  // Изначально было const Component = props?.as ?? tagName[props.type]
-  const Component = props?.as ?? (props.type != null ? tagName[props.type] : 'li')
+  const Component = props?.as ?? tagName[props.type]
   return (
     <>
       {props.text != null && props.button == null
@@ -39,9 +37,8 @@ export const DocsListItem: FC<IListProps> = forwardRef<HTMLElement, IListProps>(
         <Component ref={ref} className={classNames(styles[props?.class ?? ''])}>
           {props.contents.map((listItem: IListProps, index: number) => (
             <DocsListItem
-              // @ts-expect-error
               ref={ref}
-              key={`${listItem?.type ?? ''}-${index}`}
+              key={`${listItem.type}-${index}`}
               {...listItem}
             />
           ))}
