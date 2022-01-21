@@ -1,14 +1,10 @@
 import { useState } from 'react'
 import { SwipeableHandlers, SwipeEventData, useSwipeable } from 'react-swipeable'
 import { useWindowDimensions } from '@hooks/useWindowDimensions'
+import { IStyleMove } from '../types/IStyleMove'
 
-export interface StyleMove {
-  bottom?: string
-  transition?: string
-}
-
-export const useModalCloseSwipe = (toggle: () => void, heightModal: number, transitionMs = 500, widthWindowProps = 849): [SwipeableHandlers, StyleMove] | [] => {
-  const [styleMove, setStyleMove] = useState<StyleMove>({})
+export const useModalCloseSwipe = (toggle: () => void, heightModal: number, transitionMs = 500, widthWindowProps = 849): [SwipeableHandlers, IStyleMove] | [] => {
+  const [styleMove, setStyleMove] = useState<IStyleMove>({})
   const { widthWindow } = useWindowDimensions()
 
   const handlers = useSwipeable({

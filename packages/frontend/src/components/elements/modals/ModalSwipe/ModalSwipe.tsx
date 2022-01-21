@@ -2,35 +2,23 @@ import { FC, useState } from 'react'
 import { useModalCloseSwipe } from '../hooks/useModalCloseSwipe'
 import { ModalBase } from '../ModalBase/ModalBase'
 import { ModalSwipeHeader } from './ModalSwipeHeader'
-import style from './ModalSwipe.module.scss'
+import styles from './ModalSwipe.module.scss'
+import { IModal } from '../types/IModal'
 
-interface ModalSwipeProps {
+interface ModalSwipeProps extends IModal {
   modalHeaderProps: JSX.Element
-  modalBodyProps: JSX.Element
-  isShownProps: boolean
-  labelledbyTextProps: string
-  handleHide: () => void
-  classes?: {
-    modal?: string
-    dialog?: string
-    body?: string
-    backdrop?: string
-    header?: string
-    position?: string
-    positionDialog?: string
-  }
 }
 
 export const ModalSwipe: FC<ModalSwipeProps> = ({
   classes = {},
   modalHeaderProps,
-  modalBodyProps,
-  isShownProps,
-  labelledbyTextProps,
-  handleHide
+  bodyContent,
+  isShown,
+  labelledbyText,
+  hide
 }) => {
   const [heightModal, setHeightModal] = useState<number>(0)
-  const [handlers, styleMove] = useModalCloseSwipe(handleHide, heightModal)
+  const [handlers, styleMove] = useModalCloseSwipe(hide, heightModal)
 
   const getHeightModal = (height: number): void => {
     setHeightModal(height)
@@ -38,9 +26,9 @@ export const ModalSwipe: FC<ModalSwipeProps> = ({
 
   return (
     <ModalBase
-      isShown={isShownProps}
+      isShown={isShown}
       handleHeight={getHeightModal}
-      hide={handleHide}
+      hide={hide}
       headerContent={
         <ModalSwipeHeader
           handlersProps={handlers ?? {}}
@@ -48,13 +36,13 @@ export const ModalSwipe: FC<ModalSwipeProps> = ({
           classHeader={classes?.header ?? ''}
         />
       }
-      bodyContent={modalBodyProps}
-      labelledbyText={labelledbyTextProps}
+      bodyContent={bodyContent}
+      labelledbyText={labelledbyText}
       style={styleMove ?? {}}
       classes={{
-        modal: style['modal'] ?? '',
-        position: style['modal__position'] ?? '',
-        dialog: style['modal__dialog'] ?? '',
+        modal: styles['modal'] ?? '',
+        position: styles['modal__position'] ?? '',
+        dialog: styles['modal__dialog'] ?? '',
         ...classes
       }}
     />
