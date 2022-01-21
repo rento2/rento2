@@ -1,9 +1,10 @@
 import classNames from 'classnames'
 import { FC } from 'react'
+import { SwipeableHandlers } from 'react-swipeable'
 import styles from './ModalSwipeHeader.module.scss'
 
 interface IModalHeader {
-  handlersProps: {}
+  handlersProps: SwipeableHandlers | {}
   modalHeaderProps: JSX.Element
   classHeader?: string
 }
