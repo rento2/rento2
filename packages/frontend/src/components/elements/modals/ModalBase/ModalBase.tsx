@@ -3,27 +3,16 @@ import ReactDOM from 'react-dom'
 import FocusLock from 'react-focus-lock'
 import styles from './ModalBase.module.scss'
 import classNames from 'classnames'
-import { StyleMove } from '@elements/modals/hooks/useModalCloseSwipe'
 import { useWindowDimensions } from '@hooks/useWindowDimensions'
 import { useRenderCompleted } from '@hooks/useRenderCompleted'
+import { IStyleMove } from '../types/IStyleMove'
+import { IModal } from '../types/IModal'
 
-export interface ModalProps {
+interface ModalProps extends IModal {
   elementPortal?: Element
-  isShown: boolean
   handleHeight?: (height: number) => void
-  hide: () => void
-  bodyContent: JSX.Element
   headerContent?: JSX.Element
-  labelledbyText: string
-  style?: StyleMove
-  classes?: {
-    modal?: string
-    dialog?: string
-    body?: string
-    backdrop?: string
-    position?: string
-    positionDialog?: string
-  }
+  style?: IStyleMove
 }
 
 export const ModalBase: FC<ModalProps> = ({
@@ -37,14 +26,17 @@ export const ModalBase: FC<ModalProps> = ({
   style,
   classes
 }) => {
+  const isMounted = useRenderCompleted()
   const elementRef = useRef<HTMLDivElement>(null)
   const { widthWindow, heightWindow } = useWindowDimensions()
 
   const [heightModal, setHeight] = useState(0)
   useEffect(() => {
-    const { offsetHeight, offsetTop } = elementRef.current ?? { offsetHeight: 0, offsetTop: 0 }
+    if (isShown) {
+      const { offsetHeight, offsetTop } = elementRef.current ?? { offsetHeight: 0, offsetTop: 0 }
 
-    setHeight(offsetHeight - offsetTop)
+      setHeight(offsetHeight - offsetTop)
+    }
   }, [isShown, heightWindow, widthWindow])
 
   const [height, setHeightModal] = useState(0)
@@ -65,8 +57,8 @@ export const ModalBase: FC<ModalProps> = ({
 
   useEffect(() => {
     isShown
-      ? ([document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.paddingRight = '17px'].join(' '))
-      : ([document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.paddingRight = '0'].join(' '))
+      ? classNames(document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.paddingRight = '17px')
+      : classNames(document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.paddingRight = '0')
 
     document.addEventListener('keydown', onKeyDown, false)
     return () => {
@@ -74,7 +66,6 @@ export const ModalBase: FC<ModalProps> = ({
     }
   }, [isShown])
 
-  const isMounted = useRenderCompleted()
   const [element, setElement] = useState<Element>()
   useEffect(() => {
     setElement(elementPortal ?? document.body)
