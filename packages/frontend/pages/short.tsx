@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout, { shortTitle } from '../src/components/layouts/Layout'
-import { AgreementShort } from '@templates/docs/AgreementShort'
+import { AgreementShortList } from '@modules/docs/AgreementShort/AgreementShortList'
 
 export default function short (): JSX.Element {
   return (
@@ -14,7 +14,7 @@ export default function short (): JSX.Element {
         <h2>
           Краткосрочная аренда
         </h2>
-        <AgreementShort />
+        <AgreementShortList />
       </section>
     </Layout>
   )
