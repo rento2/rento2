@@ -1,0 +1,44 @@
+.modal {
+  &__list {
+    border-bottom: 2px solid $iris-50;
+  }
+
+  &__item-title {
+    @include subtitle-bold-12;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    height: 32px;
+
+    @include bp-479 {
+      grid-template-columns: 57% 43%;
+    }
+  }
+
+  &__item {
+    @include body-medium-12;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 32px;
+
+    @include bp-479 {
+      grid-template-columns: 57% 43%;
+    }
+
+    &_color {
+      background-color: $iris-50;
+    }
+  }
+
+  &__cell-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 8px;
+
+    &:first-child {
+      border-right: 2px solid $iris-100;
+    }
+  }
+}
