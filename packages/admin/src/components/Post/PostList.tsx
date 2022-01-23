@@ -28,13 +28,15 @@ const PostList: FC<ListProps> = props => {
 
   return (
     <List filters={postFilters} {...props}>
-      {isSmall ? (
+      {isSmall
+        ? (
         <SimpleList
           primaryText={record => record['title']}
           secondaryText={_record => `${0} views`}
           tertiaryText={_record => new Date().toLocaleDateString()}
         />
-      ) : (
+          )
+        : (
         <Datagrid rowClick='edit'>
           <TextField source='id' />
           <ReferenceField source='userId' reference='users'>

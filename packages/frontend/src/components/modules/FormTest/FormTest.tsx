@@ -14,7 +14,7 @@ interface FormData {
   parking: Boolean
   coffee: Boolean
   conditioning: Boolean
-};
+}
 
 const objectFormData = {
   price_from: '',
