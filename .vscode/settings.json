@@ -1,0 +1,16 @@
+{
+  "scss.validate": false,
+  "css.validate": false,
+  "less.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "stylelint.configFile": "../packages/frontend",
+  "stylelint.validate": ["css", "scss"],
+  "eslint.enable": true,
+  "eslint.workingDirectories": [
+    { "directory": "packages/frontend", "changeProcessCWD": true },
+    { "directory": "packages/backend", "changeProcessCWD": true },
+    { "directory": "packages/admin", "changeProcessCWD": true }
+  ]
+}
