@@ -12,5 +12,9 @@
     "precommit:backend": "cd packages/backend && npm run precommit",
     "precommit:frontend": "cd packages/frontend && npm run precommit",
     "precommit": "npm-run-all precommit:*"
+  },
+  "volta": {
+    "node": "16.13.1",
+    "npm": "8.1.2"
   }
 }

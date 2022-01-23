@@ -8,13 +8,14 @@
     "start": "next start",
     "lint": "ts-standard | snazzy",
     "lint-fix": "ts-standard --fix | snazzy",
-    "lint:styles": "stylelint **/*{.css,.scss} | snazzy",
-    "lint:styles-fix": "stylelint **/*{.css,.scss} --fix | snazzy",
+    "lint:styles": "stylelint **/*{.css,.scss}",
+    "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
     "precommit": "npm run lint && npm run lint:styles"
   },
   "dependencies": {
     "antd": "^4.17.4",
     "axios": "^0.24.0",
+    "classnames": "^2.3.1",
     "date-fns": "^2.24.0",
     "gray-matter": "^4.0.3",
     "next": "^11.0.0",
@@ -22,6 +23,8 @@
     "postcss-preset-env": "^6.7.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-focus-lock": "^2.7.1",
+    "react-swipeable": "^6.2.0",
     "remark": "^13.0.0",
     "remark-html": "^13.0.2",
     "sass": "^1.42.1",
@@ -30,6 +33,7 @@
   "devDependencies": {
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.32",
+    "@types/react-dom": "^17.0.11",
     "snazzy": "^9.0.0",
     "stylelint": "^14.2.0",
     "stylelint-config-recess-order": "^3.0.0",
