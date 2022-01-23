@@ -5,7 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "stylelint.configFile": "../packages/frontend",
+  "stylelint.configFile": "packages/frontend/.stylelintrc.json",
   "stylelint.validate": ["css", "scss"],
   "eslint.enable": true,
   "eslint.workingDirectories": [
