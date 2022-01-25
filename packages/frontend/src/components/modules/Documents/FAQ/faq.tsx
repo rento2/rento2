@@ -2,6 +2,7 @@ import style from './faq.module.scss'
 import { stateAcardionProps } from '@elements/accordions/StateAccordion'
 import DocAccordion from '@elements/accordions/DocsAccordion'
 import Docs from '@modules/documents/AppDoc/Appdoc'
+import FaqQuestion from './FaqQuestion'
 
 export default function Faq (): JSX.Element {
   const dateAcardion: stateAcardionProps[] = [
@@ -46,6 +47,9 @@ export default function Faq (): JSX.Element {
     <>
       <Docs>
         <h1 className={style['title']}>Частые вопросы</h1>
+        <div className={style['question']}>
+          <FaqQuestion />
+        </div>
         <DocAccordion state={dateAcardion} />
       </Docs>
     </>

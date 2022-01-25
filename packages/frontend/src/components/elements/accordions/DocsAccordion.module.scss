@@ -4,6 +4,9 @@
   width: 844px;
   max-height: 730px;
   margin: 24px 0 0 100px;
+  @include bp-1279 {
+    width: 622px;
+  }
 }
 
 .wrapper-ul {
@@ -29,6 +32,9 @@
   max-width: 70%;
   padding: 23px  0 23px 40px;
   transition: transform 0.5s ease-in-out;
+  @include bp-1279 {
+    max-width: 100%;
+  }
 
   .item-text-title {
     @include body-medium-14;
@@ -42,18 +48,19 @@
 }
 
 .item-description {
-  width: 90%;
+  @include body-medium-14;
   height: 100%;
   padding: 0 40px 32px;
-  transition: all 0.7s ease-in-out;
+  line-height: 130%;
+  transition: all 0.5s ease-in-out;
 }
 
 .hidden-item {
-  width: 90%;
   height: 0;
-  padding: 0 40px 32px;
+  margin: 0 40px;
   overflow: hidden;
   opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .item-button {
@@ -62,8 +69,11 @@
   left: 773px;
   cursor: pointer;
   transition: transform 0.7s ease-in-out;
+  @include bp-1279 {
+    left: 581px;
+  }
 }
 
 .active {
-  transform: rotate(-180deg);
+  transform: rotate(45deg);
 }
