@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { stateAcardionProps } from './StateAccordion'
-import style from './Docs-accordion.module.scss'
+import style from './DocsAccordion.module.scss'
 import AccardionButton from '@elements/buttons/AccordionButton/AccordionButton'
 
 interface DocAcardionProps {
