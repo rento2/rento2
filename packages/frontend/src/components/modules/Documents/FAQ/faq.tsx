@@ -1,6 +1,6 @@
 import style from './faq.module.scss'
 import { stateAcardionProps } from '@elements/accordions/StateAccordion'
-import DocAccordion from '@elements/accordions/Docs-accordion'
+import DocAccordion from '@elements/accordions/DocsAccordion'
 import Docs from '@modules/documents/AppDoc/Appdoc'
 
 export default function Faq (): JSX.Element {

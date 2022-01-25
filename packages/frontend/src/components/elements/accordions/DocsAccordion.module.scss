@@ -29,6 +29,7 @@
   max-width: 70%;
   padding: 23px  0 23px 40px;
   transition: transform 0.5s ease-in-out;
+
   .item-text-title {
     @include body-medium-14;
   }
@@ -42,17 +43,19 @@
 
 .item-description {
   width: 90%;
-  padding: 0 40px 32px;
   height: 100%;
-  transition: all 0.7s ease-in-out ;
-}
-.hidden-item{
-  opacity: 0;
-  width: 90%;
   padding: 0 40px 32px;
-  height: 0;
-  overflow: hidden;
+  transition: all 0.7s ease-in-out;
 }
+
+.hidden-item {
+  width: 90%;
+  height: 0;
+  padding: 0 40px 32px;
+  overflow: hidden;
+  opacity: 0;
+}
+
 .item-button {
   position: absolute;
   top: 20px;
@@ -61,7 +64,6 @@
   transition: transform 0.7s ease-in-out;
 }
 
-.active{
+.active {
   transform: rotate(-180deg);
 }
-
