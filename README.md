@@ -11,7 +11,7 @@
 - ``npm i``
 - ``npm i -g lerna`` (если не было установлено ранее)
 - ``lerna bootstrap``
-2. Создать .env файл, согласно примеру. Вбить свои пароли
+2. В директории ``packages/backend`` cоздать .env файл, согласно примеру (.env.example). Вбить свои пароли
 3. Поднять БД через Docker (в папке packages/backend): ``docker-compose up -d``
 
 # Запуск Приложения
