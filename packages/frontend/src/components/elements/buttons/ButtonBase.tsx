@@ -5,7 +5,9 @@ interface IButtonBase {
 }
 export const ButtonBase = ({ handleHide, textProps, classProps }: IButtonBase): JSX.Element => {
   return (
-    <button className={classProps} onClick={handleHide}>
+    <button className={ classProps }
+      onClick={ handleHide }
+    >
       {textProps}
     </button>
   )

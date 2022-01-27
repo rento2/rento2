@@ -8,9 +8,9 @@ export const DocsList = (props: {items: IListProps[]}): JSX.Element => {
     <>
       {props.items.map((listItem: IListProps, index: number) => (
         <DocsListItem
-          ref={listItemRef}
-          key={`${listItem.type}-${index}`}
-          {...listItem}
+          key={ `${listItem.type}-${index}` }
+          ref={ listItemRef }
+          { ...listItem }
         />
       ))}
     </>

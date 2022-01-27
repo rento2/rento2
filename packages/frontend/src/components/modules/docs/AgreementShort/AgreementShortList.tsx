@@ -18,30 +18,33 @@ export const AgreementShortList = (): JSX.Element => {
   const [isShownRules, setShownRules] = useModal()
 
   return (
-    <AgreementShortContext.Provider value={{ setShownPriceDamage, setShownRules }}>
-      <article className={classNames(
+    <AgreementShortContext.Provider value={ { setShownPriceDamage, setShownRules } }>
+      <article className={ classNames(
         styles['document__page'],
         'container'
-      )}
+      ) }
       >
-        <DocsList items={agreementShortData} />
+        <DocsList items={ agreementShortData } />
         <ModalSwipe
-          labelledbyText='Modal parent'
-          isShown={isShownPriceDamage}
-          hide={setShownPriceDamage}
-          modalHeaderProps={<AgreementShortModalHeader handleHide={setShownPriceDamage} />}
-          bodyContent={<AgreementShortModalBody />}
-          classes={{
+          bodyContent={ <AgreementShortModalBody /> }
+          classes={ {
             dialog: classNames(styles['modal__dialog']),
             body: classNames(styles['modal__body']),
             header: classNames(styles['modal__header'])
-          }}
+          } }
+          hide={ setShownPriceDamage }
+          isShown={ isShownPriceDamage }
+          labelledbyText='Modal parent'
+          modalHeaderProps={ <AgreementShortModalHeader handleHide={ setShownPriceDamage } /> }
         />
         <ModalBase
-          isShown={isShownRules}
-          hide={setShownRules}
-          headerContent={<div><AgreementShortModalHeader handleHide={setShownRules} /></div>}
-          bodyContent={<AgreementShortModalBody />}
+          bodyContent={ <AgreementShortModalBody /> }
+          headerContent={
+            <div>
+              <AgreementShortModalHeader handleHide={ setShownRules } />
+            </div> }
+          hide={ setShownRules }
+          isShown={ isShownRules }
           labelledbyText='Price property damage'
         />
       </article>

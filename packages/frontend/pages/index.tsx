@@ -6,12 +6,18 @@ export default function Home (): JSX.Element {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>
+          {siteTitle}
+        </title>
       </Head>
       <section className='container'>
-        <h2>Главная</h2>
+        <h2>
+          Главная
+        </h2>
         <Link href='/form'>
-          <a>Форма</a>
+          <a>
+            Форма
+          </a>
         </Link>
       </section>
     </Layout>

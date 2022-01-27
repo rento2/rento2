@@ -30,35 +30,51 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
     const Component = as ?? tagName[type]
 
     return (
-    <>
-      {text != null && button == null
+      <>
+        {text != null && button == null
         // @ts-expect-error
-        ? <Component ref={ref} className={classNames(styles[classItem])}>{text}</Component>
-        : null}
+          ? (
+            <Component ref={ ref }
+              className={ classNames(styles[classItem]) }
+            >
+              {text}
+            </Component>
+            )
+          : null}
 
-      {text != null && button != null
-        ? (
-          // @ts-expect-error
-          <Component ref={ref} className={classNames(styles[classItem])}>
-            {text} <AgreementShortButton textProps={button.buttonText} classProps={classNames(styles[button.classButton])} buttonType={button.buttonType} />
-          </Component>
-          )
-        : null}
-
-      {Array.isArray(contents)
-        ? (
+        {text != null && button != null
+          ? (
         // @ts-expect-error
-        <Component ref={ref} className={classNames(styles[classItem])}>
-          {contents.map((listItem: IListProps, index: number) => (
-            <DocsListItem
-              ref={ref}
-              key={`${listItem.type}-${index}`}
-              {...listItem}
-            />
-          ))}
-        </Component>)
-        : null}
-    </>
+            <Component ref={ ref }
+              className={ classNames(styles[classItem]) }
+            >
+              {text}
+              {' '}
+              <AgreementShortButton buttonType={ button.buttonType }
+                classProps={ classNames(styles[button.classButton]) }
+                textProps={ button.buttonText }
+              />
+            </Component>
+            )
+          : null}
+
+        {Array.isArray(contents)
+          ? (
+        // @ts-expect-error
+            <Component ref={ ref }
+              className={ classNames(styles[classItem]) }
+            >
+              {contents.map((listItem: IListProps, index: number) => (
+                <DocsListItem
+                  key={ `${listItem.type}-${index}` }
+                  ref={ ref }
+                  { ...listItem }
+                />
+              ))}
+            </Component>
+            )
+          : null}
+      </>
     )
   })
 

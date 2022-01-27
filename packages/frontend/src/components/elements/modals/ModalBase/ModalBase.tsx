@@ -74,39 +74,43 @@ export const ModalBase: FC<ModalProps> = ({
   const modal = (
     <>
       <div
-        className={classNames(
+        className={ classNames(
           styles['backdrop'],
-          classes?.backdrop)}
-        onClick={hide}
+          classes?.backdrop) }
+        onClick={ hide }
       />
-      <FocusLock autoFocus={false}>
+      <FocusLock autoFocus={ false }>
         <div
-          onClick={hide}
-          style={style}
-          className={classNames(
+          aria-modal
+          aria-labelledby={ labelledbyText }
+          className={ classNames(
             classes?.modal,
             styles['modal'],
-            heightModal >= heightWindow && isShown ? classes?.position ?? styles['modal__position'] : '')}
-          aria-modal
-          aria-labelledby={labelledbyText}
-          tabIndex={-1}
+            heightModal >= heightWindow && isShown ? classes?.position ?? styles['modal__position'] : '') }
           role='dialog'
+          style={ style }
+          tabIndex={ -1 }
+          onClick={ hide }
         >
           <div
-            ref={elementRef}
-            onClick={(e) => e.stopPropagation()}
-            className={classNames(
+            ref={ elementRef }
+            className={ classNames(
               classes?.dialog,
               styles['modal__dialog'],
-              heightModal >= heightWindow && isShown ? classes?.positionDialog ?? styles['modal__position-dialog'] : '')}
+              heightModal >= heightWindow && isShown ? classes?.positionDialog ?? styles['modal__position-dialog'] : '') }
+            onClick={ (e) => e.stopPropagation() }
           >
             {
               (headerContent != null)
-                ? <>{headerContent}</>
+                ? (
+                  <>
+                    {headerContent}
+                  </>
+                  )
                 : ''
             }
-            <div className={classNames(
-              classes?.body)}
+            <div className={ classNames(
+              classes?.body) }
             >
               {bodyContent}
             </div>

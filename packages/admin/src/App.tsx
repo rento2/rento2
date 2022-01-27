@@ -8,9 +8,20 @@ import { authProvider } from 'common'
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com')
 const App = (): JSX.Element => (
-  <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
-    <Resource name='posts' list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
-    <Resource name='users' list={UserList} icon={UserIcon} />
+  <Admin authProvider={ authProvider }
+    dashboard={ Dashboard }
+    dataProvider={ dataProvider }
+  >
+    <Resource create={ PostCreate }
+      edit={ PostEdit }
+      icon={ PostIcon }
+      list={ PostList }
+      name='posts'
+    />
+    <Resource icon={ UserIcon }
+      list={ UserList }
+      name='users'
+    />
   </Admin>
 )
 
