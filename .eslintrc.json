@@ -3,5 +3,8 @@
   "extends": [
     "eslint:recommended",
     "standard-with-typescript"
-  ]
+  ],
+  "rules": {
+    "@typescript-eslint/dot-notation": 0
+  }
 }
