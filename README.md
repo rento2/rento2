@@ -9,7 +9,7 @@
 # Install
 1. Установка
 - Склонировать репозиторий. Переключиться на ветку develop
-- Установить volta https://docs.volta.sh/guide/getting-started
+- Установить версию node: ^16 или volta (https://docs.volta.sh/guide/getting-started)
 - ``npm i``
 - ``npm i -g lerna`` (если не было установлено ранее)
 - ``lerna bootstrap``
@@ -17,8 +17,9 @@
 3. Поднять БД через Docker (в папке packages/backend): ``docker-compose up -d``
 
 # Запуск Приложения
-- Запустить бэкенд, фронт, админку: ``cd packages/backend && npm run dev && cd ../admin && npm start && cd ../frontend && npm run dev``
-- Запустить фронт: ``cd packages/frontend && npm run dev``
+- Запустить админку: ``npm run start:admin``
+- Запустить бэк: ``npm run start:backend``
+- Запустить фронт: ``npm run start:frontend``
 
 # Плагины VSCode
 - EditorConfig https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
