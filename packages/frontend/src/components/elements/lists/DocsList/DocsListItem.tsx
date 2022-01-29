@@ -32,10 +32,10 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
     return (
       <>
         {text != null && button == null
-        // @ts-expect-error
           ? (
+            // @ts-expect-error
             <Component ref={ ref }
-              className={ classNames(styles[classItem]) }
+              className={ classNames(styles[classItem ?? '']) }
             >
               {text}
             </Component>
@@ -44,9 +44,9 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
 
         {text != null && button != null
           ? (
-        // @ts-expect-error
+            // @ts-expect-error
             <Component ref={ ref }
-              className={ classNames(styles[classItem]) }
+              className={ classNames(styles[classItem ?? '']) }
             >
               {text}
               {' '}
@@ -62,7 +62,7 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
           ? (
         // @ts-expect-error
             <Component ref={ ref }
-              className={ classNames(styles[classItem]) }
+              className={ classNames(styles[classItem ?? '']) }
             >
               {contents.map((listItem: IListProps, index: number) => (
                 <DocsListItem
