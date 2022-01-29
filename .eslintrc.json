@@ -4,6 +4,9 @@
     "eslint:recommended",
     "standard-with-typescript"
   ],
+  "overrides": [
+    {"files": ["*.{jsx, ts, tsx}"]}
+  ],
   "rules": {
     "@typescript-eslint/dot-notation": 0
   }
