@@ -6,7 +6,7 @@
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
-    "lint": "eslint . --ext .ts,.js",
+    "lint": "eslint . --ext .ts,.js && npx tsc --noEmit",
     "lint-fix": "eslint . --ext .ts,.js --fix",
     "test": "node -r @adonisjs/assembler/build/register japaFile.ts",
     "coverage": "nyc npm run test",
