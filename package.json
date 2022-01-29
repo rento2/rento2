@@ -18,11 +18,9 @@
     "precommit:backend": "cd packages/backend && npm run precommit",
     "precommit:frontend": "cd packages/frontend && npm run precommit",
     "precommit": "npm-run-all precommit:*",
-    "lint:admin": "cd packages/admin && npm run lint",
-    "lint:backend": "cd packages/backend && npm run lint",
-    "lint:frontend": "cd packages/frontend && npm run lint",
-    "lint:frontend-styles": "cd packages/frontend && npm run lint:styles",
-    "lint": "npm-run-all lint:*"
+    "start:admin": "cd packages/admin && npm run start",
+    "start:backend": "cd packages/backend && npm run dev",
+    "start:frontend": "cd packages/frontend && npm run dev"
   },
   "volta": {
     "node": "16.13.1",
