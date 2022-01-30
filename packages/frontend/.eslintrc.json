@@ -1,0 +1,61 @@
+{
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@next/next/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/self-closing-comp": "error",
+    "react/sort-comp": "error",
+    "react/state-in-constructor": ["error", "always"],
+    "react/jsx-pascal-case": "error",
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+    "react/jsx-closing-tag-location": "error",
+    "react/jsx-curly-brace-presence": ["error", "never"],
+    "react/jsx-curly-spacing": ["error", { "when": "always" }],
+    "react/jsx-equals-spacing": ["error", "never"],
+    "react/jsx-fragments": ["error", "syntax"],
+    "react/jsx-handler-names": "error",
+    "react/jsx-indent": ["error", 2, {"checkAttributes": true, "indentLogicalExpressions": true}],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-max-props-per-line": ["error"],
+    "react/jsx-no-constructed-context-values": "warn",
+    "react/jsx-no-useless-fragment": ["error", {"allowExpressions": true}],
+    "react/jsx-one-expression-per-line": "error",
+    "react/jsx-tag-spacing": ["error", {
+      "afterOpening": "never",
+      "beforeClosing": "never",
+      "beforeSelfClosing": "always"
+    }],
+    "react/jsx-wrap-multilines": ["error", {
+      "declaration": "parens-new-line",
+      "assignment": "parens-new-line",
+      "return": "parens-new-line",
+      "arrow": "parens",
+      "condition": "parens-new-line",
+      "logical": "parens",
+      "prop": "ignore"
+    }],
+    "react/jsx-sort-props": ["error", {
+      "callbacksLast": true,
+      "shorthandFirst": true,
+      "ignoreCase": true,
+      "reservedFirst": true
+    }]
+  }
+}

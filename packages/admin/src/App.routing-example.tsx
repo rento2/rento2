@@ -6,10 +6,21 @@ const Logo = lazy(async () => await import('./routes/Logo/Logo'))
 
 const App = (): JSX.Element => (
   <Router>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={
+      <div>
+        Loading...
+      </div> }
+    >
       <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} name='john' />} />
-        <Route path='/logo' component={Logo} />
+        <Route exact
+          path='/'
+          render={ (props) => (<Home { ...props }
+            name='john'
+          />) }
+        />
+        <Route component={ Logo }
+          path='/logo'
+        />
       </Switch>
     </Suspense>
   </Router>

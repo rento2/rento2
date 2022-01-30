@@ -10,15 +10,15 @@ interface ModalHeader {
 export const AgreementShortModalHeader: FC<ModalHeader> = (props) => {
   return (
     <>
-      <h3 className={styles['modal__title']}>
+      <h3 className={ styles['modal__title'] }>
         Прейскурант возмещения порчи имущества
       </h3>
       <button
-        className={classNames(
+        className={ classNames(
           styles['btn-close'],
-          'flex-center')}
-        onClick={props.handleHide}
+          'flex-center') }
         type='button'
+        onClick={ props.handleHide }
       >
         <IconButtonClose />
       </button>

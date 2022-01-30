@@ -10,6 +10,9 @@ export const AgreementShortButton = ({ textProps, classProps, buttonType }: {
   const { setShownPriceDamage, setShownRules } = useContext(AgreementShortContext)
 
   return (
-    <ButtonBase handleHide={buttonType === 'modalPriceDamage' ? setShownPriceDamage : setShownRules} textProps={textProps} classProps={classProps} />
+    <ButtonBase classProps={ classProps }
+      handleHide={ buttonType === 'modalPriceDamage' ? setShownPriceDamage : setShownRules }
+      textProps={ textProps }
+    />
   )
 }

@@ -2,7 +2,7 @@ import { ITagName } from './ITagName'
 
 export interface IListProps {
   type: keyof ITagName
-  class?: string
+  classItem?: string
   text?: string
   button?: {
     buttonText: string

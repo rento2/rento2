@@ -26,25 +26,25 @@ export const ModalSwipe: FC<ModalSwipeProps> = ({
 
   return (
     <ModalBase
-      isShown={isShown}
-      handleHeight={getHeightModal}
-      hide={hide}
-      headerContent={
-        <ModalSwipeHeader
-          handlersProps={handlers ?? {}}
-          modalHeaderProps={modalHeaderProps}
-          classHeader={classes?.header ?? ''}
-        />
-      }
-      bodyContent={bodyContent}
-      labelledbyText={labelledbyText}
-      style={styleMove ?? {}}
-      classes={{
+      bodyContent={ bodyContent }
+      classes={ {
         modal: styles['modal'] ?? '',
         position: styles['modal__position'] ?? '',
         dialog: styles['modal__dialog'] ?? '',
         ...classes
-      }}
+      } }
+      handleHeight={ getHeightModal }
+      headerContent={
+        <ModalSwipeHeader
+          classHeader={ classes?.header ?? '' }
+          handlersProps={ handlers ?? {} }
+          modalHeaderProps={ modalHeaderProps }
+        />
+      }
+      hide={ hide }
+      isShown={ isShown }
+      labelledbyText={ labelledbyText }
+      style={ styleMove ?? {} }
     />
   )
 }

@@ -28,16 +28,16 @@ export const AgreementShortModalBody = (): JSX.Element => {
   const listBody = modalData.map((item, index) => {
     return (
       <li
-        className={classNames(
+        key={ `item-${index}` }
+        className={ classNames(
           styles['modal__item'],
           index % 2 === 0 ? styles['modal__item_color'] : ''
-        )}
-        key={`item-${index}`}
+        ) }
       >
-        <p className={styles['modal__cell-inner']}>
+        <p className={ styles['modal__cell-inner'] }>
           {item[0]}
         </p>
-        <p className={styles['modal__cell-inner']}>
+        <p className={ styles['modal__cell-inner'] }>
           {item[1]}
         </p>
       </li>
@@ -45,12 +45,12 @@ export const AgreementShortModalBody = (): JSX.Element => {
   })
 
   return (
-    <ul className={styles['modal__list']}>
-      <li className={styles['modal__item-title']}>
-        <h3 className={styles['modal__cell-inner']}>
+    <ul className={ styles['modal__list'] }>
+      <li className={ styles['modal__item-title'] }>
+        <h3 className={ styles['modal__cell-inner'] }>
           Наименование
         </h3>
-        <h3 className={styles['modal__cell-inner']}>
+        <h3 className={ styles['modal__cell-inner'] }>
           Цена, руб
         </h3>
       </li>

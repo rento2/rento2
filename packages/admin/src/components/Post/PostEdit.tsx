@@ -11,18 +11,31 @@ import {
 import { IGenericObj } from 'common'
 
 const PostTitle: FC<IGenericObj> = ({ record }) => {
-  return <span>Post {record != null ? `"${record.title as string}"` : ''}</span>
+  return (
+    <span>
+      Post
+      {record != null ? `"${record.title as string}"` : ''}
+    </span>
+  )
 }
 
 const PostEdit: FC<ListProps> = props => (
-  <Edit title={<PostTitle />} {...props}>
+  <Edit title={ <PostTitle /> }
+    { ...props }
+  >
     <SimpleForm>
-      <TextInput disabled source='id' />
-      <ReferenceInput source='userId' reference='users'>
+      <TextInput disabled
+        source='id'
+      />
+      <ReferenceInput reference='users'
+        source='userId'
+      >
         <SelectInput optionText='name' />
       </ReferenceInput>
       <TextInput source='title' />
-      <TextInput multiline source='body' />
+      <TextInput multiline
+        source='body'
+      />
     </SimpleForm>
   </Edit>
 )

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { List, Datagrid, TextField, EmailField, ListProps, UrlField } from 'react-admin'
 
 const UserList: FC<ListProps> = (props) => (
-  <List {...props}>
+  <List { ...props }>
     <Datagrid rowClick='edit'>
       <TextField source='id' />
       <TextField source='name' />

@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.0",
-    "node-sass": "^6.0.1",
-    "snazzy": "^9.0.0",
-    "ts-standard": "^10.0.0"
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "node-sass": "^6.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,15 +32,9 @@
     "test": "react-scripts test",
     "test-precommit": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "lint": "ts-standard | snazzy",
-    "lint-fix": "ts-standard --fix | snazzy",
+    "lint": "eslint . --ext .tsx,.ts,.js,.jsx && npx tsc --noEmit",
+    "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "precommit": "npm run lint && npm run test-precommit"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

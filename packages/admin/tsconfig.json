@@ -32,6 +32,11 @@
     "allowJs": true
   },
   "include": [
-    "src"
+    "src",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

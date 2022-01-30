@@ -16,11 +16,11 @@ export const ModalSwipeHeader: FC<IModalHeader> = ({
 }) => {
   return (
     <div
-      className={classNames(
+      className={ classNames(
         styles['modal__header'],
         'flex-s-b-c',
-        classHeader)}
-      {...handlersProps}
+        classHeader) }
+      { ...handlersProps }
     >
       {modalHeaderProps}
     </div>

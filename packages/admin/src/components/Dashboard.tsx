@@ -4,7 +4,9 @@ import { ReactElement } from 'react'
 const Dashboard = (): ReactElement<any, any> => (
   <Card>
     <CardHeader title='Welcome to the administration' />
-    <CardContent>Lorem ipsum sic dolor amet...</CardContent>
+    <CardContent>
+      Lorem ipsum sic dolor amet...
+    </CardContent>
   </Card>
 )
 
