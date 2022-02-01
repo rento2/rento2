@@ -14,7 +14,7 @@ interface FormData {
   parking: Boolean
   coffee: Boolean
   conditioning: Boolean
-};
+}
 
 const objectFormData = {
   price_from: '',
@@ -80,195 +80,198 @@ export default function FormTest (): JSX.Element {
   }
 
   return (
-    <>
-      <form className='container' action='#' onSubmit={handleSubmit}>
-        <div>
-          <h2>
-            Диапазон цены
-          </h2>
-          <div className={formStyles['colums-2']}>
-            <input
-              className={formStyles['input-text']}
-              type='text'
-              name='price_from'
-              placeholder='От'
-              onChange={handleInput}
-            />
-            <input
-              className={formStyles['input-text']}
-              type='text'
-              name='price_to'
-              placeholder='До'
-              onChange={handleInput}
-            />
-          </div>
+    <form action='#'
+      className='container'
+      onSubmit={ handleSubmit }
+    >
+      <div>
+        <h2>
+          Диапазон цены
+        </h2>
+        <div className={ formStyles['colums-2'] }>
+          <input
+            className={ formStyles['input-text'] }
+            name='price_from'
+            placeholder='От'
+            type='text'
+            onChange={ handleInput }
+          />
+          <input
+            className={ formStyles['input-text'] }
+            name='price_to'
+            placeholder='До'
+            type='text'
+            onChange={ handleInput }
+          />
         </div>
-        <div>
-          <h2>
-            Время до метро
-          </h2>
-          <div className={formStyles['colums-2']}>
-            <input
-              className={formStyles['input-text']}
-              type='text'
-              name='time_to_metro_from'
-              placeholder='От'
-              onChange={handleInput}
-            />
-            <input
-              className={formStyles['input-text']}
-              type='text'
-              name='time_to_metro_to'
-              placeholder='До'
-              onChange={handleInput}
-            />
-          </div>
+      </div>
+      <div>
+        <h2>
+          Время до метро
+        </h2>
+        <div className={ formStyles['colums-2'] }>
+          <input
+            className={ formStyles['input-text'] }
+            name='time_to_metro_from'
+            placeholder='От'
+            type='text'
+            onChange={ handleInput }
+          />
+          <input
+            className={ formStyles['input-text'] }
+            name='time_to_metro_to'
+            placeholder='До'
+            type='text'
+            onChange={ handleInput }
+          />
         </div>
-        <div>
-          <h2>
-            Удаленность от центра
-          </h2>
-          <div className={formStyles['colums-3']}>
-            <label className={formStyles['label-radio']}>
-              <span>
-                В пределах Садового кольца
-              </span>
-              <input
-                type='radio'
-                name='distance'
-                value='gr'
-                onChange={handleInput}
-              />
-            </label>
-            <label className={formStyles['label-radio']}>
-              <span>
-                В пределах ТТК
-              </span>
-              <input
-                type='radio'
-                name='distance'
-                value='trr'
-                onChange={handleInput}
-              />
-            </label>
-            <label className={formStyles['label-radio']}>
-              <span>
-                В пределах МКАД
-              </span>
-              <input
-                type='radio'
-                name='distance'
-                value='mrr'
-                onChange={handleInput}
-              />
-            </label>
-          </div>
-        </div>
-        <div>
-          <h2>
-            Комнаты и кровати
-          </h2>
-          <div className={formStyles['colums-2']}>
-            <p>
-              Комнаты
-            </p>
+      </div>
+      <div>
+        <h2>
+          Удаленность от центра
+        </h2>
+        <div className={ formStyles['colums-3'] }>
+          <label className={ formStyles['label-radio'] }>
+            <span>
+              В пределах Садового кольца
+            </span>
             <input
-              className={formStyles['input-text']}
-              type='text'
-              name='rooms'
-              placeholder='Количество комнат'
-              onChange={handleInput}
+              name='distance'
+              type='radio'
+              value='gr'
+              onChange={ handleInput }
             />
-          </div>
-          <div className={formStyles['colums-2']}>
-            <p>
-              Кровати
-            </p>
+          </label>
+          <label className={ formStyles['label-radio'] }>
+            <span>
+              В пределах ТТК
+            </span>
             <input
-              className={formStyles['input-text']}
-              type='text'
-              name='beds'
-              placeholder='Количество кроватей'
-              onChange={handleInput}
+              name='distance'
+              type='radio'
+              value='trr'
+              onChange={ handleInput }
             />
-          </div>
-        </div>
-        <div>
-          <h2>
-            Площадь квартиры
-          </h2>
-          <div className={formStyles['colums-2']}>
+          </label>
+          <label className={ formStyles['label-radio'] }>
+            <span>
+              В пределах МКАД
+            </span>
             <input
-              className={formStyles['input-text']}
-              type='text'
-              name='area_size_from'
-              placeholder='От'
-              onChange={handleInput}
+              name='distance'
+              type='radio'
+              value='mrr'
+              onChange={ handleInput }
             />
+          </label>
+        </div>
+      </div>
+      <div>
+        <h2>
+          Комнаты и кровати
+        </h2>
+        <div className={ formStyles['colums-2'] }>
+          <p>
+            Комнаты
+          </p>
+          <input
+            className={ formStyles['input-text'] }
+            name='rooms'
+            placeholder='Количество комнат'
+            type='text'
+            onChange={ handleInput }
+          />
+        </div>
+        <div className={ formStyles['colums-2'] }>
+          <p>
+            Кровати
+          </p>
+          <input
+            className={ formStyles['input-text'] }
+            name='beds'
+            placeholder='Количество кроватей'
+            type='text'
+            onChange={ handleInput }
+          />
+        </div>
+      </div>
+      <div>
+        <h2>
+          Площадь квартиры
+        </h2>
+        <div className={ formStyles['colums-2'] }>
+          <input
+            className={ formStyles['input-text'] }
+            name='area_size_from'
+            placeholder='От'
+            type='text'
+            onChange={ handleInput }
+          />
+          <input
+            className={ formStyles['input-text'] }
+            name='area_size_to'
+            placeholder='До'
+            type='text'
+            onChange={ handleInput }
+          />
+        </div>
+      </div>
+      <div>
+        <h2>
+          Удобства
+        </h2>
+        <div className={ formStyles['colums-2'] }>
+          <label className={ formStyles['label-checkbox'] }>
             <input
-              className={formStyles['input-text']}
-              type='text'
-              name='area_size_to'
-              placeholder='До'
-              onChange={handleInput}
+              className={ formStyles['input-checkbox'] }
+              name='parking'
+              type='checkbox'
+              onChange={ handleCheckbox }
             />
-          </div>
+            <span>
+              Парковка рядом
+            </span>
+          </label>
+          <label className={ formStyles['label-checkbox'] }>
+            <input
+              className={ formStyles['input-checkbox'] }
+              name='coffee'
+              type='checkbox'
+              onChange={ handleCheckbox }
+            />
+            <span>
+              Кофеварка
+            </span>
+          </label>
+          <label className={ formStyles['label-checkbox'] }>
+            <input
+              className={ formStyles['input-checkbox'] }
+              name='conditioning'
+              type='checkbox'
+              onChange={ handleCheckbox }
+            />
+            <span>
+              Кондиционер
+            </span>
+          </label>
+          <label className={ formStyles['label-checkbox'] }>
+            <input
+              className={ formStyles['input-checkbox'] }
+              name='dishwasher'
+              type='checkbox'
+              onChange={ handleCheckbox }
+            />
+            <span>
+              Посудомойка
+            </span>
+          </label>
         </div>
-        <div>
-          <h2>
-            Удобства
-          </h2>
-          <div className={formStyles['colums-2']}>
-            <label className={formStyles['label-checkbox']}>
-              <input
-                className={formStyles['input-checkbox']}
-                type='checkbox'
-                name='parking'
-                onChange={handleCheckbox}
-              />
-              <span>
-                Парковка рядом
-              </span>
-            </label>
-            <label className={formStyles['label-checkbox']}>
-              <input
-                className={formStyles['input-checkbox']}
-                type='checkbox'
-                name='coffee'
-                onChange={handleCheckbox}
-              />
-              <span>
-                Кофеварка
-              </span>
-            </label>
-            <label className={formStyles['label-checkbox']}>
-              <input
-                className={formStyles['input-checkbox']}
-                type='checkbox'
-                name='conditioning'
-                onChange={handleCheckbox}
-              />
-              <span>
-                Кондиционер
-              </span>
-            </label>
-            <label className={formStyles['label-checkbox']}>
-              <input
-                className={formStyles['input-checkbox']}
-                type='checkbox'
-                name='dishwasher'
-                onChange={handleCheckbox}
-              />
-              <span>
-                Посудомойка
-              </span>
-            </label>
-          </div>
-        </div>
-        <button className={formStyles['button']} type='submit'>
-          Показать варианты
-        </button>
-      </form>
-    </>
+      </div>
+      <button className={ formStyles['button'] }
+        type='submit'
+      >
+        Показать варианты
+      </button>
+    </form>
   )
 }

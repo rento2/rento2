@@ -9,13 +9,17 @@ import {
 } from 'react-admin'
 
 const PostCreate: FC<ListProps> = props => (
-  <Create {...props}>
+  <Create { ...props }>
     <SimpleForm>
-      <ReferenceInput source='userId' reference='users'>
+      <ReferenceInput reference='users'
+        source='userId'
+      >
         <SelectInput optionText='name' />
       </ReferenceInput>
       <TextInput source='title' />
-      <TextInput multiline source='body' />
+      <TextInput multiline
+        source='body'
+      />
     </SimpleForm>
   </Create>
 )

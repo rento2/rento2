@@ -34,8 +34,8 @@ export const useModalCloseSwipe = (toggle: () => void, heightModal: number, tran
 
   return widthWindow <= widthWindowProps
     ? [
-      handlers,
-      styleMove
-    ]
+        handlers,
+        styleMove
+      ]
     : []
 }

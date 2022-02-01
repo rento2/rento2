@@ -8,9 +8,9 @@ export default function ButtonFillRight (
   }): JSX.Element {
   return (
     <a
-      className={styles['button']}
-      data-tag-manager={propsButton.tagManager}
-      href={propsButton.phone}
+      className={ styles['button'] }
+      data-tag-manager={ propsButton.tagManager }
+      href={ propsButton.phone }
     >
       {propsButton.text}
     </a>

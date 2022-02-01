@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "ts-standard | snazzy",
-    "lint-fix": "ts-standard --fix | snazzy",
+    "lint": "eslint . --ext .tsx,.ts,.js,.jsx && npx tsc --noEmit",
+    "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "lint:styles": "stylelint **/*{.css,.scss}",
     "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
     "precommit": "npm run lint && npm run lint:styles"
@@ -31,20 +31,16 @@
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^12.0.8",
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.32",
     "@types/react-dom": "^17.0.11",
-    "snazzy": "^9.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "stylelint": "^14.2.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-order": "^5.0.0",
-    "ts-standard": "^10.0.0",
     "typescript": "^4.4.4"
-  },
-  "ts-standard": {
-    "ignore": [
-      "next-env.d.ts"
-    ]
   }
 }

@@ -6,8 +6,8 @@
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
-    "lint": "ts-standard | snazzy",
-    "lint-fix": "ts-standard --fix | snazzy",
+    "lint": "eslint . --ext .ts,.js && npx tsc --noEmit",
+    "lint-fix": "eslint . --ext .ts,.js --fix",
     "test": "node -r @adonisjs/assembler/build/register japaFile.ts",
     "coverage": "nyc npm run test",
     "precommit": "npm run lint && npm run test"
@@ -24,9 +24,7 @@
     "japa": "^3.1.1",
     "nyc": "^15.1.0",
     "pino-pretty": "^7.0.0",
-    "snazzy": "^9.0.0",
     "supertest": "^6.1.6",
-    "ts-standard": "^10.0.0",
     "typescript": "~4.2",
     "youch": "^2.2.2",
     "youch-terminal": "^1.1.1"
