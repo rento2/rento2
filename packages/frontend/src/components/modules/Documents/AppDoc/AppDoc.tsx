@@ -1,5 +1,5 @@
 import SideMenu from '@modules/Documents/SideMenu/SideMenu'
-import style from './Appdocs.module.scss'
+import style from './AppDoc.module.scss'
 import Layout from '@layouts/Layout'
 import { useRef } from 'react'
 
