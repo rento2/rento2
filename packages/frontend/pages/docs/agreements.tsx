@@ -1,5 +1,5 @@
-import Sample from '@modules/documents/Sample/Sample'
-import React, { FunctionComponent } from 'react'
+import Sample from '@modules/Documents/Sample/Sample'
+import { FunctionComponent } from 'react'
 
 const agreement: FunctionComponent = () => {
   return <Sample />

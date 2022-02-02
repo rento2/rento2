@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useState } from 'react'
-import { stateAcardionProps } from './StateAccordion'
+/* eslint-disable import/no-absolute-path */
+import { FunctionComponent, useState } from 'react'
+import { IAcardionProps } from './types/IAccordionPrors'
 import style from './DocsAccordion.module.scss'
-import AccardionButton from '@elements/buttons/AccordionButton/AccordionButton'
+import AccardionIcon from '@elements/icons/AccordionIcon'
 
 interface DocAcardionProps {
-  state: stateAcardionProps[]
+  state: IAcardionProps[]
 }
 
 const DocAcardion: FunctionComponent<DocAcardionProps> = (
@@ -20,26 +21,38 @@ const DocAcardion: FunctionComponent<DocAcardionProps> = (
   }
 
   return (
-    <div className={style['wrapper-box']}>
+    <div className={ style['wrapper-box'] }>
       {props.state.map((data, index) => (
-        <div key={index + 1} className={style['wrapper-ul']}>
-          <ul className={style['wrapper-list']}>
-            <li className={style['item-title']}>
+        <div key={ index + 1 }
+          className={ style['wrapper-ul'] }
+        >
+          <ul className={ style['wrapper-list'] }>
+            <li className={ style['item-title'] }>
               <div
-                key={index}
-                className={[style['item-button'],
-                  style[click === index ? 'active' : '']].join(' ')}
-                onClick={() => openDescription(index)}
+                key={ index }
+                className={ [style['item-button'],
+                  style[click === index ? 'active' : '']].join(' ') }
+                onClick={ () => openDescription(index) }
               >
-                <AccardionButton />
+                <AccardionIcon />
               </div>
-              <h2 className={style['item-text-title']}>
+              <h2 className={ style['item-text-title'] }>
                 {data.title}
               </h2>
             </li>
             {click === index
-              ? <li className={style['item-description']}>{data.description} </li>
-              : <li className={style['hidden-item']}>{data.description} </li>}
+              ? (
+                <li className={ style['item-description'] }>
+                  {data.description}
+                  {' '}
+                </li>
+                )
+              : (
+                <li className={ style['hidden-item'] }>
+                  {data.description}
+                  {' '}
+                </li>
+                )}
           </ul>
         </div>
       ))}

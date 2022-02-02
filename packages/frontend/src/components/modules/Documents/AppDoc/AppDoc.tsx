@@ -1,4 +1,4 @@
-import SideMenu from '@modules/documents/SideMenu/SideMenu'
+import SideMenu from '@modules/Documents/SideMenu/SideMenu'
 import style from './Appdocs.module.scss'
 import Layout from '@layouts/Layout'
 import { useRef } from 'react'
@@ -16,19 +16,19 @@ export default function Docs ({
   }
 
   return (
-    <>
-      <Layout>
-        <div
-          ref={widhtRef}
-          className={[style['flex-wrapper'], 'container'].join(' ')}
-          onClick={a}
-        >
+    <Layout>
+      <div
+        ref={ widhtRef }
+        className={ [style['flex-wrapper'], 'container'].join(' ') }
+        onClick={ a }
+      >
 
-          <SideMenu />
+        <SideMenu />
 
-          <div className={style['flexBox']}>{children}</div>
+        <div className={ style['flexBox'] }>
+          {children}
         </div>
-      </Layout>
-    </>
+      </div>
+    </Layout>
   )
 }

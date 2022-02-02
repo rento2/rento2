@@ -2,9 +2,9 @@ import { FunctionComponent } from 'react'
 
 const HeadBar: FunctionComponent = () => {
   return (
-    <>
-      <p>mini</p>
-    </>
+    <p>
+      mini
+    </p>
   )
 }
 

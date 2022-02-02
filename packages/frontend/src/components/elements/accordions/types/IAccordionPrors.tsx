@@ -1,4 +1,4 @@
-export interface stateAcardionProps {
+export interface IAcardionProps {
   title: string
   description: string
 }

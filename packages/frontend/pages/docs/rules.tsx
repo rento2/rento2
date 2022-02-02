@@ -1,5 +1,5 @@
-import Terms from '@modules/documents/Terms/Terms'
-import React, { FunctionComponent } from 'react'
+import Terms from '@modules/Documents/Terms/Terms'
+import { FunctionComponent } from 'react'
 
 const rules: FunctionComponent = () => {
   return <Terms />

@@ -1,5 +1,5 @@
-import Faq from '@modules/documents/Faq/FAQ'
-import React, { FunctionComponent } from 'react'
+import Faq from '@modules/Documents/FAQ/Faq'
+import { FunctionComponent } from 'react'
 
 const faq: FunctionComponent = () => {
   return <Faq />

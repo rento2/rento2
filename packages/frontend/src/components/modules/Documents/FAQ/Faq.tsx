@@ -1,11 +1,11 @@
 import style from './faq.module.scss'
-import { stateAcardionProps } from '@elements/accordions/StateAccordion'
+import { IAcardionProps } from '@elements/accordions/types/IAccordionPrors'
 import DocAccordion from '@elements/accordions/DocsAccordion'
-import Docs from '@modules/documents/AppDoc/Appdoc'
-import FaqQuestion from './FaqQuestion'
+import Docs from '@modules/Documents/AppDoc/AppDoc'
+import FaqQuestion from '@elements/icons/FaqQuestion'
 
 export default function Faq (): JSX.Element {
-  const dateAcardion: stateAcardionProps[] = [
+  const dateAcardion: IAcardionProps[] = [
     {
       title: 'Я арендатор, сколько стоят ваши услуги?',
       description: 'У нас фиксированная комиссия на все квартиры 15000 рублей.'
@@ -44,14 +44,14 @@ export default function Faq (): JSX.Element {
     }
   ]
   return (
-    <>
-      <Docs>
-        <h1 className={style['title']}>Частые вопросы</h1>
-        <div className={style['question']}>
-          <FaqQuestion />
-        </div>
-        <DocAccordion state={dateAcardion} />
-      </Docs>
-    </>
+    <Docs>
+      <h1 className={ style['title'] }>
+        Частые вопросы
+      </h1>
+      <div className={ style['question'] }>
+        <FaqQuestion />
+      </div>
+      <DocAccordion state={ dateAcardion } />
+    </Docs>
   )
 }
