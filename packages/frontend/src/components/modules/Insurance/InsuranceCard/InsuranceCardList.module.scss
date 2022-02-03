@@ -1,0 +1,67 @@
+.container-owner {
+  width: 1276px;
+  margin: 0 auto;
+
+  @include bp-1439 {
+    width: 89%;
+  }
+
+  @include bp-1279 {
+    width: 92%;
+  }
+
+  @include bp-929 {
+    width: 89%;
+  }
+
+  @include bp-699 {
+    width: 90%;
+  }
+}
+
+.insurance {
+  margin: 0 auto 275px;
+
+  @include bp-1279 {
+    margin: 0 auto 235px;
+  }
+
+  @include bp-929 {
+    margin: 0 auto 195px;
+  }
+
+  @include bp-699 {
+    margin: 0 auto 201px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 60px 73px;
+    background: $iris-100;
+    border-radius: 30px 30px 0 0;
+
+    @include bp-1279 {
+      padding: 30px 26px;
+    }
+
+    @include bp-929 {
+      padding: 30px 24px;
+    }
+
+    @include bp-699 {
+      flex-direction: column;
+      gap: 10px;
+      order: 1;
+      width: 100%;
+      padding: 20px 0;
+      margin: 0 0 50px;
+      border-radius: 0;
+    }
+
+    @include bp-359 {
+      padding: 20px 5%;
+    }
+  }
+}
