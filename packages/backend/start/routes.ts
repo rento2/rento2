@@ -33,14 +33,4 @@ Route.get('/health', async ({ response }) => {
     : response.badRequest(report)
 })
 
-Route.group(() => {
-  Route.group(() => {
-    Route.get('/', 'PhotosController.index' as ('index'))
-    Route.get('/create', 'PhotosController.create' as ('create'))
-    Route.get('/:id', 'PhotosController.show' as ('show'))
-    Route.post('/', 'PhotosController.store' as ('store'))
-    Route.get('/:id/edit', 'PhotosController.edit' as ('edit'))
-    Route.put('/:id', 'PhotosController.update' as ('update'))
-    Route.delete('/:id', 'PhotosController.destroy' as ('destroy'))
-  }).prefix('/photo')
-})
+Route.resource('photo', 'PhotosController').apiOnly()

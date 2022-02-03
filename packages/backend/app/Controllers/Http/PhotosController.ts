@@ -1,62 +1,46 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
+export interface IResponse {
+  meta: string
+  data?: any
+}
+
 export default class PhotosController {
-  public async index (): Promise<[{}]> {
-    return [
-      {
-        'Show photos': 'get all photos'
-      }
-    ]
+  public async index (): Promise<IResponse> {
+    return {
+      meta: 'get all photos',
+      data: 'PhotosController response'
+    }
   }
 
-  public async create (): Promise<[{}]> {
-    return [
-      {
-        'Show photos': 'Displaying the photo create page'
-      }
-    ]
+  public async store (): Promise<IResponse> {
+    return {
+      meta: 'photo create',
+      data: 'PhotosController response'
+    }
   }
 
-  public async store (): Promise<[{}]> {
-    return [
-      {
-        'Show photos': 'photo create'
-      }
-    ]
-  }
-
-  public async show ({ params }: HttpContextContract): Promise<[{}]> {
+  public async show ({ params }: HttpContextContract): Promise<IResponse> {
     const id: string = params['id']
-    return [
-      {
-        'Show photos': `show photo ${id}`
-      }
-    ]
+    return {
+      meta: `show photo ${id}`,
+      data: 'PhotosController response'
+    }
   }
 
-  public async edit ({ params }: HttpContextContract): Promise<[{}]> {
+  public async update ({ params }: HttpContextContract): Promise<IResponse> {
     const id: string = params['id']
-    return [
-      {
-        'Show photos': `Displaying the photo update page for photo ${id}`
-      }
-    ]
+    return {
+      meta: `update photo ${id}`,
+      data: 'PhotosController response'
+    }
   }
 
-  public async update ({ params }: HttpContextContract): Promise<[{}]> {
+  public async destroy ({ params }: HttpContextContract): Promise<IResponse> {
     const id: string = params['id']
-    return [
-      {
-        'Show photos': `update photo ${id}`
-      }
-    ]
-  }
-
-  public async destroy ({ params }: HttpContextContract): Promise<[{}]> {
-    const id: string = params['id']
-    return [
-      {
-        'Show photos': `delete photo ${id}`
-      }
-    ]
+    return {
+      meta: `delete photo ${id}`,
+      data: 'PhotosController response'
+    }
   }
 }
