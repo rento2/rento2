@@ -1,21 +1,21 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export interface IResponse {
-  meta: string
+  meta: Record<string, any>
   data?: any
 }
 
 export default class PhotosController {
   public async index (): Promise<IResponse> {
     return {
-      meta: 'get all photos',
+      meta: { return: 'get all photos' },
       data: 'PhotosController response'
     }
   }
 
   public async store (): Promise<IResponse> {
     return {
-      meta: 'photo create',
+      meta: { return: 'photo create' },
       data: 'PhotosController response'
     }
   }
@@ -23,7 +23,7 @@ export default class PhotosController {
   public async show ({ params }: HttpContextContract): Promise<IResponse> {
     const id: string = params['id']
     return {
-      meta: `show photo ${id}`,
+      meta: { return: `show photo ${id}` },
       data: 'PhotosController response'
     }
   }
@@ -31,7 +31,7 @@ export default class PhotosController {
   public async update ({ params }: HttpContextContract): Promise<IResponse> {
     const id: string = params['id']
     return {
-      meta: `update photo ${id}`,
+      meta: { return: `update photo ${id}` },
       data: 'PhotosController response'
     }
   }
@@ -39,7 +39,7 @@ export default class PhotosController {
   public async destroy ({ params }: HttpContextContract): Promise<IResponse> {
     const id: string = params['id']
     return {
-      meta: `delete photo ${id}`,
+      meta: { return: `delete photo ${id}` },
       data: 'PhotosController response'
     }
   }
