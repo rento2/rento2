@@ -1,27 +1,54 @@
+/* eslint-disable react/jsx-indent */
+import { IAccordionProps } from './types/IAccordionPrors'
+import style from './Accordion.module.scss'
+import classNames from 'classnames'
+import { useEffect, useRef, useState } from 'react'
+import IconAccordion from '@elements/icons/IconAccordion'
 
-import AccardionIcon from '@elements/icons/AccordionIcon'
-import { IAcordionProps } from './types/IAccordionPrors'
+function AccordionItem ({
+  state,
+  isOpen,
+  btnOnclick,
+  index
+}: {
+  state: IAccordionProps
+  isOpen: boolean
+  btnOnclick: () => void
+  index: number
+}): JSX.Element {
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState(0)
+  useEffect(() => {
+    if (isOpen) {
+      const contentEl = contentRef.current as HTMLDivElement
+      setHeight(contentEl.scrollHeight)
+    } else {
+      setHeight(0)
+    }
+  }, [isOpen])
 
-interface IAccordionItem{
-  state: IAcordionProps
-}
-
-function AccordionItem (state: IAccordionItem): JSX.Element {
   return (
-    <li>
-      <button>
+    <li className={ classNames(style['wrapper-ul']) }>
         <h3>
-          {state.state.title}
-        </h3>
-        <div>
-          <AccardionIcon />
+      <button className={ style['item-title'] }
+        onClick={ btnOnclick }
+      >
+        {index}
+          {state.title}
+        <div className={ classNames(style['item-button'], isOpen ? style['active'] : '') }>
+          <IconAccordion />
         </div>
-
       </button>
-      <div>
-        <div>
-          {state.state.description}
-        </div>
+        </h3>
+      <div className={ style['item-container'] }
+        style={ { height } }
+      >
+        { isOpen &&
+          (<h4 ref={ contentRef }
+            className={ classNames(style['item-description'], isOpen ? style['pause'] : '') }
+          >
+            {state.description}
+           </h4>) }
 
       </div>
     </li>

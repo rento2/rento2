@@ -5,7 +5,7 @@ export default function SideMenu (): JSX.Element {
   return (
     <div className={ style['border'] }>
       <ul className={ style['list'] }>
-        <li className={ style['item'] }>
+        <li>
           <Link href='/docs/faq'>
             <a className={ style['item'] }>
               Частые вопросы

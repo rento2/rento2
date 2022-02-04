@@ -1,8 +1,6 @@
 .list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 318px;
   max-height: 260px;
   padding-right: 36px;
 }
@@ -20,6 +18,6 @@
   display: flex;
   justify-content: center;
   height: 1018px;
-  padding-top: 62px;
+  padding-top: 52px;
   border-right: 2px solid $neutral-50;
 }

@@ -1,5 +1,5 @@
-export interface IAcordionProps {
+export interface IAccordionProps {
   title: string
   description: string
-  className?: string
+  classes?: string
 }

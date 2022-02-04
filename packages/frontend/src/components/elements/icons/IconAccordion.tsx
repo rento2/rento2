@@ -1,10 +1,10 @@
-export default function AccardionIcon (): JSX.Element {
+export default function IconAccordion (): JSX.Element {
   return (
     <svg
       fill='none'
-      height='20'
+      height='22'
       viewBox='0 0 20 20'
-      width='20'
+      width='22'
       xmlns='http://www.w3.org/2000/svg'
     >
       <g clipPath='url(#clip0_3494_5661)'>

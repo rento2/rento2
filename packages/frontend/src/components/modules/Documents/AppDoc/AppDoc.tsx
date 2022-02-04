@@ -3,7 +3,7 @@ import style from './AppDoc.module.scss'
 import Layout from '@layouts/Layout'
 import { useRef } from 'react'
 
-export default function Docs ({
+export default function AppDocs ({
   children
 }: {
   children: React.ReactNode

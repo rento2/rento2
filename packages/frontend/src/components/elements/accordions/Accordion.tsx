@@ -1,17 +1,20 @@
 import { FunctionComponent } from 'react'
-import { IAcordionProps } from './types/IAccordionPrors'
+import { IAccordionProps } from './types/IAccordionPrors'
 import AccordionList from './AccordionList'
+import style from './Accordion.module.scss'
 
 interface AcordionProps {
-  state: IAcordionProps[]
+  state: IAccordionProps[]
 }
 
-const Acardion: FunctionComponent<AcordionProps> = (
+const Accordion: FunctionComponent<AcordionProps> = (
   state: AcordionProps
 ) => {
   return (
-    <AccordionList state={ state.state } />
+    <div className={ style['wrapper-box'] }>
+      <AccordionList state={ state.state } />
+    </div>
 
   )
 }
-export default Acardion
+export default Accordion
