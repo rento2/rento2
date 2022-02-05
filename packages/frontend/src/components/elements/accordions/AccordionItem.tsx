@@ -21,7 +21,7 @@ function AccordionItem ({
   useEffect(() => {
     if (isOpen) {
       const contentEl = contentRef.current as HTMLDivElement
-      setHeight(contentEl.scrollHeight)
+      setHeight(contentEl.scrollHeight + 32)
     } else {
       setHeight(0)
     }
@@ -40,15 +40,24 @@ function AccordionItem ({
         </div>
       </button>
         </h3>
-      <div className={ style['item-container'] }
+      <div className={ classNames(style['item-container'], isOpen ? style['mb'] : '') }
         style={ { height } }
       >
-        { isOpen &&
-          (<h4 ref={ contentRef }
-            className={ classNames(style['item-description'], isOpen ? style['pause'] : '') }
+        { isOpen
+          ? (
+          <h4 ref={ contentRef }
+            className={ classNames(style['item-description']) }
           >
             {state.description}
-           </h4>) }
+          </h4>
+            )
+          : (
+         <h4
+           className={ classNames(style['item-description-closed']) }
+         >
+            {state.description}
+         </h4>
+            )}
 
       </div>
     </li>
