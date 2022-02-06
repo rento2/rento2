@@ -11,8 +11,8 @@ export default function owners (): JSX.Element {
         </title>
       </Head>
       <section className='container'>
+        <InsuranceCardList />
         <h2>
-          <InsuranceCardList />
           Собственники
         </h2>
       </section>

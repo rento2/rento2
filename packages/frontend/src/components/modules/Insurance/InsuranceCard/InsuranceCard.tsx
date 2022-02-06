@@ -1,8 +1,18 @@
 import styles from './InsuranceCard.module.scss'
 import Image from 'next/image'
 import classNames from 'classnames'
+import { useWindowDimensions } from '@hooks/useWindowDimensions'
 
-const InsuranceCard = (props: {objectCompensation: string, pathPic: string, compensationMob: string, compensationDesktop: string, altPic: string}): JSX.Element => {
+interface IInsuranceCard {
+  objectCompensation: string
+  pathPic: string
+  compensationMob: string
+  compensationDesktop: string
+  altPic: string
+}
+
+const InsuranceCard = (props: IInsuranceCard): JSX.Element => {
+  const { widthWindow } = useWindowDimensions()
   return (
     <li className={ styles['insurance__item'] }>
       <Image
@@ -15,19 +25,11 @@ const InsuranceCard = (props: {objectCompensation: string, pathPic: string, comp
       <p className={ styles['insurance__requirement-price'] }>
         до
         <span className={ classNames(styles['insurance__requirement-price'],
-          styles['insurance__requirement-price_color'],
-          styles['insurance__requirement-price_desktop'],
-          styles['insurance__requirement-price_mob']) }
-        >
-          {props.compensationMob}
-        </span>
-        <span className={ classNames(styles['insurance__requirement-price'],
-          styles['insurance__requirement-price_color'],
-          styles['insurance__requirement-price_desktop']
+          styles['insurance__requirement-price_color']
         )
       }
         >
-          {props.compensationDesktop}
+          {widthWindow <= 929 ? props.compensationMob : props.compensationDesktop}
         </span>
       </p>
       <p className={ styles['insurance__requirement'] }>

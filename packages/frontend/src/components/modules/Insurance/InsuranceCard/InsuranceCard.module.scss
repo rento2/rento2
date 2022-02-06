@@ -74,15 +74,7 @@
       color: $iris-400;
     }
 
-    &_desktop {
-      @include bp-929 {
-        display: none;
-      }
-    }
-
     &_mob {
-      display: none;
-
       @include bp-929 {
         display: inline;
       }
