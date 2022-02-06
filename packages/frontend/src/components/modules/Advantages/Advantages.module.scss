@@ -1,0 +1,428 @@
+.advantages {
+  margin: 0 auto 160px;
+
+  @include bp-929 {
+    margin: 0 auto 120px;
+  }
+
+  @include bp-699 {
+    margin: 0 auto 60px;
+  }
+
+  &__heading {
+    @include headline2;
+    margin: 0 auto 30px;
+    text-align: center;
+
+    @include bp-1279 {
+      @include headline3;
+    }
+
+    @include bp-929 {
+      width: 65%;
+      margin: 0 auto 20px;
+    }
+
+    @include bp-699 {
+      @include headline4;
+      width: 100%;
+      margin: 0 auto 10px;
+      text-align: start;
+    }
+  }
+
+  &__text-main {
+    @include  headline4;
+    margin: 0 auto 50px;
+    text-align: center;
+
+    @include bp-1279 {
+      margin: 0 auto 66px;
+    }
+
+    @include bp-929 {
+      width: 65%;
+      margin: 0 auto 50px;
+    }
+
+    @include bp-699 {
+      @include body-regular-18;
+      width: 100%;
+      margin: 0 auto 40px;
+      font-family: $font-family-primary;
+      font-family: inherit;
+      text-align: start;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-areas: 'advantages-1 advantages-1 advantages-1 advantages-1 advantages-1 advantages-2 advantages-2 advantages-2 advantages-2 advantages-2 advantages-2 advantages-2'
+      'advantages-1 advantages-1 advantages-1 advantages-1 advantages-1 advantages-4 advantages-4 advantages-4 advantages-4 advantages-5 advantages-5 advantages-5'
+      'advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-4 advantages-4 advantages-4 advantages-4 advantages-5 advantages-5 advantages-5';
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+
+    @include bp-1279 {
+      grid-template-areas: 'advantages-1 advantages-1 advantages-1 advantages-1 advantages-1 advantages-1 advantages-2 advantages-2 advantages-2 advantages-2 advantages-2 advantages-2'
+        'advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3'
+        'advantages-4 advantages-4 advantages-4 advantages-4 advantages-4 advantages-4 advantages-4 advantages-5 advantages-5 advantages-5 advantages-5 advantages-5';
+    }
+
+    @include bp-929 {
+      grid-template-areas: 'advantages-1 advantages-1 advantages-1  advantages-2 advantages-2 advantages-2'
+        'advantages-3 advantages-3 advantages-3 advantages-3 advantages-3 advantages-3'
+        'advantages-4 advantages-4 advantages-4 advantages-5 advantages-5 advantages-5';
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include bp-699 {
+      grid-template-areas: 'advantages-1'
+        'advantages-2'
+        'advantages-3'
+        'advantages-4'
+        'advantages-5';
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 399px;
+      margin: 0 auto;
+    }
+  }
+
+  &__item-1 {
+    grid-area: advantages-1;
+    min-height: 376px;
+    padding: 50px 71px 50px 41px;
+    background-image: url('/images/owners/divan.jpg');
+    background-repeat: no-repeat;
+    border-radius: 20px;
+
+    @include bp-1279 {
+      min-height: 296px;
+      background-size: cover;
+    }
+
+    @include bp-929 {
+      padding: 40px 30px;
+    }
+
+    @include bp-699 {
+      min-height: 272px;
+      padding: 30px 21px 30px 24px;
+    }
+
+    @include bp-399 {
+      background-image: url('/images/owners/divan-mob.jpg');
+    }
+  }
+
+  &__item-2 {
+    display: flex;
+    grid-area: advantages-2;
+    justify-content: space-between;
+    min-height: 296px;
+    padding: 50px 0 50px 40px;
+    overflow: hidden;
+    background-color: $iris-50;
+    border-radius: 20px;
+
+    @include bp-929 {
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 40px 11px 21px 30px;
+    }
+
+    @include bp-699 {
+      align-items: flex-start;
+      min-height: 216px;
+      padding: 30px 0 10px 24px;
+    }
+
+    &-box {
+      max-width: 412px;
+
+      @include bp-1279 {
+        width: 61%;
+      }
+
+      @include bp-929 {
+        width: 100%;
+      }
+
+      @include bp-699 {
+        width: 80%;
+        max-width: 100%;
+      }
+
+      @include bp-399 {
+        width: 76%;
+      }
+    }
+
+    &-inner {
+      position: relative;
+
+      @include bp-929 {
+        margin: 0;
+      }
+
+      @include bp-699 {
+        align-self: flex-end;
+        margin: -35px 0 0;
+      }
+    }
+
+    &-picture-2 {
+      position: absolute;
+      top: 109px;
+      left: -8px;
+      z-index: 1;
+
+      @include bp-929 {
+        top: 99px;
+        left: -13px;
+      }
+
+      @include bp-699 {
+        top: 76px;
+        left: -7px;
+      }
+    }
+
+    &-img1 {
+      width: 117px;
+      height: 139px;
+      @include bp-929 {
+        width: auto;
+        height: auto;
+      }
+    }
+
+    &-img2 {
+      filter: drop-shadow(-4px 14px 8px rgba(41, 43, 51, 0.4));
+
+      @include bp-929 {
+        width: 38px;
+        height: 38px;
+      }
+
+      @include bp-699 {
+        width: 31px;
+        height: 31px;
+      }
+    }
+
+    &-img3 {
+      position: absolute;
+      top: 100px;
+      left: 25px;
+      display: block;
+      width: 66px;
+      height: 17px;
+      background: rgba(159, 140, 255, 1);
+      background-blend-mode: color, normal;
+      border-bottom: 1px solid $iris-500;
+      border-radius: 8px;
+
+      @include bp-929 {
+        top: 92px;
+        left: 15px;
+        width: 54px;
+        height: 14px;
+      }
+
+      @include bp-699 {
+        top: 73px;
+        left: 13px;
+        width: 44px;
+        height: 11px;
+      }
+    }
+  }
+
+  &__item-3 {
+    display: flex;
+    grid-area: advantages-3;
+    justify-content: space-between;
+    min-height: 354px;
+    padding: 50px 0 19px 40px;
+    overflow: hidden;
+    background-color: $gray-blue-50;
+    border-radius: 20px;
+
+    @include bp-1279 {
+      min-height: 220px;
+    }
+
+    @include bp-929 {
+      padding: 40px 24px 19px 30px;
+    }
+
+    @include bp-699 {
+      flex-direction: column;
+      min-height: 279px;
+      padding: 30px 0 15px 24px;
+    }
+
+    &-box {
+      max-width: 295px;
+
+      @include bp-1279 {
+        max-width: 580px;
+      }
+
+      @include bp-929 {
+        max-width: 356px;
+      }
+
+      @include bp-699 {
+        width: 86%;
+        max-width: 100%;
+      }
+    }
+
+    &-inner {
+      display: flex;
+      justify-content: flex-end;
+      width: 168px;
+      height: 260px;
+      margin: 20px 0 0;
+      background-image: url('/images/owners/men.png');
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-position-x: 37px;
+      background-size: contain;
+
+      @include bp-1279 {
+        flex-direction: column;
+        justify-content: center;
+        width: 320px;
+        height: 182px;
+        margin: -30px 0 0;
+        background-position-x: 121px;
+      }
+
+      @include bp-929 {
+        width: 262px;
+        margin: -20px 0 0;
+        background-position-x: 100%;
+      }
+
+      @include bp-699 {
+        align-self: flex-end;
+        width: 157px;
+        height: 112px;
+        background-position-x: calc(100% + 20px);
+      }
+    }
+
+    &-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      margin: 0 24px 0 0;
+      background: radial-gradient(76.25% 76.25% at 50% 23.75%, #fff 0%, rgba(255, 255, 255, 0) 45.31%, rgba(231, 231, 231, 0.47) 100%), #fff;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(41, 43, 51, 0.1);
+
+      @include bp-699 {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+      }
+    }
+
+    &-check-img {
+      width: 28px;
+      height: 21px;
+      @include bp-699 {
+        width: 20px;
+        height: 13px;
+      }
+    }
+  }
+
+  &__item-4 {
+    grid-area: advantages-4;
+    min-height: 434px;
+    padding: 50px 41px 50px 40px;
+    background-color: $green-50;
+    background-image: url('/images/owners/interior.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+    border-radius: 20px;
+
+    @include bp-1279 {
+      min-height: 347px;
+      padding: 50px 85px 50px 40px;
+      background-position-x: calc(100% + 40px);
+    }
+
+    @include bp-929 {
+      padding: 40px 57px 40px 30px;
+      background-position-x: calc(100% + 30px);
+    }
+
+    @include bp-699 {
+      min-height: 269px;
+      padding: 30px 20px 30px 24px;
+      background-image: url('/images/owners/interior-mob.png');
+      background-position-x: right;
+    }
+  }
+
+  &__item-5 {
+    grid-area: advantages-5;
+    min-height: 434px;
+    padding: 50px 31px 50px 40px;
+    background-color: $orange-50;
+    background-image: url('/images/owners/hand.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+    border-radius: 20px;
+
+    @include bp-1279 {
+      min-height: 347px;
+      padding: 50px 107px 50px 40px;
+    }
+
+    @include bp-929 {
+      padding: 40px 28px 40px 30px;
+    }
+
+    @include bp-699 {
+      min-height: 252px;
+      padding: 30px 43px 30px 24px;
+      background-position-x: calc(100% + 10px);
+    }
+  }
+
+  &__title {
+    @include headline4;
+    margin: 0 0 20px;
+
+    @include bp-929 {
+      margin: 0 0 10px;
+    }
+
+    @include bp-699 {
+      @include headline5;
+    }
+  }
+
+  &__text {
+    @include body-medium-18;
+
+    @include bp-929 {
+      @include body-medium-16;
+    }
+
+    @include bp-699 {
+      @include body-medium-14;
+    }
+  }
+}

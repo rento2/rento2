@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout, { ownersTitle } from '../src/components/layouts/Layout'
+import Advantages from '../src/components/modules/Advantages/Advantages'
 
 export default function owners (): JSX.Element {
   return (
@@ -14,6 +15,7 @@ export default function owners (): JSX.Element {
           Собственники
         </h2>
       </section>
+      <Advantages></Advantages>
     </Layout>
   )
 }
