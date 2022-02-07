@@ -20,7 +20,6 @@ function AccordionList (state: IAccordionList) {
         state.state.map((item, idx) => (<AccordionItem
           key={ idx }
           btnOnclick={ () => btnOnClick(idx) }
-          index={ idx + 1 }
           isOpen={ idx === currentIdx }
           state={ item }
         />))}

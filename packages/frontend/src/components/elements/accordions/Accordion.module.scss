@@ -30,12 +30,12 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: $neutral-0;
   padding: 23px  0 23px 40px;
-  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+  background-color: $neutral-0;
   border: 0;
   outline: 0;
-  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
   @include bp-1279 {
     max-width: 100%;
   }
@@ -53,20 +53,20 @@
 
 .item-description {
   @include body-medium-14;
-  height: 100%;
   width: 90%;
   padding: 0 0 32px 40px;
   line-height: 130%;
   animation: collapse-faq 0.8s ease-in-out both;
 }
-.item-description-closed{
-  padding-left:  12px;
+
+.item-description-closed {
+  padding-left: 12px;
   animation: collapse-faq-closed 1s ease-in-out both;
 }
 
-.item-container{
-  transition: height 0.8s ease-in-out;
+.item-container {
   overflow: hidden;
+  transition: height 0.8s ease-in-out;
 }
 
 .item-button {
@@ -79,13 +79,15 @@
     left: 581px;
   }
 }
-.item-button:focus, .item-button:focus {
+
+.item-button:hover,
+.item-button:focus {
   background-color: rgba(111, 87, 235, 0.2);
   border-radius: 50%;
 }
+
 .active {
   transform: rotate(45deg);
-
 }
 
 @keyframes collapse-faq {
@@ -110,4 +112,3 @@
     transform-origin: -5% -50%;
   }
 }
-

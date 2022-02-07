@@ -8,20 +8,18 @@ import IconAccordion from '@elements/icons/IconAccordion'
 function AccordionItem ({
   state,
   isOpen,
-  btnOnclick,
-  index
+  btnOnclick
 }: {
   state: IAccordionProps
   isOpen: boolean
   btnOnclick: () => void
-  index: number
 }): JSX.Element {
   const contentRef = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
   useEffect(() => {
     if (isOpen) {
       const contentEl = contentRef.current as HTMLDivElement
-      setHeight(contentEl.scrollHeight + 32)
+      setHeight(contentEl.scrollHeight)
     } else {
       setHeight(0)
     }
@@ -33,7 +31,6 @@ function AccordionItem ({
       <button className={ style['item-title'] }
         onClick={ btnOnclick }
       >
-        {index}
           {state.title}
         <div className={ classNames(style['item-button'], isOpen ? style['active'] : '') }>
           <IconAccordion />
@@ -47,6 +44,7 @@ function AccordionItem ({
           ? (
           <h4 ref={ contentRef }
             className={ classNames(style['item-description']) }
+
           >
             {state.description}
           </h4>
