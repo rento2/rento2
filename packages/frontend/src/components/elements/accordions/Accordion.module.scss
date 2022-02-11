@@ -1,10 +1,11 @@
-.item{
+.item {
   padding: 0 0 0 40px;
   border-bottom: 2px solid $neutral-50;
 
-  &:first-child{
+  &:first-child {
     border-top: 2px solid $neutral-50;
   }
+
   &-title {
     position: relative;
     display: flex;
@@ -18,7 +19,6 @@
     @include bp-1279 {
       max-width: 100%;
     }
-
   }
 
   &-description {
@@ -27,18 +27,18 @@
     padding: 0 0 32px;
   }
 
-  &-description-open{
-    animation: collapse-faq 0.350s ease-in-out both;
+  &-description-open {
+    animation: collapse-faq 0.35s ease-in-out both;
   }
 
   &-description-closed {
     padding-left: 12px;
-    animation: collapse-faq-closed 0.350s ease-in-out both;
+    animation: collapse-faq-closed 0.35s ease-in-out both;
   }
 
   &-container {
     overflow: hidden;
-    transition: height 0.350s ease-in-out;
+    transition: height 0.35s ease-in-out;
   }
 
   &-button {
@@ -46,26 +46,20 @@
     top: 20px;
     left: 773px;
     cursor: pointer;
-    transition: transform 0.350s ease-in-out;
+    transition: transform 0.35s ease-in-out;
     @include bp-1279 {
       left: 581px;
     }
 
     &:hover,
     &:focus {
-    background-color: rgba($iris-500, 0.2);
-    border-radius: 100%;
-    width: 22px;
-    height: 22px;
+      width: 22px;
+      height: 22px;
+      background-color: rgba($iris-500, 0.2);
+      border-radius: 100%;
     }
   }
 }
-
-
-
-
-
-
 
 .active {
   transform: rotate(45deg);

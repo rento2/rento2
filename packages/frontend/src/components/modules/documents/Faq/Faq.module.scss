@@ -12,15 +12,13 @@
   }
 }
 
-
-  .wrapper-box {
-    display: flex;
-    flex-direction: column;
-    width: 844px;
-    max-height: 730px;
-    margin: 24px 0 0 100px;
-    @include bp-1279 {
-      width: 622px;
-    }
+.wrapper-box {
+  display: flex;
+  flex-direction: column;
+  width: 844px;
+  max-height: 730px;
+  margin: 24px 0 0 100px;
+  @include bp-1279 {
+    width: 622px;
   }
-
+}
