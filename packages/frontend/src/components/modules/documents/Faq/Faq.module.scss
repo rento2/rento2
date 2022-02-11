@@ -1,0 +1,26 @@
+.title {
+  @include headline5;
+  margin: 59px 0 0 100px;
+}
+
+.question {
+  position: absolute;
+  top: 100px;
+  margin: 0 0 0 859px;
+  @include bp-1279 {
+    margin: 0 0 0 651px;
+  }
+}
+
+
+  .wrapper-box {
+    display: flex;
+    flex-direction: column;
+    width: 844px;
+    max-height: 730px;
+    margin: 24px 0 0 100px;
+    @include bp-1279 {
+      width: 622px;
+    }
+  }
+

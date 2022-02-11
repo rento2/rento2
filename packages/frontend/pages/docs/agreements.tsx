@@ -1,4 +1,4 @@
-import Sample from '@modules/Documents/Sample/Sample'
+import Sample from '@modules/documents/Sample/Sample'
 import { FunctionComponent } from 'react'
 
 const agreement: FunctionComponent = () => {

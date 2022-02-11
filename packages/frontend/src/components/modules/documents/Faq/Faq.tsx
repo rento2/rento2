@@ -1,8 +1,8 @@
 import style from './Faq.module.scss'
 import { IAccordionProps } from '@elements/accordions/types/IAccordionPrors'
-import Accordion from '@elements/accordions/Accordion'
-import Docs from '@modules/Documents/AppDoc/AppDoc'
+import Docs from '@modules/documents/AppDoc/AppDoc'
 import IconFaqQuestion from '@elements/icons/IconFaqQuestion'
+import AccordionList from '@elements/accordions/AccordionList'
 
 export default function Faq (): JSX.Element {
   const dateAcardion: IAccordionProps[] = [
@@ -51,7 +51,10 @@ export default function Faq (): JSX.Element {
       <div className={ style['question'] }>
         <IconFaqQuestion />
       </div>
-      <Accordion state={ dateAcardion } />
+      <div className={ style['wrapper-box'] }>
+        <AccordionList state={ dateAcardion } />
+      </div>
+
     </Docs>
   )
 }

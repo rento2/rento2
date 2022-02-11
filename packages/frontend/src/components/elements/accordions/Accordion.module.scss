@@ -1,90 +1,71 @@
-.wrapper-box {
-  display: flex;
-  flex-direction: column;
-  width: 844px;
-  max-height: 730px;
-  margin: 24px 0 0 100px;
-  @include bp-1279 {
-    width: 622px;
+.item{
+  padding: 0 0 0 40px;
+  border-bottom: 2px solid $neutral-50;
+
+  &:first-child{
+    border-top: 2px solid $neutral-50;
   }
-}
+  &-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 22px 0;
+    cursor: pointer;
+    background-color: $neutral-0;
+    border: 0;
+    outline: 0;
+    @include bp-1279 {
+      max-width: 100%;
+    }
 
-.wrapper-ul {
-  width: 100%;
-  max-height: max-content;
-  border: 1px solid $neutral-50;
-  border-right: hidden;
-  border-left: hidden;
-
-  &:first-child {
-    border-top: 1px solid $neutral-50;
-  }
-
-  &:last-child {
-    border-bottom: 1px solid $neutral-50;
-  }
-}
-
-.item-title {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 23px  0 23px 40px;
-  cursor: pointer;
-  background-color: $neutral-0;
-  border: 0;
-  outline: 0;
-  transition: transform 0.5s ease-in-out;
-  @include bp-1279 {
-    max-width: 100%;
   }
 
-  .item-text-title {
+  &-description {
     @include body-medium-14;
+    width: 90%;
+    padding: 0 0 32px;
+  }
+
+  &-description-open{
+    animation: collapse-faq 0.350s ease-in-out both;
+  }
+
+  &-description-closed {
+    padding-left: 12px;
+    animation: collapse-faq-closed 0.350s ease-in-out both;
+  }
+
+  &-container {
+    overflow: hidden;
+    transition: height 0.350s ease-in-out;
+  }
+
+  &-button {
+    position: absolute;
+    top: 20px;
+    left: 773px;
+    cursor: pointer;
+    transition: transform 0.350s ease-in-out;
+    @include bp-1279 {
+      left: 581px;
+    }
+
+    &:hover,
+    &:focus {
+    background-color: rgba($iris-500, 0.2);
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+    }
   }
 }
 
-.wrapper-list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 
-.item-description {
-  @include body-medium-14;
-  width: 90%;
-  padding: 0 0 32px 40px;
-  line-height: 130%;
-  animation: collapse-faq 0.8s ease-in-out both;
-}
 
-.item-description-closed {
-  padding-left: 12px;
-  animation: collapse-faq-closed 1s ease-in-out both;
-}
 
-.item-container {
-  overflow: hidden;
-  transition: height 0.8s ease-in-out;
-}
 
-.item-button {
-  position: absolute;
-  top: 20px;
-  left: 773px;
-  cursor: pointer;
-  transition: transform 0.5s ease-in-out;
-  @include bp-1279 {
-    left: 581px;
-  }
-}
 
-.item-button:hover,
-.item-button:focus {
-  background-color: rgba(111, 87, 235, 0.2);
-  border-radius: 50%;
-}
 
 .active {
   transform: rotate(45deg);
@@ -103,12 +84,12 @@
 }
 @keyframes collapse-faq-closed {
   0% {
-    transform: scale(1);
-    transform-origin: 25% 0%;
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
   }
 
   100% {
     transform: scale(0);
-    transform-origin: -5% -50%;
+    transform-origin: -0% 0%;
   }
 }
