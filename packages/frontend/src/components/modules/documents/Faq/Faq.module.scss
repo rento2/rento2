@@ -1,22 +1,23 @@
 .title {
-  position: relative;
   @include headline5;
+  position: relative;
   margin: 59px 0 0 100px;
-  &::after {
-    position: absolute;
-    content: '';
-    background-image: url('../../../../../public/images/Pic-question.svg');
-    width: 58px;
-    height: 61px;
-    top: -80%;
-    left: 90%
-  }
   @include bp-1279 {
     width: 622px;
   }
   @include bp-1059 {
     margin: 0 auto;
     margin-top: 92px;
+  }
+
+  &::after {
+    position: absolute;
+    top: -80%;
+    left: 90%;
+    width: 58px;
+    height: 61px;
+    content: '';
+    background-image: url('../../../../../public/images/Pic-question.svg');
   }
 }
 

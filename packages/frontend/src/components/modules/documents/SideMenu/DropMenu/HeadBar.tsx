@@ -1,21 +1,17 @@
-import Link from 'next/link'
+
 import { IPropsMenu } from '../type/IPropsMenu'
+import style from './HeadBar.module.scss'
+import HeadBarItem from './HeadBarItems'
+import HeadBarTitle from './HesdBarTitle'
 
 const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
   return (
-    <div>
-      <h5>
-        Частые вопросы
-      </h5>
+    <div className={ style['wrapper-box'] }>
+      <HeadBarTitle />
       { dataMenu.map((item, idx) => (
-        <ul key={ idx }>
-          <li>
-            <Link href={ item.href }>
-              {item.title}
-            </Link>
-          </li>
-        </ul>
-      )) }
+        <HeadBarItem key={ idx }
+          data={ item }
+        />)) }
     </div>
   )
 }

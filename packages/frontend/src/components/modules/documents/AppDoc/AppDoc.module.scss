@@ -1,6 +1,6 @@
 .flex-wrapper {
   display: flex;
-  @include bp-1059{
+  @include bp-1059 {
     flex-direction: column;
     width: 100%;
   }

@@ -1,0 +1,43 @@
+.wrapper-box {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 272px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  border: hidden;
+  border-bottom: 2px solid $neutral-50;
+  outline: hidden;
+
+  &__text {
+
+    @include body-medium-14;
+    margin-left: 40px;
+    color: $gray-blue-300;
+  }
+
+  &::before {
+    position: relative;
+    content: '';
+    background-image: url('../../../../.././../public/images/Cross.svg');
+    background-repeat: no-repeat;
+  }
+}
+
+.menu {
+  @include body-medium-14;
+  width: 100%;
+  height: 42px;
+  padding-bottom: 12px;
+  margin-left: 40px;
+  color: $gray-blue-300;
+  list-style-type: none;
+  visibility: hidden;
+  background: #fff;
+}
