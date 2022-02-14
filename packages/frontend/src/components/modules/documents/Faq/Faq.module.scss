@@ -1,14 +1,22 @@
 .title {
+  position: relative;
   @include headline5;
   margin: 59px 0 0 100px;
-}
-
-.question {
-  position: absolute;
-  top: 100px;
-  margin: 0 0 0 859px;
+  &::after {
+    position: absolute;
+    content: '';
+    background-image: url('../../../../../public/images/Pic-question.svg');
+    width: 58px;
+    height: 61px;
+    top: -80%;
+    left: 90%
+  }
   @include bp-1279 {
-    margin: 0 0 0 651px;
+    width: 622px;
+  }
+  @include bp-1059 {
+    margin: 0 auto;
+    margin-top: 92px;
   }
 }
 
@@ -20,5 +28,7 @@
   margin: 24px 0 0 100px;
   @include bp-1279 {
     width: 622px;
+    margin: 0 auto;
+    margin-top: 24px;
   }
 }

@@ -20,7 +20,7 @@ export default function AppDocs ({
       >
 
         {
-          widthWindow.widthWindow >= 1024
+          widthWindow.widthWindow >= 1059
             ? <SideMenu />
             : <HeadBar dataMenu={ dataMenu } />
           }

@@ -2,7 +2,6 @@ import { IAccordionProps } from './types/IAccordionPrors'
 import style from './Accordion.module.scss'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
-import IconAccordion from '@elements/icons/IconAccordion'
 
 function AccordionItem ({
   state,
@@ -27,13 +26,10 @@ function AccordionItem ({
   return (
     <li className={ classNames(style['item']) }>
       <h3>
-        <button className={ style['item-title'] }
+        <button className={ classNames(style['item-title'], isOpen ? style['active'] : '') }
           onClick={ btnOnclick }
         >
           {state.title}
-          <div className={ classNames(style['item-button'], isOpen ? style['active'] : '') }>
-            <IconAccordion />
-          </div>
         </button>
       </h3>
       <div className={ classNames(style['item-container']) }
