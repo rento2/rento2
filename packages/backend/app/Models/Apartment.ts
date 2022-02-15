@@ -1,6 +1,7 @@
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import Term from 'Contracts/enums/term'
+import Accommodation from 'App/Models/Accommodation'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
@@ -115,23 +116,28 @@ export default class Apartment extends BaseModel {
   smokingAllowed!: boolean
 
   @column()
-  partying_allowed!: boolean
+  partyingAllowed!: boolean
 
   @column()
-  children_allowed!: boolean
+  childrenAllowed!: boolean
 
   @column()
-  pets_allowed!: boolean
+  petsAllowed!: boolean
 
   @column()
   maxAdults!: number
 
   @column()
-  max_children!: number
+  maxChildren!: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt!: DateTime
+
+  @manyToMany(() => Accommodation, {
+    pivotTimestamps: true
+  })
+  public accommodations!: ManyToMany<typeof Accommodation>
 }
