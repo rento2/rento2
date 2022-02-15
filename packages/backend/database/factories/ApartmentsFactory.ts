@@ -1,6 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Apartment from 'App/Models/Apartment'
 import Term from 'Contracts/enums/term'
+import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
 
 export const ApartmentsFactory = Factory
   .define(Apartment, ({ faker }) => {
@@ -24,7 +25,7 @@ export const ApartmentsFactory = Factory
       area: Math.random() * (200 - 100) + 100,
       kitchenArea: Math.random() * (200 - 100) + 100,
       distanceFromCenter: Math.random() * (200 - 100) + 100,
-      adm_area: faker.lorem.words(5),
+      admArea: faker.lorem.words(5),
       district: faker.lorem.words(5),
       sellingPoint: faker.lorem.words(5),
       geoCoordinateX: faker.lorem.word(7),
@@ -46,8 +47,10 @@ export const ApartmentsFactory = Factory
       partying_allowed: faker.datatype.boolean(),
       children_allowed: faker.datatype.boolean(),
       pets_allowed: faker.datatype.boolean(),
+
       max_adults: Math.random() * (6 - 1) + 1,
       max_children: Math.random() * (6 - 1) + 1
     }
   })
+  .relation('accommodations', () => AccommodationsFactory)
   .build()
