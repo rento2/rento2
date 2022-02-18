@@ -1,46 +1,70 @@
+import Photo from 'App/Models/Photo'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export interface IResponse {
-  meta: Record<string, any>
-  data?: any
-}
-
 export default class PhotosController {
-  public async index (): Promise<IResponse> {
-    return {
-      meta: { return: 'get all photos' },
-      data: 'PhotosController response'
-    }
+  public async index ({ response }: HttpContextContract): Promise<void> {
+    const photos = await Photo.all()
+
+    return response.send({
+      meta: {},
+      data: { photos }
+    })
   }
 
-  public async store (): Promise<IResponse> {
-    return {
-      meta: { return: 'photo create' },
-      data: 'PhotosController response'
-    }
+  public async store ({
+    request,
+    response
+  }: HttpContextContract): Promise<void> {
+    // const photos = await Photo.insertQuery<Photo>()
+    //   .table("photos")
+    //   .insert(request.body());
+
+    const photos = await Photo.create(request.body())
+
+    return response.send({
+      meta: {},
+      data: { photos }
+    })
   }
 
-  public async show ({ params }: HttpContextContract): Promise<IResponse> {
-    const id: string = params['id']
-    return {
-      meta: { return: `show photo ${id}` },
-      data: 'PhotosController response'
-    }
+  public async show ({ params, response }: HttpContextContract): Promise<void> {
+    const photos = await Photo.findBy('id', params['id'])
+
+    return response.send({
+      meta: {},
+      data: { photos }
+    })
   }
 
-  public async update ({ params }: HttpContextContract): Promise<IResponse> {
-    const id: string = params['id']
-    return {
-      meta: { return: `update photo ${id}` },
-      data: 'PhotosController response'
+  public async update ({
+    params,
+    request,
+    response
+  }: HttpContextContract): Promise<void> {
+    const photos = await Photo.findBy('id', params['id'])
+
+    if (photos != null && photos !== undefined) {
+      await photos.merge(request.body()).save()
     }
+
+    return response.send({
+      meta: {},
+      data: { photos }
+    })
   }
 
-  public async destroy ({ params }: HttpContextContract): Promise<IResponse> {
-    const id: string = params['id']
-    return {
-      meta: { return: `delete photo ${id}` },
-      data: 'PhotosController response'
+  public async destroy ({
+    params,
+    response
+  }: HttpContextContract): Promise<void> {
+    const photos = await Photo.findBy('id', params['id'])
+    if (photos != null && photos !== undefined) {
+      await photos.delete()
     }
+
+    return response.send({
+      meta: {},
+      data: { photos }
+    })
   }
 }
