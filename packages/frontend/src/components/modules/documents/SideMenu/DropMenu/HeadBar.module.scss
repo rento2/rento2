@@ -1,19 +1,12 @@
-.wrapper-box {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 272px;
-}
-
 .title {
   display: flex;
   align-items: center;
   width: 100%;
   height: 60px;
   background: #fff;
-  border: hidden;
+  border: 0;
   border-bottom: 2px solid $neutral-50;
-  outline: hidden;
+  outline: 0;
 
   &__text {
 
@@ -22,12 +15,42 @@
     color: $gray-blue-300;
   }
 
-  &::before {
-    position: relative;
+  &::after {
     content: '';
-    background-image: url('../../../../.././../public/images/Cross.svg');
+    background-image: url('/images/Vector.svg');
+    height: 10px;
+    width: 19px;
     background-repeat: no-repeat;
+    margin: 0;
+    margin-left: 66%;
   }
+
+  &.active::after {
+    transform: rotate(-180deg);
+  }
+
+  &:hover::after,
+  &:focus::after {
+      height: 20px;
+      width: 22px;
+      background-color: rgba($iris-500, 0.2);
+      border-radius: 100%;
+    }
+}
+
+.wrapper-box{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  &.active{
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(58,56,56,.86);
+  }
+}
+
+.h0{
+  visibility: hidden;
 }
 
 .menu {
@@ -38,6 +61,6 @@
   margin-left: 40px;
   color: $gray-blue-300;
   list-style-type: none;
-  visibility: hidden;
-  background: #fff;
+  background: $neutral-0;
 }
+

@@ -29,7 +29,8 @@
       height: 21px;
       cursor: pointer;
       content: '';
-      background-image: url('../../../../public/images/Cross.svg');
+      background-image: url('/images/Cross.svg');
+      background-repeat: no-repeat;
       transition: transform 0.35s ease-in-out;
     }
 
@@ -39,8 +40,8 @@
 
     &:hover::after,
     &:focus::after {
-      width: 22px;
-      height: 22px;
+      width: 21px;
+      height: 21px;
       background-color: rgba($iris-500, 0.2);
       border-radius: 100%;
     }
@@ -57,7 +58,7 @@
   }
 
   &-description-closed {
-    padding-left: 12px;
+
     animation: collapse-faq-closed 0.35s ease-in-out both;
   }
 
