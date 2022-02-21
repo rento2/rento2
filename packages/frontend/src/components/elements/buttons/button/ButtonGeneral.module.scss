@@ -1,0 +1,42 @@
+.calculation-btn {
+  @include font(16px, 19px, 600);
+  display: block;
+  width: 332px;
+  height: 64px;
+  padding: 0;
+  margin: 0 auto;
+  color: $neutral-0;
+  background: $iris-500;
+  border-radius: 35px;
+  outline: none;
+  transition: all 100ms ease;
+
+  @include bp-929 {
+    @include font(12px, 17px, 700);
+    width: 214px;
+    height: 48px;
+    margin: 0 auto;
+  }
+
+  @include bp-699 {
+    width: 280px;
+  }
+
+  &:focus,
+  &:hover {
+    border: 2px solid $neutral-0;
+    box-shadow: 0 0 20px rgba(41, 43, 51, 0.2);
+  }
+
+  &:active {
+    color: #bebff9;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    color: $gray-blue-200;
+    background-color: $neutral-50;
+    border: 2px solid $gray-blue-100;
+    box-shadow: none;
+  }
+}
