@@ -15,10 +15,6 @@ export default class PhotosController {
     request,
     response
   }: HttpContextContract): Promise<void> {
-    // const photos = await Photo.insertQuery<Photo>()
-    //   .table("photos")
-    //   .insert(request.body());
-
     const photos = await Photo.create(request.body())
 
     return response.send({
@@ -43,7 +39,7 @@ export default class PhotosController {
   }: HttpContextContract): Promise<void> {
     const photos = await Photo.findBy('id', params['id'])
 
-    if (photos != null && photos !== undefined) {
+    if (photos != null) {
       await photos.merge(request.body()).save()
     }
 
@@ -58,7 +54,7 @@ export default class PhotosController {
     response
   }: HttpContextContract): Promise<void> {
     const photos = await Photo.findBy('id', params['id'])
-    if (photos != null && photos !== undefined) {
+    if (photos != null) {
       await photos.delete()
     }
 
