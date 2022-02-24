@@ -1,7 +1,7 @@
-import Term from 'Contracts/enums/term'
-import { AccommodationInt } from './accommodation-int'
+import { IAccommodation } from './IAccommodation'
+import Term from '../enums/Term'
 
-export interface ApartmentInt {
+export interface IApartment {
   'id': number
   'type': Term
   'is_active': boolean
@@ -45,5 +45,5 @@ export interface ApartmentInt {
   'max_children': number
   'created_at'?: string
   'updated_at'?: string
-  'accommodations'?: AccommodationInt[]
+  'accommodations'?: IAccommodation[]
 }
