@@ -1,7 +1,8 @@
 import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
-import Term from 'Contracts/enums/term'
 import Accommodation from 'App/Models/Accommodation'
+import Term from '../../common/enums/Term'
+import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
@@ -24,9 +25,6 @@ export default class Apartment extends BaseModel {
 
   @column()
   public bnovoId!: number
-
-  @column()
-  public novoId!: number
 
   @column()
   public price!: number
@@ -62,13 +60,13 @@ export default class Apartment extends BaseModel {
   public area!: number
 
   @column()
-  public kitchenArea: any
+  public kitchenArea!: number
 
   @column()
   public distanceFromCenter!: number
 
   @column()
-  public admArea!: string
+  public admArea!: AdminDistrictsOfMoscow
 
   @column()
   public district!: string
@@ -104,31 +102,31 @@ export default class Apartment extends BaseModel {
   public totalRating!: number
 
   @column()
-  checkInStart!: DateTime
+  public checkInStart!: DateTime
 
   @column()
-  checkInEnd!: DateTime
+  public checkInEnd!: DateTime
 
   @column()
-  checkOutEnd!: DateTime
+  public checkOutEnd!: DateTime
 
   @column()
-  smokingAllowed!: boolean
+  public smokingAllowed!: boolean
 
   @column()
-  partyingAllowed!: boolean
+  public partyingAllowed!: boolean
 
   @column()
-  childrenAllowed!: boolean
+  public childrenAllowed!: boolean
 
   @column()
-  petsAllowed!: boolean
+  public petsAllowed!: boolean
 
   @column()
-  maxAdults!: number
+  public maxAdults!: number
 
   @column()
-  maxChildren!: number
+  public maxChildren!: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

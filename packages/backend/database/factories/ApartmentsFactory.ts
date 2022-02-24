@@ -1,17 +1,19 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Apartment from 'App/Models/Apartment'
-import Term from 'Contracts/enums/term'
 import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
+import Term from '../../common/enums/Term'
+import { returnRandomFromEnum } from '../../common/helpers/enumService'
+import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
 export const ApartmentsFactory = Factory
   .define(Apartment, ({ faker }) => {
     return {
-      type: Term.SHORT,
+      type: returnRandomFromEnum(Term),
       isActive: faker.datatype.boolean(),
       name: faker.internet.userName(),
       latinName: faker.name.findName(),
       description: faker.lorem.text(Math.round(Math.random() * (20 - 5) + 5)),
-      bnovoId: Math.random() * (20000 - 10) + 10,
+      bnovoId: Math.floor(Math.random() * (20000 - 10) + 10),
       price: Math.random() * (200 - 100) + 100,
       pricePerMonth: Math.random() * (200 - 100) + 100,
       discount: Math.random() * (200 - 100) + 100,
@@ -25,7 +27,7 @@ export const ApartmentsFactory = Factory
       area: Math.random() * (200 - 100) + 100,
       kitchenArea: Math.random() * (200 - 100) + 100,
       distanceFromCenter: Math.random() * (200 - 100) + 100,
-      admArea: faker.lorem.words(5),
+      admArea: returnRandomFromEnum(AdminDistrictsOfMoscow),
       district: faker.lorem.words(5),
       sellingPoint: faker.lorem.words(5),
       geoCoordinateX: faker.lorem.word(7),
@@ -33,11 +35,11 @@ export const ApartmentsFactory = Factory
       subwayStation: faker.lorem.words(4),
       timeToSubway: Math.random() * (200 - 100) + 100,
 
-      repairs: parseFloat((Math.random() * (9 - 1) + 1).toFixed(1)),
-      purity: parseFloat((Math.random() * (9 - 1) + 1).toFixed(1)),
-      location: 0,
-      price_quality: parseFloat((Math.random() * (9 - 1) + 1).toFixed(1)),
-      total_rating: parseFloat((Math.random() * (9 - 1) + 1).toFixed(1)),
+      repairs: +((Math.random() * (9 - 1) + 1).toFixed(1)),
+      purity: +((Math.random() * (9 - 1) + 1).toFixed(1)),
+      location: +((Math.random() * (9 - 1) + 1).toFixed(1)),
+      price_quality: +((Math.random() * (9 - 1) + 1).toFixed(1)),
+      total_rating: +((Math.random() * (9 - 1) + 1).toFixed(1)),
 
       check_in_start: faker.datatype.datetime(),
       check_in_end: faker.datatype.datetime(),

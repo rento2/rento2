@@ -1,7 +1,8 @@
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Term from 'Contracts/enums/term'
 import ValidatorMessages from 'App/Validators/ValidatorMessages'
+import Term from '../../common/enums/Term'
+import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
 export default class CreateApartmentValidator extends ValidatorMessages {
   constructor (protected ctx: HttpContextContract) {
@@ -85,10 +86,7 @@ export default class CreateApartmentValidator extends ValidatorMessages {
       rules.unsigned(),
       rules.range(0, 9999999.99)
     ]),
-    adm_area: schema.string({ trim: true }, [
-      rules.minLength(3),
-      rules.maxLength(255)
-    ]),
+    adm_area: schema.enum(Object.values(AdminDistrictsOfMoscow)),
     district: schema.string({ trim: true }, [
       rules.minLength(3),
       rules.maxLength(255)

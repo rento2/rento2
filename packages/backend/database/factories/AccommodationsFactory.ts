@@ -4,7 +4,7 @@ import Accommodation from 'App/Models/Accommodation'
 export const AccommodationsFactory = Factory
   .define(Accommodation, ({ faker }) => {
     return {
-      name: faker.name.firstName(),
+      name: faker.internet.userName(),
       nameEn: faker.internet.userName()
     }
   })
