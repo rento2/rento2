@@ -8,13 +8,14 @@ export default class Photos extends BaseSchema {
       table.bigIncrements('id')
       table.bigInteger('apartment_id').unsigned()
       table.foreign('apartment_id').references('id').inTable('apartments')
-      table.string('link', 255).nullable()
-      table.timestamp('created_at').nullable()
-      table.timestamp('updated_at').nullable()
+      table.string('link', 255)
+
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
     })
   }
 
   public async down (): Promise<void> {
-    void this.schema.dropTable(this.tableName)
+    void this.schema.dropTableIfExists(this.tableName)
   }
 }

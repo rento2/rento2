@@ -6,14 +6,15 @@ export default class Services extends BaseSchema {
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id')
-      table.enum('type', ['short', 'long', 'all']).nullable()
+      table.enum('type', ['short', 'long', 'all'])
       table.string('name', 255)
-      table.timestamp('created_at').nullable()
-      table.timestamp('updated_at').nullable()
+
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
     })
   }
 
   public async down (): Promise<void> {
-    void this.schema.dropTable(this.tableName)
+    void this.schema.dropTableIfExists(this.tableName)
   }
 }

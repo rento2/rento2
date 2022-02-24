@@ -7,12 +7,13 @@ export default class Banners extends BaseSchema {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id')
       table.string('name', 255)
-      table.timestamp('created_at').nullable()
-      table.timestamp('updated_at').nullable()
+
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
     })
   }
 
   public async down (): Promise<void> {
-    void this.schema.dropTable(this.tableName)
+    void this.schema.dropTableIfExists(this.tableName)
   }
 }

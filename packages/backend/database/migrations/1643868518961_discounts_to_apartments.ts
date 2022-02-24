@@ -6,14 +6,14 @@ export default class DiscountsToApartments extends BaseSchema {
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigInteger('apartment_id').unsigned()
-      table.foreign('apartment_id').references('id').inTable('apartments')
+      table.foreign('apartment_id').references('apartments.id')
       table.bigInteger('discount_id').unsigned()
-      table.foreign('discount_id').references('id').inTable('discounts')
+      table.foreign('discount_id').references('discounts.id')
       table.primary(['apartment_id', 'discount_id'])
     })
   }
 
   public async down (): Promise<void> {
-    void this.schema.dropTable(this.tableName)
+    void this.schema.dropTableIfExists(this.tableName)
   }
 }
