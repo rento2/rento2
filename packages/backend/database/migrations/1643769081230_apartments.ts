@@ -1,5 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import Term from '../../common/enums/term'
+import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 import { createArrFromEnum } from '../../common/helpers/enumService'
 
