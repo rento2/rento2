@@ -6,17 +6,16 @@ export default class Orders extends BaseSchema {
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id')
-      table.bigInteger('apartment_id').unsigned()
-      table.bigInteger('bnovo_id')
+      table.bigInteger('apartment_id').unsigned().references('id').inTable('apartments').onDelete('CASCADE')
       table.string('name', 255)
       table.string('email', 255)
       table.string('phone', 255)
       table.dateTime('date_from')
       table.dateTime('date_to')
-      table.decimal('price', 15, 2)
-      table.decimal('total_price', 15, 2)
+      table.decimal('fixed_price', 15, 2)
+      table.decimal('fixed_total_price', 15, 2)
       table.integer('nights_number')
-      table.enum('pay', ['full_prepayment', 'prepayment'])
+      table.enum('payment_type', ['full_prepayment', 'prepayment'])
       table.string('prices', 5000)
       table.string('adults', 5)
       table.string('children', 5)
@@ -27,6 +26,7 @@ export default class Orders extends BaseSchema {
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
+      table.boolean('soft_delete')
     })
   }
 

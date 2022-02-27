@@ -1,6 +1,7 @@
-import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, hasMany, HasMany, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import Accommodation from 'App/Models/Accommodation'
+import Order from 'App/Models/Orders'
 import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
@@ -138,4 +139,9 @@ export default class Apartment extends BaseModel {
     pivotTimestamps: true
   })
   public accommodations!: ManyToMany<typeof Accommodation>
+
+  @hasMany(() => Order, {
+    foreignKey: 'apartment_id'
+  })
+  public orders!: HasMany<typeof Order>
 }
