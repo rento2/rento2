@@ -6,7 +6,7 @@ export default class Orders extends BaseSchema {
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id')
-      table.bigInteger('apartment_id').unsigned().references('id').inTable('apartments').onDelete('CASCADE')
+      table.bigInteger('apartment_id').unsigned().references('id').inTable('apartments').onDelete('RESTRICT')
       table.string('name', 255)
       table.string('email', 255)
       table.string('phone', 255)
@@ -26,7 +26,7 @@ export default class Orders extends BaseSchema {
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
-      table.boolean('soft_delete')
+      table.boolean('is_deleted')
     })
   }
 

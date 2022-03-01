@@ -13,13 +13,17 @@ export default class OrdersController {
   }
 
   public async show ({ request, response }: HttpContextContract): Promise<void> {
-    const orderData = await Order.findBy('id', request.params()['id'])
-    const id: number = request.params()['id']
+    const id: number = parseInt(request.param('id'), 10)
+    if (!isNaN(id)) {
+      const orderData = await Order.findBy('id', id)
 
-    if (orderData !== null) {
-      response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', orderData))
+      if (orderData != null) {
+        response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', orderData))
+      } else {
+        response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', `Order with ${id} has not been found`))
+      }
     } else {
-      response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', `Order with ${id} has not been found`))
+      response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', 'Enter valid id'))
     }
   }
 
@@ -27,14 +31,19 @@ export default class OrdersController {
     const { ...orderData } = request.body()
 
     const validatedRequest = await request.validate(CreateOrderValidator)
-    const apartmentInfo = await Apartment.findBy('id', orderData['apartment_id'])
+    const apartmentInfo = await Apartment.findBy('id', validatedRequest['apartment_id'])
 
-    if (apartmentInfo !== null) {
-      const fixedPrice = apartmentInfo['$attributes']['price']
-      const fixedTotalPrice = orderData['nights_number'] * fixedPrice
+    if (apartmentInfo != null) {
+      const fixedPrice: number = apartmentInfo['$attributes']['price']
+      const fixedTotalPrice: number = validatedRequest['nights_number'] * fixedPrice
+
+      // const newOrder = new Order()
+      // newOrder.fill(validatedRequest)
 
       orderData['fixed_price'] = fixedPrice
       orderData['fixed_total_price'] = fixedTotalPrice
+
+      // await newOrder.save()
 
       const order = await Order.create(orderData)
 
@@ -48,17 +57,22 @@ export default class OrdersController {
 
   public async destroy ({ request, response }: HttpContextContract): Promise<any> {
     const orderData = await Order.findBy('id', request.params()['id'])
-    const id: number = request.params()['id']
+    const id: number = parseInt(request.param('id'), 10)
+    // const id: number = request.params()['id']
 
-    const searchPayload = { id: request.params()['id'] }
-    const persistancePayload = { soft_delete: true }
+    if (!isNaN(id)) {
+      const searchPayload = { id: request.params()['id'] }
+      const persistancePayload = { is_deleted: true }
 
-    if (orderData !== null) {
-      await Order.updateOrCreate(searchPayload, persistancePayload)
+      if (orderData != null) {
+        await Order.updateOrCreate(searchPayload, persistancePayload)
 
-      response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', null))
+        response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', null))
+      } else {
+        response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', `Order ${id} has not been found`))
+      }
     } else {
-      response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', `Order ${id} has not been found`))
+      response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', 'Enter valid id'))
     }
   }
 }

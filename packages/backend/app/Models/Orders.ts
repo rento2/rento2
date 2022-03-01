@@ -1,14 +1,17 @@
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Pay from './../../common/enums/Pay'
 import { DateTime } from 'luxon'
-import { Apartment } from '.'
+import { Apartment } from './'
+import CamelCaseNamingStrategy from 'App/NamingStrategy'
 
 export default class Order extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true })
   public id!: number
 
   @column()
-  public apartmentId!: number
+  public apartment_id!: number
 
   @column()
   public name!: string
@@ -20,10 +23,10 @@ export default class Order extends BaseModel {
   public phone!: string
 
   @column()
-  public date_from!: Date
+  public date_from!: DateTime
 
   @column()
-  public date_to!: Date
+  public date_to!: DateTime
 
   @column()
   public fixed_price!: number
@@ -59,13 +62,13 @@ export default class Order extends BaseModel {
   public number!: string
 
   @column.dateTime({ autoCreate: true })
-  public createdAt!: DateTime
+  public created_at!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt!: DateTime
+  public updated_at!: DateTime
 
-  @column()
-  public soft_delete!: boolean
+  @column({ prepare: (value) => value ?? false })
+  public is_deleted: boolean = false
 
   @belongsTo(() => Apartment, {
     localKey: 'id'

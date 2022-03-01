@@ -23,7 +23,7 @@ export const OrdersFactory = Factory
       pets: faker.datatype.boolean(),
       paid_part: Math.random() * (200 - 100) + 100,
       number: faker.random.alphaNumeric(),
-      soft_delete: faker.datatype.boolean()
+      is_deleted: faker.datatype.boolean()
     }
   })
   .build()

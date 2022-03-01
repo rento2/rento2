@@ -18,9 +18,9 @@ export default class CreateOrderValidator extends ValidatorMessages {
     email: schema.string({ trim: true }, [
       rules.email()
     ]),
-    // phone: schema.string({ trim: true }, [
-    //   rules.mobile({ strict: true, locales: ['ru-RU'] })
-    // ]),
+    phone: schema.string({ trim: true }, [
+      rules.mobile({ strict: true })
+    ]),
     date_from: schema.date({
       format: 'yyyy-MM-dd HH:mm:ss'
     }),
@@ -56,6 +56,7 @@ export default class CreateOrderValidator extends ValidatorMessages {
     number: schema.string({ trim: true }, [
       rules.minLength(1),
       rules.maxLength(255)
-    ])
+    ]),
+    is_deleted: schema.boolean()
   })
 }
