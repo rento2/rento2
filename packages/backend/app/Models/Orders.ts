@@ -23,10 +23,10 @@ export default class Order extends BaseModel {
   public phone!: string
 
   @column()
-  public date_from!: DateTime
+  public date_from!: DateTime | Date
 
   @column()
-  public date_to!: DateTime
+  public date_to!: DateTime | Date
 
   @column()
   public fixed_price!: number
