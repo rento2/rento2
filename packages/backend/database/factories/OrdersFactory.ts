@@ -6,7 +6,6 @@ import Pay from '../../common/enums/Pay'
 export const OrdersFactory = Factory
   .define(Order, ({ faker }) => {
     return {
-      apartment_id: Math.random() * 10,
       name: faker.name.findName(),
       email: faker.internet.email(),
       phone: faker.phone.phoneNumber(),

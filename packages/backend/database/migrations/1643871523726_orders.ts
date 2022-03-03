@@ -5,8 +5,8 @@ export default class Orders extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
-      table.bigInteger('apartment_id').unsigned().references('id').inTable('apartments').onDelete('RESTRICT')
+      table.bigIncrements('id').primary()
+      table.bigInteger('apartment_id').unsigned().references('apartments.id').onDelete('RESTRICT')
       table.string('name', 255)
       table.string('email', 255)
       table.string('phone', 255)

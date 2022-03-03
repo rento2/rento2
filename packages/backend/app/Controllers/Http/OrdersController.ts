@@ -18,12 +18,12 @@ export default class OrdersController {
       const orderData = await Order.findBy('id', id)
 
       if (orderData != null) {
-        response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', orderData))
+        return response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', orderData))
       } else {
-        response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', `Order with ${id} has not been found`))
+        return response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', `Order with ${id} has not been found`))
       }
     } else {
-      response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', 'Enter valid id'))
+      return response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', 'Enter valid id'))
     }
   }
 
@@ -47,9 +47,9 @@ export default class OrdersController {
 
       const order = await Order.create(orderData)
 
-      response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', order))
+      return response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', order))
     } else {
-      response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', `Apartment with ${validatedRequest['apartment_id']} has not been found`))
+      return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', `Apartment with ${validatedRequest['apartment_id']} has not been found`))
     }
 
     // const orderResp = await Order.query().where('apartment_id', apartmentId).preload('apartments')
@@ -58,7 +58,6 @@ export default class OrdersController {
   public async destroy ({ request, response }: HttpContextContract): Promise<any> {
     const orderData = await Order.findBy('id', request.params()['id'])
     const id: number = parseInt(request.param('id'), 10)
-    // const id: number = request.params()['id']
 
     if (!isNaN(id)) {
       const searchPayload = { id: request.params()['id'] }
@@ -67,12 +66,12 @@ export default class OrdersController {
       if (orderData != null) {
         await Order.updateOrCreate(searchPayload, persistancePayload)
 
-        response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', null))
+        return response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', null))
       } else {
-        response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', `Order ${id} has not been found`))
+        return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', `Order ${id} has not been found`))
       }
     } else {
-      response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', 'Enter valid id'))
+      return response.status(HttpStatusCode.UnprocessableEntity).send(creatingErrMsg('error', 'Enter valid id'))
     }
   }
 }

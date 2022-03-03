@@ -8,10 +8,10 @@ class CamelCaseNamingStrategy extends SnakeCaseNamingStrategy {
     relatedModel: typeof BaseModel
   ): string {
     if (relation === 'belongsTo') {
-      return string.camelCase(`${relatedModel.name}_${relatedModel.primaryKey}`)
+      return string.camelCase(`${relatedModel.primaryKey}`)
     }
 
-    return string.camelCase(`${model.name}_${model.primaryKey}`)
+    return string.camelCase(`${model.primaryKey}`)
   }
 }
 
