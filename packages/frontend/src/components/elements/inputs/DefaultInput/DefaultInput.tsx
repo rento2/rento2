@@ -1,7 +1,7 @@
 import { FC, InputHTMLAttributes } from 'react'
-import styles from './Input.module.scss'
+import styles from './DefaultInput.module.scss'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string
   autoFocus?: boolean
   autoComplete?: string
@@ -10,7 +10,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
 }
 
-const Input: FC<InputProps> = ({
+const DefaultInput: FC<IInputProps> = ({
   type = 'text',
   autoFocus = false,
   autoComplete = 'off',
@@ -33,4 +33,4 @@ const Input: FC<InputProps> = ({
   )
 }
 
-export default Input
+export default DefaultInput

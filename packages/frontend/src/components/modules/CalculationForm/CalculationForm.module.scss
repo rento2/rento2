@@ -1,539 +1,529 @@
-.calculation-owner {
-  margin: 0 auto 320px;
+// .calculation-owner {
+//   margin: 0 auto 320px;
 
-  @include bp-1919 {
-    margin: 0 auto 300px;
-  }
+//   @include bp-1919 {
+//     margin: 0 auto 300px;
+//   }
 
-  @include bp-1059 {
-    width: 100%;
-    margin: 0 auto 220px;
-  }
+//   @include bp-1059 {
+//     width: 100%;
+//     margin: 0 auto 220px;
+//   }
+
+//   @include bp-929 {
+//     margin: 0 auto 216px;
+//   }
+
+//   @include bp-699 {
+//     margin: 0 auto 174px;
+//   }
+
+.heading {
+  @include  headline-regular-36;
+  width: 883px;
+  margin: 0 auto 40px;
+  font-family: $font-family-secondary;
+  color: $gray-blue-500;
+  text-align: center;
 
   @include bp-929 {
-    margin: 0 auto 216px;
-  }
-
-  @include bp-699 {
-    margin: 0 auto 174px;
-  }
-
-  &__heading {
-    @include font(36px, 43px);
-    width: 883px;
-    margin: 0 auto 40px;
-    font-family: $font-family-secondary;
-    color: $gray-blue-500;
-    text-align: center;
-
-    @include bp-929 {
-      @include font(24px, 29px);
-      width: 87%;
-      margin: 0 auto 20px;
-    }
-
-    &_block {
-      display: block;
-
-      @include bp-699 {
-        display: inline;
-      }
-    }
-  }
-
-  &__text {
-    @include font(24px, 29px);
-    width: 883px;
-    margin: 0 auto 40px;
-    font-family: $font-family-secondary;
-    color: $iris-400;
-    text-align: center;
-
-    @include bp-929 {
-      @include font(18px, 22px);
-      width: 87%;
-      margin: 0 auto 30px;
-    }
-
-    @include bp-699 {
-      margin: 0 auto 20px;
-    }
-  }
-
-  &__form {
-    position: relative;
-    padding: 40px 42px;
-    background-color: $iris-100;
-    border-radius: 30px;
-
-    @include bp-1059 {
-      padding: 35px 42px 40px;
-      border-radius: 0;
-    }
-
-    @include bp-699 {
-      padding: 28px 16px 100px;
-    }
-  }
-
-  &__list,
-  &__list-rooms {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    margin: 0 0 40px;
-
-    @include bp-1279 {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @include bp-699 {
-      grid-template-columns: 1fr;
-      gap: 18px;
-      margin: 0 0 34px;
-    }
-  }
-
-  &__item {
-    position: relative;
-  }
-
-  &__title {
-    @include font(16px, 20px, 500);
-    margin: 0 0 4px;
-
-    &_mb {
-      margin: 0 0 12px;
-
-      @include bp-699 {
-        margin: 0 0 10px;
-      }
-    }
-  }
-
-  &__inner,
-  &__input {
-    width: 100%;
-    height: 58px;
-    background: $neutral-0;
-    border: 1px solid transparent;
-    border-radius: 16px;
-
-    @include bp-699 {
-      height: 48px;
-      border-radius: 12px;
-    }
-  }
-
-  &__input {
-    @include font(18px, 22px, 500);
-    box-sizing: border-box;
-    padding: 18px 20px;
-    color: $gray-blue-400;
-    outline: none;
-
-    @include bp-699 {
-      @include font(16px, 20px, 500);
-      padding: 14px 20px;
-    }
-
-    &::placeholder {
-      color: $gray-blue-300;
-    }
-
-    &:hover::placeholder,
-    &:focus::placeholder {
-      color: $gray-blue-100;
-    }
-  }
-
-  &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 0 20px;
-
-    @include bp-699 {
-      padding: 0 13px;
-    }
-  }
-
-  &__list-rooms {
-    width: 100%;
-    height: 40px;
-
-    @include bp-1279 {
-      width: 358px;
-    }
-
-    @include bp-929 {
-      width: 100%;
-    }
-  }
-
-  &__input-hidden {
-    position: absolute;
-    z-index: -1;
-    outline: none;
-    opacity: 0;
-  }
-
-  &__numb-rooms {
-    @include font(18px, 22px, 500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: $gray-blue-300;
-    cursor: pointer;
-    border: 1px solid $gray-blue-300;
-    border-radius: 50%;
-
-    @include bp-699 {
-      @include font(16px, 20px, 500);
-    }
-
-    &_ellipse {
-      width: 98px;
-      border-radius: 40px;
-    }
-  }
-
-  &__input-hidden:focus + &__numb-rooms,
-  &__input-hidden:hover + &__numb-rooms {
-    color: $iris-500;
-    border: 1px solid $iris-500;
-  }
-
-  &__input-hidden:checked + &__numb-rooms {
-    color: $neutral-0;
-    background-color: $iris-500;
-    border: 1px solid $iris-500;
-  }
-
-  &__inner_pos {
-    position: relative;
-    z-index: 1;
-    padding: 0;
-
-    &:focus-within,
-    &:hover {
-      border: 1px solid $iris-500;
-    }
-  }
-
-  &__inner_phone {
-    @include font(18px, 22px, 500);
-    box-sizing: border-box;
-    color: $gray-blue-300;
-    outline: none;
-
-    @include bp-699 {
-      @include font(16px, 20px, 500);
-    }
-
-    &::placeholder {
-      color: $gray-blue-300;
-    }
-
-    &:focus-within,
-    &:hover {
-      border: 1px solid $iris-500;
-    }
-  }
-
-  &__route {
-    position: absolute;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
-    width: 28%;
-    padding: 0 20px;
-  }
-
-  &__img-route {
-    cursor: pointer;
-    fill: $gray-blue-200;
-
-    &:not(:last-child) {
-      margin: 0 5px 0 0;
-    }
-  }
-
-  &__input-hidden:checked + &__img-route {
-    fill: $iris-500;
-  }
-
-  &__list-repair {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    margin: 0 0 50px;
-
-    @include bp-929 {
-      grid-template-columns: 1fr 1fr;
-      margin: 0 0 40px;
-    }
-
-    @include bp-499 {
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin: 0 0 30px;
-    }
-  }
-
-  &__item-repair {
-    position: relative;
-    background-color: $neutral-0;
-    border-radius: 20px;
-
-    @include bp-1059 {
-      border-radius: 12px;
-    }
-
-    @include bp-929 {
-      border-radius: 20px;
-    }
-  }
-
-  &__label-repair {
-    width: 100%;
-    min-height: 239px;
-    padding: 10px;
-    cursor: pointer;
-
-    @include bp-1199 {
-      min-height: 188px;
-    }
-
-    @include bp-929 {
-      min-height: 264px;
-    }
-
-    @include bp-699 {
-      min-height: 176px;
-    }
-
-    @include bp-499 {
-      min-height: 239px;
-    }
-  }
-
-  &__img-repair {
-    width: 100%;
-    height: auto;
-    margin: 0 0 16px;
-    border-radius: 12px;
-
-    @include bp-1059 {
-      margin: 0 0 13px;
-      border-radius: 4px;
-    }
-
-    @include bp-929 {
-      margin: 0 0 15px;
-      border-radius: 12px;
-    }
-
-    @include bp-699 {
-      margin: 0 0 16px;
-    }
-  }
-
-  &__text-repair {
-    @include font(14px, 21px, 500);
-    display: block;
-    margin: 0 0 0 10px;
-
-    @include bp-499 {
-      text-align: center;
-    }
-  }
-
-  &__check-repair {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: block;
-    width: 32px;
-    height: 32px;
-    background: $neutral-0;
-    border-radius: 4px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  &__input-hidden:focus + &__check-repair,
-  &__input-hidden:hover + &__check-repair {
-    border: 2px solid $iris-500;
-  }
-
-  &__input-hidden:checked + &__check-repair {
-    background-image: url('/images/owners/check-repair.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 2px solid $iris-500;
-  }
-
-  &__text-proposal {
-    @include font(18px, 22px);
-    width: 502px;
-    margin: 0 auto 30px;
-    font-family: $font-family-secondary;
-    color: $iris-400;
-    text-align: center;
-
-    @include bp-929 {
-      margin: 0 auto 20px;
-    }
-
-    @include bp-699 {
-      @include font(14px, 18px);
-      width: 87%;
-      margin: 0 auto 10px;
-    }
-  }
-
-  &__agreement {
-    @include font(14px, 18px, 500);
-    position: relative;
-    display: block;
-    width: 332px;
+    @include headline-regular-24;
+    width: 87%;
     margin: 0 auto 20px;
-
-    @include bp-929 {
-      margin: 0 auto 10px;
-    }
-
-    @include bp-399 {
-      @include font(12px, 16px, 500);
-      width: 280px;
-      margin: 0 auto 20px;
-    }
-
-    &:focus &-check,
-    &:hover &-check {
-      background-color: $iris-100;
-      border: 2px solid $iris-500;
-    }
   }
 
-  &__agreement-check {
-    position: absolute;
-    top: 6px;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    background-color: $neutral-0;
-    border: 2px solid transparent;
-    border-radius: 4px;
-
-    @include bp-399 {
-      top: 3px;
-    }
-  }
-
-  &__input-hidden:checked + &__agreement-check {
-    background-image: url('/images/owners/check-repair.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80%;
-    border: 2px solid $iris-500;
-  }
-
-  &__agreement-text {
+  &_block {
     display: block;
-    margin: 0 0 0 34px;
 
     @include bp-699 {
-      margin: 0 0 0 31px;
-    }
-  }
-
-  &__btn {
-    @include font(16px, 19px, 600);
-    display: block;
-    width: 332px;
-    height: 64px;
-    padding: 0;
-    margin: 0 auto;
-    color: $neutral-0;
-    background: $iris-500;
-    border-radius: 35px;
-    outline: none;
-    transition: all 100ms ease;
-
-    @include bp-929 {
-      @include font(12px, 17px, 700);
-      width: 214px;
-      height: 48px;
-      margin: 0 auto;
-    }
-
-    @include bp-699 {
-      width: 280px;
-    }
-
-    &:focus,
-    &:hover {
-      border: 2px solid $neutral-0;
-      box-shadow: 0 0 20px rgba(41, 43, 51, 0.2);
-    }
-
-    &:active {
-      color: #bebff9;
-      box-shadow: none;
-    }
-
-    &:disabled {
-      color: $gray-blue-300;
-      background-color: $neutral-50;
-      border: 2px solid $gray-blue-200;
-      box-shadow: none;
-    }
-  }
-
-  &__img-phone {
-    position: absolute;
-    right: 18px;
-    bottom: -118px;
-
-    @include bp-1059 {
-      right: -15px;
-    }
-
-    @include bp-929 {
-      right: -30px;
-    }
-
-    @include bp-699 {
-      right: 0;
-      bottom: -88px;
-      left: 0;
-      display: flex;
-      width: 195px;
-      height: 166px;
-      margin: auto;
+      display: inline;
     }
   }
 }
 
-// .mistake-owner-text {
-//     position: absolute;
-//     bottom: -16px;
-//     left: 0;
-//     @include font(12px, 16px, 500);
-//     color: $pink-a700;
+.text {
+  @include headline-regular-24;
+  width: 883px;
+  margin: 0 auto 40px;
+  font-family: $font-family-secondary;
+  color: $iris-400;
+  text-align: center;
 
-//     &-z-index {
-//         z-index: 1;
-//     }
+  @include bp-929 {
+    @include headline-regular-18;
+    width: 87%;
+    margin: 0 auto 30px;
+  }
+
+  @include bp-699 {
+    margin: 0 auto 20px;
+  }
+}
+
+.form {
+  position: relative;
+  padding: 40px 42px;
+  background-color: $iris-100;
+  border-radius: 30px;
+
+  @include bp-1059 {
+    padding: 35px 42px 40px;
+    border-radius: 0;
+  }
+
+  @include bp-699 {
+    padding: 28px 16px 100px;
+  }
+}
+
+.list,
+.list-rooms {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 0 0 40px;
+
+  @include bp-1279 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include bp-699 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin: 0 0 34px;
+  }
+}
+
+.item {
+  position: relative;
+}
+
+.title {
+  @include body-medium-16;
+  margin: 0 0 4px;
+
+  &_mb {
+    margin: 0 0 12px;
+
+    @include bp-699 {
+      margin: 0 0 10px;
+    }
+  }
+}
+
+.inner,
+.input {
+  width: 100%;
+  height: 58px;
+  background: $neutral-0;
+  border: 1px solid transparent;
+  border-radius: 16px;
+
+  @include bp-699 {
+    height: 48px;
+    border-radius: 12px;
+  }
+}
+
+.input {
+  @include body-medium-18;
+  box-sizing: border-box;
+  padding: 18px 20px;
+  color: $gray-blue-400;
+  outline: none;
+
+  @include bp-699 {
+    @include body-medium-16;
+    padding: 14px 20px;
+  }
+
+  &::placeholder {
+    color: $gray-blue-300;
+  }
+
+  &:hover::placeholder,
+  &:focus::placeholder {
+    color: $gray-blue-100;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 20px;
+
+  @include bp-699 {
+    padding: 0 13px;
+  }
+}
+
+.list-rooms {
+  width: 100%;
+  height: 40px;
+
+  @include bp-1279 {
+    width: 358px;
+  }
+
+  @include bp-929 {
+    width: 100%;
+  }
+}
+
+.input-hidden {
+  position: absolute;
+  z-index: -1;
+  outline: none;
+  opacity: 0;
+}
+
+.numb-rooms {
+  @include body-medium-18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: $gray-blue-300;
+  cursor: pointer;
+  border: 1px solid $gray-blue-300;
+  border-radius: 50%;
+
+  @include bp-699 {
+    @include body-medium-16;
+  }
+
+  &_ellipse {
+    width: 98px;
+    border-radius: 40px;
+  }
+}
+
+.input-hidden:focus + .numb-rooms,
+.input-hidden:hover + .numb-rooms {
+  color: $iris-500;
+  border: 1px solid $iris-500;
+}
+
+.input-hidden:checked + .numb-rooms {
+  color: $neutral-0;
+  background-color: $iris-500;
+  border: 1px solid $iris-500;
+}
+
+.inner-pos {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+
+  &:focus-within,
+  &:hover {
+    border: 1px solid $iris-500;
+  }
+}
+
+.inner-phone {
+  @include body-medium-18;
+  box-sizing: border-box;
+  color: $gray-blue-300;
+  outline: none;
+
+  @include bp-699 {
+    @include body-medium-16;
+  }
+
+  &::placeholder {
+    color: $gray-blue-300;
+  }
+
+  &:focus-within,
+  &:hover {
+    border: 1px solid $iris-500;
+  }
+}
+
+.route {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 28%;
+  padding: 0 20px;
+}
+
+.img-route {
+  cursor: pointer;
+  fill: $gray-blue-200;
+
+  &:not(:last-child) {
+    margin: 0 5px 0 0;
+  }
+}
+
+.input-hidden:checked + .img-route {
+  fill: $iris-500;
+}
+
+.list-repair {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 0 0 50px;
+
+  @include bp-929 {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 40px;
+  }
+
+  @include bp-499 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 0 0 30px;
+  }
+}
+
+.item-repair {
+  position: relative;
+  background-color: $neutral-0;
+  border-radius: 20px;
+
+  @include bp-1059 {
+    border-radius: 12px;
+  }
+
+  @include bp-929 {
+    border-radius: 20px;
+  }
+}
+
+.label-repair {
+  width: 100%;
+  min-height: 239px;
+  padding: 10px;
+  cursor: pointer;
+
+  @include bp-1199 {
+    min-height: 188px;
+  }
+
+  @include bp-929 {
+    min-height: 264px;
+  }
+
+  @include bp-699 {
+    min-height: 176px;
+  }
+
+  @include bp-499 {
+    min-height: 239px;
+  }
+}
+
+.img-repair {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 16px;
+  border-radius: 12px;
+
+  @include bp-1059 {
+    margin: 0 0 13px;
+    border-radius: 4px;
+  }
+
+  @include bp-929 {
+    margin: 0 0 15px;
+    border-radius: 12px;
+  }
+
+  @include bp-699 {
+    margin: 0 0 16px;
+  }
+}
+
+.text-repair {
+  @include  body-medium-14;
+  display: block;
+  margin: 0 0 0 10px;
+  line-height: 21px;
+
+  @include bp-499 {
+    text-align: center;
+  }
+}
+
+.check-repair {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: $neutral-0;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input-hidden:focus + .check-repair,
+.input-hidden:hover + .check-repair {
+  border: 2px solid $iris-500;
+}
+
+.input-hidden:checked + .check-repair {
+  background-image: url('/images/owners/check-repair.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid $iris-500;
+}
+
+.text-proposal {
+  @include headline-regular-18;
+  width: 502px;
+  margin: 0 auto 30px;
+  font-family: $font-family-secondary;
+  color: $iris-400;
+  text-align: center;
+
+  @include bp-929 {
+    margin: 0 auto 20px;
+  }
+
+  @include bp-699 {
+    @include body-medium-14;
+    width: 87%;
+    margin: 0 auto 10px;
+  }
+}
+
+.agreement {
+  @include body-medium-14;
+  position: relative;
+  display: block;
+  width: 332px;
+  margin: 0 auto 20px;
+
+  @include bp-929 {
+    margin: 0 auto 10px;
+  }
+
+  @include bp-399 {
+    @include body-medium-12;
+    width: 280px;
+    margin: 0 auto 20px;
+  }
+
+  &:focus &-check,
+  &:hover &-check {
+    background-color: $iris-100;
+    border: 2px solid $iris-500;
+  }
+}
+
+.agreement-check {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-color: $neutral-0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+
+  @include bp-399 {
+    top: 3px;
+  }
+}
+
+.input-hidden:checked + .agreement-check {
+  background-image: url('/images/owners/check-repair.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  border: 2px solid $iris-500;
+}
+
+.agreement-text {
+  display: block;
+  margin: 0 0 0 34px;
+
+  @include bp-699 {
+    margin: 0 0 0 31px;
+  }
+}
+
+.btn {
+  @include body-semi-bold-16;
+  display: block;
+  width: 332px;
+  height: 64px;
+  padding: 0;
+  margin: 0 auto;
+  color: $neutral-0;
+  background: $iris-500;
+  border-radius: 35px;
+  outline: none;
+  transition: all 100ms ease;
+
+  @include bp-929 {
+    @include subtitle-bold-12;
+    width: 214px;
+    height: 48px;
+    margin: 0 auto;
+  }
+
+  @include bp-699 {
+    width: 280px;
+  }
+
+  &:focus,
+  &:hover {
+    border: 2px solid $neutral-0;
+    box-shadow: 0 0 20px rgba(41, 43, 51, 0.2);
+  }
+
+  &:active {
+    color: #bebff9;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    color: $gray-blue-300;
+    background-color: $neutral-50;
+    border: 2px solid $gray-blue-200;
+    box-shadow: none;
+  }
+}
+
+.img-phone {
+  position: absolute;
+  right: 18px;
+  bottom: -118px;
+
+  @include bp-1059 {
+    right: -15px;
+  }
+
+  @include bp-929 {
+    right: -30px;
+  }
+
+  @include bp-699 {
+    right: 0;
+    bottom: -88px;
+    left: 0;
+    display: flex;
+    width: 195px;
+    height: 166px;
+    margin: auto;
+  }
+}
 // }
 
 .select2-hidden-accessible {
@@ -545,76 +535,3 @@
     left: 95px;
   }
 }
-
-// .select2-container {
-//   &--default {
-//       .selection .select2-selection--single {
-//           border: 2px solid #EDE4FF;
-//           width: 280px;
-//           height: 56px;
-//           display: flex;
-//           align-items: center;
-
-//           @media screen and (max-width: 767px) {
-//               width: 100%;
-//           }
-
-//           .select2-selection__rendered {
-//               font-size: 16px;
-//               line-height: 155%;
-//               color: #292B33;
-//               padding-left: 14px;
-//               font-family: inherit;
-
-//               .select2-selection__placeholder {
-//                   font-size: inherit;
-//                   line-height: 140%;
-//                   color: #909090;
-//                   font-family: inherit;
-//                   font-weight: 500;
-//               }
-//           }
-
-//           .select2-selection__arrow {
-//               top: 15px;
-//               width: 30px;
-//               display: flex;
-//               justify-content: center;
-//               align-items: center;
-
-//               b {
-//                   background-image: url('/plugins/flashkan/apartments/assets/images/main/dropdown.svg');
-//                   border: none;
-//                   height: 10px;
-//                   width: 18px;
-//                   background-repeat: no-repeat;
-//                   left: 0;
-//                   top: 0;
-//                   margin: 0;
-//                   position: relative;
-//               }
-//           }
-//       }
-
-//       .select2-dropdown .select2-results .select2-results__options li {
-//           font-size: 16px;
-//           line-height: 155%;
-//           color: #292B33;
-//           padding-left: 14px;
-//           font-family: inherit;
-//       }
-//   }
-
-//   &--open {
-//       .selection .select2-selection--single {
-//           border: 2px solid #652DAC;
-//           outline: none;
-
-//           .select2-selection__arrow {
-//               b {
-//                   transform: rotate(180deg);
-//               }
-//           }
-//       }
-//   }
-// }

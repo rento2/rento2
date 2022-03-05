@@ -1,6 +1,6 @@
 .input {
 
-  @include font(18px, 22px, 500);
+  @include body-medium-18;
   box-sizing: border-box;
   width: 100%;
   height: 58px;
@@ -17,7 +17,7 @@
   }
 
   @include bp-699 {
-    @include font(16px, 20px, 500);
+    @include body-medium-16;
     padding: 14px 20px;
   }
 

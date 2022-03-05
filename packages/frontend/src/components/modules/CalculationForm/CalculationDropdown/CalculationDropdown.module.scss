@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.calculation-dropdown {
+.dropdown {
   display: flex;
   align-items: center;
   padding: 0;
@@ -12,68 +12,34 @@
   font-weight: 500;
   line-height: 30px;
   color: $gray-blue-300;
-
-  &__arrow {
-    display: block;
-    width: 18px;
-    height: 18px;
-    margin-left: 18px;
-    background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
-    background-size: contain;
-    // transform: translateY(3px)
-  }
-
-  &__arrow-vice-versa {
-    display: block;
-    width: 18px;
-    height: 18px;
-    margin-left: 18px;
-    background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
-    background-size: contain;
-    transform: rotate(180deg);
-    // transform: translateY(3px)
-  }
-
-  &__listContainer {
-    position: relative;
-    width: 100%;
-  }
-
-  &__row {
-    display: flex;
-    flex-direction: row;
-
-    &:first-child {
-      margin: 40px 0 0;
-    }
-  }
-
-  &__list {
-    position: absolute;
-    top: 13px;
-    right: 0;
-    width: 100%;
-    min-height: 207px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    color: $gray-blue-300;
-    background-color: $neutral-0;
-    border-radius: 20px;
-  }
-
-  &__item {
-    margin: 10px 5px 20px 30px;
-  }
 }
 
-.calculation-owner-input-hidden {
+.arrow {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin-left: 18px;
+  background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
+  background-size: contain;
+}
+
+.arrow-vice-versa {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin-left: 18px;
+  background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
+  background-size: contain;
+  transform: rotate(180deg);
+}
+
+.input-hidden {
   position: absolute;
   outline: none;
   opacity: 0;
 }
 
-.calculation-owner-route {
+.route {
   position: absolute;
   top: 0;
   right: 0;
@@ -83,7 +49,7 @@
   padding: 0 20px;
 }
 
-.calculation-owner-img-route {
+.img-route {
   cursor: pointer;
   fill: $gray-blue-200;
 
@@ -92,6 +58,6 @@
   }
 }
 
-.calculation-owner-input-hidden:checked + .calculation-owner-img-route {
+.input-hidden:checked + .img-route {
   fill: $iris-500;
 }

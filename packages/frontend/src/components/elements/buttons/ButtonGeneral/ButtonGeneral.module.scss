@@ -1,18 +1,21 @@
 .calculation-btn {
-  @include font(16px, 19px, 600);
+  @include body-regular-16;
   display: block;
   width: 332px;
   height: 64px;
   padding: 0;
   margin: 0 auto;
+  font-weight: 600;
   color: $neutral-0;
+  cursor: pointer;
   background: $iris-500;
+  border: 0;
   border-radius: 35px;
   outline: none;
   transition: all 100ms ease;
 
   @include bp-929 {
-    @include font(12px, 17px, 700);
+    @include subtitle-bold-12;
     width: 214px;
     height: 48px;
     margin: 0 auto;
