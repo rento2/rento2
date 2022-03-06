@@ -1,154 +1,155 @@
-import { HasMany } from "@ioc:Adonis/Lucid/Orm";
-import Photo from "App/Models/Photo";
 import {
+  HasMany,
   BaseModel,
   column,
   hasMany,
   ManyToMany,
-  manyToMany,
-} from "@ioc:Adonis/Lucid/Orm";
-import { DateTime } from "luxon";
-import Accommodation from "App/Models/Accommodation";
-import Term from "../../common/enums/Term";
-import { AdminDistrictsOfMoscow } from "../../common/enums/AdminDistrictsOfMoscow";
+  manyToMany
+} from '@ioc:Adonis/Lucid/Orm'
+import Photo from 'App/Models/Photo'
+
+import { DateTime } from 'luxon'
+import Accommodation from 'App/Models/Accommodation'
+import Term from '../../common/enums/Term'
+import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
-  public id!: number;
+  public id!: number
 
   @column()
-  public type!: Term;
+  public type!: Term
 
   @column()
-  public isActive!: boolean;
+  public isActive!: boolean
 
   @column()
-  public name!: string;
+  public name!: string
 
   @column()
-  public latinName!: string;
+  public latinName!: string
 
   @column()
-  public description!: string;
+  public description!: string
 
   @column()
-  public bnovoId!: number;
+  public bnovoId!: number
 
   @column()
-  public price!: number;
+  public price!: number
 
   @column()
-  public pricePerMonth!: number;
+  public pricePerMonth!: number
 
   @column()
-  public discount!: number;
+  public discount!: number
 
   @column()
-  public commission!: number;
+  public commission!: number
 
   @column()
-  public utilityBills!: number;
+  public utilityBills!: number
 
   @column()
-  public securityDepositShort!: number;
+  public securityDepositShort!: number
 
   @column()
-  public securityDepositLong!: number;
+  public securityDepositLong!: number
 
   @column()
-  public roomsNum!: number;
+  public roomsNum!: number
 
   @column()
-  public storey!: number;
+  public storey!: number
 
   @column()
-  public totalStoreys!: number;
+  public totalStoreys!: number
 
   @column()
-  public area!: number;
+  public area!: number
 
   @column()
-  public kitchenArea!: number;
+  public kitchenArea!: number
 
   @column()
-  public distanceFromCenter!: number;
+  public distanceFromCenter!: number
 
   @column()
-  public admArea!: AdminDistrictsOfMoscow;
+  public admArea!: AdminDistrictsOfMoscow
 
   @column()
-  public district!: string;
+  public district!: string
 
   @column()
-  public sellingPoint!: string;
+  public sellingPoint!: string
 
   @column()
-  public geoCoordinateX!: string;
+  public geoCoordinateX!: string
 
   @column()
-  public geoCoordinateY!: string;
+  public geoCoordinateY!: string
 
   @column()
-  public subwayStation!: string;
+  public subwayStation!: string
 
   @column()
-  public timeToSubway!: number;
+  public timeToSubway!: number
 
   @column()
-  public repairs!: number;
+  public repairs!: number
 
   @column()
-  public purity!: number;
+  public purity!: number
 
   @column()
-  public location!: number;
+  public location!: number
 
   @column()
-  public priceQuality!: number;
+  public priceQuality!: number
 
   @column()
-  public totalRating!: number;
+  public totalRating!: number
 
   @column()
-  public checkInStart!: DateTime;
+  public checkInStart!: DateTime
 
   @column()
-  public checkInEnd!: DateTime;
+  public checkInEnd!: DateTime
 
   @column()
-  public checkOutEnd!: DateTime;
+  public checkOutEnd!: DateTime
 
   @column()
-  public smokingAllowed!: boolean;
+  public smokingAllowed!: boolean
 
   @column()
-  public partyingAllowed!: boolean;
+  public partyingAllowed!: boolean
 
   @column()
-  public childrenAllowed!: boolean;
+  public childrenAllowed!: boolean
 
   @column()
-  public petsAllowed!: boolean;
+  public petsAllowed!: boolean
 
   @column()
-  public maxAdults!: number;
+  public maxAdults!: number
 
   @column()
-  public maxChildren!: number;
+  public maxChildren!: number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt!: DateTime;
+  public createdAt!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt!: DateTime;
+  public updatedAt!: DateTime
 
   @manyToMany(() => Accommodation, {
-    pivotTimestamps: true,
+    pivotTimestamps: true
   })
-  public accommodations!: ManyToMany<typeof Accommodation>;
+  public accommodations!: ManyToMany<typeof Accommodation>
 
   @hasMany(() => Photo, {
-    foreignKey: "apartment_id",
+    foreignKey: 'apartment_id'
   })
-  public photos!: HasMany<typeof Photo>;
+  public photos!: HasMany<typeof Photo>
 }
