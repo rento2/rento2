@@ -100,6 +100,37 @@
   }
 }
 
+//Для новых брекпоинтов
+@mixin bp-1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin bp-1000 {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin bp-768 {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin bp-600 {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin bp-320 {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
 //Удалить когда будет прописана типографика ,в коде тоже все почистить
 @mixin font($size, $height, $weight: 400) {
   font-size: $size;

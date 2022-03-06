@@ -1,0 +1,43 @@
+.card {
+  width: 288px;
+  height: 340px;
+  border: 1px solid $gray-blue-200;
+
+  @include bp-1000 {
+    width: 240px;
+    height: 272px;
+  }
+
+  @include bp-768 {
+    width: 288px;
+    height: 340px;
+  }
+
+  @include bp-600 {
+    width: 300px;
+  }
+
+  &__image {
+    width: 286px;
+    height: 160px;
+    background: $gray-blue-50;
+
+    @include bp-1000 {
+      width: 238px;
+      height: 128px;
+    }
+
+    @include bp-768 {
+      width: 286px;
+      height: 160px;
+    }
+
+    @include bp-600 {
+      width: 300px;
+    }
+  }
+
+  &__text {
+    padding: 10px;
+  }
+}

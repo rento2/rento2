@@ -1,0 +1,17 @@
+.header {
+  background: $gray-blue-50;
+
+  &__inner {
+    min-height: 60px;
+  }
+}
+
+.nav {
+  @include bp-1000 {
+    display: none;
+  }
+
+  &__list {
+    gap: 36px;
+  }
+}
