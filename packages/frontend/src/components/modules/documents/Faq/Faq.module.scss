@@ -11,7 +11,7 @@
     margin-top: 8%;
   }
   @include bp-767 {
-    margin-top:11%;
+    margin-top: 11%;
   }
 
   &::after {
@@ -25,7 +25,6 @@
     @include bp-1059 {
       left: 87%;
     }
-
   }
 }
 
@@ -40,9 +39,8 @@
     width: 84%;
     margin: 0 auto;
     margin-top: 24px;
-
   }
-  @include bp-1059{
+  @include bp-1059 {
     margin-bottom: 18%;
   }
 }
