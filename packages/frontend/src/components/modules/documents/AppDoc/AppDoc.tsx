@@ -3,8 +3,8 @@ import style from './AppDoc.module.scss'
 import Layout from '@layouts/Layout'
 import classNames from 'classnames'
 import { useWindowDimensions } from '@hooks/useWindowDimensions'
-import HeadBar from '../SideMenu/DropMenu/HeadBar'
-import { dataMenu } from '../SideMenu/DataMenu/DataMenu'
+import HeadBar from '../SideMenu/HeadBar/HeadBar'
+import { dataMenu } from '../SideMenu/DataMenu/dataMenu'
 
 export default function AppDocs ({
   children

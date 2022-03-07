@@ -1,13 +1,12 @@
+import classNames from 'classnames'
 import style from './HeadBar.module.scss'
 
 const HeadBarTitle = ({ btnOnClick }: {btnOnClick: () => any}): JSX.Element => {
   return (
-    <button className={ style['title'] }
+    <button className={ classNames(style['title'], style['title__text']) }
       onClick={ btnOnClick }
     >
-      <p className={ style['title__text'] }>
-        Частые вопросы
-      </p>
+      Частые вопросы
     </button>
   )
 }

@@ -2,16 +2,24 @@ import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { IPropsMenu } from '../type/IPropsMenu'
 import HeadBarItem from './HeadBarItems'
-import HeadBarTitle from './HesdBarTitle'
+import HeadBarTitle from './HeadBarTitle'
 import style from './HeadBar.module.scss'
 import FocusLock from 'react-focus-lock'
 
 const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
   const [desable, setDesable] = useState(false)
+
   const btnOnClick = (): void => {
     setIsOpen(!isOpen)
   }
+
+  useEffect(() => {
+    if (isOpen) { document.body.style.overflow = 'hidden' } else {
+      document.body.style.overflow = 'scroll'
+    }
+  }, [isOpen])
+
   useEffect(() => {
     setDesable(!desable)
   }, [isOpen])
@@ -19,7 +27,7 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
     <FocusLock autoFocus={ false }
       disabled={ desable }
     >
-      <div className={ classNames(isOpen ? style['wrapper-box'] : style['bg_none']) }>
+      <div className={ classNames(isOpen ? style['wrapper-box'] : style['bg-none']) }>
 
         <HeadBarTitle btnOnClick={ btnOnClick } />
 
@@ -28,12 +36,13 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
           { dataMenu.map((item, idx) => (
             <HeadBarItem key={ idx }
               data={ item }
-              isOpen={ isOpen }
             />)) }
 
         </div>
 
-        <div className={ classNames(isOpen ? style['dark'] : style['']) } />
+        <div className={ classNames(isOpen ? style['dark'] : '') }
+          onClick={ () => btnOnClick() }
+        />
       </div>
     </FocusLock>
   )

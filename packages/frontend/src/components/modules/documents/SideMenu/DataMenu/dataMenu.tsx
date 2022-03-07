@@ -10,8 +10,8 @@ export const dataMenu: IPropsMenu[] = [
     href: '/docs/privacy'
   },
   {
-    title: 'Частые вопросы',
-    href: 'Образцы документов'
+    title: 'Образцы документов',
+    href: '/docs/agreements'
   },
   {
     title: 'Пользовательское соглашение',

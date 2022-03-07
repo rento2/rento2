@@ -3,11 +3,15 @@
   position: relative;
   margin: 59px 0 0 100px;
   @include bp-1279 {
-    width: 622px;
+    width: 80%;
+    width: 90%;
   }
   @include bp-1059 {
     margin: 0 auto;
-    margin-top: 92px;
+    margin-top: 8%;
+  }
+  @include bp-767 {
+    margin-top:11%;
   }
 
   &::after {
@@ -18,6 +22,10 @@
     height: 61px;
     content: '';
     background-image: url('/images/Pic-question.svg');
+    @include bp-1059 {
+      left: 87%;
+    }
+
   }
 }
 
@@ -27,9 +35,14 @@
   width: 844px;
   max-height: 730px;
   margin: 24px 0 0 100px;
+  transition: all 500ms ease-in;
   @include bp-1279 {
-    width: 622px;
+    width: 84%;
     margin: 0 auto;
     margin-top: 24px;
+
+  }
+  @include bp-1059{
+    margin-bottom: 18%;
   }
 }
