@@ -24,7 +24,15 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 import './routes/apartment'
 
 Route.get('/', async () => {
-  return { hello: 'world' }
+  return `
+  <form action="/photo" method="post" enctype="multipart/form-data">
+      <div class="form">
+        <label>Apartment id</label>
+        <input name="apartment_id"></input>
+        <label>Upload</label><input type="file" name="image">
+      </div>
+    <button type="submit">Submit</button>
+  </form>`
 })
 
 Route.get('/health', async ({ response }) => {

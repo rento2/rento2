@@ -1,5 +1,15 @@
+import Application from '@ioc:Adonis/Core/Application'
+import { schema } from '@ioc:Adonis/Core/Validator'
+import Drive from '@ioc:Adonis/Core/Drive'
 import Photo from 'App/Models/Photo'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
+const photoSchema = schema.create({
+  image: schema.file({
+    size: '2mb',
+    extnames: ['jpg']
+  })
+})
 
 export default class PhotosController {
   public async index ({ response }: HttpContextContract): Promise<void> {
@@ -15,10 +25,23 @@ export default class PhotosController {
     request,
     response
   }: HttpContextContract): Promise<void> {
+    const uploadPicture = await request.validate({ schema: photoSchema })
+
     const photos = await Photo.create(request.body())
 
+    await uploadPicture.image.moveToDisk(
+      Application.tmpPath('uploads'),
+      {
+        name: `${photos.id}.${uploadPicture.image.extname ?? 'jpg'}`,
+        overwrite: true
+      },
+      'local'
+    )
+
+    const fileName = uploadPicture.image.fileName
+
     return response.send({
-      meta: {},
+      meta: { upload: fileName },
       data: { photos }
     })
   }
@@ -37,14 +60,27 @@ export default class PhotosController {
     request,
     response
   }: HttpContextContract): Promise<void> {
+    const uploadPicture = await request.validate({ schema: photoSchema })
+
     const photos = await Photo.findBy('id', params['id'])
 
     if (photos != null) {
       await photos.merge(request.body()).save()
+
+      await uploadPicture.image.moveToDisk(
+        Application.tmpPath('uploads'),
+        {
+          name: `${photos.id}.${uploadPicture.image.extname ?? 'jpg'}`,
+          overwrite: true
+        },
+        'local'
+      )
     }
 
+    const fileName = uploadPicture.image.fileName
+
     return response.send({
-      meta: {},
+      meta: { update: fileName },
       data: { photos }
     })
   }
@@ -55,6 +91,7 @@ export default class PhotosController {
   }: HttpContextContract): Promise<void> {
     const photos = await Photo.findBy('id', params['id'])
     if (photos != null) {
+      await Drive.delete(`${photos.id}.jpg`)
       await photos.delete()
     }
 
