@@ -3,35 +3,6 @@
   width: 100%;
 }
 
-.dropdown {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0 20px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 30px;
-  color: $gray-blue-300;
-}
-
-.arrow {
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin-left: 18px;
-  background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
-  background-size: contain;
-}
-
-.arrow-vice-versa {
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin-left: 18px;
-  background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
-  background-size: contain;
-  transform: rotate(180deg);
-}
 
 .input-hidden {
   position: absolute;
@@ -41,7 +12,7 @@
 
 .route {
   position: absolute;
-  top: 0;
+  top: 3px;
   right: 0;
   display: flex;
   justify-content: flex-end;
