@@ -2,16 +2,20 @@
   @include headline5;
   position: relative;
   margin: 59px 0 0 100px;
-  @include bp-1279 {
-    width: 80%;
-    width: 90%;
-  }
+
   @include bp-1059 {
+    width: 688px;
     margin: 0 auto;
-    margin-top: 8%;
+    margin-top: 92px;
+    padding-bottom: 24px;
   }
   @include bp-767 {
-    margin-top: 11%;
+
+    max-width: 100%;
+  }
+
+  @include bp-359{
+    padding-left: 16px;
   }
 
   &::after {
@@ -23,7 +27,11 @@
     content: '';
     background-image: url('/images/Pic-question.svg');
     @include bp-1059 {
-      left: 87%;
+      left: 90%;
+      top: -37%;
+    }
+    @include bp-359{
+      left: 81%;
     }
   }
 }
@@ -31,16 +39,29 @@
 .wrapper-box {
   display: flex;
   flex-direction: column;
-  width: 844px;
+  // width: 844px;
   max-height: 730px;
   margin: 24px 0 0 100px;
   transition: all 500ms ease-in;
   @include bp-1279 {
-    width: 84%;
+    max-width: 688px;
     margin: 0 auto;
-    margin-top: 24px;
+    margin: 24px 0 0 100px;
   }
   @include bp-1059 {
+    margin: 0 auto;
     margin-bottom: 18%;
+  }
+
+  @include bp-359 {
+    margin-bottom: 120%;
+  }
+}
+
+.doc-container {
+  margin: 0 auto;
+  width: 90%;
+  @include bp-359{
+    width: 100%;
   }
 }

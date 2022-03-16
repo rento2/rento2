@@ -1,37 +1,25 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import Link from 'next/dist/client/link'
 import style from './SideMenu.module.scss'
+import { IPropsMenu } from './type/IPropsMenu'
 
-export default function SideMenu (): JSX.Element {
+export default function SideMenu ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element {
   return (
     <div className={ style['border'] }>
-      <ul className={ style['list'] }>
+      <ul>
         <li>
-          <Link href='/docs/faq'>
-            <a className={ style['item'] }>
-              Частые вопросы
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/docs/privacy'>
-            <a className={ style['item'] }>
-              Политика обработки персональных данных
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/docs/agreements'>
-            <a className={ style['item'] }>
-              Образцы документов
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/docs/rules'>
-            <a className={ style['item'] }>
-              Пользовательское соглашение
-            </a>
-          </Link>
+          {
+            dataMenu.map((item, indx) => (
+              <Link key={ indx }
+                href={ item.href }
+              >
+                <a className={ style['item'] }>
+                  {item.title}
+                </a>
+              </Link>
+            )
+            )}
+
         </li>
       </ul>
     </div>

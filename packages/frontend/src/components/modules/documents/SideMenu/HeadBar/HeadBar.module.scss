@@ -10,6 +10,14 @@
   border: 0;
   border-bottom: 2px solid $neutral-50;
   outline: 0;
+  @include body-medium-14;
+
+  @include bp-359{
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    padding-left: 16px;
+ }
 
   &__text {
 
@@ -21,10 +29,18 @@
     width: 19px;
     height: 10px;
     margin: 0;
-    margin-left: 66%;
+    margin-left: 73%;
     content: '';
     background-image: url('/images/vector.svg');
     background-repeat: no-repeat;
+    @include bp-767 {
+      margin-left: 70%;
+    }
+
+    @include bp-359{
+      margin-left: 83%;
+      position: absolute;
+    }
   }
 
   &.active::before {

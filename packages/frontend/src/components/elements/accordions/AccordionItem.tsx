@@ -29,7 +29,9 @@ function AccordionItem ({
         <button className={ classNames(style['item-title'], isOpen ? style['active'] : '') }
           onClick={ btnOnclick }
         >
-          {state.title}
+          <p className={ style['item-p'] }>
+            {state.title}
+          </p>
         </button>
       </h3>
       <div className={ classNames(style['item-container']) }

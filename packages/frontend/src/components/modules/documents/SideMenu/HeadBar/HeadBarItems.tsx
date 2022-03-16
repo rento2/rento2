@@ -6,7 +6,9 @@ const HeadBarItem = ({ data }: {data: IPropsMenu }): JSX.Element => {
   return (
     <li className={ style['menu'] }>
       <Link href={ data.href }>
-        {data.title}
+        <a>
+          {data.title}
+        </a>
       </Link>
     </li>
 

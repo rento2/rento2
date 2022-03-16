@@ -8,7 +8,7 @@ import FocusLock from 'react-focus-lock'
 
 const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
-  const [desable, setDesable] = useState(false)
+  const [disable, setDisable] = useState(false)
 
   const btnOnClick = (): void => {
     setIsOpen(!isOpen)
@@ -21,24 +21,24 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
   }, [isOpen])
 
   useEffect(() => {
-    setDesable(!desable)
+    setDisable(!disable)
   }, [isOpen])
   return (
     <FocusLock autoFocus={ false }
-      disabled={ desable }
+      disabled={ disable }
     >
       <div className={ classNames(isOpen ? style['wrapper-box'] : style['bg-none']) }>
 
         <HeadBarTitle btnOnClick={ btnOnClick } />
 
-        <div className={ classNames((!isOpen) ? style['h0'] : style['open']) }>
+        <ul className={ classNames((!isOpen) ? style['h0'] : style['open']) }>
 
           { dataMenu.map((item, idx) => (
             <HeadBarItem key={ idx }
               data={ item }
             />)) }
 
-        </div>
+        </ul>
 
         <div className={ classNames(isOpen ? style['dark'] : '') }
           onClick={ () => btnOnClick() }
