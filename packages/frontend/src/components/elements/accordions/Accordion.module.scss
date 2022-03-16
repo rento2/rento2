@@ -10,6 +10,7 @@
   }
 
   &-title {
+    @include body-medium-14;
     position: relative;
     display: flex;
     align-items: center;
@@ -19,14 +20,12 @@
     background-color: $neutral-0;
     border: 0;
     outline: 0;
-    @include body-medium-14;
-
 
     @include bp-1279 {
       max-width: 100%;
     }
 
-    @include bp-359{
+    @include bp-359 {
       width: 95%;
     }
 
@@ -54,11 +53,9 @@
       background-color: rgba($iris-500, 0.2);
       border-radius: 100%;
     }
-
-
   }
 
-  &-p{
+  &-p {
     max-width: 90%;
     text-align: justify;
     @include bp-359 {
@@ -69,9 +66,9 @@
 
   &-description {
     @include body-medium-14;
-    color:  $gray-blue-400;
     width: 90%;
     padding: 0 0 32px;
+    color: $gray-blue-400;
   }
 
   &-description-open {
