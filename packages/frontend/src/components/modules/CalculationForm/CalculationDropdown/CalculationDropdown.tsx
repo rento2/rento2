@@ -71,9 +71,9 @@ export function CalculationDropdown (): JSX.Element {
                 value="man-route"
               />
 
-              <div className={ styles['img-route'] }>
+              <span className={ styles['img-route'] }>
                 <IconGoWalking />
-              </div>
+              </span>
             </label>
             <label>
               <input className={ styles['input-hidden'] }
@@ -81,9 +81,9 @@ export function CalculationDropdown (): JSX.Element {
                 type="radio"
                 value="bus-route"
               />
-              <div className={ styles['img-route'] }>
+              <span className={ styles['img-route'] }>
                 <IconGoDriving />
-              </div>
+              </span>
 
             </label>
           </div>
