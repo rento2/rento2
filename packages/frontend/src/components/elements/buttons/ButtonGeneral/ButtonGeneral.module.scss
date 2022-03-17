@@ -1,11 +1,10 @@
 .calculation-btn {
-  @include body-regular-16;
+  @include body-semi-bold-16;
   display: block;
   width: 332px;
   height: 64px;
   padding: 0;
   margin: 0 auto;
-  font-weight: 600;
   color: $neutral-0;
   cursor: pointer;
   background: $iris-500;

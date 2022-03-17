@@ -1,9 +1,11 @@
 import { ButtonGeneral } from '@elements/buttons/ButtonGeneral/ButtonGeneral'
 import { CalculationDropdown } from './CalculationDropdown/CalculationDropdown'
-import styles from './CalculationForm.module.scss'
 import classnames from 'classnames'
 import Image from 'next/image'
 import DefaultInput from '@elements/inputs/DefaultInput/DefaultInput'
+import Link from 'next/link'
+import styles from './CalculationForm.module.scss'
+import InputRadio from '@elements/inputs/InputRadio/InputRadio'
 
 export function CalculationForm (): JSX.Element {
   return (
@@ -147,11 +149,12 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Очень старый ремонт
                 </span>
-                <input className={ styles['input-hidden'] }
+                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-old"}/>
+                {/* <input className={ styles['input-hidden'] }
                   name="repair"
                   type="radio"
                   value="repair-old"
-                />
+                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
@@ -169,11 +172,13 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Косметический ремонт
                 </span>
-                <input className={ styles['input-hidden'] }
+                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-cosmetic"}/>
+
+                {/* <input className={ styles['input-hidden'] }
                   name="repair"
                   type="radio"
                   value="repair-cosmetic"
-                />
+                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
@@ -191,11 +196,13 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Качественный ремонт и мебель
                 </span>
-                <input className={ styles['input-hidden'] }
+                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-high-quality"}/>
+
+                {/* <input className={ styles['input-hidden'] }
                   name="repair"
                   type="radio"
                   value="repair-high-quality"
-                />
+                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
@@ -213,11 +220,13 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Дизайнерский ремонт и мебель
                 </span>
-                <input className={ styles['input-hidden'] }
+                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-designer"}/>
+
+                {/* <input className={ styles['input-hidden'] }
                   name="repair"
                   type="radio"
                   value="repair-designer"
-                />
+                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
@@ -240,11 +249,10 @@ export function CalculationForm (): JSX.Element {
           <span className={ styles['agreement-text'] }>
             Нажимая на кнопку, вы даете
             {' '}
-            <a href="/documents/privacy"
-              target="_blank"
+            <Link href="/docs/privacy"
             >
               согласие на Обработку персональных данных
-            </a>
+            </Link>
           </span>
         </label>
         <ButtonGeneral text='Заказать расчет'

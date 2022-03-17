@@ -1,7 +1,9 @@
 
-export default function GoWalkingIcon (): JSX.Element {
+export default function GoWalkingIcon ({ classProps}: {
+  classProps: string
+}): JSX.Element {
   return (
-    <svg
+    <svg className={ classProps }
       height="32"
       viewBox="0 0 32 32"
       width="32"

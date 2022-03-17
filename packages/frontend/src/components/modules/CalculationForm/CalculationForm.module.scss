@@ -19,10 +19,9 @@
 //   }
 
 .heading {
-  @include  headline-regular-36;
+  @include  headline3;
   width: 883px;
   margin: 0 auto 40px;
-  font-family: $font-family-secondary;
   color: $gray-blue-500;
   text-align: center;
 
@@ -42,15 +41,14 @@
 }
 
 .text {
-  @include headline-regular-24;
+  @include headline4;
   width: 883px;
   margin: 0 auto 40px;
-  font-family: $font-family-secondary;
   color: $iris-400;
   text-align: center;
 
   @include bp-929 {
-    @include headline-regular-18;
+    @include headline5;
     width: 87%;
     margin: 0 auto 30px;
   }
@@ -383,10 +381,9 @@
 }
 
 .text-proposal {
-  @include headline-regular-18;
+  @include headline5;
   width: 502px;
   margin: 0 auto 30px;
-  font-family: $font-family-secondary;
   color: $iris-400;
   text-align: center;
 
@@ -524,7 +521,6 @@
     margin: auto;
   }
 }
-// }
 
 .select2-hidden-accessible {
   top: 360px;

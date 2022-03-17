@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-closing-tag-location */
 
 // import React from 'react'
-import styles from './CalculationDropdown.module.scss'
+
 import Select from 'react-select'
 import IconGoWalking from '@elements/icons/IconGoWalking'
 import IconGoDriving from '@elements/icons/IconGoDriving'
-
+import classNames from 'classnames'
+import styles from './CalculationDropdown.module.scss'
 
 
 const options = [
@@ -71,9 +72,7 @@ export function CalculationDropdown (): JSX.Element {
                 value="man-route"
               />
 
-              <span className={ styles['img-route'] }>
-                <IconGoWalking />
-              </span>
+                <IconGoWalking classProps={ classNames(styles['img-route']) }/>
             </label>
             <label>
               <input className={ styles['input-hidden'] }
@@ -81,9 +80,7 @@ export function CalculationDropdown (): JSX.Element {
                 type="radio"
                 value="bus-route"
               />
-              <span className={ styles['img-route'] }>
-                <IconGoDriving />
-              </span>
+                <IconGoDriving classProps={ classNames(styles['img-route']) }/>
 
             </label>
           </div>
