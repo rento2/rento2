@@ -1,5 +1,5 @@
 
-export default function GoWalkingIcon ({ classProps}: {
+export default function GoWalkingIcon ({ classProps }: {
   classProps: string
 }): JSX.Element {
   return (

@@ -1,23 +1,23 @@
 import { FC, InputHTMLAttributes } from 'react'
 
 interface IInputRadio extends InputHTMLAttributes<HTMLInputElement> {
-  name:string,
-  classProps:string,
-  value:string,
+  name: string
+  classProps: string
+  value: string
 }
 
 const InputRadio: FC<IInputRadio> = ({
   name,
   classProps,
-  value,
+  value
 }) => {
   return (
 
     <input
       className={ classProps }
-      name={name}
-      value={value}
+      name={ name }
       type='radio'
+      value={ value }
     />
   )
 }

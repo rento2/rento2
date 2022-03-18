@@ -5,6 +5,7 @@ import Image from 'next/image'
 import DefaultInput from '@elements/inputs/DefaultInput/DefaultInput'
 import Link from 'next/link'
 import styles from './CalculationForm.module.scss'
+import { RepairCard } from './RepairCard/RepairCard'
 import InputRadio from '@elements/inputs/InputRadio/InputRadio'
 
 export function CalculationForm (): JSX.Element {
@@ -31,7 +32,6 @@ export function CalculationForm (): JSX.Element {
             <p className={ styles['title'] }>
               Расположение квартиры*
             </p>
-            {/* <input className={styles['input']}  id="address-input"   type="text" name="address" placeholder="Улица или метро"/> */}
             <DefaultInput placeholder='Улица или метро'
               type='text'
             />
@@ -49,11 +49,16 @@ export function CalculationForm (): JSX.Element {
               <ul className={ styles['list-rooms'] }>
                 <li>
                   <label>
-                    <input className={ styles['input-hidden'] }
+                    <InputRadio classProps={ classnames(styles['input-hidden']) }
+                      name="rooms"
+                      value="studio"
+                    />
+
+                    {/* <input className={ styles['input-hidden'] }
                       name="rooms"
                       type="radio"
                       value="studio"
-                    />
+                    /> */}
                     <span className={ classnames(styles['numb-rooms'], styles['numb-rooms_ellipse']) }>
                       Студия
                     </span>
@@ -61,11 +66,15 @@ export function CalculationForm (): JSX.Element {
                 </li>
                 <li>
                   <label>
-                    <input className={ styles['input-hidden'] }
+                    <InputRadio classProps={ classnames(styles['input-hidden']) }
+                      name="rooms"
+                      value="1 room"
+                    />
+                    {/* <input className={ styles['input-hidden'] }
                       name="rooms"
                       type="radio"
                       value="1 room"
-                    />
+                    /> */}
                     <span className={ styles['numb-rooms'] }>
                       1
                     </span>
@@ -73,11 +82,15 @@ export function CalculationForm (): JSX.Element {
                 </li>
                 <li>
                   <label>
-                    <input className={ styles['input-hidden'] }
+                    <InputRadio classProps={ classnames(styles['input-hidden']) }
+                      name="rooms"
+                      value="2 rooms"
+                    />
+                    {/* <input className={ styles['input-hidden'] }
                       name="rooms"
                       type="radio"
                       value="2 rooms"
-                    />
+                    /> */}
                     <span className={ styles['numb-rooms'] }>
                       2
                     </span>
@@ -85,11 +98,15 @@ export function CalculationForm (): JSX.Element {
                 </li>
                 <li>
                   <label>
-                    <input className={ styles['input-hidden'] }
+                    <InputRadio classProps={ classnames(styles['input-hidden']) }
+                      name="rooms"
+                      value="3+ rooms"
+                    />
+                    {/* <input className={ styles['input-hidden'] }
                       name="rooms"
                       type="radio"
                       value="3+ rooms"
-                    />
+                    /> */}
                     <span className={ styles['numb-rooms'] }>
                       3+
                     </span>
@@ -110,9 +127,7 @@ export function CalculationForm (): JSX.Element {
               id="time-select"
             >
               <CalculationDropdown />
-
             </div>
-
             <span className={ classnames(styles['mistake-owner-text'], styles['mistake-owner-text-z-index']) }
               id="time-mistake"
             />
@@ -136,7 +151,17 @@ export function CalculationForm (): JSX.Element {
           Состояние квартиры
         </p>
         <ul className={ styles['list-repair'] }>
-          <li className={ styles['item-repair'] }>
+          <RepairCard
+            altText="repair-old"
+            classProps={ classnames(styles['input-hidden']) }
+            name="repair"
+            spanProps={ classnames(styles['check-repair']) }
+            spanText="Очень старый ремонт"
+            src="/images/owners/repair-old.jpg"
+            value="repair-old"
+          />
+
+          {/* <li className={ styles['item-repair'] }>
             <label>
               <div className={ styles['label-repair'] }>
                 <Image
@@ -149,17 +174,22 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Очень старый ремонт
                 </span>
-                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-old"}/>
-                {/* <input className={ styles['input-hidden'] }
-                  name="repair"
-                  type="radio"
-                  value="repair-old"
-                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
-          </li>
-          <li className={ styles['item-repair'] }>
+          </li> */}
+
+          <RepairCard
+            altText="cosmetic"
+            classProps={ classnames(styles['input-hidden']) }
+            name="repair"
+            spanProps={ classnames(styles['check-repair']) }
+            spanText="Косметический ремонт"
+            src="/images/owners/repair-cosmetic.jpg"
+            value="repair-cosmetic"
+          />
+
+          {/* <li className={ styles['item-repair'] }>
             <label>
               <div className={ styles['label-repair'] }>
                 <Image
@@ -172,18 +202,21 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Косметический ремонт
                 </span>
-                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-cosmetic"}/>
-
-                {/* <input className={ styles['input-hidden'] }
-                  name="repair"
-                  type="radio"
-                  value="repair-cosmetic"
-                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
-          </li>
-          <li className={ styles['item-repair'] }>
+          </li> */}
+          <RepairCard
+            altText="high-quality"
+            classProps={ classnames(styles['input-hidden']) }
+            name="repair"
+            spanProps={ classnames(styles['check-repair']) }
+            spanText="Качественный ремонт и мебель"
+            src="/images/owners/repair-high-quality.jpg"
+            value="repair-high-quality"
+          />
+
+          {/* <li className={ styles['item-repair'] }>
             <label>
               <div className={ styles['label-repair'] }>
                 <Image
@@ -196,19 +229,22 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Качественный ремонт и мебель
                 </span>
-                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-high-quality"}/>
-
-                {/* <input className={ styles['input-hidden'] }
-                  name="repair"
-                  type="radio"
-                  value="repair-high-quality"
-                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
             </label>
-          </li>
+          </li> */}
+
           <li className={ styles['item-repair'] }>
-            <label>
+            <RepairCard
+              altText="repair-designer"
+              classProps={ classnames(styles['input-hidden']) }
+              name="repair"
+              spanProps={ classnames(styles['check-repair']) }
+              spanText="Дизайнерский ремонт и мебель"
+              src="/images/owners/repair-high-quality.jpg"
+              value="repair-designer"
+            />
+            {/* <label>
               <div className={ styles['label-repair'] }>
                 <Image
                   alt="repair-designer"
@@ -220,16 +256,9 @@ export function CalculationForm (): JSX.Element {
                 <span className={ styles['text-repair'] }>
                   Дизайнерский ремонт и мебель
                 </span>
-                <InputRadio classProps={classnames(styles['input-hidden'])} name={"repair"} value={"repair-designer"}/>
-
-                {/* <input className={ styles['input-hidden'] }
-                  name="repair"
-                  type="radio"
-                  value="repair-designer"
-                /> */}
                 <span className={ styles['check-repair'] } />
               </div>
-            </label>
+            </label> */}
           </li>
         </ul>
         <p className={ styles['text-proposal'] }>
@@ -249,8 +278,7 @@ export function CalculationForm (): JSX.Element {
           <span className={ styles['agreement-text'] }>
             Нажимая на кнопку, вы даете
             {' '}
-            <Link href="/docs/privacy"
-            >
+            <Link href="/docs/privacy">
               согласие на Обработку персональных данных
             </Link>
           </span>
@@ -258,9 +286,6 @@ export function CalculationForm (): JSX.Element {
         <ButtonGeneral text='Заказать расчет'
           type='submit'
         />
-        {/* <button className={styles['btn']} type="submit" id="btn-calculation" data-tag-manager="calculate-form">
-                Заказать раcчёт
-            </button> */}
         <div className={ styles['img-phone'] }>
           <Image alt="phone-calculation"
             height={ 223 }
@@ -268,7 +293,6 @@ export function CalculationForm (): JSX.Element {
             width={ 262 }
           />
         </div>
-
       </form>
     </div>
   )

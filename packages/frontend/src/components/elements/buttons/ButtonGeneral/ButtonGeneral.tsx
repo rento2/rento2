@@ -3,7 +3,7 @@ import styles from './ButtonGeneral.module.scss'
 interface IButton {
   text: string
   type?: 'submit' | 'reset' | 'button'
-  href?: string;
+  href?: string
 }
 
 export function ButtonGeneral (props: IButton): JSX.Element {
