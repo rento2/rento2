@@ -2,23 +2,19 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  @include bp-1200 {
-    max-width: 1000px;
+  @include bp-1239 {
+    max-width: 944px;
   }
 
-  @include bp-1000 {
-    max-width: 768px;
+  @include bp-1023 {
+    max-width: 736px;
   }
 
-  @include bp-768 {
-    max-width: 600px;
+  @include bp-767 {
+    max-width: 536px;
   }
 
-  @include bp-600 {
-    max-width: 480px;
-  }
-
-  @include bp-320 {
-    max-width: 300px;
+  @include bp-567 {
+    max-width: 288px;
   }
 }
