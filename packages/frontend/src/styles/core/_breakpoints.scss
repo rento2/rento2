@@ -101,32 +101,36 @@
 }
 
 //Для новых брекпоинтов
-@mixin bp-1200 {
-  @media (max-width: 1200px) {
+// Новые брекпоинты: 1439, 1239, 1023, 767, 567
+// Нужно будет еще задать контейнер под них
+// Есть уже
+// @mixin bp-1439 {
+//   @media (max-width: 1439px) {
+//     @content;
+//   }
+// }
+
+@mixin bp-1239 {
+  @media (max-width: 1239px) {
     @content;
   }
 }
 
-@mixin bp-1000 {
-  @media (max-width: 1000px) {
+@mixin bp-1023 {
+  @media (max-width: 1023px) {
     @content;
   }
 }
 
-@mixin bp-768 {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
+// Есть уже
+// @mixin bp-767 {
+//   @media (max-width: 767px) {
+//     @content;
+//   }
+// }
 
-@mixin bp-600 {
-  @media (max-width: 600px) {
-    @content;
-  }
-}
-
-@mixin bp-320 {
-  @media (max-width: 320px) {
+@mixin bp-567 {
+  @media (max-width: 567px) {
     @content;
   }
 }
