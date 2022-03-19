@@ -1,43 +1,49 @@
 .card {
-  width: 288px;
-  height: 340px;
+  display: flex;
+  width: 592px;
+  height: 170px;
   border: 1px solid $gray-blue-200;
 
-  @include bp-1000 {
-    width: 240px;
-    height: 272px;
+  @include bp-1239 {
+    width: 468px;
   }
 
-  @include bp-768 {
+  @include bp-1023 {
+    flex-direction: column;
+    width: 360px;
+    height: 340px;
+  }
+
+  @include bp-767 {
+    flex-direction: row;
+    width: 536px;
+    height: 170px;
+  }
+
+  @include bp-567 {
+    flex-direction: column;
     width: 288px;
     height: 340px;
   }
 
-  @include bp-600 {
-    width: 300px;
-  }
-
   &__image {
-    width: 286px;
-    height: 160px;
+    flex: 1 0 288px;
+    width: 288px;
+    height: 168px;
     background: $gray-blue-50;
 
-    @include bp-1000 {
-      width: 238px;
-      height: 128px;
+    @include bp-1023 {
+      flex: 0 0 auto;
+      width: 358px;
     }
 
-    @include bp-768 {
+    @include bp-767 {
       width: 286px;
-      height: 160px;
-    }
-
-    @include bp-600 {
-      width: 300px;
     }
   }
 
   &__text {
+    flex: 0 1 auto;
     padding: 10px;
   }
 }
