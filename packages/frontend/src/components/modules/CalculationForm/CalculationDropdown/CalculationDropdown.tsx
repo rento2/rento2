@@ -17,52 +17,55 @@ const options = [
 ]
 
 export function CalculationDropdown (): JSX.Element {
-  const style = {
-    control: (base: any) => ({
-      ...base,
-      marginLeft: '10px',
-      border: 0,
-      boxShadow: 'none',
-      fontSize: '18px',
-      fontStyle: 'normal',
-      fontWeight: '500',
-      lineHeight: '22px'
+  // const style = {
+  //   control: (base: any) => ({
+  //     ...base,
+  //     marginLeft: '10px',
+  //     border: 0,
+  //     boxShadow: 'none',
+  //     fontSize: '18px',
+  //     fontStyle: 'normal',
+  //     fontWeight: '500',
+  //     lineHeight: '22px'
 
-    }),
-    option: (base: any, state: any) => ({
-      ...base,
-      paddingLeft: '22px',
-      fontSize: '16px',
-      fontStyle: 'normal',
-      fontWeight: '500',
-      lineHeight: '20px',
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-      backgroundColor: state.isSelected ? 'transparent' : 'transparent',
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-      color: state.isSelected ? '#6f57eb' : '#7F8085'
-    }),
-    singleValue: (base: any) => ({
-      ...base,
-      color: '#7F8085'
-    }),
-    input: (base: any) => ({
-      ...base,
-      color: '#fff'
-    }),
-    container: (base: any) => ({
-      ...base,
-      flex: 2
-    })
-  }
+  //   }),
+  //   option: (base: any, state: any) => ({
+  //     ...base,
+  //     paddingLeft: '22px',
+  //     fontSize: '16px',
+  //     fontStyle: 'normal',
+  //     fontWeight: '500',
+  //     lineHeight: '20px',
+  //     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  //     backgroundColor: state.isSelected ? 'transparent' : 'transparent',
+  //     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  //     color: state.isSelected ? '#6f57eb' : '#7F8085'
+  //   }),
+  //   singleValue: (base: any) => ({
+  //     ...base,
+  //     color: '#7F8085'
+  //   }),
+  //   input: (base: any) => ({
+  //     ...base,
+  //     color: '#fff'
+  //   }),
+  //   container: (base: any) => ({
+  //     ...base,
+  //     flex: 2
+  //   })
+  // }
   return (
     <div className={ styles['container'] }>
       <Select
+        className="react-select"
+        classNamePrefix="react-select"
         components={ { DropdownIndicator: null } }
         defaultValue={ options[0] }
-        id="long-value-select"
-        instanceId="long-value-select"
+        // id="long-value-select"
+        // instanceId="long-value-select"
+        menuIsOpen={ true }
+        // styles={ style }
         options={ options }
-        styles={ style }
       />
 
       <div className={ styles['route'] }>
