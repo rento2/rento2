@@ -6,6 +6,7 @@ import IconGoWalking from '@elements/icons/IconGoWalking'
 import IconGoDriving from '@elements/icons/IconGoDriving'
 import classNames from 'classnames'
 import styles from './CalculationDropdown.module.scss'
+import style from './CalculationDropdownSelect.module.scss'
 
 const options = [
   { value: 'Choose', label: 'Выбрать' },
@@ -13,7 +14,7 @@ const options = [
   { value: '10 minutes', label: '10 минут' },
   { value: '15 minutes', label: '15 минут' },
   { value: '20 minutes', label: '20 минут' },
-  { value: '25+ minutes', label: '25+ минут' }
+  { value: '25+ minutes', label: '25 минут+' }
 ]
 
 export function CalculationDropdown (): JSX.Element {
@@ -27,6 +28,11 @@ export function CalculationDropdown (): JSX.Element {
   //     fontStyle: 'normal',
   //     fontWeight: '500',
   //     lineHeight: '22px'
+  //   }),
+  //   menuList: (base: any) => ({
+  //     ...base,
+  //     display: 'grid',
+  //     gridTemplateColumns: '1fr 1fr'
 
   //   }),
   //   option: (base: any, state: any) => ({
@@ -57,15 +63,15 @@ export function CalculationDropdown (): JSX.Element {
   return (
     <div className={ styles['container'] }>
       <Select
-        className="react-select"
-        classNamePrefix="react-select"
+        className='calculation-select'
+        classNamePrefix='calculation-select'
         components={ { DropdownIndicator: null } }
         defaultValue={ options[0] }
-        // id="long-value-select"
-        // instanceId="long-value-select"
+        id="long-value-select"
+        instanceId="long-value-select"
         menuIsOpen={ true }
-        // styles={ style }
         options={ options }
+        // styles={ style }
       />
 
       <div className={ styles['route'] }>

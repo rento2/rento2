@@ -32,20 +32,4 @@
   fill: $iris-500;
 }
 
-.react-select {
-  margin: 1rem;
-  position: absolute;
 
-  width: 10rem;
-}
-
-
-.react-select__menu-list {
-  background-color: blue;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.react-select__option {
-  color: red;
-  flex-direction: column;
-}
