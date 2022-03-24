@@ -6,7 +6,6 @@ import IconGoWalking from '@elements/icons/IconGoWalking'
 import IconGoDriving from '@elements/icons/IconGoDriving'
 import classNames from 'classnames'
 import styles from './CalculationDropdown.module.scss'
-import style from './CalculationDropdownSelect.module.scss'
 
 const options = [
   { value: 'Choose', label: 'Выбрать' },
@@ -65,11 +64,11 @@ export function CalculationDropdown (): JSX.Element {
       <Select
         className='calculation-select'
         classNamePrefix='calculation-select'
-        components={ { DropdownIndicator: null } }
+        // components={ { DropdownIndicator: null } }
         defaultValue={ options[0] }
         id="long-value-select"
         instanceId="long-value-select"
-        menuIsOpen={ true }
+        // menuIsOpen={ true }
         options={ options }
         // styles={ style }
       />

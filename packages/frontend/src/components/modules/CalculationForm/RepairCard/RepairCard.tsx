@@ -14,7 +14,7 @@ interface IRepairCard {
 
 export const RepairCard = ({ altText, src, spanText, classProps, name, value, spanProps }: IRepairCard): JSX.Element => {
   return (
-    <div className={ styles['item-repair'] }>
+    <li className={ styles['item-repair'] }>
       <label>
         <div className={ styles['label-repair'] }>
           <div className={ styles['img-repair'] }>
@@ -35,6 +35,6 @@ export const RepairCard = ({ altText, src, spanText, classProps, name, value, sp
           <span className={ spanProps } />
         </div>
       </label>
-    </div>
+    </li>
   )
 }

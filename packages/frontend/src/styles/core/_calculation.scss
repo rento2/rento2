@@ -7,7 +7,7 @@
 
   &__option {
     background-color: transparent !important;
-    color: #7F8085 !important;
+    color: #a9acb4 !important;
     font-size: 16px !important;
     font-style: normal !important;
     font-weight: 500 !important;
@@ -15,18 +15,26 @@
 
 
     &--is-focused {
+      color: #6f57eb !important;
       background-color: #dfdffc !important;
     }
 
+    &--is-selected {
+      color: #6f57eb !important;
+    }
 
 }
 
-    &__value-container {
+    &__control {
+      position: relative;
+      margin-left: 10px !important;
+      box-shadow: none !important;
       outline: none !important;
-
+      border: none !important;
     }
 
   &__single-value {
+
     outline: none !important;
     color: #7F8085 !important;
     font-size: 18px !important;
@@ -35,9 +43,46 @@
     line-height: 22px !important;
   }
 
+    &__dropdown-indicator {
+      position: absolute;
+      top: 11px;
+      left: 102px;
+      display: block;
+      width: 18px;
+      height: 18px;
+      margin-left: 0px;
+      background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
+      background-size: contain;
+      & > * {
+        display: none;
+      }
+    }
+
+    &__control--menu-is-open &__dropdown-indicator {
+      display: block;
+      width: 18px;
+      height: 18px;
+      margin-left: 0px;
+      background: url('/images/owners/dropdown.svg') center center no-repeat transparent;
+      background-size: contain;
+      transform: rotate(180deg);
+      & > * {
+        display: none;
+      }
+    }
+
+  &__menu {
+    padding-top: 35px;
+    padding-bottom: 40px;
+  }
+
+
+
 
   &__menu-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 20px;
+
   }
 }
