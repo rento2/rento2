@@ -15,25 +15,24 @@ interface IRepairCard {
 export const RepairCard = ({ altText, src, spanText, classProps, name, value, spanProps }: IRepairCard): JSX.Element => {
   return (
     <li className={ styles['item-repair'] }>
-      <label>
-        <div className={ styles['label-repair'] }>
-          <div className={ styles['img-repair'] }>
-            <Image
-              alt={ altText }
-              height={ 172 }
-              src={ src }
-              width={ 284 }
-            />
-          </div>
-          <span className={ styles['text-repair'] }>
-            {spanText}
-          </span>
-          <InputRadio classProps={ classProps }
-            name={ name }
-            value={ value }
+      <label className={ styles['label-repair'] }>
+        <div className={ styles['img-repair'] }>
+          <Image
+            alt={ altText }
+            height={ 172 }
+            layout="responsive"
+            src={ src }
+            width={ 284 }
           />
-          <span className={ spanProps } />
         </div>
+        <span className={ styles['text-repair'] }>
+          {spanText}
+        </span>
+        <InputRadio classProps={ classProps }
+          name={ name }
+          value={ value }
+        />
+        <span className={ spanProps } />
       </label>
     </li>
   )
