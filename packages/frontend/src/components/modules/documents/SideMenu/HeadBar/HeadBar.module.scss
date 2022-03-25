@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 60px;
+  min-height: 60px;
   padding-left: 40px;
   margin-bottom: 24px;
   background: $neutral-0;
@@ -26,20 +26,26 @@
   }
 
   &::after {
+    position: absolute;
+    left: 86%;
     width: 19px;
     height: 10px;
     margin: 0;
-    margin-left: 73%;
     content: '';
     background-image: url('/images/vector.svg');
     background-repeat: no-repeat;
+    @include bp-929 {
+      left: 92%;
+    }
     @include bp-767 {
-      margin-left: 70%;
+      left: 91%;
     }
 
+    @include bp-479 {
+      left: 90%;
+    }
     @include bp-359 {
-      position: absolute;
-      margin-left: 83%;
+      left: 87%;
     }
   }
 
@@ -90,10 +96,7 @@
 
 .menu {
   @include body-medium-14;
-  height: 42px;
-  padding-bottom: 12px;
-  margin-left: 40px;
+  margin: 0 0 24px 40px;
   color: $gray-blue-300;
-  list-style-type: none;
   background: $neutral-0;
 }

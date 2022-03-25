@@ -11,6 +11,7 @@
   }
   @include bp-767 {
     max-width: 100%;
+    padding-left: 20px;
   }
 
   @include bp-359 {
@@ -29,6 +30,11 @@
       top: -37%;
       left: 90%;
     }
+
+    @include bp-479 {
+      top: -37%;
+      left: 85%;
+    }
     @include bp-359 {
       left: 81%;
     }
@@ -38,8 +44,6 @@
 .wrapper-box {
   display: flex;
   flex-direction: column;
-  // width: 844px;
-  max-height: 730px;
   margin: 24px 0 0 100px;
   transition: all 500ms ease-in;
   @include bp-1279 {
@@ -49,11 +53,11 @@
   }
   @include bp-1059 {
     margin: 0 auto;
-    margin-bottom: 18%;
+    margin-bottom: 43%;
   }
 
   @include bp-359 {
-    margin-bottom: 120%;
+    margin-bottom: 100%;
   }
 }
 

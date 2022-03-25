@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import Link from 'next/dist/client/link'
 import style from './SideMenu.module.scss'
 import { IPropsMenu } from './type/IPropsMenu'
