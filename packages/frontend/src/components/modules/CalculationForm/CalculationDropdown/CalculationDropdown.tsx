@@ -1,10 +1,9 @@
-
-// import React from 'react'
-
-import Select from 'react-select'
+import { FC, ReactElement } from 'react'
+import Select, { components, DropdownIndicatorProps } from 'react-select'
 import IconGoWalking from '@elements/icons/IconGoWalking'
 import IconGoDriving from '@elements/icons/IconGoDriving'
 import classNames from 'classnames'
+import Image from 'next/image'
 import styles from './CalculationDropdown.module.scss'
 
 const options = [
@@ -15,6 +14,19 @@ const options = [
   { value: '20 minutes', label: '20 минут' },
   { value: '25+ minutes', label: '25 минут+' }
 ]
+
+const DropdownIndicator: FC<DropdownIndicatorProps> = (
+  props
+): ReactElement => {
+  return (
+    <components.DropdownIndicator { ...props }>
+      <Image height={ 18 }
+        src="/images/owners/dropdown.svg"
+        width={ 18 }
+      />
+    </components.DropdownIndicator>
+  )
+}
 
 export function CalculationDropdown (): JSX.Element {
   // const style = {
@@ -61,16 +73,14 @@ export function CalculationDropdown (): JSX.Element {
   // }
   return (
     <div className={ styles['container'] }>
-      <Select
-        className='calculation-select'
+      <Select className={ classNames(styles['calculation-select']) }
         classNamePrefix='calculation-select'
-        // components={ { DropdownIndicator: null } }
+        components={ { DropdownIndicator } }
         defaultValue={ options[0] }
-        id="long-value-select"
-        instanceId="long-value-select"
-        // menuIsOpen={ true }
+      // menuIsOpen={ true }
+        id="calculation-select"
+        instanceId="calculation-select"
         options={ options }
-        // styles={ style }
       />
 
       <div className={ styles['route'] }>
