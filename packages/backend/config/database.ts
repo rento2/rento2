@@ -34,13 +34,13 @@ const databaseConfig: DatabaseConfig = {
     |
     */
     mysql: {
-      client: 'mysql',
+      client: 'postgres',
       connection: {
-        host: Env.get('MYSQL_HOST'),
-        port: Env.get('MYSQL_PORT'),
-        user: Env.get('MYSQL_USER'),
-        password: Env.get('MYSQL_PASSWORD', ''),
-        database: Env.get('MYSQL_DB_NAME')
+        host: Env.get('POSTGRES_HOST'),
+        port: Env.get('POSTGRES_PORT'),
+        user: Env.get('POSTGRES_USER'),
+        password: Env.get('POSTGRES_PASSWORD', ''),
+        database: Env.get('POSTGRES_DB')
       },
       migrations: {
         naturalSort: true
