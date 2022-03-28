@@ -1,0 +1,35 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4387222, 2022-02-25T14:45:33-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: TTTravelsNext-Md by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-travels-next/medium/
+ *
+ * Webfont: TTTravelsNext-XBd by TypeType
+ * URL: https://www.myfonts.com/fonts/type-type/tt-travels-next/extrabold/
+ *
+ *
+ * Webfonts copyright: Copyright (c) 2021 by TypeType. All rights reserved.
+ *
+ * © 2022 MyFonts Inc
+*/
+
+/* @import must be at top of file, otherwise CSS will not work */
+// @import url("//hello.myfonts.net/count/42f196");
+
+@font-face {
+  font-family: 'TTTravelsNext-Md';
+  src: url('../fonts/webFonts/TTTravelsNextMd/font.woff2') format('woff2'),
+    url('../fonts/webFonts/TTTravelsNextMd/font.woff') format('woff');
+}
+@font-face {
+  font-family: 'TTTravelsNext-XBd';
+  src: url('../fonts/webFonts/TTTravelsNextXBd/font.woff2') format('woff2'),
+    url('../fonts/webFonts/TTTravelsNextXBd/font.woff') format('woff');
+}

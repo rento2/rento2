@@ -1,0 +1,105 @@
+@use '../core/breakpoints' as *;
+@use '../core/colors' as *;
+@use '../core/typography' as *;
+
+html,
+body {
+  color: $gray-blue-500;
+}
+
+a {
+  color: $gray-blue-600;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $iris-700;
+  }
+
+  &:active {
+    color: $gray-blue-500;
+  }
+
+  &:disabled {
+    color: $gray-blue-300;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+// Новый контейнер. Используем его для новых страниц
+.container-base {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include bp-1239 {
+    max-width: 944px;
+  }
+
+  @include bp-1023 {
+    max-width: 736px;
+  }
+
+  @include bp-767 {
+    max-width: 536px;
+  }
+
+  @include bp-567 {
+    max-width: 288px;
+  }
+}
+
+//Старый контейнер. Для новых страниц не использовать.
+.container {
+  width: 1276px;
+  margin: 0 auto;
+
+  @include bp-1439 {
+    width: 89%;
+  }
+
+  @include bp-1279 {
+    width: 92%;
+  }
+
+  @include bp-929 {
+    width: 89%;
+  }
+
+  @include bp-699 {
+    width: 90%;
+  }
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-s-b {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-s-b-c {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
