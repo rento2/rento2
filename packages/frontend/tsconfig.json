@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "baseUrl": "src",
+    "baseUrl": "srcFs",
     "paths": {
+      "@app/*": ["app/*"],
+      "@features/*": ["features/*"],
+      "@pages-fs/*": ["pages-fs/*"],
+      "@shared/*": ["shared/*"],
+      "@widgets/*": ["widgets/*"],
       "@elements/*": ["components/elements/*"],
       "@layouts/*": ["components/layouts/*"],
       "@modules/*": ["components/modules/*"],
