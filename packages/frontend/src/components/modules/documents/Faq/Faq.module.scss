@@ -9,13 +9,14 @@
     margin: 0 auto;
     margin-top: 92px;
   }
+
   @include bp-767 {
     max-width: 100%;
     padding-left: 20px;
   }
 
-  @include bp-359 {
-    padding-left: 16px;
+  @include bp-479 {
+    padding-left: 0px;
   }
 
   &::after {
@@ -53,17 +54,23 @@
   }
   @include bp-1059 {
     margin: 0 auto;
-    margin-bottom: 43%;
+    margin-bottom: 189px;
   }
 
   @include bp-359 {
-    margin-bottom: 100%;
+    margin-bottom: 318px;
   }
 }
 
 .doc-container {
   width: 90%;
   margin: 0 auto;
+
+  @include bp-479 {
+    width: 90%;
+    margin-left: 16px;
+  }
+
   @include bp-359 {
     width: 100%;
   }

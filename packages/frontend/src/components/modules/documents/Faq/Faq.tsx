@@ -1,7 +1,7 @@
-import style from './Faq.module.scss'
 import { IAccordionProps } from '@elements/accordions/types/IAccordionPrors'
 import Docs from '@modules/documents/AppDoc/AppDoc'
 import AccordionList from '@elements/accordions/AccordionList'
+import style from './Faq.module.scss'
 
 export default function Faq (): JSX.Element {
   const dateAcardion: IAccordionProps[] = [

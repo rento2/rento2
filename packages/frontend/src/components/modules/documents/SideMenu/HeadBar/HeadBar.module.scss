@@ -12,6 +12,10 @@
   border-bottom: 2px solid $neutral-50;
   outline: 0;
 
+  @include bp-479 {
+    padding-left: 16px;
+  }
+
   @include bp-359 {
     flex-direction: column;
     align-items: baseline;
@@ -49,17 +53,10 @@
     }
   }
 
-  &.active::before {
+  &.active::after {
     transform: rotate(-180deg);
   }
 
-  &:hover::before,
-  &:focus::before {
-    width: 22px;
-    height: 20px;
-    background-color: rgba($iris-500, 0.2);
-    border-radius: 100%;
-  }
 }
 
 .dark {
@@ -99,4 +96,7 @@
   margin: 0 0 24px 40px;
   color: $gray-blue-300;
   background: $neutral-0;
+  @include bp-479 {
+    margin: 0 0 24px 16px;
+  }
 }

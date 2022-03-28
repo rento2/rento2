@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { IPropsMenu } from '../type/IPropsMenu'
 import HeadBarItem from './HeadBarItems'
 import HeadBarTitle from './HeadBarTitle'
-import style from './HeadBar.module.scss'
 import FocusLock from 'react-focus-lock'
+import style from './HeadBar.module.scss'
 
 const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +29,10 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
     >
       <div className={ classNames(isOpen ? style['wrapper-box'] : style['bg-none']) }>
 
-        <HeadBarTitle btnOnClick={ btnOnClick } />
+        <HeadBarTitle
+          btnOnClick={ btnOnClick }
+          isOpen={ isOpen }
+        />
 
         <ul className={ classNames((!isOpen) ? style['h0'] : style['open']) }>
 

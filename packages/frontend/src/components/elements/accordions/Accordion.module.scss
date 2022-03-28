@@ -1,7 +1,8 @@
 .item {
   padding: 0 0 0 40px;
   border-bottom: 2px solid $neutral-50;
-  @include bp-359 {
+
+  @include bp-479 {
     padding: 0 0 0 16px;
   }
 

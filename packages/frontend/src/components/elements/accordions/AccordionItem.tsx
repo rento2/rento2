@@ -1,7 +1,7 @@
 import { IAccordionProps } from './types/IAccordionPrors'
-import style from './Accordion.module.scss'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
+import style from './Accordion.module.scss'
 
 function AccordionItem ({
   state,
