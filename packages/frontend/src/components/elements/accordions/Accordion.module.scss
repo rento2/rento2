@@ -10,7 +10,7 @@
   }
 
   &-title {
-    @include body-medium-14;
+    @include body-4;
     position: relative;
     display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
   }
 
   &-description {
-    @include body-medium-14;
+    @include body-4;
     width: 90%;
     padding: 0 0 32px;
     color: $gray-blue-400;

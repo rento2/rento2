@@ -1,5 +1,5 @@
 .title {
-  @include body-medium-14;
+  @include body-4;
   position: relative;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
 
   &__text {
 
-    @include body-medium-14;
+    @include body-4;
     color: $gray-blue-300;
   }
 
@@ -95,7 +95,7 @@
 }
 
 .menu {
-  @include body-medium-14;
+  @include body-4;
   margin: 0 0 24px 40px;
   color: $gray-blue-300;
   background: $neutral-0;
