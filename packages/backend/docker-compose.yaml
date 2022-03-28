@@ -18,6 +18,5 @@ services:
       - ${POSTGRES_PORT}:5432
     volumes:
       - ./_docker/data/postgres:/data/postgres
-      - ./_docker/pgsql/init.sh:/docker-entrypoint-initdb.d/init.sh
     networks:
       rento2:
