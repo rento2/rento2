@@ -1,0 +1,33 @@
+.footer {
+  padding: 30px 0 0;
+  background-color: $iris-50;
+
+  &__inner {
+    margin: 0 auto 30px;
+  }
+
+  &__title-socials {
+    @include body-5;
+    margin: 0 0 10px;
+    color: $iris-900;
+  }
+
+  &__list-socials {
+    min-height: 25px;
+  }
+
+  &__btn-group {
+    flex-direction: column;
+    min-height: 90px;
+  }
+
+  &__address {
+    background-color: $iris-900;
+
+    &-inner {
+      @include body-6;
+      min-height: 23px;
+      color: $neutral-0;
+    }
+  }
+}

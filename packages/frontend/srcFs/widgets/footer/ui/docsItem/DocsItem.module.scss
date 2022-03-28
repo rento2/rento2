@@ -1,0 +1,17 @@
+.item {
+  @include body-5;
+  margin: 0 0 4px;
+
+  &:focus,
+  &:hover {
+    @include subtitle-3;
+  }
+
+  &:active {
+    @include body-5;
+  }
+
+  &:disabled {
+    @include body-5;
+  }
+}
