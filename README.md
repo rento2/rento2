@@ -27,6 +27,12 @@
 
 # Дополнительная информация
 - Файлы шрифтов получаем по запросу (необходимы для работы на фронте)
+
+# Запуск миграций
+В директории ``packages/backend`` запустить команды:
+- ``node ace migration:run``
+- ``node ace db:seed``
+
 # Todo
 - Add commit message standard (see cz-conventional-changelog)
 - Add Swagger
