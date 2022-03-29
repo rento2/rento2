@@ -5,11 +5,11 @@ export default class Banners extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
-      table.string('name', 255)
+      table.bigIncrements('id').notNullable()
+      table.string('name', 255).notNullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').notNullable()
+      table.timestamp('updated_at').notNullable()
     })
   }
 
