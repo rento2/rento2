@@ -1,6 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 import Term from '../../common/enums/Term'
-import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 import { createArrFromEnum } from '../../common/helpers/enumService'
 
 export default class Apartments extends BaseSchema {
@@ -28,7 +27,7 @@ export default class Apartments extends BaseSchema {
       table.decimal('area', 7, 2)
       table.decimal('kitchen_area', 7, 2)
       table.integer('distance_from_center')
-      table.enum('adm_area', createArrFromEnum(AdminDistrictsOfMoscow))
+      table.string('adm_area', 64).index()
       table.string('district', 255).defaultTo('')
       table.string('selling_point', 1023)
       table.string('geo_coordinate_x', 20)
