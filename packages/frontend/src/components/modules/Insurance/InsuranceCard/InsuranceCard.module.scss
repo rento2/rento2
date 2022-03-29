@@ -1,0 +1,87 @@
+.insurance {
+  margin: 0 auto 275px;
+
+  @include bp-1279 {
+    margin: 0 auto 235px;
+  }
+
+  @include bp-929 {
+    margin: 0 auto 195px;
+  }
+
+  @include bp-699 {
+    margin: 0 auto 201px;
+  }
+
+  &__item {
+    padding: 10px 10px 43px;
+    background-color: $neutral-0;
+    border-radius: 20px;
+
+    @include bp-1279 {
+      padding: 10px 10px 26px;
+    }
+
+    @include bp-929 {
+      padding: 10px 10px 24px;
+    }
+
+    @include bp-699 {
+      width: 337px;
+      margin: 0 auto;
+    }
+
+    @include bp-359 {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__item-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 28px;
+    border-radius: 16px 16px 0 0;
+
+    @include bp-1279 {
+      margin: 0 0 20px;
+    }
+
+    @include bp-359 {
+      height: 120px;
+      object-fit: cover;
+    }
+
+    &_position {
+      @include bp-359 {
+        object-position: top;
+      }
+    }
+  }
+
+  &__requirement-price {
+    @include headline4;
+    margin: 0 0 4px;
+    color: #bebff9;
+
+    @include bp-1279 {
+      @include headline5;
+      margin: 0 0 8px;
+    }
+
+    &_color {
+      color: $iris-400;
+    }
+
+    &_mob {
+      @include bp-929 {
+        display: inline;
+      }
+    }
+  }
+
+  &__requirement {
+    @include headline-regular-18;
+  }
+}
