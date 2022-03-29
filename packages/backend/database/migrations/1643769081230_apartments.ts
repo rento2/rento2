@@ -42,9 +42,9 @@ export default class Apartments extends BaseSchema {
       table.decimal('price_quality', 2, 1)
       table.decimal('total_rating', 2, 1)
 
-      table.time('check_in_start')
-      table.time('check_in_end')
-      table.time('check_out_end')
+      table.timestamp('check_in_start')
+      table.timestamp('check_in_end')
+      table.timestamp('check_out_end')
       table.boolean('smoking_allowed').defaultTo('false')
       table.boolean('partying_allowed').defaultTo('false')
       table.boolean('children_allowed').defaultTo('false')
