@@ -31,6 +31,7 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
 
         <HeadBarTitle
           btnOnClick={ btnOnClick }
+          data={ dataMenu }
           isOpen={ isOpen }
         />
 
