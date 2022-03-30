@@ -14,7 +14,7 @@ export default class Reviews extends BaseSchema {
       table.decimal('purity', 2, 1).notNullable()
       table.decimal('location', 2, 1).notNullable()
       table.decimal('price_quality', 2, 1).notNullable()
-      table.text('comment')
+      table.text('comment').notNullable()
       table.boolean('is_approved').notNullable()
 
       table.timestamp('created_at').notNullable()

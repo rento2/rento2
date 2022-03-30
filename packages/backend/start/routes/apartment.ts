@@ -1,3 +1,3 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.resource('apartments', 'ApartmentsController').apiOnly()
+Route.resource('api/v1/apartments', 'ApartmentsController').apiOnly()
