@@ -14,7 +14,7 @@ export default class ReviewsController {
   public async one ({ response, request }: HttpContextContract): Promise<void> {
     const review = await Review.find(request.param('id', null))
     if (!review) {
-      return response.send(creatingErrMsg('error', 'Review not found'))
+      return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', 'Review not found'))
     }
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(review))
