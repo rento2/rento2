@@ -8,14 +8,14 @@ export default class CreateReviewValidator extends ValidatorMessages {
   }
 
   public schema = schema.create({
-    apartmentId: schema.string({}, [
+    apartmentId: schema.number([
       rules.exists({ table: 'apartments', column: 'id' })
     ]),
 
     author: schema.string({ trim: true }, [
       rules.minLength(3),
       rules.maxLength(255),
-      rules.regex(/^[a-zA-Z0-9-_. ]+$/)
+      rules.regex(/^[А-ЯЁ][а-яё]*$/)
     ]),
 
     avatar: schema.string({ trim: true }, [
@@ -25,22 +25,22 @@ export default class CreateReviewValidator extends ValidatorMessages {
 
     repairs: schema.number([
       rules.unsigned(),
-      rules.maxLength(5),
+      rules.range(0, 5),
     ]),
 
     purity: schema.number([
       rules.unsigned(),
-      rules.maxLength(5),
+      rules.range(0, 5),
     ]),
 
     location: schema.number([
       rules.unsigned(),
-      rules.maxLength(5),
+      rules.range(0, 5),
     ]),
 
     priceQuality: schema.number([
       rules.unsigned(),
-      rules.maxLength(5),
+      rules.range(0, 5),
     ]),
 
     comment: schema.string({}, [
