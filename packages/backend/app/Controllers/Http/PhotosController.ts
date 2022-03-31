@@ -25,33 +25,33 @@ export default class PhotosController {
     request,
     response
   }: HttpContextContract): Promise<void> {
-    const uploadPicture = await request.validate({ schema: photoSchema })
+    const pictureToUpload = await request.validate({ schema: photoSchema })
 
     const photos = await Photo.create(request.body())
 
-    await uploadPicture.image.moveToDisk(
+    await pictureToUpload.image.moveToDisk(
       Application.tmpPath('uploads'),
       {
-        name: `${photos.id}.${uploadPicture.image.extname ?? 'jpg'}`,
+        name: `${photos.id}.${pictureToUpload.image.extname ?? 'jpg'}`,
         overwrite: true
       },
       'local'
     )
 
-    const fileName = uploadPicture.image.fileName
+    const fileName = pictureToUpload.image.fileName
 
     return response.send({
-      meta: { upload: fileName },
+      meta: { filename: fileName },
       data: { photos }
     })
   }
 
   public async show ({ params, response }: HttpContextContract): Promise<void> {
-    const photos = await Photo.findBy('id', params['id'])
+    const photo = await Photo.findBy('id', params['id'])
 
     return response.send({
       meta: {},
-      data: { photos }
+      data: { photo }
     })
   }
 
