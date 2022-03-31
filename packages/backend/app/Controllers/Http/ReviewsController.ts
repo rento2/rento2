@@ -8,7 +8,7 @@ export default class ReviewsController {
   public async list ({ response }: HttpContextContract): Promise<void> {
     return response
       .status(HttpStatusCode.OK)
-      .send(creatingOkMsg(await Review.query().limit(20).preload('apartment')))
+      .send(creatingOkMsg(await Review.query().preload('apartment')))
   }
 
   public async one ({ response, request }: HttpContextContract): Promise<void> {
@@ -26,11 +26,11 @@ export default class ReviewsController {
       return response.send(creatingErrMsg('error', 'Review not found'))
     }
 
-    return response.status(HttpStatusCode.OK).send(
-      creatingOkMsg(
-        await review.merge(await request.validate(CreateReviewValidator)).save()
-      )
-    )
+    const updatedReview = await review.merge(
+      await request.validate(CreateReviewValidator)
+    ).save()
+
+    return response.status(HttpStatusCode.OK).send(creatingOkMsg(updatedReview))
   }
 
   public async create ({ request, response }: HttpContextContract): Promise<void> {
