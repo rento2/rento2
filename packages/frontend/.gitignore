@@ -31,4 +31,4 @@ yarn-error.log*
 
 # fonts
 /src/styles/fonts
-/srcFs/app/styles/fonts
+/src/app/styles/fonts
