@@ -1,12 +1,16 @@
 import Image from 'next/dist/client/image'
 import Link from 'next/dist/client/link'
 import { ButtonGeneral } from '@shared/ui'
+import classNames from 'classnames'
+import { useWindowDimensions } from '@shared/lib'
 import styles from './Header.module.scss'
 
 export function Header (): JSX.Element {
+  const { widthWindow } = useWindowDimensions()
+
   return (
     <header className={ styles['header'] }>
-      <div className={ styles['header__inner'] }>
+      <div className={ classNames(styles['header__inner'], 'container') }>
         <Link href='/'>
           <a className={ styles['header__logo'] }>
             <Image alt='Logo'
@@ -42,10 +46,12 @@ export function Header (): JSX.Element {
             </li>
           </ul>
         </nav>
-        <ButtonGeneral
-          size='xs'
+        {widthWindow > 929 && (<ButtonGeneral classProps={ classNames(styles['header__btn']) }
+          font='s'
+          grade='neutral'
+          height='40'
           text='+7 (966) 032-17-63'
-        />
+        />)}
 
         {/* Мобильное меню */}
         <div className={ styles['mobile-menu'] }
