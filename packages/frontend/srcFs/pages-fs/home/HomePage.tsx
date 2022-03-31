@@ -16,9 +16,9 @@ export const HomePage = (): JSX.Element => {
           <h1>
             Главная
           </h1>
-          <Link href='/form'>
+          <Link href='/docs/agreements/short'>
             <a>
-              Форма
+              Договор оферта краткосрочной аренды квартиры
             </a>
           </Link>
         </section>
