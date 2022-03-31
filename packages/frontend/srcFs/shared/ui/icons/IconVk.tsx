@@ -1,4 +1,4 @@
-import { IIconClassProps } from '@shared/lib/types/iconTypes'
+import { IIconClassProps } from './types/iconTypes'
 
 export function IconVk (props: IIconClassProps): JSX.Element {
   return (

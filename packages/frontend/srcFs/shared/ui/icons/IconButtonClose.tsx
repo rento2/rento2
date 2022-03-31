@@ -1,4 +1,4 @@
-import { IIconClassProps } from '@shared/lib/types/iconTypes'
+import { IIconClassProps } from './types/iconTypes'
 
 export const IconButtonClose = (props: IIconClassProps): JSX.Element => {
   return (
