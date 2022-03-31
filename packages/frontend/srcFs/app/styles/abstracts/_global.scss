@@ -4,7 +4,7 @@
 
 html,
 body {
-  color: $gray-blue-500;
+  color: $gray-blue-600;
 }
 
 a {
@@ -33,29 +33,29 @@ a {
 }
 
 // Новый контейнер. Используем его для новых страниц
-.container-base {
+.container {
   max-width: 1200px;
   margin: 0 auto;
 
-  @include bp-1239 {
-    max-width: 944px;
+  @include bp-1279 {
+    max-width: 984px;
   }
 
   @include bp-1023 {
-    max-width: 736px;
+    max-width: 704px;
   }
 
-  @include bp-767 {
-    max-width: 536px;
+  @include bp-743 {
+    max-width: 440px;
   }
 
-  @include bp-567 {
-    max-width: 288px;
+  @include bp-479 {
+    max-width: 100%;
   }
 }
 
 //Старый контейнер. Для новых страниц не использовать.
-.container {
+.container-old {
   width: 1276px;
   margin: 0 auto;
 

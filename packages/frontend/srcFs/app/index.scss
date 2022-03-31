@@ -1,2 +1,4 @@
-// Это публичное АПИ. Может тогда styles/style.scss не нужен? Импортировать сюда все напрямую.
-@use './styles/style.scss'
+// Публичное АПИ.
+@use './styles/abstracts/reset';
+@use './styles/core/fonts';
+@use './styles/abstracts/global';

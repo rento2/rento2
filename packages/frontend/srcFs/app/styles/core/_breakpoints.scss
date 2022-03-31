@@ -1,13 +1,13 @@
-// Новые брекпоинты (работаем только с ними): 1439, 1239, 1023, 767, 567
-// Контейнер под эти брэкпоинты container-base
+// Новые брекпоинты (работаем только с ними): 1439 (запасной), 1279, 1023, 743, 479, 320 (запасной)
+// Контейнер под эти брэкпоинты container
 @mixin bp-1439 {
   @media (max-width: 1439px) {
     @content;
   }
 }
 
-@mixin bp-1239 {
-  @media (max-width: 1239px) {
+@mixin bp-1279 {
+  @media (max-width: 1279px) {
     @content;
   }
 }
@@ -18,14 +18,21 @@
   }
 }
 
-@mixin bp-767 {
-  @media (max-width: 767px) {
+@mixin bp-743 {
+  @media (max-width: 743px) {
     @content;
   }
 }
 
-@mixin bp-567 {
-  @media (max-width: 567px) {
+@mixin bp-479 {
+  @media (max-width: 479px) {
+    @content;
+  }
+}
+
+//Возможно не нужен
+@mixin bp-320 {
+  @media (max-width: 320px) {
     @content;
   }
 }
@@ -33,12 +40,6 @@
 // Старые брэкпоинты. Не использовать! Со временем удалить!!!
 @mixin bp-1919 {
   @media (max-width: 1919px) {
-    @content;
-  }
-}
-
-@mixin bp-1279 {
-  @media (max-width: 1279px) {
     @content;
   }
 }
@@ -73,6 +74,12 @@
   }
 }
 
+@mixin bp-767 {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
 @mixin bp-699 {
   @media (max-width: 699px) {
     @content;
@@ -93,12 +100,6 @@
 
 @mixin bp-499 {
   @media (max-width: 499px) {
-    @content;
-  }
-}
-
-@mixin bp-479 {
-  @media (max-width: 479px) {
     @content;
   }
 }
