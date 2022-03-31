@@ -1,0 +1,27 @@
+.modal {
+  @include bp-849 {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 16px 16px 0 0;
+    transform: translate(0, 0);
+  }
+
+  &__dialog {
+    @include bp-849 {
+      width: 100%;
+      border-radius: 16px 16px 0 0;
+    }
+  }
+
+  &__position {
+    bottom: 0;
+    height: 100%;
+    transform: translate(-50%, 0);
+
+    @include bp-849 {
+      transform: translate(0, 0);
+    }
+  }
+}
