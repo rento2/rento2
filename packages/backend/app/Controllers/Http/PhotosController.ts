@@ -3,101 +3,134 @@ import { schema } from '@ioc:Adonis/Core/Validator'
 import Drive from '@ioc:Adonis/Core/Drive'
 import Photo from 'App/Models/Photo'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { v4: uuidv4 } = require('uuid')
+const tmpPath = Application.tmpPath('uploads')
 
 const photoSchema = schema.create({
   image: schema.file({
     size: '2mb',
-    extnames: ['jpg']
+    extnames: ['webp', 'jpg', 'jpeg', 'gif', 'png', 'svg']
   })
 })
 
 export default class PhotosController {
-  public async index ({ response }: HttpContextContract): Promise<void> {
+  public async index ({ response, logger }: HttpContextContract): Promise<void> {
     const photos = await Photo.all()
 
-    return response.send({
-      meta: {},
-      data: { photos }
-    })
+    try {
+      return response.send({
+        meta: {},
+        data: { photos }
+      })
+    } catch (e: any) {
+      logger.error(e)
+      return response.internalServerError()
+    }
   }
 
   public async store ({
     request,
-    response
+    response,
+    logger
   }: HttpContextContract): Promise<void> {
     const pictureToUpload = await request.validate({ schema: photoSchema })
+    try {
+      const uuid: string = uuidv4()
+      const extName = pictureToUpload.image.extname
 
-    const photos = await Photo.create(request.body())
+      if (extName != null) {
+        const filename = `${uuid}.${extName}`
 
-    await pictureToUpload.image.moveToDisk(
-      Application.tmpPath('uploads'),
-      {
-        name: `${photos.id}.${pictureToUpload.image.extname ?? 'jpg'}`,
-        overwrite: true
-      },
-      'local'
-    )
+        await pictureToUpload.image.moveToDisk(
+          tmpPath,
+          { name: filename, overwrite: true },
+          'local'
+        )
 
-    const fileName = pictureToUpload.image.fileName
+        const photo = await Photo.create({
+          link: tmpPath + '/' + filename
+        })
 
-    return response.send({
-      meta: { filename: fileName },
-      data: { photos }
-    })
+        return response.send({
+          meta: {},
+          data: { photo }
+        })
+      }
+    } catch (e: any) {
+      logger.error(e)
+      return response.internalServerError()
+    }
   }
 
-  public async show ({ params, response }: HttpContextContract): Promise<void> {
-    const photo = await Photo.findBy('id', params['id'])
+  public async show ({
+    params,
+    response,
+    logger
+  }: HttpContextContract): Promise<void> {
+    try {
+      const photo = await Photo.findBy('id', params['id'])
 
-    return response.send({
-      meta: {},
-      data: { photo }
-    })
+      if (photo != null) {
+        return response.ok({
+          meta: {},
+          data: { photo }
+        })
+      } else {
+        return response.notFound({ message: 'Photo not found' })
+      }
+    } catch (e: any) {
+      logger.error(e)
+      return response.internalServerError()
+    }
   }
 
   public async update ({
     params,
     request,
-    response
+    response,
+    logger
   }: HttpContextContract): Promise<void> {
-    const uploadPicture = await request.validate({ schema: photoSchema })
+    // const uploadPicture = await request.validate({ schema: photoSchema });
 
-    const photos = await Photo.findBy('id', params['id'])
+    try {
+      const photo = await Photo.findBy('id', params['id'])
 
-    if (photos != null) {
-      await photos.merge(request.body()).save()
+      if (photo != null) {
+        await photo.merge(request.body()).save()
 
-      await uploadPicture.image.moveToDisk(
-        Application.tmpPath('uploads'),
-        {
-          name: `${photos.id}.${uploadPicture.image.extname ?? 'jpg'}`,
-          overwrite: true
-        },
-        'local'
-      )
+        return response.ok({
+          meta: {},
+          data: { photo }
+        })
+      } else {
+        return response.notFound({ message: 'Photo not found' })
+      }
+    } catch (e: any) {
+      logger.error(e)
+      return response.internalServerError()
     }
-
-    const fileName = uploadPicture.image.fileName
-
-    return response.send({
-      meta: { update: fileName },
-      data: { photos }
-    })
   }
 
   public async destroy ({
     params,
-    response
+    response,
+    logger
   }: HttpContextContract): Promise<void> {
-    const photos = await Photo.findBy('id', params['id'])
-    if (photos != null) {
-      await Drive.delete(`${photos.id}.jpg`)
-      await photos.delete()
-    }
+    try {
+      const photo = await Photo.findBy('id', params['id'])
 
-    return response.send({
-      meta: {},
-      data: { photos }
-    })
+      if (photo != null) {
+        await Drive.delete(`${photo.id}.jpg`)
+        await photo.delete()
+
+        return response.noContent()
+      } else {
+        return response.notFound({ message: 'Photo not found' })
+      }
+    } catch (e: any) {
+      logger.error(e)
+      return response.internalServerError()
+    }
   }
 }
