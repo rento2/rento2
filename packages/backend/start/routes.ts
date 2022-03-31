@@ -41,6 +41,7 @@ Route
         Route.delete('/delete/:id', 'ReviewsController.delete')
         Route.post('/create', 'ReviewsController.create')
         Route.get('/list', 'ReviewsController.list')
+        Route.post('/update', 'ReviewsController.update')
       })
       .prefix('reviews')
 
