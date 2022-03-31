@@ -2,7 +2,8 @@ import classNames from 'classnames'
 import { FC } from 'react'
 import styles from './ButtonGeneral.module.scss'
 
-interface IButton {
+// Ширину указываем отдельно для каждой кнопки через classProps (можно передать любой класс)
+export interface IButton {
   text: string
   type?: 'submit' | 'reset' | 'button'
   href?: string
@@ -10,24 +11,30 @@ interface IButton {
   round?: boolean
   grade?: 'primary' | 'secondary' | 'neutral'
   full?: 'filled' | 'stroke'
-  size: 'l' | 'm' | 's' | 'xs'
+  font: 'l' | 'm' | 's'
+  height: '56' | '48' | '44' | '40'
+  classProps?: string
+  icon?: JSX.Element
 }
 
-export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false, round = false, grade = 'primary', full = 'filled', size }) => {
+export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, icon }) => {
   const Component = href != null ? 'a' : 'button'
 
   const stylesRound = styles['round'] ?? ''
   const stylesColor = styles[`grade-${grade}-full-${full}`] ?? ''
-  const stylesSize = styles[`size-${size}`] ?? ''
+  const stylesFont = styles[`font-${font}`] ?? ''
+  const stylesHeight = styles[`height-${height}`] ?? ''
 
   return (
     <Component
       className={ classNames(
+        classProps,
         styles['button'],
         {
           [stylesRound]: round,
           [stylesColor]: true,
-          [stylesSize]: true
+          [stylesFont]: true,
+          [stylesHeight]: true
         }
       ) }
       disabled={ disabled }
@@ -35,6 +42,7 @@ export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false,
       type={ type }
     >
       {text}
+      {icon}
     </Component>
   )
 }
