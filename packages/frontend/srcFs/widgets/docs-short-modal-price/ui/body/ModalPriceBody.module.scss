@@ -4,7 +4,7 @@
   }
 
   &__item-title {
-    @include subtitle-bold-12;
+    @include subtitle-3;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -16,7 +16,7 @@
   }
 
   &__item {
-    @include body-medium-12;
+    @include body-5;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
