@@ -1,0 +1,29 @@
+.container {
+  margin-bottom: 30px;
+
+  @include bp-1059 {
+    margin-bottom: 10px;
+  }
+}
+
+.item {
+  margin-bottom: 4px;
+  font-family: 'TTTravelsNext-Md';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  color: $gray-blue-400;
+
+  @include bp-1059 {
+    margin-bottom: 0;
+  }
+
+  @include bp-767 {
+    font-size: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

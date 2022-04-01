@@ -1,0 +1,63 @@
+.container {
+  margin-bottom: 62px;
+  font-family: 'TTTravelsNext-Md';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  color: $gray-blue-600;
+  white-space: nowrap;
+
+  @include bp-1059 {
+    margin-bottom: 18px;
+  }
+
+  @include bp-767 {
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  @include bp-479 {
+    margin-bottom: 16px;
+  }
+
+  @include bp-359 {
+    margin-bottom: 30px;
+  }
+
+  .item {
+    margin-bottom: 10px;
+
+    @include bp-767 {
+      margin-bottom: 4px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.metro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: $gray-blue-400;
+
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .metro-name {
+    margin-right: 10px;
+    margin-left: 4px;
+  }
+
+  .metro-time {
+    margin-left: 2px;
+    font-size: 12px;
+    line-height: 150%;
+  }
+}

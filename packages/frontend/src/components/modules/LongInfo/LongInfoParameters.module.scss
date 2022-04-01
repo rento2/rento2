@@ -1,0 +1,55 @@
+.container {
+  margin-bottom: 34px;
+
+  @include bp-1059 {
+    margin-bottom: 20px;
+  }
+
+  @include bp-479 {
+    display: flex;
+  }
+
+  @include bp-359 {
+    display: unset;
+  }
+}
+
+.item {
+  margin-bottom: 4px;
+  font-family: 'TTTravelsNext-XBd';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+  color: $gray-blue-600;
+
+  @include bp-1059 {
+    margin-bottom: 2px;
+  }
+
+  @include bp-767 {
+    font-size: 12px;
+  }
+
+  @include bp-479 {
+    margin-right: 10px;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @include bp-359 {
+    margin-right: 0;
+    margin-bottom: 2px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
