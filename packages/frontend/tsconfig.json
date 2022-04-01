@@ -3,15 +3,11 @@
     "target": "es5",
     "baseUrl": "src",
     "paths": {
-      "@elements/*": ["components/elements/*"],
-      "@layouts/*": ["components/layouts/*"],
-      "@modules/*": ["components/modules/*"],
-      "@templates/*": ["components/templates/*"],
-      "@store/*": ["store/*"],
-      "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"],
-      "@api/*": ["api/*"],
-      "@types/*": ["types/*"]
+      "@app/*": ["app/*"],
+      "@features/*": ["features/*"],
+      "@pages-fs/*": ["pages-fs/*"],
+      "@shared/*": ["shared/*"],
+      "@widgets/*": ["widgets/*"],
     },
     "lib": [
       "dom",

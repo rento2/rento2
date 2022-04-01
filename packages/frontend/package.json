@@ -25,9 +25,11 @@
     "react-focus-lock": "^2.7.1",
     "react-select": "^5.2.2",
     "react-swipeable": "^6.2.0",
+    "react-use": "^17.3.2",
     "remark": "^13.0.0",
     "remark-html": "^13.0.2",
     "sass": "^1.42.1",
+    "swiper": "^8.0.7",
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
