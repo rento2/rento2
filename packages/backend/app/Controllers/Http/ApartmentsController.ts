@@ -8,6 +8,8 @@ export default class ApartmentsController {
   public async index ({ response }: HttpContextContract): Promise<void> {
     const apartments = await Apartment.query().preload('accommodations')
 
+    response.header('access-control-expose-headers', 'content-range')
+    response.header('content-Range', 5)
     return response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', apartments))
   }
 
