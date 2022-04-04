@@ -16,9 +16,6 @@ export default class Review extends BaseModel {
   public author!: string
 
   @column()
-  public address!: string
-
-  @column()
   public avatar!: string
 
   @column()
