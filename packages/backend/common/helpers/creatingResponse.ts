@@ -12,7 +12,7 @@ export function creatingErrMsg (type: string, message: string): INegativeRespons
   }
 }
 
-export function creatingOkMsg<U> (message: string, data: U): IPositiveResponse<U> {
+export function creatingOkMsg<U> (data: U, message: string = 'OK'): IPositiveResponse<U> {
   return {
     meta: {
       result: message

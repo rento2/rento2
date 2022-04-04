@@ -8,7 +8,7 @@ export default class ApartmentsController {
   public async index ({ response }: HttpContextContract): Promise<void> {
     const apartments = await Apartment.query().preload('accommodations')
 
-    return response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', apartments))
+    return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
   }
 
   public async show ({ request, response }: HttpContextContract): Promise<void> {
@@ -24,7 +24,7 @@ export default class ApartmentsController {
     if (apartment.length === 0) {
       return response.send(creatingErrMsg('error', `Apartments ${id} not found`))
     }
-    return response.status(HttpStatusCode.OK).send(creatingOkMsg('OK', apartment))
+    return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartment))
   }
 
   public async store ({ request, response }: HttpContextContract): Promise<void> {
@@ -36,7 +36,7 @@ export default class ApartmentsController {
     const idOfAccommodations = accommodations.map((p: { id: number }) => +p.id)
     if (idOfAccommodations.length === 0) {
       return response.status(HttpStatusCode.Created)
-        .send(creatingOkMsg('Apartments are created without amenities', [apartment]))
+        .send(creatingOkMsg([apartment], 'Apartments are created without amenities'))
     }
 
     await Promise.all(idOfAccommodations.map(async (item: number) => {
@@ -46,7 +46,7 @@ export default class ApartmentsController {
     })
 
     const apartmentResp = await Apartment.query().where('id', apartment.id).preload('accommodations')
-    return response.status(HttpStatusCode.Created).send(creatingOkMsg('Apartments with amenities created', apartmentResp))
+    return response.status(HttpStatusCode.Created).send(creatingOkMsg(apartmentResp, 'Apartments with amenities created'))
   }
 
   public async destroy ({ response, params }: HttpContextContract): Promise<any> {

@@ -6,12 +6,11 @@ export const ReviewsFactory = Factory
   .define(Review, ({ faker }) => {
     return {
       author: faker.internet.userName(),
-      address: faker.address.streetName(),
       avatar: faker.internet.avatar(),
-      repairs: faker.datatype.number(10),
-      purity: faker.datatype.number(10),
-      location: faker.datatype.number(10),
-      priceQuality: faker.datatype.number(10),
+      repairs: faker.datatype.number(5),
+      purity: faker.datatype.number(5),
+      location: faker.datatype.number(5),
+      priceQuality: faker.datatype.number(5),
       comment: faker.lorem.sentence(),
       isApproved: faker.datatype.boolean()
     }

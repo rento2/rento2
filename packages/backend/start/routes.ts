@@ -21,8 +21,6 @@
 import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
-import './routes/apartment'
-
 Route.get('/', async () => {
   return { hello: 'world' }
 })
@@ -34,3 +32,29 @@ Route.get('/health', async ({ response }) => {
     ? response.ok(report)
     : response.badRequest(report)
 })
+
+Route
+  .group(() => {
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'ReviewsController.one')
+        Route.delete('/delete/:id', 'ReviewsController.delete')
+        Route.post('/create', 'ReviewsController.create')
+        Route.get('/list', 'ReviewsController.list')
+        Route.post('/update', 'ReviewsController.update')
+      })
+      .prefix('reviews')
+
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'BannersController.one')
+        Route.delete('/delete/:id', 'BannersController.delete')
+        Route.post('/create', 'BannersController.create')
+        Route.get('/list', 'BannersController.list')
+        Route.post('/update', 'BannersController.update')
+      })
+      .prefix('banners')
+
+    Route.resource('/apartments', 'ApartmentsController').apiOnly()
+  })
+  .prefix('/api/v1')
