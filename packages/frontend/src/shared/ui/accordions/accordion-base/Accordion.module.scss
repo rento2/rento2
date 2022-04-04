@@ -1,0 +1,110 @@
+.item {
+  padding: 0 0 0 40px;
+  border-bottom: 2px solid $neutral-50;
+
+  @include bp-479 {
+    padding: 0 0 0 16px;
+  }
+
+  &:first-child {
+    border-top: 2px solid $neutral-50;
+  }
+
+  &-title {
+    @include body-4;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 22px 0;
+    cursor: pointer;
+    background-color: $neutral-0;
+    border: 0;
+    outline: 0;
+
+    @include bp-1279 {
+      max-width: 100%;
+    }
+
+    @include bp-359 {
+      width: 95%;
+    }
+
+    &::after {
+      position: absolute;
+      top: 20px;
+      left: 93%;
+      width: 21px;
+      height: 21px;
+      cursor: pointer;
+      content: '';
+      background-image: url('/images/ownes/cross.svg');
+      background-repeat: no-repeat;
+      transition: transform 0.35s ease-in-out;
+    }
+
+    &.active::after {
+      transform: rotate(45deg);
+    }
+
+    &:hover::after,
+    &:focus::after {
+      width: 21px;
+      height: 21px;
+      background-color: rgba($iris-500, 0.2);
+      border-radius: 100%;
+    }
+  }
+
+  &-p {
+    max-width: 90%;
+    text-align: justify;
+    @include bp-359 {
+      max-width: 88%;
+      text-align: left;
+    }
+  }
+
+  &-description {
+    @include body-4;
+    width: 90%;
+    padding: 0 0 32px;
+    color: $gray-blue-400;
+  }
+
+  &-description-open {
+    animation: collapse-faq 0.35s ease-in-out both;
+  }
+
+  &-description-closed {
+    animation: collapse-faq-closed 0.35s ease-in-out both;
+  }
+
+  &-container {
+    overflow: hidden;
+    transition: height 0.35s ease-in-out;
+  }
+}
+
+@keyframes collapse-faq {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 0% 0%;
+  }
+}
+@keyframes collapse-faq-closed {
+  0% {
+    transform: scale(1);
+    transform-origin: 0% 0%;
+  }
+
+  100% {
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
+  }
+}
