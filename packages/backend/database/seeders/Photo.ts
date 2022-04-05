@@ -5,6 +5,6 @@ export default class PhotoSeeder extends BaseSeeder {
   public static developmentOnly = true
 
   public async run (): Promise<void> {
-    await PhotoFactory.createMany(6)
+    await PhotoFactory.with('apartment').createMany(6)
   }
 }

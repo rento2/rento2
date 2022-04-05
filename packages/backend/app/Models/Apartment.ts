@@ -4,7 +4,7 @@ import {
   column,
   hasMany,
   ManyToMany,
-  manyToMany
+  manyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
 import Photo from 'App/Models/Photo'
 
@@ -144,12 +144,10 @@ export default class Apartment extends BaseModel {
   public updatedAt!: DateTime
 
   @manyToMany(() => Accommodation, {
-    pivotTimestamps: true
+    pivotTimestamps: true,
   })
   public accommodations!: ManyToMany<typeof Accommodation>
 
-  @hasMany(() => Photo, {
-    foreignKey: 'apartment_id'
-  })
-  public photos!: HasMany<typeof Photo>
+  @hasMany(() => Photo, {})
+  public photo!: HasMany<typeof Photo>
 }
