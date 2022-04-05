@@ -23,9 +23,11 @@ export default class PhotosController {
         meta: {},
         data: { photos },
       })
-    } catch (e: any) {
-      logger.error(e)
-      return response.internalServerError()
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        logger.error(e.message)
+        return response.internalServerError()
+      }
     }
   }
 
@@ -57,9 +59,11 @@ export default class PhotosController {
           data: { photo },
         })
       }
-    } catch (e: any) {
-      logger.error(e)
-      return response.internalServerError()
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        logger.error(e.message)
+        return response.internalServerError()
+      }
     }
   }
 
@@ -79,9 +83,11 @@ export default class PhotosController {
       } else {
         return response.notFound({ message: 'Photo not found' })
       }
-    } catch (e: any) {
-      logger.error(e)
-      return response.internalServerError()
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        logger.error(e.message)
+        return response.internalServerError()
+      }
     }
   }
 
@@ -106,9 +112,11 @@ export default class PhotosController {
       } else {
         return response.notFound({ message: 'Photo not found' })
       }
-    } catch (e: any) {
-      logger.error(e)
-      return response.internalServerError()
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        logger.error(e.message)
+        return response.internalServerError()
+      }
     }
   }
 
@@ -128,9 +136,11 @@ export default class PhotosController {
       } else {
         return response.notFound({ message: 'Photo not found' })
       }
-    } catch (e: any) {
-      logger.error(e)
-      return response.internalServerError()
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        logger.error(e.message)
+        return response.internalServerError()
+      }
     }
   }
 }
