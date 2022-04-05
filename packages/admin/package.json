@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .tsx,.ts,.js,.jsx && npx tsc --noEmit",
     "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
-    "precommit": "npm run lint && npm run test-precommit"
+    "precommit": "npm run lint"
   },
   "browserslist": {
     "production": [
