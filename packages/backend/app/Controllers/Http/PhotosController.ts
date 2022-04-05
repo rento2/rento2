@@ -40,6 +40,7 @@ export default class PhotosController {
     try {
       const uuid: string = uuidv4()
       const extName = pictureToUpload.image.extname
+      console.log(request)
 
       if (extName != null) {
         const filename = `${uuid}.${extName}`

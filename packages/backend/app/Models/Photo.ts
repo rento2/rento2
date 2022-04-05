@@ -6,8 +6,11 @@ export default class Photo extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
 
+  @belongsTo(() => Apartment)
+  public apartment_id!: BelongsTo<typeof Apartment>
+
   @column()
-  public apartment_id!: number
+  public apartmentId!: number
 
   @column()
   public link!: string
@@ -17,9 +20,4 @@ export default class Photo extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt!: DateTime
-
-  @belongsTo(() => Apartment, {
-    localKey: 'apartment_id'
-  })
-  public aparmtment!: BelongsTo<typeof Apartment>
 }

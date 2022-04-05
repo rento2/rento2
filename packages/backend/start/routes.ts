@@ -18,29 +18,29 @@
 |
 */
 
-import Route from "@ioc:Adonis/Core/Route";
-import HealthCheck from "@ioc:Adonis/Core/HealthCheck";
+import Route from '@ioc:Adonis/Core/Route'
+import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
-Route.get("/", async () => {
-  return { hello: "world" };
-});
+Route.get('/', async () => {
+  return { hello: 'world' }
+})
 
-Route.get("/health", async ({ response }) => {
-  const report = await HealthCheck.getReport();
+Route.get('/health', async ({ response }) => {
+  const report = await HealthCheck.getReport()
 
-  return report.healthy ? response.ok(report) : response.badRequest(report);
-});
+  return report.healthy ? response.ok(report) : response.badRequest(report)
+})
 
 Route.group(() => {
   Route.group(() => {
-    Route.get("/one/:id", "ReviewsController.one");
-    Route.delete("/delete/:id", "ReviewsController.delete");
-    Route.post("/create", "ReviewsController.create");
-    Route.get("/list", "ReviewsController.list");
-    Route.post("/update", "ReviewsController.update");
-  }).prefix("reviews");
+    Route.get('/one/:id', 'ReviewsController.one')
+    Route.delete('/delete/:id', 'ReviewsController.delete')
+    Route.post('/create', 'ReviewsController.create')
+    Route.get('/list', 'ReviewsController.list')
+    Route.post('/update', 'ReviewsController.update')
+  }).prefix('reviews')
 
-  Route.resource("photo", "PhotosController").apiOnly();
+  Route.resource('photo', 'PhotosController').apiOnly()
 
-  Route.resource("/apartments", "ApartmentsController").apiOnly();
-}).prefix("/api/v1");
+  Route.resource('/apartments', 'ApartmentsController').apiOnly()
+}).prefix('/api/v1')
