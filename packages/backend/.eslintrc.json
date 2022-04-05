@@ -1,5 +1,9 @@
 {
   "parserOptions": {
     "project": "./tsconfig.json"
+  },
+  "rules": {
+    "comma-dangle": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off"
   }
 }

@@ -10,8 +10,8 @@ const tmpPath = Application.tmpPath('uploads')
 const photoSchema = schema.create({
   image: schema.file({
     size: '2mb',
-    extnames: ['webp', 'jpg', 'jpeg', 'gif', 'png', 'svg']
-  })
+    extnames: ['webp', 'jpg', 'jpeg', 'gif', 'png', 'svg'],
+  }),
 })
 
 export default class PhotosController {
@@ -21,7 +21,7 @@ export default class PhotosController {
     try {
       return response.send({
         meta: {},
-        data: { photos }
+        data: { photos },
       })
     } catch (e: any) {
       logger.error(e)
@@ -32,7 +32,7 @@ export default class PhotosController {
   public async store ({
     request,
     response,
-    logger
+    logger,
   }: HttpContextContract): Promise<void> {
     const pictureToUpload = await request.validate({ schema: photoSchema })
     try {
@@ -49,12 +49,12 @@ export default class PhotosController {
         )
 
         const photo = await Photo.create({
-          link: tmpPath + '/' + filename
+          link: tmpPath + '/' + filename,
         })
 
         return response.send({
           meta: {},
-          data: { photo }
+          data: { photo },
         })
       }
     } catch (e: any) {
@@ -66,7 +66,7 @@ export default class PhotosController {
   public async show ({
     params,
     response,
-    logger
+    logger,
   }: HttpContextContract): Promise<void> {
     try {
       const photo = await Photo.findBy('id', params['id'])
@@ -74,7 +74,7 @@ export default class PhotosController {
       if (photo != null) {
         return response.ok({
           meta: {},
-          data: { photo }
+          data: { photo },
         })
       } else {
         return response.notFound({ message: 'Photo not found' })
@@ -89,7 +89,7 @@ export default class PhotosController {
     params,
     request,
     response,
-    logger
+    logger,
   }: HttpContextContract): Promise<void> {
     // const uploadPicture = await request.validate({ schema: photoSchema });
 
@@ -101,7 +101,7 @@ export default class PhotosController {
 
         return response.ok({
           meta: {},
-          data: { photo }
+          data: { photo },
         })
       } else {
         return response.notFound({ message: 'Photo not found' })
@@ -115,7 +115,7 @@ export default class PhotosController {
   public async destroy ({
     params,
     response,
-    logger
+    logger,
   }: HttpContextContract): Promise<void> {
     try {
       const photo = await Photo.findBy('id', params['id'])

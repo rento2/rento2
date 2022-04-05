@@ -24,23 +24,23 @@ const databaseConfig: DatabaseConfig = {
   connections: {
     /*
     |--------------------------------------------------------------------------
-    | MySQL config
+    | Postgres config
     |--------------------------------------------------------------------------
     |
-    | Configuration for MySQL database. Make sure to install the driver
+    | Configuration for Postgres database. Make sure to install the driver
     | from npm when using this connection
     |
-    | npm i mysql
+    | npm i pg
     |
     */
-    mysql: {
-      client: 'mysql',
+    pg: {
+      client: 'pg',
       connection: {
-        host: Env.get('MYSQL_HOST'),
-        port: Env.get('MYSQL_PORT'),
-        user: Env.get('MYSQL_USER'),
-        password: Env.get('MYSQL_PASSWORD', ''),
-        database: Env.get('MYSQL_DB_NAME')
+        host: Env.get('POSTGRES_HOST'),
+        port: Env.get('POSTGRES_PORT'),
+        user: Env.get('POSTGRES_USER'),
+        password: Env.get('POSTGRES_PASSWORD'),
+        database: Env.get('POSTGRES_DB')
       },
       migrations: {
         naturalSort: true

@@ -25,6 +25,14 @@
 - ESLint https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 - Stylelint https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
 
+# Дополнительная информация
+- Файлы шрифтов получаем по запросу (необходимы для работы на фронте)
+
+# Запуск миграций
+В директории ``packages/backend`` запустить команды:
+- ``node ace migration:run``
+- ``node ace db:seed``
+
 # Todo
 - Add commit message standard (see cz-conventional-changelog)
 - Add Swagger
