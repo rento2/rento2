@@ -4,9 +4,10 @@ import { useState } from 'react'
 
 interface IAccordionList{
   state: IAccordionProps[]
+  styleName?: string
 }
 
-function AccordionList (state: IAccordionList, styleName: string): JSX.Element {
+function AccordionList ({ state, styleName }: IAccordionList): JSX.Element {
   const [currentIdx, setCurrentIdx] = useState(-1)
   const btnOnClick = (idx: number): void => {
     setCurrentIdx((currentValue) => (currentValue !== idx ? idx : -1))
@@ -15,7 +16,7 @@ function AccordionList (state: IAccordionList, styleName: string): JSX.Element {
   return (
     <ul className={ styleName }>
       {
-        state.state.map((item, idx) => (<AccordionItem
+        state.map((item, idx) => (<AccordionItem
           key={ idx }
           btnOnclick={ () => btnOnClick(idx) }
           isOpen={ idx === currentIdx }
