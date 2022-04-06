@@ -14,7 +14,6 @@ export default class CreateServiceValidator extends ValidatorMessages {
       rules.maxLength(255),
     ]),
 
-    type: schema.enum(Object.values(Term), [
-    ]),
+    type: schema.enum(Object.values(Term)),
   })
 }
