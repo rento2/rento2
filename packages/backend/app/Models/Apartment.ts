@@ -1,12 +1,16 @@
 import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import Accommodation from 'App/Models/Accommodation'
-import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
+import Service from './Service'
+import Term from '../../common/enums/Term'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
+
+  @manyToMany(() => Service, { pivotTable: 'services_to_apartments', pivotTimestamps: true })
+  public services!: ManyToMany<typeof Service>
 
   @column()
   public type!: Term
