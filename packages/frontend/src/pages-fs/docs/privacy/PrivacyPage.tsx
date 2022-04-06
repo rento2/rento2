@@ -1,6 +1,7 @@
 import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
+import DocumentsLoyout from '@shared/ui/documentsLoyout/DocumetsLoyout'
 
 export const PrivacyPage = (): JSX.Element => {
   return (
@@ -9,9 +10,7 @@ export const PrivacyPage = (): JSX.Element => {
     >
       <main>
         <section className='container'>
-          <h1>
-            Политика обработки персональных данных
-          </h1>
+          <DocumentsLoyout />
         </section>
       </main>
     </Layout>
