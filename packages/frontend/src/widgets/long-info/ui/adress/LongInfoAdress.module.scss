@@ -1,0 +1,72 @@
+.list {
+  @include body-4;
+  margin-bottom: 62px;
+  color: $gray-blue-600;
+  white-space: nowrap;
+
+  @include bp-1023 {
+    margin-bottom: 18px;
+  }
+
+  @include bp-743 {
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  @include bp-479 {
+    margin-bottom: 16px;
+  }
+
+  @include bp-320 {
+    margin-bottom: 30px;
+  }
+
+  .item {
+    margin-bottom: 10px;
+
+    @include bp-743 {
+      margin-bottom: 4px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.metro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: $gray-blue-400;
+
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .metro-name {
+    margin-right: 13.11px;
+    margin-left: 4px;
+  }
+
+  .metro-time {
+    margin-left: 5.33px;
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  .icon-walking {
+    fill: $gray-blue-400;
+  }
+
+  // возможно, стоит добавить цвета метро в _colors.scss
+  .icon-light-green {
+    fill: #c5e265;
+  }
+
+  .icon-blue {
+    fill: #1770a7;
+  }
+}

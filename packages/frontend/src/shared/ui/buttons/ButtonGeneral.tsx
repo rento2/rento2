@@ -4,7 +4,8 @@ import styles from './ButtonGeneral.module.scss'
 
 // Ширину указываем отдельно для каждой кнопки через classProps (можно передать любой класс)
 export interface IButton {
-  text: string
+  onClick: () => void
+  text?: string
   type?: 'submit' | 'reset' | 'button'
   href?: string
   disabled?: boolean
@@ -17,7 +18,20 @@ export interface IButton {
   icon?: JSX.Element
 }
 
-export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, icon }) => {
+export const ButtonGeneral: FC<IButton> = ({
+  onClick,
+  text,
+  type = 'button',
+  href,
+  disabled = false,
+  round = false,
+  grade = 'primary',
+  full = 'filled',
+  font,
+  height,
+  classProps,
+  icon
+}) => {
   const Component = href != null ? 'a' : 'button'
 
   const stylesRound = styles['round'] ?? ''
@@ -27,19 +41,16 @@ export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false,
 
   return (
     <Component
-      className={ classNames(
-        classProps,
-        styles['button'],
-        {
-          [stylesRound]: round,
-          [stylesColor]: true,
-          [stylesFont]: true,
-          [stylesHeight]: true
-        }
-      ) }
+      className={ classNames(classProps, styles['button'], {
+        [stylesRound]: round,
+        [stylesColor]: true,
+        [stylesFont]: true,
+        [stylesHeight]: true
+      }) }
       disabled={ disabled }
       href={ href }
       type={ type }
+      onClick={ onClick }
     >
       {text}
       {icon}

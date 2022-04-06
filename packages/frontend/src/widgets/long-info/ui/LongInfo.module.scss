@@ -1,0 +1,116 @@
+.container {
+  position: relative;
+  width: 438px;
+  padding: 40px 30px 60px;
+  background: $neutral-0;
+  border-radius: 2px;
+  box-shadow: 0 0 20px #aaa;
+
+  @include bp-1023 {
+    width: 404px;
+    min-height: 450px;
+  }
+
+  @include bp-743 {
+    width: 347px;
+    min-height: unset;
+    padding: 20px;
+  }
+
+  @include bp-479 {
+    width: 100%;
+    padding: 30px 16px;
+  }
+}
+
+.price {
+  @include headline-5;
+  margin-bottom: 10px;
+  color: $gray-blue-600;
+
+  @include bp-1023 {
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
+
+.location {
+  @include body-5;
+  display: flex;
+  align-items: center;
+  margin-bottom: 34px;
+  color: $gray-blue-600;
+  text-align: center;
+
+  @include bp-1023 {
+    margin-bottom: 20px;
+    font-size: 10px;
+  }
+
+  @include bp-743 {
+    margin-bottom: 14px;
+  }
+
+  &:hover {
+    color: inherit;
+    cursor: pointer;
+  }
+}
+
+.buttons {
+  display: flex;
+
+  @include bp-743 {
+    margin-bottom: 0;
+  }
+
+  @include bp-479 {
+    flex-direction: column;
+  }
+
+  .btn {
+    @include body-4;
+    padding: 12px;
+    white-space: nowrap;
+
+    @include bp-743 {
+      @include body-5;
+      padding: 11px;
+    }
+
+    @include bp-479 {
+      @include body-4;
+      width: 100%;
+      padding: 12px;
+    }
+
+    &_first {
+      max-width: 44px;
+      margin: 0 10px 0 0;
+
+      @include bp-479 {
+        max-width: unset;
+        margin: 0 0 10px;
+      }
+    }
+
+    &_last {
+      flex-grow: 1;
+
+      @include bp-479 {
+        flex-grow: unset;
+      }
+    }
+  }
+}
+
+.icon-call {
+  fill: none;
+  stroke: $gray-blue-600;
+}
+
+.icon-location {
+  fill: none;
+  stroke: $neutral-900;
+}
