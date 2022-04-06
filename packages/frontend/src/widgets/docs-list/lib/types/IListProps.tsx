@@ -11,4 +11,6 @@ export interface IListProps {
   }
   contents?: IListProps[]
   as?: React.ElementType // Этот тип если нужно будет передать тег или компонент через пропс
+  btnOnclick?: () => void
+  isOpen?: boolean
 }
