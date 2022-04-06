@@ -8,7 +8,7 @@ export default class Apartments extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
+      table.bigIncrements('id').primary()
       table.enum('type', createArrFromEnum(Term))
       table.boolean('is_active')
       table.string('name', 255).unique()

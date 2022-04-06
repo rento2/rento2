@@ -3,10 +3,14 @@ import { DateTime } from 'luxon'
 import Accommodation from 'App/Models/Accommodation'
 import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
+import Banner from './Banner'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
+
+  @manyToMany(() => Banner, { pivotTable: 'banners_to_apartments', pivotTimestamps: true })
+  public banners!: ManyToMany<typeof Banner>
 
   @column()
   public type!: Term
