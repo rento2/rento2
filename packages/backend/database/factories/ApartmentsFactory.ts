@@ -4,6 +4,8 @@ import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
 import Term from '../../common/enums/Term'
 import { returnRandomFromEnum } from '../../common/helpers/enumService'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
+import { ServicesFactory } from './ServicesFactory'
+import { BannersFactory } from './BannersFactory'
 
 export const ApartmentsFactory = Factory
   .define(Apartment, ({ faker }) => {
@@ -55,4 +57,6 @@ export const ApartmentsFactory = Factory
     }
   })
   .relation('accommodations', () => AccommodationsFactory)
+  .relation('services', () => ServicesFactory)
+  .relation('banners', () => BannersFactory)
   .build()

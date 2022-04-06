@@ -40,7 +40,15 @@ Route.group(() => {
     Route.post('/update', 'ReviewsController.update')
   }).prefix('reviews')
 
-  Route.resource('photo', 'PhotosController').apiOnly()
+  Route.group(() => {
+    Route.get('/one/:id', 'BannersController.one')
+    Route.delete('/delete/:id', 'BannersController.delete')
+    Route.post('/create', 'BannersController.create')
+    Route.get('/list', 'BannersController.list')
+    Route.post('/update', 'BannersController.update')
+  }).prefix('banners')
 
   Route.resource('/apartments', 'ApartmentsController').apiOnly()
+
+  Route.resource('photo', 'PhotosController').apiOnly()
 }).prefix('/api/v1')

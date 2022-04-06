@@ -5,7 +5,7 @@ export default class Reviews extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
+      table.bigIncrements('id').primary()
       table.bigInteger('apartment_id').unsigned().notNullable()
       table.foreign('apartment_id').references('id').inTable('apartments')
       table.string('author', 255).notNullable()
