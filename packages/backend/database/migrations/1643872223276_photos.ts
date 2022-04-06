@@ -12,7 +12,6 @@ export default class Photos extends BaseSchema {
         .references('id')
         .inTable('apartments')
       table.string('link', 255)
-
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

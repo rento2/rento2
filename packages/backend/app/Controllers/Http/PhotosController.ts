@@ -37,11 +37,10 @@ export default class PhotosController {
     logger,
   }: HttpContextContract): Promise<void> {
     const pictureToUpload = await request.validate({ schema: photoSchema })
-
+    const apartmentId = request.body()['apartment_id']
     try {
       const uuid: string = uuidv4()
       const extName = pictureToUpload.image.extname
-      console.log(request)
 
       if (extName != null) {
         const filename = `${uuid}.${extName}`
@@ -54,7 +53,7 @@ export default class PhotosController {
 
         const photo = await Photo.create({
           link: tmpPath + '/' + filename,
-          apartment_id: request.body()['apartment_id'],
+          apartment_id: apartmentId,
         })
 
         return response.send({

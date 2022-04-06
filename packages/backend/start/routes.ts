@@ -22,18 +22,8 @@ import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
 Route.get('/', async () => {
-  return `
-  <form action="/photo" method="post" enctype="multipart/form-data">
-      <div class="form">
-        <label>Apartment id</label>
-        <input name="apartment_id"></input>
-        <label>Upload</label><input type="file" name="image">
-      </div>
-    <button type="submit">Submit</button>
-  </form>`
+  return { hello: 'world' }
 })
-
-Route.resource('photo', 'PhotosController').apiOnly()
 
 Route.get('/health', async ({ response }) => {
   const report = await HealthCheck.getReport()
@@ -49,6 +39,8 @@ Route.group(() => {
     Route.get('/list', 'ReviewsController.list')
     Route.post('/update', 'ReviewsController.update')
   }).prefix('reviews')
+
+  Route.resource('photo', 'PhotosController').apiOnly()
 
   Route.resource('/apartments', 'ApartmentsController').apiOnly()
 }).prefix('/api/v1')
