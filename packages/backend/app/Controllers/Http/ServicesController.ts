@@ -26,19 +26,17 @@ export default class ServicesController {
       return response.send(creatingErrMsg('error', 'Service not found'))
     }
 
-    const updatedService = await service.merge({
-      ...(await request.validate(CreateServiceValidator)),
-      type: request.body()['type'],
-    }).save()
+    const updatedService = await service.merge(
+      await request.validate(CreateServiceValidator),
+    ).save()
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(updatedService))
   }
 
   public async create ({ request, response }: HttpContextContract): Promise<void> {
-    const service = await Service.create({
-      ...(await request.validate(CreateServiceValidator)),
-      type: request.body()['type'],
-    })
+    const service = await Service.create(
+      await request.validate(CreateServiceValidator)
+    )
 
     return response
       .status(HttpStatusCode.Created)
