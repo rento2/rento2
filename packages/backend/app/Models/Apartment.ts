@@ -4,6 +4,7 @@ import Accommodation from 'App/Models/Accommodation'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 import Service from './Service'
 import Term from '../../common/enums/Term'
+import Banner from './Banner'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
@@ -11,6 +12,9 @@ export default class Apartment extends BaseModel {
 
   @manyToMany(() => Service, { pivotTable: 'services_to_apartments', pivotTimestamps: true })
   public services!: ManyToMany<typeof Service>
+
+  @manyToMany(() => Banner, { pivotTable: 'banners_to_apartments', pivotTimestamps: true })
+  public banners!: ManyToMany<typeof Banner>
 
   @column()
   public type!: Term

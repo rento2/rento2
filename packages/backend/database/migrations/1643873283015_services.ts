@@ -5,7 +5,7 @@ export default class Services extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
+      table.bigIncrements('id').primary()
       table.string('type', 64).index()
       table.string('name', 255)
 
