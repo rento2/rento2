@@ -1,6 +1,6 @@
+import { photoSchema } from './../../Validators/PhotoValidator'
 import { HttpStatusCode } from './../../../common/constants/HttpStatusCode'
 import Application from '@ioc:Adonis/Core/Application'
-import { schema } from '@ioc:Adonis/Core/Validator'
 import Drive from '@ioc:Adonis/Core/Drive'
 import Photo from 'App/Models/Photo'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
@@ -11,13 +11,6 @@ import {
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { v4: uuidv4 } = require('uuid')
 const tmpPath = Application.tmpPath('uploads')
-
-const photoSchema = schema.create({
-  image: schema.file({
-    size: '2mb',
-    extnames: ['webp', 'jpg', 'jpeg', 'gif', 'png', 'svg'],
-  }),
-})
 
 export default class PhotosController {
   public async index ({ response }: HttpContextContract): Promise<void> {
