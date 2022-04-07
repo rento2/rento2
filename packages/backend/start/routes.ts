@@ -28,33 +28,27 @@ Route.get('/', async () => {
 Route.get('/health', async ({ response }) => {
   const report = await HealthCheck.getReport()
 
-  return report.healthy
-    ? response.ok(report)
-    : response.badRequest(report)
+  return report.healthy ? response.ok(report) : response.badRequest(report)
 })
 
-Route
-  .group(() => {
-    Route
-      .group(() => {
-        Route.get('/one/:id', 'ReviewsController.one')
-        Route.delete('/delete/:id', 'ReviewsController.delete')
-        Route.post('/create', 'ReviewsController.create')
-        Route.get('/list', 'ReviewsController.list')
-        Route.post('/update', 'ReviewsController.update')
-      })
-      .prefix('reviews')
+Route.group(() => {
+  Route.group(() => {
+    Route.get('/one/:id', 'ReviewsController.one')
+    Route.delete('/delete/:id', 'ReviewsController.delete')
+    Route.post('/create', 'ReviewsController.create')
+    Route.get('/list', 'ReviewsController.list')
+    Route.post('/update', 'ReviewsController.update')
+  }).prefix('reviews')
 
-    Route
-      .group(() => {
-        Route.get('/one/:id', 'BannersController.one')
-        Route.delete('/delete/:id', 'BannersController.delete')
-        Route.post('/create', 'BannersController.create')
-        Route.get('/list', 'BannersController.list')
-        Route.post('/update', 'BannersController.update')
-      })
-      .prefix('banners')
+  Route.group(() => {
+    Route.get('/one/:id', 'BannersController.one')
+    Route.delete('/delete/:id', 'BannersController.delete')
+    Route.post('/create', 'BannersController.create')
+    Route.get('/list', 'BannersController.list')
+    Route.post('/update', 'BannersController.update')
+  }).prefix('banners')
 
-    Route.resource('/apartments', 'ApartmentsController').apiOnly()
-  })
-  .prefix('/api/v1')
+  Route.resource('/apartments', 'ApartmentsController').apiOnly()
+
+  Route.resource('photo', 'PhotosController').apiOnly()
+}).prefix('/api/v1')
