@@ -55,6 +55,16 @@ Route
       })
       .prefix('banners')
 
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'OrdersController.one')
+        Route.delete('/delete/:id', 'OrdersController.delete')
+        Route.post('/create', 'OrdersController.create')
+        Route.get('/list', 'OrdersController.list')
+        Route.post('/update', 'OrdersController.update')
+      })
+      .prefix('orders')
+
     Route.resource('/apartments', 'ApartmentsController').apiOnly()
   })
   .prefix('/api/v1')
