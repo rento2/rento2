@@ -28,9 +28,7 @@ Route.get('/', async () => {
 Route.get('/health', async ({ response }) => {
   const report = await HealthCheck.getReport()
 
-  return report.healthy
-    ? response.ok(report)
-    : response.badRequest(report)
+  return report.healthy ? response.ok(report) : response.badRequest(report)
 })
 
 Route
@@ -66,5 +64,6 @@ Route
       .prefix('orders')
 
     Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route.resource('photo', 'PhotosController').apiOnly()
   })
   .prefix('/api/v1')
