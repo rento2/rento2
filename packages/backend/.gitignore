@@ -6,5 +6,5 @@ coverage
 .env
 tmp
 .nyc_output
-_docker
-Dockerfile
+_docker/data/*
+_docker/data/.gitkeep
