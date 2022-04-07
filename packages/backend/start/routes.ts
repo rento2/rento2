@@ -59,7 +59,6 @@ Route
         Route.delete('/delete/:id', 'OrdersController.delete')
         Route.post('/create', 'OrdersController.create')
         Route.get('/list', 'OrdersController.list')
-        Route.post('/update', 'OrdersController.update')
       })
       .prefix('orders')
 

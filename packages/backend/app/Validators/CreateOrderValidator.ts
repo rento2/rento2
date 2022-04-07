@@ -9,7 +9,7 @@ export default class CreateOrderValidator extends ValidatorMessages {
   }
 
   public schema = schema.create({
-    apartment_id: schema.number([
+    apartmentId: schema.number([
       rules.unsigned(),
       rules.exists({ table: 'apartments', column: 'id' }),
     ]),
@@ -23,17 +23,17 @@ export default class CreateOrderValidator extends ValidatorMessages {
     phone: schema.string({ trim: true }, [
       rules.mobile({ strict: true })
     ]),
-    date_from: schema.date({
+    dateFrom: schema.date({
       format: 'yyyy-MM-dd HH:mm:ss'
     }),
-    date_to: schema.date({
+    dateTo: schema.date({
       format: 'yyyy-MM-dd HH:mm:ss'
     }),
     nights_number: schema.number([
       rules.unsigned(),
       rules.range(0, 365)
     ]),
-    payment_type: schema.enum(Object.values(Pay) as Pay[]),
+    paymentType: schema.enum(Object.values(Pay) as Pay[]),
     prices: schema.string({ trim: true }, [
       rules.minLength(1),
       rules.maxLength(5000)
@@ -48,8 +48,8 @@ export default class CreateOrderValidator extends ValidatorMessages {
       rules.unsigned(),
     ]),
     pets: schema.boolean(),
-    paid_part: schema.number([
-      rules.unsigned(),
+    paidPart: schema.number([
+      rules.range(0, 100),
     ]),
     number: schema.string({ trim: true }, [
       rules.range(1, 255),

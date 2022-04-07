@@ -65,7 +65,7 @@ export default class Order extends BaseModel {
   public updatedAt!: DateTime
 
   @column({ serializeAs: null })
-  public isDeleted: boolean = false
+  public deletedAt: DateTime|null = null
 
   @belongsTo(() => Apartment, {
     localKey: 'id'
