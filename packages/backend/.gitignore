@@ -7,4 +7,4 @@ coverage
 tmp
 .nyc_output
 _docker/data/*
-_docker/data/.gitkeep
+!_docker/data/.gitkeep

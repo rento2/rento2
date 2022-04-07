@@ -1,4 +1,2 @@
 **/.DS_Store
 node_modules
-/packages/backend/_docker/data/*
-!/packages/backend/_docker/data/.gitkeep
