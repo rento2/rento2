@@ -1,9 +1,11 @@
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes'
+import { compose } from '@ioc:Adonis/Core/Helpers'
 import Pay from './../../common/enums/Pay'
 import { DateTime } from 'luxon'
 import { Apartment } from './'
 
-export default class Order extends BaseModel {
+export default class Order extends compose(BaseModel, SoftDeletes) {
   @column({ isPrimary: true })
   public id!: number
 
@@ -38,7 +40,7 @@ export default class Order extends BaseModel {
   public paymentType!: Pay
 
   @column()
-  public prices!: string
+  public prices!: number[]
 
   @column()
   public adults!: number

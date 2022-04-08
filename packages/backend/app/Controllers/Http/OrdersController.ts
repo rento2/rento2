@@ -8,7 +8,7 @@ export default class OrdersController {
   public async list ({ response }: HttpContextContract): Promise<void> {
     return response
       .status(HttpStatusCode.OK)
-      .send(creatingOkMsg(await Order.all()))
+      .send(creatingOkMsg(await Order.query()))
   }
 
   public async one ({ response, request }: HttpContextContract): Promise<void> {
@@ -44,12 +44,9 @@ export default class OrdersController {
   }
 
   public async delete ({ response, request }: HttpContextContract): Promise<any> {
-    const order = await Order.find(request.param('id', null))
-    if (!order) {
-      return response.send(creatingErrMsg('error', 'Order not found'))
-    }
-
+    const order = await Order.findOrFail(request.param('id', null))
     await order.delete()
+
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(order.id))
   }
 }

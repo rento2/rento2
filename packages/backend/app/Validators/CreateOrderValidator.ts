@@ -34,10 +34,7 @@ export default class CreateOrderValidator extends ValidatorMessages {
       rules.range(0, 365)
     ]),
     paymentType: schema.enum(Object.values(Pay) as Pay[]),
-    prices: schema.string({ trim: true }, [
-      rules.minLength(1),
-      rules.maxLength(5000)
-    ]),
+    prices: schema.array().members(schema.number()),
     adults: schema.number([
       rules.unsigned(),
     ]),
