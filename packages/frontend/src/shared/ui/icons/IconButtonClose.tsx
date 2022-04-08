@@ -3,22 +3,26 @@ import { IIconClassProps } from './types/iconTypes'
 export const IconButtonClose = (props: IIconClassProps): JSX.Element => {
   return (
     <svg className={ props.classProps }
-      height='20'
-      viewBox='0 0 20 20'
-      width='20'
-      xmlns='http://www.w3.org/2000/svg'
+      fill="none"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path d='M3.33374 16.666L16.6662 3.33357'
-        stroke='#6F57EB'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        strokeWidth='2'
+      <path d="M13.1699 18.8299L18.8299 13.1699"
+        stroke="black"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path d='M3.33374 3.33398L16.6662 16.6664'
-        stroke='#6F57EB'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        strokeWidth='2'
+      <path d="M18.8299 18.8299L13.1699 13.1699"
+        stroke="black"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M13 26H19C24 26 26 24 26 19V13C26 8 24 6 19 6H13C8 6 6 8 6 13V19C6 24 8 26 13 26Z"
+        stroke="black"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )

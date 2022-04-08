@@ -15,9 +15,10 @@ export interface IButton {
   height: '56' | '48' | '44' | '40'
   classProps?: string
   icon?: JSX.Element
+  onClick: () => void
 }
 
-export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, icon }) => {
+export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, icon, onClick }) => {
   const Component = href != null ? 'a' : 'button'
 
   const stylesRound = styles['round'] ?? ''
@@ -40,6 +41,7 @@ export const ButtonGeneral: FC<IButton> = ({ text, type, href, disabled = false,
       disabled={ disabled }
       href={ href }
       type={ type }
+      onClick={ onClick }
     >
       {text}
       {icon}

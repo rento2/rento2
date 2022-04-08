@@ -1,0 +1,105 @@
+.link {
+  @include body-5;
+}
+
+// .round {
+//   border-radius: 40px;
+// }
+
+// .grade-primary-full-filled {
+//   color: $neutral-0;
+//   background-color: $orange-a500;
+
+//   &:hover,
+//   &:focus {
+//     color: $neutral-0;
+//     background-color: $orange-500;
+//   }
+
+//   &:active {
+//     color: $orange-300;
+//     background-color: $orange-a500;
+//   }
+
+//   &:disabled {
+//     color: $gray-blue-200;
+//     cursor: auto;
+//     background-color: $gray-blue-50;
+//   }
+// }
+
+// .grade-secondary-full-filled {
+//   color: $neutral-0;
+//   background-color: $iris-900;
+
+//   &:hover,
+//   &:focus {
+//     color: $iris-200;
+//   }
+
+//   &:active {
+//     color: $iris-400;
+//   }
+
+//   &:disabled {
+//     color: $gray-blue-200;
+//     cursor: auto;
+//     background-color: $gray-blue-50;
+//   }
+// }
+
+// .grade-neutral-full-filled {
+//   color: $neutral-900;
+//   background-color: $gray-blue-50;
+
+//   &:hover,
+//   &:focus {
+//     color: $neutral-900;
+//     background-color: $gray-blue-100;
+//   }
+
+//   &:active {
+//     color: $gray-blue-400;
+//     background-color: $gray-blue-200;
+//   }
+
+//   &:disabled {
+//     color: $gray-blue-200;
+//     cursor: auto;
+//     background-color: $gray-blue-50;
+//   }
+// }
+
+// // .grade-primary-full-stroke {}
+
+// // .grade-secondary-full-stroke {}
+
+// // .grade-neutral-full-stroke {}
+
+// .font-l {
+//   @include body-3;
+// }
+
+// .font-m {
+//   @include body-4;
+// }
+
+// .font-s {
+//   @include body-5;
+// }
+
+// .height-56 {
+//   height: 56px;
+// }
+
+// .height-48 {
+//   height: 48px;
+// }
+
+// .height-44 {
+//   height: 44px;
+// }
+
+// .height-40 {
+//   height: 40px;
+// }
