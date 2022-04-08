@@ -1,5 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import CreateApartmentValidator from 'App/Validators/CreateApartmentValidator'
+import CreateApartmentValidator from 'App/Validators/ApartmentValidator'
 import { Apartment } from 'App/Models'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'

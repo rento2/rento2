@@ -2,7 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
 import Review from 'App/Models/Review'
-import CreateReviewValidator from 'App/Validators/CreateReviewValidator'
+import CreateReviewValidator from 'App/Validators/ReviewValidator'
 
 export default class ReviewsController {
   public async list ({ response }: HttpContextContract): Promise<void> {

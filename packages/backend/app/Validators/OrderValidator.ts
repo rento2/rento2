@@ -3,7 +3,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import ValidatorMessages from 'App/Validators/ValidatorMessages'
 import Pay from '../../common/enums/Pay'
 
-export default class CreateOrderValidator extends ValidatorMessages {
+export default class OrderValidator extends ValidatorMessages {
   constructor (protected ctx: HttpContextContract) {
     super()
   }
@@ -23,12 +23,8 @@ export default class CreateOrderValidator extends ValidatorMessages {
     phone: schema.string({ trim: true }, [
       rules.mobile({ strict: true })
     ]),
-    dateFrom: schema.date({
-      format: 'yyyy-MM-dd HH:mm:ss'
-    }),
-    dateTo: schema.date({
-      format: 'yyyy-MM-dd HH:mm:ss'
-    }),
+    dateFrom: schema.date(),
+    dateTo: schema.date(),
     nightsNumber: schema.number([
       rules.unsigned(),
       rules.range(0, 365)
@@ -36,7 +32,14 @@ export default class CreateOrderValidator extends ValidatorMessages {
     paymentType: schema.enum(Object.values(Pay) as Pay[]),
     prices: schema.array().members(
       schema.object()
-        .members({ date: schema.date(), price: schema.number() })
+        .members({
+          date: schema.date(undefined, [
+            rules.required()
+          ]),
+          price: schema.number([
+            rules.required()
+          ])
+        })
     ),
     adults: schema.number([
       rules.unsigned(),
