@@ -8,3 +8,4 @@ tmp
 .nyc_output
 _docker/data/*
 !_docker/data/.gitkeep
+.history
