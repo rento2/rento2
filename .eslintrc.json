@@ -8,6 +8,16 @@
     {"files": ["*.{jsx, ts, tsx}"]}
   ],
   "rules": {
-    "@typescript-eslint/dot-notation": 0
+    "@typescript-eslint/dot-notation": 0,
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none",
+        "caughtErrors": "none",
+        "ignoreRestSiblings": true,
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }
