@@ -42,7 +42,7 @@ const main = async () => {
     }
 
     try {
-      writeFile(path, JSON.stringify(data, null, 4))
+      writeFile(path, JSON.stringify(data, null, 4) + '\n')
     } catch (error) {
       console.error('Failed to write file to', path)
       process.exit(1)
