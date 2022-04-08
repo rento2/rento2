@@ -43,75 +43,74 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
       }
     }, [isOpen])
 
-    let count = -1
-
-    if (text != null && button == null) { count = count + 1; console.log(text) }
-
     return (
       <>
-        {text != null && button == null
+        { type === 'title'
           ? (
             <div className={ classNames(styles['item']) }>
               <h3>
                 <button className={ classNames(styles['item-title'], isOpen ? styles['active'] : '') }
                   onClick={ btnOnclick }
                 >
-                  <Component ref={ ref }
-                    className={ classNames(styles[classItem ?? '']) }
-                  >
-                    {text}
-                  </Component>
+                  {text != null && button == null
+                    ? (
+                      <Component ref={ ref }
+                        className={ classNames(styles[classItem ?? '']) }
+                      >
+                        {text}
+                      </Component>
+
+                      )
+
+                    : null}
+
+                  {text != null && button != null
+                    ? (
+                      <Component ref={ ref }
+                        className={ classNames(styles[classItem ?? '']) }
+                      >
+                        {text}
+                        {' '}
+                        <button className={ classNames(styles[button.classButton]) }
+                          type='button'
+                          onClick={ button.buttonType === 'modalPriceDamage' ? setShownPriceDamage : setShownRules }
+                        >
+                          {button.buttonText}
+                        </button>
+                      </Component>
+                      )
+                    : null}
                 </button>
               </h3>
+              {Array.isArray(contents)
+                ? (
+                  <div className={ classNames(styles['item-container']) }
+                    style={ { height } }
+                  >
+                    <div ref={ contentRef }
+                      className={ classNames(styles['item-description'], isOpen ? styles['item-description-open'] : styles['item-description-closed']) }
+                    >
+                      <Component
+                        className={ classNames(styles[classItem ?? '']) }
+                      >
+                        {contents.map((listItem: IListProps, index: number) => (
+                          <DocsListItem2
+                            key={ `${listItem.type}-${index}` }
+                            { ...listItem }
+                          />
+                        ))}
+                      </Component>
+                    </div>
+                  </div>
+                  )
 
+                : null}
             </div>
-            )
 
+            )
           : null}
 
-        {text != null && button != null
-          ? (
-            <Component ref={ ref }
-              className={ classNames(styles[classItem ?? '']) }
-            >
-              {text}
-              {' '}
-              <button className={ classNames(styles[button.classButton]) }
-                type='button'
-                onClick={ button.buttonType === 'modalPriceDamage' ? setShownPriceDamage : setShownRules }
-              >
-                {button.buttonText}
-              </button>
-            </Component>
-            )
-          : null}
-        {/* {Array.isArray(contents) && count === 0
-          ? (
-            <div className={ classNames(styles['item-container']) }
-              style={ { height } }
-            >
-              <div ref={ contentRef }
-                className={ classNames(styles['item-description'], isOpen ? styles['item-description-open'] : styles['item-description-closed']) }
-              >
-                (
-                <Component ref={ ref }
-                  className={ classNames(styles[classItem ?? '']) }
-                >
-                  {contents.map((listItem: IListProps, index: number) => (
-                    <DocsListItem2
-                      key={ `${listItem.type}-${index}` }
-                      ref={ ref }
-                      { ...listItem }
-                    />
-                  ))}
-                </Component>
-                )
-              </div>
-            </div>
-            )
-
-          : null} */}
-        {Array.isArray(contents) && count !== 0
+        {Array.isArray(contents) && type !== 'title'
           ? (
             <Component ref={ ref }
               className={ classNames(styles[classItem ?? '']) }
