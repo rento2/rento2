@@ -39,7 +39,7 @@ export default class Order extends compose(BaseModel, SoftDeletes) {
   @column()
   public paymentType!: Pay
 
-  @column({ serialize: v => JSON.stringify(v) })
+  @column({ prepare: (v) => JSON.stringify(v) })
   public prices!: Array<{ price: number, date: DateTime }>
 
   @column()
