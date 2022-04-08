@@ -44,7 +44,8 @@ const main = async () => {
     try {
       writeFile(path, JSON.stringify(data, null, 4))
     } catch (error) {
-      console.log('Failed to write file to', path)
+      console.error('Failed to write file to', path)
+      process.exit(1)
     }
   }
 }
