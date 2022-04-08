@@ -29,12 +29,15 @@ export default class CreateOrderValidator extends ValidatorMessages {
     dateTo: schema.date({
       format: 'yyyy-MM-dd HH:mm:ss'
     }),
-    nights_number: schema.number([
+    nightsNumber: schema.number([
       rules.unsigned(),
       rules.range(0, 365)
     ]),
     paymentType: schema.enum(Object.values(Pay) as Pay[]),
-    prices: schema.array().members(schema.number()),
+    prices: schema.array().members(
+      schema.object()
+        .members({ date: schema.date(), price: schema.number() })
+    ),
     adults: schema.number([
       rules.unsigned(),
     ]),

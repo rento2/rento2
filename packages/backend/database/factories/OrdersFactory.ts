@@ -14,7 +14,10 @@ export const OrdersFactory = Factory
     fixedTotalPrice: faker.datatype.number(100_000),
     nightsNumber: faker.datatype.number(365),
     paymentType: returnRandomFromEnum(Pay),
-    prices: Array(5).fill(faker.datatype.number(50_000)),
+    prices: Array(5).fill({
+      price: faker.datatype.number(50_000),
+      date: faker.datatype.datetime()
+    }),
     adults: faker.datatype.number(10),
     children: faker.datatype.number(10),
     babies: faker.datatype.number(10),
