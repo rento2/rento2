@@ -1,15 +1,15 @@
 import classNames from 'classnames'
-import { IconLocation, IconCall } from '@shared/ui/icons/index'
+import { IconLocation, IconCall } from '@shared/ui/index'
 import LongInfoDetails from './details/LongInfoDetails'
 import LongInfoParameters from './parameters/LongInfoParameters'
 import LongInfoAdress from './adress/LongInfoAdress'
 
 import { ButtonGeneral } from '@shared/ui'
 import { useWindowDimensions } from '@shared/lib'
+import { IAdress } from '@widgets/long-info/lib/types/IAdress'
+import { IParameters } from '@widgets/long-info/lib/types/IParameters'
+import { IDetails } from '@widgets/long-info/lib/types/IDetails'
 import styles from './LongInfo.module.scss'
-import { IAdress } from '../lib/types/IAdress'
-import { IParameters } from '../lib/types/IParameters'
-import { IDetails } from '../lib/types/IDetails'
 
 export function LongInfo ({
   price,
@@ -50,21 +50,24 @@ export function LongInfo ({
           font="m"
           full="stroke"
           height="44"
-          icon={
-            widthWindow >= 480
-              ? <IconCall classProps={ classNames(styles['icon-call']) } />
-              : <div />
-          }
-          text={ widthWindow < 480 ? 'Позвонить' : '' }
           onClick={ () => {} }
-        />
+        >
+          {widthWindow >= 480
+            ? (
+              <IconCall classProps={ classNames(styles['icon-call']) } />
+              )
+            : (
+                'Позвонить'
+              )}
+        </ButtonGeneral>
         <ButtonGeneral
           classProps={ classNames(styles['btn'], styles['btn_last']) }
           font="m"
           height="44"
-          text="Записаться на просмотр"
           onClick={ () => {} }
-        />
+        >
+          Записаться на просмотр
+        </ButtonGeneral>
       </div>
     </div>
   )

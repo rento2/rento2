@@ -16,7 +16,7 @@
   }
 
   @include bp-743 {
-    font-size: 10px;
+    @include body-6;
   }
 
   &:last-child {

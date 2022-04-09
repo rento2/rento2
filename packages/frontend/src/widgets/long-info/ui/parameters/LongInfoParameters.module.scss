@@ -26,7 +26,7 @@
   }
 
   @include bp-743 {
-    font-size: 12px;
+    @include subtitle-3;
   }
 
   @include bp-479 {

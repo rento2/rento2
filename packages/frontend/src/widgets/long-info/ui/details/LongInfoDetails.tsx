@@ -12,6 +12,7 @@ export default function LongInfoDetails ({ details }: { details: IDetails }): JS
       </li>
       <li className={ classNames(styles['item']) }>
         Депозит:
+        {' '}
         {details.deposit}
       </li>
       <li className={ classNames(styles['item']) }>

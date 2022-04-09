@@ -4,27 +4,26 @@
   color: $gray-blue-600;
   white-space: nowrap;
 
-  @include bp-1023 {
+  @include bp-1279 {
     margin-bottom: 18px;
   }
 
-  @include bp-743 {
-    font-size: 12px;
-    line-height: 150%;
+  @include bp-1023 {
+    @include body-5;
   }
 
-  @include bp-479 {
+  @include bp-743 {
     margin-bottom: 16px;
   }
 
-  @include bp-320 {
+  @include bp-479 {
     margin-bottom: 30px;
   }
 
   .item {
     margin-bottom: 10px;
 
-    @include bp-743 {
+    @include bp-1023 {
       margin-bottom: 4px;
     }
 
@@ -47,14 +46,13 @@
   }
 
   .metro-name {
-    margin-right: 13.11px;
+    margin-right: 13px;
     margin-left: 4px;
   }
 
   .metro-time {
+    @include body-6;
     margin-left: 5.33px;
-    font-size: 12px;
-    line-height: 150%;
   }
 
   .icon-walking {

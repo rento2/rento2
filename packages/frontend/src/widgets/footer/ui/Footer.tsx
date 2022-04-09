@@ -57,18 +57,24 @@ export const Footer = (): JSX.Element => {
             <ButtonGeneral classProps={ classNames(styles['footer__btn']) }
               font={ widthWindow > 479 ? 's' : 'm' }
               height={ widthWindow > 479 ? '40' : '44' }
-              text='Сдать жильё'
               type='button'
-            />
+              onClick={ () => {} }
+            >
+              Сдать жильё
+
+            </ButtonGeneral>
           </li>
           <li>
             <ButtonGeneral classProps={ classNames(styles['footer__btn']) }
               font={ widthWindow > 479 ? 's' : 'm' }
               grade='secondary'
               height={ widthWindow > 479 ? '40' : '44' }
-              text='Заказать звонок'
               type='button'
-            />
+              onClick={ () => {} }
+            >
+              Заказать звонок
+
+            </ButtonGeneral>
           </li>
         </ul>
       </div>

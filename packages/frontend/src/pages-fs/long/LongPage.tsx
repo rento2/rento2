@@ -42,7 +42,7 @@ export const LongPage = (): JSX.Element => {
       titlePage={ titlePage }
     >
       <main>
-        <section className="container">
+        <section className='container'>
           <h1>
             Долгосрочная аренда
           </h1>

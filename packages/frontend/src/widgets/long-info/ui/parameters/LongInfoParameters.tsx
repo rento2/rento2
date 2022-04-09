@@ -7,14 +7,17 @@ export default function LongInfoParameters ({ parameters }: { parameters: IParam
     <ul className={ classNames(styles['list']) }>
       <li className={ classNames(styles['item']) }>
         Комнат:
+        {' '}
         {parameters.rooms}
       </li>
       <li className={ classNames(styles['item']) }>
         Площадь:
+        {' '}
         {parameters.area}
       </li>
       <li className={ classNames(styles['item']) }>
         Этаж:
+        {' '}
         {parameters.floor}
       </li>
     </ul>

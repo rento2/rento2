@@ -4,17 +4,20 @@
   padding: 40px 30px 60px;
   background: $neutral-0;
   border-radius: 2px;
-  box-shadow: 0 0 20px #aaa;
 
-  @include bp-1023 {
+  @include bp-1279 {
     width: 404px;
     min-height: 450px;
   }
 
-  @include bp-743 {
+  @include bp-1023 {
     width: 347px;
     min-height: unset;
     padding: 20px;
+  }
+
+  @include bp-743 {
+    width: 440px;
   }
 
   @include bp-479 {
@@ -29,9 +32,9 @@
   color: $gray-blue-600;
 
   @include bp-1023 {
+    @include subtitle-1
+  ;
     margin-bottom: 0;
-    font-size: 16px;
-    line-height: 140%;
   }
 }
 
@@ -44,8 +47,9 @@
   text-align: center;
 
   @include bp-1023 {
+    @include body-6
+  ;
     margin-bottom: 20px;
-    font-size: 10px;
   }
 
   @include bp-743 {
