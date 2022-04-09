@@ -1,12 +1,29 @@
-import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  HasMany,
+  BaseModel,
+  column,
+  hasMany,
+  ManyToMany,
+  manyToMany,
+} from '@ioc:Adonis/Lucid/Orm'
+import Photo from 'App/Models/Photo'
+
 import { DateTime } from 'luxon'
 import Accommodation from 'App/Models/Accommodation'
-import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
+import Service from './Service'
+import Term from '../../common/enums/Term'
+import Banner from './Banner'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
+
+  @manyToMany(() => Service, { pivotTable: 'services_to_apartments', pivotTimestamps: true })
+  public services!: ManyToMany<typeof Service>
+
+  @manyToMany(() => Banner, { pivotTable: 'banners_to_apartments', pivotTimestamps: true })
+  public banners!: ManyToMany<typeof Banner>
 
   @column()
   public type!: Term
@@ -135,7 +152,10 @@ export default class Apartment extends BaseModel {
   public updatedAt!: DateTime
 
   @manyToMany(() => Accommodation, {
-    pivotTimestamps: true
+    pivotTimestamps: true,
   })
   public accommodations!: ManyToMany<typeof Accommodation>
+
+  @hasMany(() => Photo, {})
+  public photo!: HasMany<typeof Photo>
 }

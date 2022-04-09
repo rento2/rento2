@@ -5,7 +5,7 @@ export default class Leads extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
+      table.bigIncrements('id').primary()
       table.string('name', 50)
       table.string('phone', 255)
 
