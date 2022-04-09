@@ -3,7 +3,7 @@ const { join } = require('path')
 
 const propertyToReplacePath = 'stylelint.configFile'
 
-const rootDir = join(__filename, '../../')
+const rootDir = join(__dirname, '..')
 const settingsJsonPath = '.vscode/settings.json'
 const settingsRootPath = join(rootDir, settingsJsonPath)
 
@@ -42,7 +42,7 @@ const main = async () => {
     }
 
     try {
-      writeFile(path, JSON.stringify(data, null, 4) + '\n')
+      await writeFile(path, JSON.stringify(data, null, 4) + '\n')
     } catch (error) {
       console.error('Failed to write file to', path)
       process.exit(1)
