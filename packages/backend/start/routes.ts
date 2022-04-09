@@ -71,13 +71,7 @@ Route
       })
       .prefix('sleeping-places')
 
-    Route
-      .group(() => {
-        Route.post('/create', 'ApartmentsController.store')
-      })
-      .prefix('apartments')
-
-    // Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route.resource('/apartments', 'ApartmentsController').apiOnly()
     Route.resource('/photos', 'PhotosController').apiOnly()
   })
   .prefix('/api/v1')
