@@ -22,13 +22,13 @@ const main = async () => {
     ...projectSettings.map(({ path }) => readFile(path, { encoding: 'utf-8' }))
   ])).map(JSON.parse)
 
-  for (const [index, _value] of projectSettings.entries()) {
-    projectSettings[index].data = packageSettings[index]
-  }
+  projectSettings.forEach(function (_el, i) {
+    projectSettings[i].data = packageSettings[i]
+  })
 
   for (const { path, data } of projectSettings) {
     for (const [key, _value] of Object.entries(data)) {
-      const isInRootSettings = Object.prototype.hasOwnProperty.call(rootSettings, key)
+      const isInRootSettings = Object.hasOwn(rootSettings, key)
 
       if (isInRootSettings) {
         let newValue
