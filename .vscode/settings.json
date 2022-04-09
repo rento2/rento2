@@ -6,7 +6,7 @@
     "source.fixAll": true
   },
   "stylelint.configFile": "packages/frontend/.stylelintrc.json",
-  "stylelint.validate": ["css", "scss"],
+  "stylelint.validate": ["scss"],
   "eslint.enable": true,
   "eslint.workingDirectories": [
     { "directory": "packages/frontend", "changeProcessCWD": true },

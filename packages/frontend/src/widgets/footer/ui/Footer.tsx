@@ -58,10 +58,8 @@ export const Footer = (): JSX.Element => {
               font={ widthWindow > 479 ? 's' : 'm' }
               height={ widthWindow > 479 ? '40' : '44' }
               type='button'
-              onClick={ () => {} }
             >
               Сдать жильё
-
             </ButtonGeneral>
           </li>
           <li>
@@ -70,10 +68,8 @@ export const Footer = (): JSX.Element => {
               grade='secondary'
               height={ widthWindow > 479 ? '40' : '44' }
               type='button'
-              onClick={ () => {} }
             >
               Заказать звонок
-
             </ButtonGeneral>
           </li>
         </ul>

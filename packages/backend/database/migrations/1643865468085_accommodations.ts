@@ -5,7 +5,7 @@ export default class Accommodations extends BaseSchema {
 
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
-      table.bigIncrements('id')
+      table.bigIncrements('id').primary()
       table.string('name', 255).unique()
       table.string('name_en', 255).unique()
 

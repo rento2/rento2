@@ -10,6 +10,9 @@ export default class ServicesToApartments extends BaseSchema {
       table.bigInteger('service_id').unsigned()
       table.foreign('service_id').references('services.id')
 
+      table.timestamp('created_at')
+      table.timestamp('updated_at')
+
       table.primary(['apartment_id', 'service_id'])
     })
   }

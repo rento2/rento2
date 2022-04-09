@@ -6,10 +6,12 @@ export default class Photos extends BaseSchema {
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id')
-      table.bigInteger('apartment_id').unsigned()
-      table.foreign('apartment_id').references('id').inTable('apartments')
+      table
+        .bigInteger('apartment_id')
+        .unsigned()
+        .references('id')
+        .inTable('apartments')
       table.string('link', 255)
-
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
