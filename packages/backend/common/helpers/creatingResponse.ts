@@ -1,6 +1,6 @@
 import { INegativeResponse, IPositiveResponse } from '../interfaces/IResponse'
 
-export function creatingErrMsg (type: string, message: string): INegativeResponse {
+export function creatingErrMsg (type: string, message: string = 'ERROR'): INegativeResponse {
   return {
     meta: {
       result: type,

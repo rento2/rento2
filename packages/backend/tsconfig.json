@@ -41,7 +41,8 @@
     "types": [
       "@adonisjs/core",
       "@adonisjs/repl",
-      "@adonisjs/lucid"
+      "@adonisjs/lucid",
+      "adonis-lucid-soft-deletes"
     ]
   }
 }

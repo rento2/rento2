@@ -3,7 +3,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import ValidatorMessages from 'App/Validators/ValidatorMessages'
 import Term from 'common/enums/Term'
 
-export default class CreateServiceValidator extends ValidatorMessages {
+export default class ServiceValidator extends ValidatorMessages {
   constructor (protected ctx: HttpContextContract) {
     super()
   }

@@ -7,6 +7,7 @@ export default class ApartmentSeeder extends BaseSeeder {
       .with('accommodations', 5)
       .with('services', 3)
       .with('banners', 3)
+      .with('orders', 5)
       .createMany(4)
   }
 }

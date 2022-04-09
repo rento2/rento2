@@ -4,7 +4,7 @@ import ValidatorMessages from 'App/Validators/ValidatorMessages'
 import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
-export default class CreateApartmentValidator extends ValidatorMessages {
+export default class ApartmentValidator extends ValidatorMessages {
   constructor (protected ctx: HttpContextContract) {
     super()
   }
