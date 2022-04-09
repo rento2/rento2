@@ -6,7 +6,10 @@ import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingR
 
 export default class ApartmentsController {
   public async index ({ response }: HttpContextContract): Promise<void> {
-    const apartments = await Apartment.query().preload('accommodations')
+    const apartments =
+      await Apartment.query()
+        .preload('accommodations')
+        .preload('sleepingPlaces')
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
   }

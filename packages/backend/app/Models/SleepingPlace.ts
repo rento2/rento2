@@ -15,8 +15,8 @@ export default class SleepingPlace extends BaseModel {
   @column()
   public size!: number
 
-  @column()
-  public number!: number
+  @column({ serializeAs: 'number' })
+  public pivotNumber!: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

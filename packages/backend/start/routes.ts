@@ -62,7 +62,16 @@ Route
       })
       .prefix('orders')
 
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'SleepingPlacesController.one')
+        Route.delete('/delete/:id', 'SleepingPlacesController.delete')
+        Route.post('/create', 'SleepingPlacesController.create')
+        Route.get('/list', 'SleepingPlacesController.list')
+      })
+      .prefix('sleeping-places')
+
     Route.resource('/apartments', 'ApartmentsController').apiOnly()
-    Route.resource('photo', 'PhotosController').apiOnly()
+    Route.resource('/photos', 'PhotosController').apiOnly()
   })
   .prefix('/api/v1')
