@@ -52,17 +52,12 @@ export function Header (): JSX.Element {
             </li>
           </ul>
         </nav>
-        {widthWindow > 929 && (
-          <ButtonGeneral
-            classProps={ classNames(styles['header__btn']) }
-            font="s"
-            grade="neutral"
-            height="40"
-            onClick={ () => {} }
-          >
-            +7 (966) 032-17-63
-          </ButtonGeneral>
-        )}
+        {widthWindow > 929 && (<ButtonGeneral classProps={ classNames(styles['header__btn']) }
+          font='s'
+          grade='neutral'
+          height='40'
+          text='+7 (966) 032-17-63'
+        />)}
 
         {/* Мобильное меню */}
         <div className={ styles['mobile-menu'] }
