@@ -27,12 +27,16 @@ export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round
 
   return (
     <Component
-      className={ classNames(classProps, styles['button'], {
-        [stylesRound]: round,
-        [stylesColor]: true,
-        [stylesFont]: true,
-        [stylesHeight]: true
-      }) }
+      className={ classNames(
+        classProps,
+        styles['button'],
+        {
+          [stylesRound]: round,
+          [stylesColor]: true,
+          [stylesFont]: true,
+          [stylesHeight]: true
+        }
+      ) }
       disabled={ disabled }
       href={ href }
       type={ type }
