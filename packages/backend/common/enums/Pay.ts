@@ -1,6 +1,6 @@
 enum Pay {
-  full_prepayment = 1,
-  prepayment = 2
+  full_prepayment = 'full_payment',
+  prepayment = 'prepayment'
 }
 
 export default Pay
