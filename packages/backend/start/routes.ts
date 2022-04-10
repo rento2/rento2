@@ -31,24 +31,38 @@ Route.get('/health', async ({ response }) => {
   return report.healthy ? response.ok(report) : response.badRequest(report)
 })
 
-Route.group(() => {
-  Route.group(() => {
-    Route.get('/one/:id', 'ReviewsController.one')
-    Route.delete('/delete/:id', 'ReviewsController.delete')
-    Route.post('/create', 'ReviewsController.create')
-    Route.get('/list', 'ReviewsController.list')
-    Route.post('/update', 'ReviewsController.update')
-  }).prefix('reviews')
+Route
+  .group(() => {
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'ReviewsController.one')
+        Route.delete('/delete/:id', 'ReviewsController.delete')
+        Route.post('/create', 'ReviewsController.create')
+        Route.get('/list', 'ReviewsController.list')
+        Route.post('/update', 'ReviewsController.update')
+      })
+      .prefix('reviews')
 
-  Route.group(() => {
-    Route.get('/one/:id', 'BannersController.one')
-    Route.delete('/delete/:id', 'BannersController.delete')
-    Route.post('/create', 'BannersController.create')
-    Route.get('/list', 'BannersController.list')
-    Route.post('/update', 'BannersController.update')
-  }).prefix('banners')
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'BannersController.one')
+        Route.delete('/delete/:id', 'BannersController.delete')
+        Route.post('/create', 'BannersController.create')
+        Route.get('/list', 'BannersController.list')
+        Route.post('/update', 'BannersController.update')
+      })
+      .prefix('banners')
 
-  Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'OrdersController.one')
+        Route.delete('/delete/:id', 'OrdersController.delete')
+        Route.post('/create', 'OrdersController.create')
+        Route.get('/list', 'OrdersController.list')
+      })
+      .prefix('orders')
 
-  Route.resource('photo', 'PhotosController').apiOnly()
-}).prefix('/api/v1')
+    Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route.resource('photo', 'PhotosController').apiOnly()
+  })
+  .prefix('/api/v1')

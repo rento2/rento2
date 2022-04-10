@@ -52,17 +52,19 @@ export const Header = (): JSX.Element => {
           font='s'
           grade='neutral'
           height='40'
-          text='+7 (966) 032-17-63'
-        />
+        >
+          +7 (966) 032-17-63
+        </ButtonGeneral>
 
         <ButtonGeneral
           classProps={ classNames(styles['mobile-menu__btn-open']) }
           font='s'
           grade='neutral'
           height='40'
-          icon={ <IconBurger /> }
           onClick={ () => setShowMenu(true) }
-        />
+        >
+          <IconBurger />
+        </ButtonGeneral>
         {showMenu && <MobileMenu onClose={ () => setShowMenu(false) } />}
       </div>
     </header>

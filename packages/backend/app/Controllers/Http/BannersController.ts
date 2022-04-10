@@ -2,7 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
 import Banner from 'App/Models/Banner'
-import CreateBannerValidator from 'App/Validators/CreateBannerValidator'
+import CreateBannerValidator from 'App/Validators/BannerValidator'
 
 export default class BannersController {
   public async list ({ response }: HttpContextContract): Promise<void> {

@@ -16,9 +16,10 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }): JSX.Element =>
         font='s'
         grade='neutral'
         height='40'
-        icon={ <IconButtonClose /> }
         onClick={ onClose }
-      />
+      >
+        <IconButtonClose />
+      </ButtonGeneral>
 
       <div className={ styles['mobile-menu__nav-wrapper'] }>
         <nav className={ styles['mobile-menu__nav'] }>
@@ -79,8 +80,9 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }): JSX.Element =>
           font='s'
           grade='neutral'
           height='40'
-          text='+7 (966) 032-17-63'
-        />
+        >
+          +7 (966) 032-17-63
+        </ButtonGeneral>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
 import Service from 'App/Models/Service'
-import CreateServiceValidator from 'App/Validators/CreateServiceValidator'
+import CreateServiceValidator from 'App/Validators/ServiceValidator'
 
 export default class ServicesController {
   public async list ({ response }: HttpContextContract): Promise<void> {
