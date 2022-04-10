@@ -14,9 +14,10 @@ export const Header = (): JSX.Element => {
       <div className={ classNames(styles['header__inner'], 'container') }>
         <LinkGeneral classProps={ styles['header__logo'] }
           href='/'
-          icon={ <IconLogo /> }
-        />
-        <nav className={ styles['header__nav'] }>
+        >
+          <IconLogo />
+        </LinkGeneral>
+        <nav>
           <ul className={ classNames(styles['header__list'], 'flex-center') }>
             {dataNavLinks.map(({ hrefProps, textProps }) => (
               <li key={ textProps }
@@ -30,18 +31,24 @@ export const Header = (): JSX.Element => {
           </ul>
         </nav>
         {/* TODO когда будет авторизация */}
-        {/* <ul className={ classNames(styles['header__list'], 'flex-center') }>
-            <li className={ styles['header__item'] }>
-              <LinkGeneral href='#' icon={<IconFavourite />} />
-            </li>
-            <li className={ styles['header__item'] }>
-              <LinkGeneral classProps='flex-center' href='#' icon={<IconAuth />}>
-                <span>Войти</span>
-              </LinkGeneral>
-            </li>
-          </ul> */}
-        <ButtonGeneral
-          classProps={ classNames(styles['header__phone-btn']) }
+        {/* <ul className={ classNames(styles['header__auth-list'], 'flex-center') }>
+          <li className={ styles['header__auth-item'] }>
+            <LinkGeneral href='#'
+              icon={ <IconFavourite /> }
+            />
+          </li>
+          <li className={ styles['header__auth-item'] }>
+            <LinkGeneral classProps='flex-center'
+              href='#'
+              icon={ <IconAuth /> }
+            >
+              <span>
+                Войти
+              </span>
+            </LinkGeneral>
+          </li>
+        </ul> */}
+        <ButtonGeneral classProps={ classNames(styles['header__phone-btn']) }
           font='s'
           grade='neutral'
           height='40'

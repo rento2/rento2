@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { IconVk, IconTelegram, IconWhatsapp, ButtonGeneral } from '@shared/ui'
 import { DocsItem } from './docs-item/DocsItem'
-import { SocialItem } from './social-item/SocialItem'
+import { SocialItem } from '@shared/ui/social-item/SocialItem'
 import { dataDocsGroup1, dataDocsGroup2 } from '@widgets/footer/model/dataFooter'
 import styles from './Footer.module.scss'
 import { useWindowDimensions } from '@shared/lib'

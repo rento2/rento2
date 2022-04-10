@@ -2,7 +2,6 @@ import { IIconClassProps } from './types/iconTypes'
 
 export const IconAuth = (props: IIconClassProps): JSX.Element => (
   <svg className={ props.classProps }
-    fill="none"
     height="24"
     viewBox="0 0 24 24"
     width="24"
