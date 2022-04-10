@@ -1,18 +1,25 @@
-import { Layout } from 'shared/ui'
-import { Header } from 'widgets/header'
-import { Footer } from 'widgets/footer'
-import DocumentsLoyout from 'shared/ui/documentsLoyout/DocumetsLoyout'
+import { DocumentsLayout, AccordionList, Layout } from '@shared/ui'
+import { Header } from '@widgets/header'
+import { Footer } from '@widgets/footer'
+import { dateAccordion } from './model/dateAccordion'
+import { useWindowDimensions } from '@shared/lib'
+import { SideMenu, HeadMenu } from '@widgets/documents-side-menu'
 
 export const FaqPage = (): JSX.Element => {
+  const { widthWindow } = useWindowDimensions()
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
-      <main>
-        <section className='container'>
-          <DocumentsLoyout />
-        </section>
-      </main>
+
+      <DocumentsLayout headMenu={ <HeadMenu /> }
+        sideMenu={ <SideMenu /> }
+        titleText="Частые вопросы"
+        widthProps={ 1059 }
+        widthWindowProps={ widthWindow }
+      >
+        <AccordionList state={ dateAccordion } />
+      </DocumentsLayout>
     </Layout>
   )
 }
