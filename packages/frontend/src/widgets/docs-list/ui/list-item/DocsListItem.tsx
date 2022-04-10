@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import { forwardRef, Ref, useContext, useEffect, useRef, useState } from 'react'
+import { forwardRef, Ref, useRef, useState } from 'react'
 import { IListProps } from '@widgets/docs-list/lib/types/IListProps'
 import classNames from 'classnames'
 import { ITagName } from '@widgets/docs-list/lib/types/ITagName'
 import styles from './DocsListItem.module.scss'
-import { DocsListContext } from '@widgets/docs-list/model/DocsListContext'
-import { DocsListItem2 } from './DocsListItem2'
+import { DocsListItemAfter } from './DocsListItemAfter'
+
+let isOpen = false
 
 // TODO
 // Если уберется контекст или же будет необходимость использовать контекст в  этом компоненте, то лучше вместо AgreementShortButton использовать базовую кнопку, а в нее просто передать необходимый метод при клике по кнопке
@@ -17,13 +18,11 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
       text,
       button,
       contents,
-      as,
-      btnOnclick,
-      isOpen
+      as
+
     },
     ref: Ref<HTMLElement>
   ): JSX.Element => {
-    const { setShownPriceDamage, setShownRules } = useContext(DocsListContext)
     const tagName: ITagName = {
       list: 'ol',
       item: 'li',
@@ -32,16 +31,19 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
     }
 
     const Component = as ?? tagName[type]
+
     const contentRef = useRef<HTMLDivElement>(null)
     const [height, setHeight] = useState(0)
-    useEffect(() => {
+
+    const btnOnclick: () => void = () => {
+      if (height === 0) isOpen = true; else isOpen = false
       if (isOpen) {
         const contentEl = contentRef.current as HTMLDivElement
         setHeight(contentEl.scrollHeight)
       } else {
         setHeight(0)
       }
-    }, [isOpen])
+    }
 
     return (
       <>
@@ -54,30 +56,14 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
                 >
                   {text != null && button == null
                     ? (
-                      <Component ref={ ref }
-                        className={ classNames(styles[classItem ?? '']) }
-                      >
-                        {text}
-                      </Component>
-
-                      )
-
-                    : null}
-
-                  {text != null && button != null
-                    ? (
-                      <Component ref={ ref }
-                        className={ classNames(styles[classItem ?? '']) }
-                      >
-                        {text}
-                        {' '}
-                        <button className={ classNames(styles[button.classButton]) }
-                          type='button'
-                          onClick={ button.buttonType === 'modalPriceDamage' ? setShownPriceDamage : setShownRules }
+                      <div className={ classNames(styles['item-p']) }>
+                        <Component ref={ ref }
+                          className={ classNames(styles[classItem ?? '']) }
                         >
-                          {button.buttonText}
-                        </button>
-                      </Component>
+                          {text}
+                        </Component>
+                      </div>
+
                       )
                     : null}
                 </button>
@@ -90,16 +76,13 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
                     <div ref={ contentRef }
                       className={ classNames(styles['item-description'], isOpen ? styles['item-description-open'] : styles['item-description-closed']) }
                     >
-                      <Component
-                        className={ classNames(styles[classItem ?? '']) }
-                      >
-                        {contents.map((listItem: IListProps, index: number) => (
-                          <DocsListItem2
-                            key={ `${listItem.type}-${index}` }
-                            { ...listItem }
-                          />
-                        ))}
-                      </Component>
+
+                      {contents.map((listItem: IListProps, index: number) => (
+                        <DocsListItemAfter
+                          key={ `${listItem.type}-${index}` }
+                          { ...listItem }
+                        />
+                      ))}
                     </div>
                   </div>
                   )

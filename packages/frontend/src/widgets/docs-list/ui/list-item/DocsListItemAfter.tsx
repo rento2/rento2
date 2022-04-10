@@ -8,7 +8,7 @@ import { DocsListContext } from '@widgets/docs-list/model/DocsListContext'
 
 // TODO
 // Если уберется контекст или же будет необходимость использовать контекст в  этом компоненте, то лучше вместо AgreementShortButton использовать базовую кнопку, а в нее просто передать необходимый метод при клике по кнопке
-export const DocsListItem2 = forwardRef<HTMLElement, IListProps>(
+export const DocsListItemAfter = forwardRef<HTMLElement, IListProps>(
   (
     {
       type,
@@ -65,8 +65,8 @@ export const DocsListItem2 = forwardRef<HTMLElement, IListProps>(
               className={ classNames(styles[classItem ?? '']) }
             >
               {contents.map((listItem: IListProps, index: number) => (
-                <DocsListItem2
-                  key={ `${listItem.type}-${index}` }
+                <DocsListItemAfter
+                  key={ `${listItem.type}-${index - 1}` }
                   ref={ ref }
                   { ...listItem }
                 />
@@ -78,4 +78,4 @@ export const DocsListItem2 = forwardRef<HTMLElement, IListProps>(
     )
   })
 
-DocsListItem2.displayName = 'DocsListItem2'
+DocsListItemAfter.displayName = 'DocsListItemAfter'
