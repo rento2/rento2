@@ -133,17 +133,9 @@ export default class ApartmentValidator extends ValidatorMessages {
       rules.range(0, 99.9)
     ]),
 
-    check_in_start: schema.date({
-      format: 'yyyy-MM-dd HH:mm:ss'
-    }
-      // [ rules.after('today')]
-    ),
-    check_in_end: schema.date({
-      format: 'yyyy-MM-dd HH:mm:ss'
-    }),
-    check_out_end: schema.date({
-      format: 'yyyy-MM-dd HH:mm:ss'
-    }),
+    check_in_start: schema.date(),
+    check_in_end: schema.date(),
+    check_out_end: schema.date(),
 
     smoking_allowed: schema.boolean(),
     partying_allowed: schema.boolean(),
@@ -157,6 +149,24 @@ export default class ApartmentValidator extends ValidatorMessages {
     max_children: schema.number([
       rules.unsigned(),
       rules.range(0, 99)
-    ])
+    ]),
+
+    accommodations: schema.array().members(
+      schema.object()
+        .members({
+          id: schema.number([rules.unsigned()])
+        })
+    ),
+
+    sleepingPlaces: schema.array().members(
+      schema.object()
+        .members({
+          id: schema.number([rules.unsigned()]),
+          number: schema.number([
+            rules.unsigned(),
+            rules.range(0, 32),
+          ]),
+        })
+    ),
   })
 }

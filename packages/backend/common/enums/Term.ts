@@ -1,7 +1,7 @@
 enum Term {
-  SHORT = 1,
-  LONG = 2,
-  ALL = 3
+  SHORT = 'short',
+  LONG = 'long',
+  ALL = 'all'
 }
 
 export default Term

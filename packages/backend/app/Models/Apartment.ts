@@ -15,6 +15,7 @@ import Service from './Service'
 import Term from '../../common/enums/Term'
 import Banner from './Banner'
 import Order from './Order'
+import SleepingPlace from './SleepingPlace'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
@@ -162,4 +163,11 @@ export default class Apartment extends BaseModel {
 
   @hasMany(() => Photo, {})
   public photo!: HasMany<typeof Photo>
+
+  @manyToMany(() => SleepingPlace, {
+    pivotColumns: ['number'],
+    pivotTable: 'sleeping_places_to_apartments',
+    pivotTimestamps: true
+  })
+  public sleepingPlaces!: ManyToMany<typeof SleepingPlace>
 }

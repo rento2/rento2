@@ -6,7 +6,13 @@ import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingR
 
 export default class ApartmentsController {
   public async index ({ response }: HttpContextContract): Promise<void> {
-    const apartments = await Apartment.query().preload('accommodations')
+    const apartments =
+      await Apartment.query()
+        .preload('accommodations')
+        .preload('sleepingPlaces')
+        .preload('services')
+        .preload('banners')
+        .preload('photo')
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
   }
@@ -28,25 +34,25 @@ export default class ApartmentsController {
   }
 
   public async store ({ request, response }: HttpContextContract): Promise<void> {
-    const { accommodations, ...apartmentData } = request.body()
+    const apartmentPayload = await request.validate(CreateApartmentValidator)
+    const apartment = await Apartment.create(apartmentPayload)
 
-    await request.validate(CreateApartmentValidator)
-    const apartment = await Apartment.create(apartmentData)
+    await Promise.all([
+      apartment.related('accommodations').attach(
+        apartmentPayload.accommodations.map(({ id }) => id)
+      ),
+      apartment.related('sleepingPlaces').attach(
+        (apartmentPayload.sleepingPlaces).reduce(
+          (prev, { id, number }) => ({
+            ...prev,
+            [id]: { number }
+          }), {}
+        )
+      )
+    ])
 
-    const idOfAccommodations = accommodations.map((p: { id: number }) => +p.id)
-    if (idOfAccommodations.length === 0) {
-      return response.status(HttpStatusCode.Created)
-        .send(creatingOkMsg([apartment], 'Apartments are created without amenities'))
-    }
-
-    await Promise.all(idOfAccommodations.map(async (item: number) => {
-      await apartment.related('accommodations').attach([item])
-    })).catch(() => {
-      return response.status(HttpStatusCode.InternalServerError).json(creatingErrMsg('error', 'Error creating a record'))
-    })
-
-    const apartmentResp = await Apartment.query().where('id', apartment.id).preload('accommodations')
-    return response.status(HttpStatusCode.Created).send(creatingOkMsg(apartmentResp, 'Apartments with amenities created'))
+    return response.status(HttpStatusCode.Created)
+      .send(creatingOkMsg(apartment))
   }
 
   public async destroy ({ response, params }: HttpContextContract): Promise<any> {

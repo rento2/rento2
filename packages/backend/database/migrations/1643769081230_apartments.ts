@@ -1,6 +1,4 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import Term from '../../common/enums/Term'
-import { createArrFromEnum } from '../../common/helpers/enumService'
 
 export default class Apartments extends BaseSchema {
   protected tableName = 'apartments'
@@ -8,7 +6,7 @@ export default class Apartments extends BaseSchema {
   public async up (): Promise<void> {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id').primary()
-      table.enum('type', createArrFromEnum(Term))
+      table.string('type', 32)
       table.boolean('is_active')
       table.string('name', 255).unique()
       table.string('latin_name', 255)

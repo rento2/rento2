@@ -7,7 +7,7 @@ export default class SleepingPlaces extends BaseSchema {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id').primary()
       table.string('name', 255)
-      table.enum('type', ['bed', 'sofa'])
+      table.string('type', 32)
       table.integer('size')
 
       table.timestamp('created_at')

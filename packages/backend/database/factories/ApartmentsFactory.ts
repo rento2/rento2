@@ -7,6 +7,7 @@ import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMosco
 import { ServicesFactory } from './ServicesFactory'
 import { BannersFactory } from './BannersFactory'
 import { OrdersFactory } from './OrdersFactory'
+import { SleepingPlacesFactory } from './SleepingPlacesFactory'
 
 export const ApartmentsFactory = Factory
   .define(Apartment, ({ faker }) => {
@@ -16,9 +17,9 @@ export const ApartmentsFactory = Factory
       name: faker.internet.userName(),
       latinName: faker.name.findName(),
       description: faker.lorem.text(Math.round(Math.random() * (20 - 5) + 5)),
-      bnovoId: Math.floor(Math.random() * (20000 - 10) + 10),
-      price: Math.floor(Math.random() * (200 - 100) + 100),
-      pricePerMonth: Math.floor(Math.random() * (200 - 100) + 100),
+      bnovoId: faker.datatype.number(),
+      price: faker.datatype.number(100_000),
+      pricePerMonth: faker.datatype.number(100_000),
       discount: Math.floor(Math.random() * (200 - 100) + 100),
       commission: Math.floor(Math.random() * (200 - 100) + 100),
       utilityBills: Math.floor(Math.random() * (200 - 100) + 100),
@@ -53,12 +54,13 @@ export const ApartmentsFactory = Factory
       children_allowed: faker.datatype.boolean(),
       pets_allowed: faker.datatype.boolean(),
 
-      max_adults: Math.floor(Math.random() * (6 - 1) + 1),
-      max_children: Math.floor(Math.random() * (6 - 1) + 1)
+      max_adults: faker.datatype.number(10),
+      max_children: faker.datatype.number(10),
     }
   })
   .relation('accommodations', () => AccommodationsFactory)
   .relation('services', () => ServicesFactory)
   .relation('banners', () => BannersFactory)
   .relation('orders', () => OrdersFactory)
+  .relation('sleepingPlaces', () => SleepingPlacesFactory)
   .build()
