@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import { IPropsMenu } from '@widgets/documents-side-menu/ui/SideMenu/type/IPropsMenu'
+import { IPropsMenu } from '@widgets/documents-side-menu/lib/type/IPropsMenu'
 
 export const usePath = (dataMenu: IPropsMenu[]): string => {
   const [pageData, setPageData] = useState('')
