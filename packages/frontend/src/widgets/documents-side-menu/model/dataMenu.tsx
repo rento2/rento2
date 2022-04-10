@@ -1,4 +1,4 @@
-import { IPropsMenu } from '../../ui/SideMenu/type/IPropsMenu'
+import { IPropsMenu } from '@widgets/documents-side-menu/lib/type/IPropsMenu'
 
 export const dataMenu: IPropsMenu[] = [
   {

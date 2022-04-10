@@ -1,12 +1,12 @@
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
-import { IPropsMenu } from '../type/IPropsMenu'
-import HeadBarItem from './HeadBarItems'
-import HeadBarTitle from './HeadBarTitle'
+import { HeadMenuItem } from './HeadMenuItems'
+import { HeadMenuTitle } from './HeadMenuTitle'
 import FocusLock from 'react-focus-lock'
-import style from './HeadBar.module.scss'
+import { dataMenu } from '@widgets/documents-side-menu/model/dataMenu'
+import style from './HeadMenu.module.scss'
 
-const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
+export const HeadMenu = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
   const [disable, setDisable] = useState(false)
 
@@ -29,7 +29,7 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
     >
       <div className={ classNames(isOpen ? style['wrapper-box'] : style['bg-none']) }>
 
-        <HeadBarTitle
+        <HeadMenuTitle
           btnOnClick={ btnOnClick }
           data={ dataMenu }
           isOpen={ isOpen }
@@ -38,7 +38,7 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
         <ul className={ classNames((!isOpen) ? style['h0'] : style['open']) }>
 
           { dataMenu.map((item, idx) => (
-            <HeadBarItem key={ idx }
+            <HeadMenuItem key={ idx }
               data={ item }
             />)) }
 
@@ -51,4 +51,3 @@ const HeadBar = ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element => {
     </FocusLock>
   )
 }
-export default HeadBar

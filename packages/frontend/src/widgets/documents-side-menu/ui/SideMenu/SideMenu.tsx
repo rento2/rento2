@@ -1,8 +1,8 @@
 import Link from 'next/dist/client/link'
-import { IPropsMenu } from './type/IPropsMenu'
+import { dataMenu } from '@widgets/documents-side-menu/model/dataMenu'
 import style from './SideMenu.module.scss'
 
-export default function SideMenu ({ dataMenu }: {dataMenu: IPropsMenu[]}): JSX.Element {
+export function SideMenu (): JSX.Element {
   return (
     <div className={ style['border'] }>
       <ul>
