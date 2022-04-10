@@ -22,6 +22,7 @@ import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
 import './routes/apartment'
+import './routes/accommodation'
 
 Route.get('/', async () => {
   return { hello: 'world' }

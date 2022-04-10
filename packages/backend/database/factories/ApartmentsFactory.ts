@@ -1,6 +1,5 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Apartment from 'App/Models/Apartment'
-import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
 import Term from '../../common/enums/Term'
 import { returnRandomFromEnum } from '../../common/helpers/enumService'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
@@ -54,5 +53,4 @@ export const ApartmentsFactory = Factory
       max_children: Math.random() * (6 - 1) + 1
     }
   })
-  .relation('accommodations', () => AccommodationsFactory)
   .build()

@@ -1,6 +1,5 @@
-import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
-import Accommodation from 'App/Models/Accommodation'
 import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
@@ -133,9 +132,4 @@ export default class Apartment extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt!: DateTime
-
-  @manyToMany(() => Accommodation, {
-    pivotTimestamps: true
-  })
-  public accommodations!: ManyToMany<typeof Accommodation>
 }
