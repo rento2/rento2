@@ -3,38 +3,44 @@
     border-bottom: 2px solid $iris-50;
 
     @include bp-849 {
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    @include bp-767 {
-      justify-content: flex-start;
+      min-height: 40px;
     }
   }
 
   &__dialog {
     width: 688px;
-    padding: 0 40px 90px;
 
     @include bp-849 {
       width: 100%;
-      margin: 110px auto 0;
       border-radius: 16px 16px 0 0;
-    }
-
-    @include bp-767 {
-      padding: 0 24px 90px;
-      margin: 80px auto 0;
-    }
-
-    @include bp-479 {
-      padding: 0 20px 60px;
     }
   }
 
   &__body {
     @include bp-849 {
-      min-height: 740px;
+      padding: 20px 40px 40px;
     }
+
+    @include bp-743 {
+      padding: 20px 24px 40px;
+    }
+
+    @include bp-479 {
+      padding: 20px 20px 40px;
+    }
+  }
+
+  &__content {
+    padding: 60px 40px 40px;
+    border-radius: 16px;
+
+    @include bp-849 {
+      padding: 0;
+    }
+  }
+
+  &__position-content {
+    height: 100%;
+    border-radius: 16px 16px 0 0;
   }
 }
