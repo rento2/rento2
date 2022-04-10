@@ -10,63 +10,45 @@
 
 .modal {
   position: fixed;
-  bottom: 50%;
-  left: 50%;
-  z-index: 700;
+  bottom: 0;
+  left: 0;
+  z-index: 1055;
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
-  transform: translate(-50%, 50%);
-
-  @include bp-549 {
-    width: 90%;
-  }
 
   &__dialog {
     position: relative;
-    z-index: 100;
+    display: flex;
+    align-items: center;
     width: 800px;
-    padding: 0 40px 40px;
-    margin: auto;
-    background-color: $neutral-0;
-    border-radius: 16px;
-
-    @include bp-929 {
-      width: 500px;
-    }
-
-    @include bp-549 {
-      width: auto;
-    }
-  }
-
-  &__title {
-    align-self: center;
-  }
-
-  &__close-btn {
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-    background: none;
-    border: 0;
-    border-radius: 3px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &__position {
-    bottom: 0;
-    max-height: calc(100% - 40px);
-    margin: 40px 0 0;
-    transform: translate(-50%, 0);
+    min-height: calc(100% - 80px);
+    margin: 40px auto;
+    pointer-events: none;
   }
 
   &__position-dialog {
+    min-height: calc(100% - 40px);
     margin: 40px auto 0;
-    border-radius: 16px 16px 0 0;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 40px 40px;
+    pointer-events: auto;
+    background-color: $neutral-0;
+    background-clip: padding-box;
+    border-radius: 8px;
+    outline: 0;
+  }
+
+  &__position-content {
+    height: 100%;
+    border-radius: 8px 8px 0 0;
   }
 }
