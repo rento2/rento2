@@ -68,6 +68,7 @@ Route
         Route.delete('/delete/:id', 'SleepingPlacesController.delete')
         Route.post('/create', 'SleepingPlacesController.create')
         Route.get('/list', 'SleepingPlacesController.list')
+        Route.post('/update', 'SleepingPlacesController.update')
       })
       .prefix('sleeping-places')
 
