@@ -12,7 +12,6 @@ export default class ApartmentsController {
         .preload('sleepingPlaces')
         .preload('services')
         .preload('banners')
-        .preload('orders')
         .preload('photo')
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
