@@ -4,23 +4,19 @@
   z-index: 11;
   width: 100%;
   background-color: $neutral-0;
-  box-shadow: 0 0 50px rgba(41, 43, 51, 0.1); // ?
+  box-shadow: 0 0 50px $overlay;
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 60px;
+    padding: 0;
     margin: 0 auto;
 
-    @include bp-699 {
-      height: 48px;
-    }
-  }
-
-  &__wrapper {
-    @include bp-699 {
-      height: 48px;
+    @include bp-743 {
+      height: 40px;
+      padding: 0 16px;
     }
   }
 
@@ -42,10 +38,23 @@
 
   &__phone-btn {
     width: 186px;
+    padding: 11px 28px;
     margin-left: auto;
+    white-space: nowrap;
 
     @include bp-1023 {
       display: none;
+    }
+  }
+
+  &__btn-open {
+    display: none;
+    margin-left: auto;
+    background: inherit;
+    border: 0;
+
+    @include bp-1023 {
+      display: block;
     }
   }
 }

@@ -57,7 +57,7 @@ export const Header = (): JSX.Element => {
         </ButtonGeneral>
 
         <ButtonGeneral
-          classProps={ classNames(styles['mobile-menu__btn-open']) }
+          classProps={ classNames(styles['header__btn-open']) }
           font='s'
           grade='neutral'
           height='40'
