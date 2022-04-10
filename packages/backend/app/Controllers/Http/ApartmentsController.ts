@@ -10,6 +10,10 @@ export default class ApartmentsController {
       await Apartment.query()
         .preload('accommodations')
         .preload('sleepingPlaces')
+        .preload('services')
+        .preload('banners')
+        .preload('orders')
+        .preload('photo')
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
   }
