@@ -21,11 +21,11 @@ export const DrawerBase: FC<IDrawer> = ({
   const elementRef = useRef<HTMLDivElement>(null)
   const { heightWindow } = useWindowDimensions()
 
+  // Этот реф мне нужен будет??? А может и нужно брать высоту модалки?
   const [heightModal, setHeightModal] = useState(0)
   useEffect(() => {
     if (isShown) {
       const { offsetHeight } = elementRef.current ?? { offsetHeight: 0 }
-
       setHeightModal(offsetHeight)
     }
   }, [isShown, heightWindow])
@@ -38,8 +38,8 @@ export const DrawerBase: FC<IDrawer> = ({
 
   useEffect(() => {
     isShown
-      ? classNames(document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.paddingRight = '17px')
-      : classNames(document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.paddingRight = '0')
+      ? classNames(document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.overscrollBehavior = 'none', document.body.style.paddingRight = '17px')
+      : classNames(document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.overscrollBehavior = 'auto', document.body.style.paddingRight = '0')
 
     document.addEventListener('keydown', onKeyDown, false)
     return () => {
@@ -52,7 +52,7 @@ export const DrawerBase: FC<IDrawer> = ({
     setElement(elementPortal ?? document.body)
   }, [isMounted])
 
-  const [handlers, styleMove] = useDrawerClose(hide, isShown, heightModal, transitionMs)
+  const [handlers, styleMove, refPassthrough] = useDrawerClose(hide, isShown, heightModal, transitionMs)
 
   const drawer = (
     <div
@@ -77,6 +77,8 @@ export const DrawerBase: FC<IDrawer> = ({
           styles['modal__dialog'],
           classes?.dialog) }
         style={ styleMove }
+        { ...handlers }
+        ref={ refPassthrough }
       >
         <div
           ref={ elementRef }
@@ -87,7 +89,6 @@ export const DrawerBase: FC<IDrawer> = ({
         >
           <DrawerHeader
             classHeader={ classes?.header ?? '' }
-            handlersProps={ handlers ?? {} }
             headerProps={ headerContent }
           />
           <div className={ classNames(

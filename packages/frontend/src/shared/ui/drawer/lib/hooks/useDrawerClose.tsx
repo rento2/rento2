@@ -1,48 +1,77 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
 import { SwipeableHandlers, SwipeEventData, useSwipeable } from 'react-swipeable'
-import { useWindowDimensions } from '@shared/lib'
 import { IStyleMove } from '../types/IDrawer'
 
-export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal: number, transitionMs = 500): [SwipeableHandlers, IStyleMove] => {
+export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal: number, transitionMs = 500): [SwipeableHandlers, IStyleMove, (el: HTMLDivElement) => void] => {
   const [styleMove, setStyleMove] = useState<IStyleMove>({})
-  const { heightWindow } = useWindowDimensions()
-
-  const maxHeightModal = heightModal > heightWindow ? heightWindow : heightModal
+  const maxHeightModal = heightModal
 
   useEffect(() => {
     if (isShown) {
       setStyleMove({ height: `${maxHeightModal}px` })
     }
-  }, [isShown, heightWindow, maxHeightModal])
+  }, [isShown, maxHeightModal])
 
   const handlers = useSwipeable({
-    onSwiping: (e) => move(e),
-    onSwipedDown: (e) => closeModal(e)
+    onSwiping: (e) => moveDrawer(e),
+    onSwipedDown: (e) => closeDrawer(e)
+    // onSwipedUp: () => onSwipedUp()
   })
 
-  const move = (e: SwipeEventData): void => {
-    if (e.dir !== 'Down') return
+  const elementRef = useRef<HTMLDivElement>()
 
-    const height = maxHeightModal - Math.round(e.deltaY)
+  const refPassthrough = (el: HTMLDivElement): void => {
+    handlers.ref(el)
 
-    setStyleMove({ height: `${height}px`, transition: 'all 0ms ease' })
+    elementRef.current = el
   }
 
-  const closeModal = (e: SwipeEventData): void => {
-    if (e.deltaY >= maxHeightModal / 3) {
-      setTimeout(() => {
-        toggle()
-        setStyleMove({})
-      }, transitionMs)
+  // Это мне вообще нужно? Нужно, без этого не работает)))
+  const moveDrawer = (e: SwipeEventData): void => {
+    const scrollTop = elementRef.current?.scrollTop
+    if (scrollTop === 0) {
+      if (e.dir !== 'Down') return
 
-      setStyleMove({ height: '0', transition: `all ${transitionMs}ms ease` })
-    } else {
-      setStyleMove({ height: `${maxHeightModal}px`, transition: `all ${transitionMs}ms ease` })
+      const height = maxHeightModal - Math.round(e.deltaY)
+
+      setStyleMove({ height: `${height}px`, transition: 'all 0ms ease', overflowY: 'hidden', touchAction: 'none' })
     }
   }
 
+  const closeDrawer = (e: SwipeEventData): void => {
+    console.log('closeDrawer')
+    const scrollTop = elementRef.current?.scrollTop
+    if (scrollTop === 0) {
+      if (e.deltaY >= maxHeightModal / 3) {
+        setTimeout(() => {
+          toggle()
+          setStyleMove({})
+        }, transitionMs)
+
+        setStyleMove({ height: '0', transition: `all ${transitionMs}ms ease`, overflowY: 'hidden', touchAction: 'none' })
+      } else {
+        setStyleMove({ height: `${maxHeightModal}px`, transition: `all ${transitionMs}ms ease` })
+      }
+    }
+  }
+
+  // const onSwipedUp = (): void => {
+  //   console.log('onSwipedUp')
+  //   const scrollTop = elementRef.current?.scrollTop
+  //   const scrollHeight = elementRef.current?.scrollHeight
+  //   console.log('scrollTop', scrollTop)
+  //   console.log('scrollHeight', scrollHeight)
+  //   console.log(`${scrollTop + maxHeightModal}`)
+  //   if (scrollTop + maxHeightModal === scrollHeight) {
+  //     setStyleMove({ height: `${maxHeightModal}px`, transition: `all ${transitionMs}ms ease` })
+  //   }
+
+  // }
+
   return [
     handlers,
-    styleMove
+    styleMove,
+    refPassthrough
   ]
 }

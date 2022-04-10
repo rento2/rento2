@@ -19,4 +19,6 @@ export interface IDrawer {
 export interface IStyleMove {
   height?: string
   transition?: string
+  overflowY?: '-moz-hidden-unscrollable' | 'auto' | 'clip' | 'hidden' | 'scroll' | 'visible'
+  touchAction?: string
 }
