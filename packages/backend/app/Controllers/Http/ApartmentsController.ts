@@ -31,18 +31,15 @@ export default class ApartmentsController {
   }
 
   public async store ({ request, response }: HttpContextContract): Promise<void> {
-    const { accommodations, sleepingPlaces } = request.body()
-
-    const apartment = await Apartment.create(
-      await request.validate(CreateApartmentValidator)
-    )
+    const apartmentPayload = await request.validate(CreateApartmentValidator)
+    const apartment = await Apartment.create(apartmentPayload)
 
     await Promise.all([
       apartment.related('accommodations').attach(
-        accommodations.map(({ id }: {id: number}) => id)
+        apartmentPayload.accommodations.map(({ id }) => id)
       ),
       apartment.related('sleepingPlaces').attach(
-        (sleepingPlaces as Array<{id: number, number: number}>).reduce(
+        (apartmentPayload.sleepingPlaces).reduce(
           (prev, { id, number }) => ({
             ...prev,
             [id]: { number }

@@ -149,6 +149,24 @@ export default class ApartmentValidator extends ValidatorMessages {
     max_children: schema.number([
       rules.unsigned(),
       rules.range(0, 99)
-    ])
+    ]),
+
+    accommodations: schema.array().members(
+      schema.object()
+        .members({
+          id: schema.number([rules.unsigned()])
+        })
+    ),
+
+    sleepingPlaces: schema.array().members(
+      schema.object()
+        .members({
+          id: schema.number([rules.unsigned()]),
+          number: schema.number([
+            rules.unsigned(),
+            rules.range(0, 32),
+          ]),
+        })
+    ),
   })
 }
