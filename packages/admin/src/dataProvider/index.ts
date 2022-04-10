@@ -3,8 +3,7 @@ import { fetchUtils, DataProvider } from 'ra-core'
 
 export default (
   apiUrl: string,
-  httpClient = fetchUtils.fetchJson,
-  countHeader: string = 'Content-Range'
+  httpClient = fetchUtils.fetchJson
 ): DataProvider => ({
   getList: async (resource, params) => {
     const { page, perPage } = params.pagination
@@ -19,35 +18,17 @@ export default (
       filter: JSON.stringify(params.filter)
     }
     const url = `${apiUrl}/${resource}?${stringify(query)}`
-    const options =
-      countHeader === 'Content-Range'
-        ? {
-          // Chrome doesn't return `Content-Range` header if no `Range` is provided in the request.
-            headers: new Headers({
-              Range: `${resource}=${rangeStart}-${rangeEnd}`
-            })
-          }
-        : {}
 
-    return await httpClient(url, options).then(({ headers, json }) => {
-      if (!headers.has(countHeader)) {
-        throw new Error(
-          `The ${countHeader} header is missing in the HTTP Response. The simple REST data provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare ${countHeader} in the Access-Control-Expose-Headers header?`
-        )
-      }
-      return {
-        data: json.data,
-        total:
-          countHeader === 'Content-Range'
-            ? parseInt(String('content-range'.split('/').pop()), 10)
-            : parseInt(String(headers.get(countHeader.toLowerCase())))
-      }
-    })
+    return await httpClient(url).then(({ json }) => ({
+      data: json.data,
+      // TODO: remove hardcoded pag
+      total: 5
+    }))
   },
 
   getOne: async (resource, params) =>
     await httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
-      data: json
+      data: json.data[0]
     })),
 
   getMany: async (resource, params) => {
@@ -62,9 +43,6 @@ export default (
     const { page, perPage } = params.pagination
     const { field, order } = params.sort
 
-    const rangeStart = (page - 1) * perPage
-    const rangeEnd = page * perPage - 1
-
     const query = {
       sort: JSON.stringify([field, order]),
       range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
@@ -74,30 +52,12 @@ export default (
       })
     }
     const url = `${apiUrl}/${resource}?${stringify(query)}`
-    const options =
-      countHeader === 'Content-Range'
-        ? {
-          // Chrome doesn't return `Content-Range` header if no `Range` is provided in the request.
-            headers: new Headers({
-              Range: `${resource}=${rangeStart}-${rangeEnd}`
-            })
-          }
-        : {}
 
-    return await httpClient(url, options).then(({ headers, json }) => {
-      if (!headers.has(countHeader)) {
-        throw new Error(
-          `The ${countHeader} header is missing in the HTTP Response. The simple REST data provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare ${countHeader} in the Access-Control-Expose-Headers header?`
-        )
-      }
-      return {
-        data: json,
-        total:
-          countHeader === 'Content-Range'
-            ? parseInt(String('content-range'.split('/').pop()), 10)
-            : parseInt(String(headers.get(countHeader.toLowerCase())))
-      }
-    })
+    return await httpClient(url).then(({ json }) => ({
+      data: json,
+      // TODO: remove hardcoded pag
+      total: 5
+    }))
   },
 
   update: async (resource, params) =>
@@ -117,20 +77,18 @@ export default (
       )
     ).then(responses => ({ data: responses.map(({ json }) => json.id) })),
 
-  create: async (resource, params) =>
-    await httpClient(`${apiUrl}/${resource}`, {
+  create: async (resource, params) => {
+    return await httpClient(`${apiUrl}/${resource}`, {
       method: 'POST',
       body: JSON.stringify(params.data)
     }).then(({ json }) => ({
       data: { ...params.data, id: json.id }
-    })),
+    }))
+  },
 
   delete: async (resource, params) =>
     await httpClient(`${apiUrl}/${resource}/${params.id}`, {
-      method: 'DELETE',
-      headers: new Headers({
-        'Content-Type': 'text/plain'
-      })
+      method: 'DELETE'
     }).then(({ json }) => ({ data: json })),
 
   // simple-rest doesn't handle filters on DELETE route, so we fallback to calling DELETE n times instead
@@ -138,10 +96,7 @@ export default (
     await Promise.all(
       params.ids.map(async id =>
         await httpClient(`${apiUrl}/${resource}/${id}`, {
-          method: 'DELETE',
-          headers: new Headers({
-            'Content-Type': 'text/plain'
-          })
+          method: 'DELETE'
         })
       )
     ).then(responses => ({
