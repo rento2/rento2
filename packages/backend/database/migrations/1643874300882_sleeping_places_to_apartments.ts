@@ -1,6 +1,6 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class ServicesToApartments extends BaseSchema {
+export default class SleepingPlacesToApartments extends BaseSchema {
   protected tableName = 'sleeping_places_to_apartments'
 
   public async up (): Promise<void> {
