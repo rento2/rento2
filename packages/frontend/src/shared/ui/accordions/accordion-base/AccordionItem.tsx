@@ -1,4 +1,4 @@
-import { IDataProps } from './types/IAccordionPrors'
+import { IAccordionProps } from './types/IAccordionPrors'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
 import style from './Accordion.module.scss'
@@ -8,7 +8,7 @@ function AccordionItem ({
   isOpen,
   btnOnclick
 }: {
-  state: IDataProps
+  state: IAccordionProps
   isOpen: boolean
   btnOnclick: () => void
 }): JSX.Element {
