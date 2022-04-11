@@ -22,12 +22,9 @@ export default class AuthController {
     }
 
     return response
-      .status(HttpStatusCode.NotFound)
+      .status(HttpStatusCode.OK)
       .send(creatingOkMsg(
-        await auth.use('jwt').generate(foundUser, {
-          expiresIn: 1800,
-          refreshTokenExpiresIn: 1800,
-        })
+        await auth.use('jwt').generate(foundUser)
       ))
   }
 

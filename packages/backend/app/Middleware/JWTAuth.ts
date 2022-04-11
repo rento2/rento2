@@ -4,6 +4,7 @@ import { creatingErrMsg } from '../../common/helpers/creatingResponse'
 
 export default class AuthMiddleware {
   public async handle ({ auth, response }: HttpContextContract, next: () => Promise<void>): Promise<void> {
+    console.warn(await auth.use('jwt').check())
     if (await auth.use('jwt').check()) {
       return await next()
     }

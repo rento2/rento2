@@ -77,7 +77,7 @@ const authConfig: AuthConfig = {
       privateKey: Env.get('JWT_PRIVATE_KEY', '').replace(/\\n/g, '\n'),
       persistJwt: true,
       jwtDefaultExpire: '30m',
-      refreshTokenDefaultExpire: '30m',
+      refreshTokenDefaultExpire: '30d',
       tokenProvider: {
         type: 'api',
         driver: 'redis',
