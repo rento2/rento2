@@ -21,7 +21,7 @@ export default class AuthController {
     if (!foundUser || !await Hash.verify(foundUser.password, payload.password)) {
       return response
         .status(HttpStatusCode.UnprocessableEntity)
-        .send(creatingErrMsg('UNABLE_TO_AUTHORIZE'))
+        .send(creatingErrMsg('UNABLE_TO_AUTHORIZE', 'Wrong email or password'))
     }
 
     return response
