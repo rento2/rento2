@@ -21,7 +21,10 @@
     "./providers/AppProvider",
     "@adonisjs/core",
     "@adonisjs/lucid",
-    "adonis-lucid-soft-deletes"
+    "adonis-lucid-soft-deletes",
+    "@adonisjs/auth",
+    "adonis5-jwt",
+    "@adonisjs/redis"
   ],
   "aceProviders": [
     "@adonisjs/repl"
