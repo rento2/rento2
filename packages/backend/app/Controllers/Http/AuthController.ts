@@ -45,7 +45,7 @@ export default class AuthController {
           await auth.use('jwt').loginViaRefreshToken(payload.refreshToken)
         ))
     } catch {
-      throw new Exception('Jwt token is not valid', 422, 'ERR_JWS_INVALID')
+      throw new Exception('JWT refresh token is not valid', 422, 'ERR_JWS_INVALID')
     }
   }
 
