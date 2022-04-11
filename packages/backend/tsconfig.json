@@ -42,7 +42,10 @@
       "@adonisjs/core",
       "@adonisjs/repl",
       "@adonisjs/lucid",
-      "adonis-lucid-soft-deletes"
+      "adonis-lucid-soft-deletes",
+      "@adonisjs/auth",
+      "adonis5-jwt",
+      "@adonisjs/redis"
     ]
   }
 }
