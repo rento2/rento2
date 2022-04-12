@@ -11,11 +11,14 @@
   position: relative;
   margin: 59px 0 0 100px;
 
+  @include bp-1279 {
+    max-width: 688px;
+  }
+
   @include bp-1059 {
     width: 688px;
     padding-bottom: 24px;
-    margin: 0 auto;
-    margin-top: 92px;
+    margin: 92px auto 0;
   }
 
   @include bp-767 {
@@ -34,7 +37,7 @@
     width: 58px;
     height: 61px;
     content: '';
-    background-image: url('/images/owners/Pic-question.svg');
+    background-image: url('/images/owners/pic-question.svg');
     @include bp-1059 {
       top: -37%;
       left: 90%;
@@ -57,16 +60,14 @@
   transition: all 500ms ease-in;
   @include bp-1279 {
     max-width: 688px;
-    margin: 0 auto;
     margin: 24px 0 0 100px;
   }
   @include bp-1059 {
-    margin: 0 auto;
-    margin-bottom: 189px;
+    margin: 0 auto 189px;
   }
 
   @include bp-359 {
-    margin-bottom: 318px;
+    margin: 0 auto 318px;
   }
 }
 

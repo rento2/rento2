@@ -10,20 +10,16 @@ export const PrivacyPage = (): JSX.Element => {
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
-      <main>
-        <section className='container-old'>
-          <DocumentsLayout headMenu={ <HeadMenu /> }
-            sideMenu={ <SideMenu /> }
-            titleText="igiu"
-            widthProps={ 1059 }
-            widthWindowProps={ widthWindow }
-          >
-            <div>
-              guyhu
-            </div>
-          </DocumentsLayout>
-        </section>
-      </main>
+      <DocumentsLayout headMenu={ <HeadMenu /> }
+        sideMenu={ <SideMenu /> }
+        titleText="igiu"
+        widthProps={ 1059 }
+        widthWindowProps={ widthWindow }
+      >
+        <div>
+          guyhu
+        </div>
+      </DocumentsLayout>
     </Layout>
   )
 }
