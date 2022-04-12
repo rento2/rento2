@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
-import { forwardRef, Ref, useRef, useState } from 'react'
+import { forwardRef, Ref, useState, useRef, useContext, useEffect, useMemo } from 'react'
 import { IListProps } from '@widgets/docs-list/lib/types/IListProps'
 import classNames from 'classnames'
 import { ITagName } from '@widgets/docs-list/lib/types/ITagName'
 import styles from './DocsListItem.module.scss'
-import { DocsListItemAfter } from './DocsListItemAfter'
+import { DocsListContext } from '@widgets/docs-list/model/DocsListContext'
 
-let isOpen = false
-
-// TODO
-// Если уберется контекст или же будет необходимость использовать контекст в  этом компоненте, то лучше вместо AgreementShortButton использовать базовую кнопку, а в нее просто передать необходимый метод при клике по кнопке
 export const DocsListItem = forwardRef<HTMLElement, IListProps>(
   (
     {
@@ -23,6 +19,8 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
     },
     ref: Ref<HTMLElement>
   ): JSX.Element => {
+    const { setShownPriceDamage, setShownRules } = useContext(DocsListContext)
+
     const tagName: ITagName = {
       list: 'ol',
       item: 'li',
@@ -34,62 +32,85 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
 
     const contentRef = useRef<HTMLDivElement>(null)
     const [height, setHeight] = useState(0)
+    const [isOpen, setIsOpen] = useState(false)
 
     const btnOnclick: () => void = () => {
-      if (height === 0) isOpen = true; else isOpen = false
+      setIsOpen(!isOpen)
+    }
+
+    useEffect(() => {
       if (isOpen) {
         const contentEl = contentRef.current as HTMLDivElement
         setHeight(contentEl.scrollHeight)
       } else {
         setHeight(0)
       }
-    }
+    }, [isOpen])
+
+    const styleOpen = useMemo((): string | undefined => {
+      return isOpen ? styles['item-description-open'] : styles['item-description-closed']
+    }, [isOpen])
 
     return (
       <>
         { type === 'title'
           ? (
-            <div className={ classNames(styles['item']) }>
-              <h3>
+            <>
+              <Component ref={ ref }
+                className={ classNames(styles[classItem ?? '']) }
+              >
                 <button className={ classNames(styles['item-title'], isOpen ? styles['active'] : '') }
                   onClick={ btnOnclick }
                 >
-                  {text != null && button == null
-                    ? (
-                      <div className={ classNames(styles['item-p']) }>
-                        <Component ref={ ref }
-                          className={ classNames(styles[classItem ?? '']) }
-                        >
-                          {text}
-                        </Component>
-                      </div>
-
-                      )
-                    : null}
+                  {text}
                 </button>
-              </h3>
+              </Component>
+
               {Array.isArray(contents)
-                ? (
-                  <div className={ classNames(styles['item-container']) }
+                ? (contents.map((listItem: IListProps, index: number) => (
+                  <div key={ `${listItem.type}-${index}` }
+                    className={ classNames(styles['item-container']) }
                     style={ { height } }
                   >
                     <div ref={ contentRef }
-                      className={ classNames(styles['item-description'], isOpen ? styles['item-description-open'] : styles['item-description-closed']) }
+                      className={ classNames(styles['item-description'], styleOpen) }
                     >
-
-                      {contents.map((listItem: IListProps, index: number) => (
-                        <DocsListItemAfter
-                          key={ `${listItem.type}-${index}` }
-                          { ...listItem }
-                        />
-                      ))}
+                      <DocsListItem
+                        ref={ ref }
+                        { ...listItem }
+                      />
                     </div>
                   </div>
-                  )
-
+                  )))
                 : null}
-            </div>
+            </>
+            )
+          : null}
 
+        {text != null && button == null && type !== 'title'
+          ? (
+            <Component ref={ ref }
+              className={ classNames(styles[classItem ?? '']) }
+            >
+              {text}
+            </Component>
+            )
+          : null}
+
+        {text != null && button != null && type !== 'title'
+          ? (
+            <Component ref={ ref }
+              className={ classNames(styles[classItem ?? '']) }
+            >
+              {text}
+              {' '}
+              <button className={ classNames(styles[button.classButton]) }
+                type='button'
+                onClick={ button.buttonType === 'modalPriceDamage' ? setShownPriceDamage : setShownRules }
+              >
+                {button.buttonText}
+              </button>
+            </Component>
             )
           : null}
 
