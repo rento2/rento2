@@ -1,0 +1,53 @@
+.list {
+  margin-bottom: 24px;
+
+  @include bp-1023 {
+    margin-bottom: 20px;
+  }
+
+  @include bp-479 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include bp-320 {
+    display: unset;
+  }
+}
+
+.item {
+  @include subtitle-2;
+  margin-bottom: 4px;
+  color: $gray-blue-600;
+  white-space: nowrap;
+
+  @include bp-1023 {
+    margin-bottom: 2px;
+  }
+
+  @include bp-743 {
+    @include subtitle-3;
+  }
+
+  @include bp-479 {
+    margin-right: 10px;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @include bp-320 {
+    margin-right: 0;
+    margin-bottom: 2px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
