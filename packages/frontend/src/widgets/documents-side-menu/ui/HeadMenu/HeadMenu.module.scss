@@ -1,0 +1,101 @@
+.title {
+  @include body-4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  padding-left: 40px;
+  margin-bottom: 24px;
+  background: $neutral-0;
+  border: 0;
+  border-bottom: 2px solid $neutral-50;
+  outline: 0;
+
+  @include bp-479 {
+    padding-left: 16px;
+  }
+
+  @include bp-359 {
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    padding-left: 16px;
+  }
+
+  &__text {
+
+    @include body-4;
+    color: $gray-blue-300;
+  }
+
+  &::after {
+    position: absolute;
+    left: 86%;
+    width: 19px;
+    height: 10px;
+    margin: 0;
+    content: '';
+    background-image: url('/images/arrow.svg');
+    background-repeat: no-repeat;
+    @include bp-929 {
+      left: 92%;
+    }
+    @include bp-767 {
+      left: 91%;
+    }
+
+    @include bp-479 {
+      left: 90%;
+    }
+    @include bp-359 {
+      left: 87%;
+    }
+  }
+
+  &.active::after {
+    transform: rotate(-180deg);
+  }
+}
+
+.dark {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  background-color: $neutral-900;
+  opacity: 0.5;
+}
+
+.wrapper-box {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  background-color: $neutral-0;
+}
+
+.bg-none {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+}
+
+.h0 {
+  visibility: hidden;
+}
+
+.open {
+  width: 100%;
+  margin-top: 24px;
+  background-color: $neutral-0;
+}
+
+.menu {
+  @include body-4;
+  margin: 0 0 24px 40px;
+  color: $gray-blue-300;
+  background: $neutral-0;
+  @include bp-479 {
+    margin: 0 0 24px 16px;
+  }
+}
