@@ -82,7 +82,6 @@ Route
       .prefix('photos')
 
     Route.resource('/apartments', 'ApartmentsController').apiOnly()
-    Route.resource('/photos', 'PhotosController').apiOnly()
   })
   .prefix('/api/v1').middleware('apiAuth')
 
