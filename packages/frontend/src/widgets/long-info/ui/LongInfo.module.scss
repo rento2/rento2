@@ -32,8 +32,7 @@
   color: $gray-blue-600;
 
   @include bp-1023 {
-    @include subtitle-1
-  ;
+    @include subtitle-1;
     margin-bottom: 0;
   }
 }
@@ -42,13 +41,16 @@
   @include body-5;
   display: flex;
   align-items: center;
-  margin-bottom: 34px;
+  max-width: 166px;
+  padding: 11px 12px;
+  margin-bottom: 24px;
   color: $gray-blue-600;
   text-align: center;
+  border-radius: 8px;
+  transition: all 0.2s;
 
   @include bp-1023 {
-    @include body-6
-  ;
+    @include body-6;
     margin-bottom: 20px;
   }
 
@@ -56,9 +58,15 @@
     margin-bottom: 14px;
   }
 
+  &:focus,
   &:hover {
-    color: inherit;
+    color: $neutral-900;
     cursor: pointer;
+    background-color: $gray-blue-50;
+  }
+
+  &:active {
+    color: $gray-blue-500;
   }
 }
 
