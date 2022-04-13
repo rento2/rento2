@@ -8,6 +8,7 @@ import { ServicesFactory } from './ServicesFactory'
 import { BannersFactory } from './BannersFactory'
 import { OrdersFactory } from './OrdersFactory'
 import { SleepingPlacesFactory } from './SleepingPlacesFactory'
+import { PhotoFactory } from './PhotoFactory'
 
 export const ApartmentsFactory = Factory
   .define(Apartment, ({ faker }) => {
@@ -16,7 +17,7 @@ export const ApartmentsFactory = Factory
       isActive: faker.datatype.boolean(),
       name: faker.internet.userName(),
       latinName: faker.name.findName(),
-      description: faker.lorem.text(Math.round(Math.random() * (20 - 5) + 5)),
+      description: faker.lorem.paragraph(),
       bnovoId: faker.datatype.number(),
       price: faker.datatype.number(100_000),
       pricePerMonth: faker.datatype.number(100_000),
@@ -63,4 +64,5 @@ export const ApartmentsFactory = Factory
   .relation('banners', () => BannersFactory)
   .relation('orders', () => OrdersFactory)
   .relation('sleepingPlaces', () => SleepingPlacesFactory)
+  .relation('photos', () => PhotoFactory)
   .build()
