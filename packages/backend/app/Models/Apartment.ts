@@ -162,7 +162,7 @@ export default class Apartment extends BaseModel {
   public accommodations!: ManyToMany<typeof Accommodation>
 
   @hasMany(() => Photo, {})
-  public photo!: HasMany<typeof Photo>
+  public photos!: HasMany<typeof Photo>
 
   @manyToMany(() => SleepingPlace, {
     pivotColumns: ['number'],

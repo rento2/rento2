@@ -72,10 +72,19 @@ Route
       })
       .prefix('sleeping-places')
 
+    Route
+      .group(() => {
+        Route.post('/create', 'PhotosController.create')
+        Route.get('/one', 'PhotosController.one')
+        Route.get('/list', 'PhotosController.list')
+        Route.delete('/delete/:id', 'PhotosController.delete')
+      })
+      .prefix('photos')
+
     Route.resource('/apartments', 'ApartmentsController').apiOnly()
     Route.resource('/photos', 'PhotosController').apiOnly()
   })
-  .prefix('/api/v1').middleware('apiAuth')
+  .prefix('/api/v1')// .middleware('apiAuth')
 
 Route
   .group(() => {

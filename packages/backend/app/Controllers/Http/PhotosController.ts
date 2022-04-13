@@ -1,6 +1,5 @@
-import { photoSchema } from './../../Validators/PhotoValidator'
+import PhotoValidator from './../../Validators/PhotoValidator'
 import { HttpStatusCode } from './../../../common/constants/HttpStatusCode'
-import Application from '@ioc:Adonis/Core/Application'
 import Drive from '@ioc:Adonis/Core/Drive'
 import Photo from 'App/Models/Photo'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
@@ -8,114 +7,62 @@ import {
   creatingOkMsg,
   creatingErrMsg,
 } from '../../../common/helpers/creatingResponse'
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { v4: uuidv4 } = require('uuid')
-const tmpPath = Application.tmpPath('uploads')
+import { v4 as uuidv4 } from 'uuid'
 
 export default class PhotosController {
-  public async index ({ response }: HttpContextContract): Promise<void> {
+  public async list ({ response }: HttpContextContract): Promise<void> {
     const photos = await Photo.all()
-
-    try {
-      return response.status(HttpStatusCode.OK).send(creatingOkMsg(photos))
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return response.send(creatingErrMsg('error', e.message))
-      }
-    }
+    return response.status(HttpStatusCode.OK)
+      .send(creatingOkMsg(photos))
   }
 
-  public async store ({
+  public async create ({
     request,
     response,
   }: HttpContextContract): Promise<void> {
-    const pictureToUpload = await request.validate({ schema: photoSchema })
-    const apartmentId = request.body()['apartment_id']
-    try {
-      const uuid: string = uuidv4()
-      const extName = pictureToUpload.image.extname
+    const { image, apartmentId } = await request.validate(PhotoValidator)
 
-      if (extName != null) {
-        const filename = `${uuid}.${extName}`
+    const uploadedPhotoIdentifier = uuidv4()
+    const uploadedPhotoExtension = image.extname
+    const uploadedCellPath = uploadedPhotoIdentifier.split('-').join('/')
 
-        await pictureToUpload.image.moveToDisk(
-          tmpPath,
-          { name: filename, overwrite: true },
-          'local'
-        )
-
-        const photo = await Photo.create({
-          link: tmpPath + '/' + filename,
-          apartment_id: apartmentId,
-        })
-
-        return response.status(HttpStatusCode.OK).send(creatingOkMsg(photo))
-      }
-      return response.send(creatingErrMsg('error', 'Wrong file type'))
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return response.send(creatingErrMsg('error', e.message))
-      }
+    if (!uploadedPhotoExtension) {
+      return response.send(
+        creatingErrMsg('UNABLE_TO_PARSE_EXTENSION', 'File must have an extension')
+      )
     }
+
+    await image.moveToDisk(uploadedCellPath, {
+      name: `${uploadedPhotoIdentifier}.${uploadedPhotoExtension}`,
+      visibility: 'public',
+    }, 's3')
+
+    const s3Filepath = `${uploadedCellPath}/${uploadedPhotoIdentifier}.${uploadedPhotoExtension}`
+    const photo = await Photo.create({
+      link: await Drive.getUrl(s3Filepath),
+      path: s3Filepath,
+      apartmentId,
+    })
+
+    return response.status(HttpStatusCode.OK).send(creatingOkMsg(photo))
   }
 
-  public async show ({ params, response }: HttpContextContract): Promise<void> {
-    try {
-      const photo = await Photo.findBy('id', params['id'])
+  public async one ({ response, request }: HttpContextContract): Promise<void> {
+    const photo = await Photo.findOrFail(request.param('id', null))
 
-      if (photo != null) {
-        return response.status(HttpStatusCode.OK).send(creatingOkMsg(photo))
-      } else {
-        return response.send(creatingErrMsg('error', 'Photo not found'))
-      }
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return response.send(creatingErrMsg('error', e.message))
-      }
-    }
+    return response.status(HttpStatusCode.OK)
+      .send(creatingOkMsg(photo))
   }
 
-  public async update ({
-    params,
-    request,
-    response,
-  }: HttpContextContract): Promise<void> {
-    try {
-      const photo = await Photo.findBy('id', params['id'])
+  public async delete ({ response, request }: HttpContextContract): Promise<any> {
+    const photo = await Photo.findOrFail(request.param('id', null))
 
-      if (photo != null) {
-        await photo.merge(request.body()).save()
+    await Promise.all([
+      photo.delete(),
+      Drive.delete(photo.path)
+    ])
 
-        return response.status(HttpStatusCode.OK).send(creatingOkMsg(photo))
-      } else {
-        return response.send(creatingErrMsg('error', 'Photo not found'))
-      }
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return response.send(creatingErrMsg('error', e.message))
-      }
-    }
-  }
-
-  public async destroy ({
-    params,
-    response,
-  }: HttpContextContract): Promise<void> {
-    try {
-      const photo = await Photo.findBy('id', params['id'])
-
-      if (photo != null) {
-        await Drive.delete(`${photo.id}.jpg`)
-        await photo.delete()
-
-        return response.status(HttpStatusCode.OK).send(creatingOkMsg(photo))
-      } else {
-        return response.send(creatingErrMsg('error', 'Photo not found'))
-      }
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        return response.send(creatingErrMsg('error', e.message))
-      }
-    }
+    return response.status(HttpStatusCode.OK)
+      .send(creatingOkMsg(photo.id))
   }
 }
