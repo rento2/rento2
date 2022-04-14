@@ -2,13 +2,33 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CreateApartmentValidator from 'App/Validators/ApartmentValidator'
 import { Apartment } from 'App/Models'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
-import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
+import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
+import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class ApartmentsController {
-  public async index ({ response }: HttpContextContract): Promise<void> {
-    const apartments = await Apartment.query().preload('accommodations')
+  public async index ({ response, request }: HttpContextContract): Promise<void> {
+    const { search } = await request.validate({
+      schema: schema.create({
+        search: schema.string.optional()
+      })
+    })
 
-    return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
+    let apartments = Apartment.query()
+      .preload('accommodations')
+      .preload('sleepingPlaces')
+      .preload('services')
+      .preload('banners')
+      .preload('photos')
+
+    if (search) {
+      apartments = apartments.where('name', 'ilike', `%${search}%`)
+    }
+
+    return response.status(HttpStatusCode.OK).send(
+      creatingPaginatedList(
+        await apartments.paginate(request.param('page', 1))
+      )
+    )
   }
 
   public async show ({ request, response }: HttpContextContract): Promise<void> {
@@ -28,25 +48,25 @@ export default class ApartmentsController {
   }
 
   public async store ({ request, response }: HttpContextContract): Promise<void> {
-    const { accommodations, ...apartmentData } = request.body()
+    const apartmentPayload = await request.validate(CreateApartmentValidator)
+    const apartment = await Apartment.create(apartmentPayload)
 
-    await request.validate(CreateApartmentValidator)
-    const apartment = await Apartment.create(apartmentData)
+    await Promise.all([
+      apartment.related('accommodations').attach(
+        apartmentPayload.accommodations.map(({ id }) => id)
+      ),
+      apartment.related('sleepingPlaces').attach(
+        (apartmentPayload.sleepingPlaces).reduce(
+          (prev, { id, number }) => ({
+            ...prev,
+            [id]: { number }
+          }), {}
+        )
+      )
+    ])
 
-    const idOfAccommodations = accommodations.map((p: { id: number }) => +p.id)
-    if (idOfAccommodations.length === 0) {
-      return response.status(HttpStatusCode.Created)
-        .send(creatingOkMsg([apartment], 'Apartments are created without amenities'))
-    }
-
-    await Promise.all(idOfAccommodations.map(async (item: number) => {
-      await apartment.related('accommodations').attach([item])
-    })).catch(() => {
-      return response.status(HttpStatusCode.InternalServerError).json(creatingErrMsg('error', 'Error creating a record'))
-    })
-
-    const apartmentResp = await Apartment.query().where('id', apartment.id).preload('accommodations')
-    return response.status(HttpStatusCode.Created).send(creatingOkMsg(apartmentResp, 'Apartments with amenities created'))
+    return response.status(HttpStatusCode.Created)
+      .send(creatingOkMsg(apartment))
   }
 
   public async destroy ({ response, params }: HttpContextContract): Promise<any> {

@@ -38,7 +38,7 @@ Route
         Route.get('/one/:id', 'ReviewsController.one')
         Route.delete('/delete/:id', 'ReviewsController.delete')
         Route.post('/create', 'ReviewsController.create')
-        Route.get('/list', 'ReviewsController.list')
+        Route.get('/list/:page', 'ReviewsController.list')
         Route.post('/update', 'ReviewsController.update')
       })
       .prefix('reviews')
@@ -48,7 +48,7 @@ Route
         Route.get('/one/:id', 'BannersController.one')
         Route.delete('/delete/:id', 'BannersController.delete')
         Route.post('/create', 'BannersController.create')
-        Route.get('/list', 'BannersController.list')
+        Route.get('/list/:page', 'BannersController.list')
         Route.post('/update', 'BannersController.update')
       })
       .prefix('banners')
@@ -58,11 +58,37 @@ Route
         Route.get('/one/:id', 'OrdersController.one')
         Route.delete('/delete/:id', 'OrdersController.delete')
         Route.post('/create', 'OrdersController.create')
-        Route.get('/list', 'OrdersController.list')
+        Route.get('/list/:page', 'OrdersController.list')
       })
       .prefix('orders')
 
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'SleepingPlacesController.one')
+        Route.delete('/delete/:id', 'SleepingPlacesController.delete')
+        Route.post('/create', 'SleepingPlacesController.create')
+        Route.get('/list/:page', 'SleepingPlacesController.list')
+        Route.post('/update', 'SleepingPlacesController.update')
+      })
+      .prefix('sleeping-places')
+
+    Route
+      .group(() => {
+        Route.post('/create', 'PhotosController.create')
+        Route.get('/one', 'PhotosController.one')
+        Route.get('/list/:page', 'PhotosController.list')
+        Route.delete('/delete/:id', 'PhotosController.delete')
+      })
+      .prefix('photos')
+
     Route.resource('/apartments', 'ApartmentsController').apiOnly()
-    Route.resource('photo', 'PhotosController').apiOnly()
   })
-  .prefix('/api/v1')
+  .prefix('/api/v1').middleware('apiAuth')
+
+Route
+  .group(() => {
+    Route.post('/login', 'AuthController.login')
+    Route.post('/refresh', 'AuthController.refresh')
+    Route.post('/logout', 'AuthController.logout')
+  })
+  .prefix('/api/v1/auth')
