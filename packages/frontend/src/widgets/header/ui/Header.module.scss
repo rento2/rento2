@@ -4,12 +4,9 @@
   z-index: 11;
   width: 100%;
   background-color: $neutral-0;
-  box-shadow: 0 0 50px $overlay;
+  box-shadow: 0 1px 0 $overlay;
 
   &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     height: 60px;
     padding: 0;
     margin: 0 auto;
@@ -33,14 +30,51 @@
   }
 
   &__item {
-    padding: 10px 10px 12px;
+    padding: 10px 10px 0;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding-bottom: 2px;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      margin: auto;
+      color: transparent;
+      content: '.';
+      background: $iris-500;
+      transition: width 500ms ease-in;
+    }
+
+    &:focus::after,
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:focus,
+    &:hover {
+      color: $gray-blue-500;
+    }
+
+    &:active {
+      color: $iris-500;
+    }
   }
 
   &__phone-btn {
-    width: 186px;
     padding: 11px 28px;
     margin-left: auto;
     white-space: nowrap;
+
+    @include bp-1279 {
+      padding: 11px 12px;
+    }
 
     @include bp-1023 {
       display: none;

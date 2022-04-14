@@ -1,21 +1,30 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import Image from 'next/image'
 import classNames from 'classnames'
-import { ButtonGeneral, LinkGeneral } from '@shared/ui'
-import { IconLogo, IconBurger } from '@shared/ui/icons'
+import { ButtonGeneral, LinkGeneral, IconBurger } from '@shared/ui'
 import { MobileMenu } from './mobile-menu/MobileMenu'
 import { dataNavLinks } from '../model/dataHeader'
+import { useOnClickOutside } from '@shared/lib/hooks/useClickOutside'
 import styles from './Header.module.scss'
 
 export const Header = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false)
+  const dropdown = useRef<HTMLDivElement>(null)
+
+  useOnClickOutside(dropdown, () => setShowMenu(false))
 
   return (
     <header className={ styles['header'] }>
-      <div className={ classNames(styles['header__inner'], 'container') }>
+      <div className={ classNames(styles['header__inner'], 'container', 'flex-s-b-c') }>
         <LinkGeneral classProps={ styles['header__logo'] }
           href='/'
         >
-          <IconLogo />
+          <Image alt='Logo'
+            className={ styles['header__logo-img'] }
+            height={ 14 }
+            src='/images/logo.svg'
+            width={ 60 }
+          />
         </LinkGeneral>
         <nav>
           <ul className={ classNames(styles['header__list'], 'flex-center') }>
@@ -23,7 +32,9 @@ export const Header = (): JSX.Element => {
               <li key={ textProps }
                 className={ styles['header__item'] }
               >
-                <LinkGeneral href={ hrefProps }>
+                <LinkGeneral classProps={ styles['header__link'] }
+                  href={ hrefProps }
+                >
                   {textProps}
                 </LinkGeneral>
               </li>
@@ -33,15 +44,15 @@ export const Header = (): JSX.Element => {
         {/* TODO когда будет авторизация */}
         {/* <ul className={ classNames(styles['header__auth-list'], 'flex-center') }>
           <li className={ styles['header__auth-item'] }>
-            <LinkGeneral href='#'
-              icon={ <IconFavourite /> }
-            />
+            <LinkGeneral href='#'>
+              <IconFavourite />
+            </LinkGeneral>
           </li>
           <li className={ styles['header__auth-item'] }>
             <LinkGeneral classProps='flex-center'
               href='#'
-              icon={ <IconAuth /> }
             >
+              <IconAuth />
               <span>
                 Войти
               </span>
@@ -52,8 +63,9 @@ export const Header = (): JSX.Element => {
           font='s'
           grade='neutral'
           height='40'
+          href="tel:+74993213185"
         >
-          +7 (966) 032-17-63
+          +7 499 321 31 85
         </ButtonGeneral>
 
         <ButtonGeneral
@@ -65,7 +77,9 @@ export const Header = (): JSX.Element => {
         >
           <IconBurger />
         </ButtonGeneral>
-        {showMenu && <MobileMenu onClose={ () => setShowMenu(false) } />}
+        {showMenu && (<MobileMenu ref={ dropdown }
+          onClose={ () => setShowMenu(false) }
+        />)}
       </div>
     </header>
   )

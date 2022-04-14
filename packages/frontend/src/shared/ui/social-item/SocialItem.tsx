@@ -6,7 +6,6 @@ interface ISocialItem {
   hrefProps: string
   iconProps: ReactElement
   titleProps: string
-  isFooter?: boolean
   classProps?: string | undefined
 }
 

@@ -1,10 +1,10 @@
 export const dataNavLinks = [
   {
-    hrefProps: '/long',
+    hrefProps: '/short',
     textProps: 'Аренда посуточно'
   },
   {
-    hrefProps: '/short',
+    hrefProps: '/long',
     textProps: 'Аренда долгосрочно'
   },
   {

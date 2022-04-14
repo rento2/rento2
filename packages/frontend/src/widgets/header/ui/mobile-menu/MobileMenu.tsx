@@ -1,24 +1,28 @@
+import { forwardRef } from 'react'
 import classNames from 'classnames'
-import { ButtonGeneral, LinkGeneral, SocialItem } from '@shared/ui'
-import { IconButtonClose, IconTelegramHeader, IconVkHeader, IconWhatsappHeader } from '@shared/ui/icons'
-import { dataNavLinks } from '../../model/dataHeader'
+import { ButtonGeneral, LinkGeneral, SocialItem, IconButtonClose, IconTelegram, IconVk, IconWhatsapp } from '@shared/ui'
+import { dataNavLinks } from '@widgets/header/model/dataHeader'
 import styles from './MobileMenu.module.scss'
 
-export const MobileMenu = ({ onClose }: { onClose: () => void }): JSX.Element => (
-  <div className={ styles['mobile-menu'] }
-    id='owner-menu-wrapper'
+interface IProps {
+  onClose: () => void
+}
+
+export const MobileMenu = forwardRef((props: IProps, ref) => (
+  <div
+    className={ styles['mobile-menu'] }
   >
-    <div className={ styles['mobile-menu__inner'] }
-      id='owner-mobile-menu'
+    <div ref={ ref }
+      className={ styles['mobile-menu__inner'] }
     >
       <ButtonGeneral
         classProps={ classNames(styles['mobile-menu__btn-close']) }
-        font='s'
+        font='m'
         grade='neutral'
-        height='40'
-        onClick={ onClose }
+        height='44'
+        onClick={ props.onClose }
       >
-        <IconButtonClose />
+        <IconButtonClose classProps={ styles['mobile-menu__btn-close-svg'] } />
       </ButtonGeneral>
 
       <div className={ styles['mobile-menu__nav-wrapper'] }>
@@ -26,7 +30,7 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }): JSX.Element =>
           <ul className={ styles['mobile-menu__list'] }>
             {dataNavLinks.map(({ hrefProps, textProps }) => (
               <li key={ textProps }
-                className={ styles['mobile-menu__item'] }
+                className={ classNames(styles['mobile-menu__item']) }
               >
                 <LinkGeneral href={ hrefProps }>
                   {textProps}
@@ -37,42 +41,39 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }): JSX.Element =>
         </nav>
         {/* TODO когда будет авторизация */}
         {/* <ul className={ styles['mobile-menu__auth-list'] }>
-          <li className={ styles['mobile-menu__auth-item'] }>
-            <LinkGeneral href='#'
-              icon={ <IconFavourite /> }
-            >
-              <span>
-                Избранное
-              </span>
-            </LinkGeneral>
-          </li>
-          <li className={ styles['mobile-menu__auth-item'] }>
-            <LinkGeneral classProps='flex-center'
-              href='#'
-              icon={ <IconAuth /> }
-            >
-              <span>
-                Войти
-              </span>
-            </LinkGeneral>
-          </li>
-        </ul> */}
+            <li className={ styles['mobile-menu__auth-item'] }>
+              <LinkGeneral href='#'>
+                <IconFavourite />
+                <span>
+                  Избранное
+                </span>
+              </LinkGeneral>
+            </li>
+            <li className={ styles['mobile-menu__auth-item'] }>
+              <LinkGeneral classProps='flex-center' href='#'>
+                <IconAuth />
+                <span>
+                  Войти
+                </span>
+              </LinkGeneral>
+            </li>
+          </ul> */}
         <ul className={ classNames(styles['mobile-menu__socials'], 'flex-center') }>
           <SocialItem
             classProps={ styles['mobile-menu__social-item'] }
             hrefProps='#'
-            iconProps={ <IconTelegramHeader /> }
+            iconProps={ <IconTelegram /> }
             titleProps='Telegram'
           />
           <SocialItem
             classProps={ styles['mobile-menu__social-item'] }
             hrefProps='#'
-            iconProps={ <IconWhatsappHeader /> }
+            iconProps={ <IconWhatsapp /> }
             titleProps='Whatsapp'
           />
           <SocialItem
             hrefProps='#'
-            iconProps={ <IconVkHeader /> }
+            iconProps={ <IconVk /> }
             titleProps='Vk'
           />
         </ul>
@@ -80,11 +81,14 @@ export const MobileMenu = ({ onClose }: { onClose: () => void }): JSX.Element =>
           font='s'
           grade='neutral'
           height='40'
+          href="tel:+74993213185"
         >
-          +7 (966) 032-17-63
+          +7 499 321 31 85
         </ButtonGeneral>
       </div>
     </div>
   </div>
-
 )
+)
+
+MobileMenu.displayName = 'MobileMenu'
