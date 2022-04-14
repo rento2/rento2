@@ -6,14 +6,17 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {
   creatingOkMsg,
   creatingErrMsg,
+  creatingPaginatedList,
 } from '../../../common/helpers/creatingResponse'
 import { v4 as uuidv4 } from 'uuid'
 
 export default class PhotosController {
-  public async list ({ response }: HttpContextContract): Promise<void> {
-    const photos = await Photo.all()
-    return response.status(HttpStatusCode.OK)
-      .send(creatingOkMsg(photos))
+  public async list ({ response, request }: HttpContextContract): Promise<void> {
+    return response.status(HttpStatusCode.OK).send(
+      creatingPaginatedList(
+        await Photo.query().paginate(request.param('page', 1))
+      )
+    )
   }
 
   public async create ({

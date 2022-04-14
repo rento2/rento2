@@ -7,9 +7,9 @@ export default class Orders extends BaseSchema {
     void this.schema.createTable(this.tableName, (table) => {
       table.bigIncrements('id').primary()
       table.bigInteger('apartment_id').unsigned().references('apartments')
-      table.string('name', 255).notNullable()
-      table.string('email', 255).notNullable()
-      table.string('phone', 255).notNullable()
+      table.string('name', 255).notNullable().index()
+      table.string('email', 255).notNullable().index()
+      table.string('phone', 255).notNullable().index()
       table.timestamp('date_from').notNullable()
       table.timestamp('date_to').notNullable()
       table.decimal('fixed_price', 15, 2).notNullable()

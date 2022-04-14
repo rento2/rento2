@@ -1,14 +1,17 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
-import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
+import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
 import SleepingPlace from 'App/Models/SleepingPlace'
 import SleepingPlaceValidator from 'App/Validators/SleepingPlaceValidator'
 
 export default class SleepingPlacesController {
-  public async list ({ response }: HttpContextContract): Promise<void> {
+  public async list ({ response, request }: HttpContextContract): Promise<void> {
     return response
-      .status(HttpStatusCode.OK)
-      .send(creatingOkMsg(await SleepingPlace.query()))
+      .status(HttpStatusCode.OK).send(
+        creatingPaginatedList(
+          await SleepingPlace.query().paginate(request.param('page', 1))
+        )
+      )
   }
 
   public async one ({ response, request }: HttpContextContract): Promise<void> {
