@@ -1,14 +1,17 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
-import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
+import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
 import Service from 'App/Models/Service'
 import CreateServiceValidator from 'App/Validators/ServiceValidator'
 
 export default class ServicesController {
-  public async list ({ response }: HttpContextContract): Promise<void> {
+  public async list ({ response, request }: HttpContextContract): Promise<void> {
     return response
-      .status(HttpStatusCode.OK)
-      .send(creatingOkMsg(await Service.query()))
+      .status(HttpStatusCode.OK).send(
+        creatingPaginatedList(
+          await Service.query().paginate(request.param('page', 1))
+        )
+      )
   }
 
   public async one ({ response, request }: HttpContextContract): Promise<void> {

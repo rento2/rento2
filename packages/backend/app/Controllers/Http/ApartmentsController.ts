@@ -2,10 +2,10 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CreateApartmentValidator from 'App/Validators/ApartmentValidator'
 import { Apartment } from 'App/Models'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
-import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
+import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
 
 export default class ApartmentsController {
-  public async index ({ response }: HttpContextContract): Promise<void> {
+  public async index ({ response, request }: HttpContextContract): Promise<void> {
     const apartments =
       await Apartment.query()
         .preload('accommodations')
@@ -13,8 +13,9 @@ export default class ApartmentsController {
         .preload('services')
         .preload('banners')
         .preload('photos')
+        .paginate(request.param('page', 1))
 
-    return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartments))
+    return response.status(HttpStatusCode.OK).send(creatingPaginatedList(apartments))
   }
 
   public async show ({ request, response }: HttpContextContract): Promise<void> {
