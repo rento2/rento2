@@ -7,7 +7,7 @@ interface IAccordionList{
   styleName?: string
 }
 
-function AccordionList ({ state, styleName }: IAccordionList): JSX.Element {
+export function AccordionList ({ state, styleName }: IAccordionList): JSX.Element {
   const [currentIdx, setCurrentIdx] = useState(-1)
   const btnOnClick = (idx: number): void => {
     setCurrentIdx((currentValue) => (currentValue !== idx ? idx : -1))
@@ -25,5 +25,3 @@ function AccordionList ({ state, styleName }: IAccordionList): JSX.Element {
     </ul>
   )
 }
-
-export default AccordionList

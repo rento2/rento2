@@ -8,7 +8,7 @@ export default class Reviews extends BaseSchema {
       table.bigIncrements('id').primary()
       table.bigInteger('apartment_id').unsigned().notNullable()
       table.foreign('apartment_id').references('id').inTable('apartments')
-      table.string('author', 255).notNullable()
+      table.string('author', 255).notNullable().index()
       table.string('avatar', 255)
       table.decimal('repairs', 2, 1).notNullable()
       table.decimal('purity', 2, 1).notNullable()

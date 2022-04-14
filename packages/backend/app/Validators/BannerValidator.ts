@@ -2,7 +2,7 @@ import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import ValidatorMessages from 'App/Validators/ValidatorMessages'
 
-export default class CreateBannerValidator extends ValidatorMessages {
+export default class BannerValidator extends ValidatorMessages {
   constructor (protected ctx: HttpContextContract) {
     super()
   }
