@@ -27,13 +27,11 @@ export function creatingPaginatedList<T extends LucidRow> (paginatedResults: Mod
 
   return {
     meta: {
-      result: 'OK'
-    },
-    data: {
+      result: 'OK',
       pagination: {
         perPage, currentPage, hasMorePages, total
       },
-      items: paginatedResults.all(),
-    }
+    },
+    data: paginatedResults.all(),
   }
 }
