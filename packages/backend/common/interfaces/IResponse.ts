@@ -20,14 +20,12 @@ export interface IPositiveResponse<T> {
 export interface IPaginatedResponse {
   meta: {
     result: string
-  }
-  data: {
     pagination: {
       perPage: number
       currentPage: number
       hasMorePages: boolean
       total: number
     }
-    items: LucidRow[]
   }
+  data: LucidRow[]
 }
