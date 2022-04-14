@@ -3,14 +3,26 @@ import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
 import Review from 'App/Models/Review'
 import CreateReviewValidator from 'App/Validators/ReviewValidator'
+import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class ReviewsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { search } = await request.validate({
+      schema: schema.create({
+        search: schema.string.optional()
+      })
+    })
+
+    let reviews = Review.query().preload('apartment')
+    if (search) {
+      reviews = reviews
+        .andWhere('author', 'ilike', `%${search}%`)
+    }
+
     return response
       .status(HttpStatusCode.OK).send(
         creatingPaginatedList(
-          await Review.query()
-            .preload('apartment').paginate(request.param('page', 1))
+          await reviews.paginate(request.param('page', 1))
         )
       )
   }

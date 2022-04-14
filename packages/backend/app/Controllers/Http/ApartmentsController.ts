@@ -3,19 +3,32 @@ import CreateApartmentValidator from 'App/Validators/ApartmentValidator'
 import { Apartment } from 'App/Models'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
+import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class ApartmentsController {
   public async index ({ response, request }: HttpContextContract): Promise<void> {
-    const apartments =
-      await Apartment.query()
-        .preload('accommodations')
-        .preload('sleepingPlaces')
-        .preload('services')
-        .preload('banners')
-        .preload('photos')
-        .paginate(request.param('page', 1))
+    const { search } = await request.validate({
+      schema: schema.create({
+        search: schema.string.optional()
+      })
+    })
 
-    return response.status(HttpStatusCode.OK).send(creatingPaginatedList(apartments))
+    let apartments = Apartment.query()
+      .preload('accommodations')
+      .preload('sleepingPlaces')
+      .preload('services')
+      .preload('banners')
+      .preload('photos')
+
+    if (search) {
+      apartments = apartments.where('name', 'ilike', `%${search}%`)
+    }
+
+    return response.status(HttpStatusCode.OK).send(
+      creatingPaginatedList(
+        await apartments.paginate(request.param('page', 1))
+      )
+    )
   }
 
   public async show ({ request, response }: HttpContextContract): Promise<void> {

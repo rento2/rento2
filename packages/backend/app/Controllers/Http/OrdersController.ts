@@ -3,12 +3,26 @@ import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
 import Order from 'App/Models/Order'
 import CreateOrderValidator from 'App/Validators/OrderValidator'
+import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class OrdersController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { search } = await request.validate({
+      schema: schema.create({
+        search: schema.string.optional()
+      })
+    })
+
+    let orders = Order.query()
+    if (search) {
+      orders = orders
+        .andWhere('name', 'ilike', `%${search}%`)
+        .andWhere('email', 'ilike', `%${search}%`)
+    }
+
     return response.status(HttpStatusCode.OK).send(
       creatingPaginatedList(
-        await Order.query().paginate(request.param('page', 1))
+        await orders.paginate(request.param('page', 1))
       )
     )
   }
