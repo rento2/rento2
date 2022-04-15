@@ -8,9 +8,10 @@ interface IDocumentsLayout {
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
+  pagePath?: string
 }
 
-export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps }: IDocumentsLayout): JSX.Element {
+export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps, pagePath }: IDocumentsLayout): JSX.Element {
   return (
     <div
       className={ classNames(style['flex-wrapper'], 'container-old') }
@@ -22,9 +23,13 @@ export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMe
           }
 
       <div className={ style['doc-container'] }>
-        <h1 className={ style['title'] }>
-          {titleText}
-        </h1>
+        {(pagePath !== '/docs/agreements')
+          ? (
+            <h1 className={ style['title'] }>
+              {titleText}
+            </h1>
+            )
+          : ''}
         <div className={ style['wrapper-box'] }>
           {children}
         </div>

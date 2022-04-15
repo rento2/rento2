@@ -12,7 +12,8 @@ export const FaqPage = (): JSX.Element => {
       header={ <Header /> }
     >
 
-      <DocumentsLayout headMenu={ <HeadMenu /> }
+      <DocumentsLayout
+        headMenu={ <HeadMenu /> }
         sideMenu={ <SideMenu /> }
         titleText="Частые вопросы"
         widthProps={ 1059 }
