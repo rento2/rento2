@@ -74,6 +74,16 @@ Route
 
     Route
       .group(() => {
+        Route.get('/one/:id', 'AccommodationsController.one')
+        Route.delete('/delete/:id', 'AccommodationsController.delete')
+        Route.post('/create', 'AccommodationsController.create')
+        Route.get('/list/:page', 'AccommodationsController.list')
+        Route.post('/update', 'AccommodationsController.update')
+      })
+      .prefix('accommodations')
+
+    Route
+      .group(() => {
         Route.post('/create', 'PhotosController.create')
         Route.get('/one', 'PhotosController.one')
         Route.get('/list/:page', 'PhotosController.list')
@@ -81,9 +91,26 @@ Route
       })
       .prefix('photos')
 
-    Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route
+      .group(() => {
+        Route.delete('/delete/:id', 'ApartmentsController.delete')
+        Route.post('/create', 'ApartmentsController.create')
+        Route.post('/update', 'ApartmentsController.update')
+      })
+      .prefix('apartments')
   })
   .prefix('/api/v1').middleware('apiAuth')
+
+Route
+  .group(() => {
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'ApartmentsController.one')
+        Route.get('/list/:page', 'ApartmentsController.list')
+      })
+      .prefix('apartments')
+  })
+  .prefix('/api/v1')
 
 Route
   .group(() => {
