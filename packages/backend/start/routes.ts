@@ -81,7 +81,15 @@ Route
       })
       .prefix('photos')
 
-    Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'ApartmentsController.one')
+        Route.delete('/delete/:id', 'ApartmentsController.delete')
+        Route.post('/create', 'ApartmentsController.create')
+        Route.get('/list/:page', 'ApartmentsController.list')
+        Route.post('/update', 'ApartmentsController.update')
+      })
+      .prefix('apartments')
   })
   .prefix('/api/v1').middleware('apiAuth')
 
