@@ -74,6 +74,16 @@ Route
 
     Route
       .group(() => {
+        Route.get('/one/:id', 'AccommodationsController.one')
+        Route.delete('/delete/:id', 'AccommodationsController.delete')
+        Route.post('/create', 'AccommodationsController.create')
+        Route.get('/list/:page', 'AccommodationsController.list')
+        Route.post('/update', 'AccommodationsController.update')
+      })
+      .prefix('accommodations')
+
+    Route
+      .group(() => {
         Route.post('/create', 'PhotosController.create')
         Route.get('/one', 'PhotosController.one')
         Route.get('/list/:page', 'PhotosController.list')
