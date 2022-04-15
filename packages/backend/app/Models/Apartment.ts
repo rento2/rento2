@@ -5,169 +5,178 @@ import {
   hasMany,
   ManyToMany,
   manyToMany,
-} from '@ioc:Adonis/Lucid/Orm'
-import Photo from 'App/Models/Photo'
+} from "@ioc:Adonis/Lucid/Orm";
+import Photo from "App/Models/Photo";
 
-import { DateTime } from 'luxon'
-import Accommodation from 'App/Models/Accommodation'
-import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
-import Service from './Service'
-import Term from '../../common/enums/Term'
-import Banner from './Banner'
-import Order from './Order'
-import SleepingPlace from './SleepingPlace'
+import { DateTime } from "luxon";
+import Accommodation from "App/Models/Accommodation";
+import { AdminDistrictsOfMoscow } from "../../common/enums/AdminDistrictsOfMoscow";
+import Service from "./Service";
+import Term from "../../common/enums/Term";
+import Banner from "./Banner";
+import Order from "./Order";
+import SleepingPlace from "./SleepingPlace";
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
-  public id!: number
+  public id!: number;
 
-  @manyToMany(() => Service, { pivotTable: 'services_to_apartments', pivotTimestamps: true })
-  public services!: ManyToMany<typeof Service>
+  @manyToMany(() => Service, {
+    pivotTable: "services_to_apartments",
+    pivotTimestamps: true,
+  })
+  public services!: ManyToMany<typeof Service>;
 
-  @manyToMany(() => Banner, { pivotTable: 'banners_to_apartments', pivotTimestamps: true })
-  public banners!: ManyToMany<typeof Banner>
+  @manyToMany(() => Banner, {
+    pivotTable: "banners_to_apartments",
+    pivotTimestamps: true,
+  })
+  public banners!: ManyToMany<typeof Banner>;
 
   @hasMany(() => Order)
-  public orders!: HasMany<typeof Order>
+  public orders!: HasMany<typeof Order>;
 
   @column()
-  public type!: Term
+  public type!: Term;
 
   @column()
-  public isActive!: boolean
+  public isActive!: boolean;
 
   @column()
-  public name!: string
+  public name!: string;
 
   @column()
-  public latinName!: string
+  public latinName!: string;
 
   @column()
-  public description!: string
+  public description!: string;
 
   @column()
-  public bnovoId!: number
+  public bnovoId!: number;
 
   @column()
-  public price!: number
+  public price!: number;
 
   @column()
-  public pricePerMonth!: number
+  public pricePerMonth!: number;
 
   @column()
-  public discount!: number
+  public discount!: number;
 
   @column()
-  public commission!: number
+  public commission!: number;
 
   @column()
-  public utilityBills!: number
+  public utilityBills!: number;
 
   @column()
-  public securityDepositShort!: number
+  public securityDepositShort!: number;
 
   @column()
-  public securityDepositLong!: number
+  public securityDepositLong!: number;
 
   @column()
-  public roomsNum!: number
+  public roomsNum!: number;
 
   @column()
-  public storey!: number
+  public storey!: number;
 
   @column()
-  public totalStoreys!: number
+  public totalStoreys!: number;
 
   @column()
-  public area!: number
+  public area!: number;
 
   @column()
-  public kitchenArea!: number
+  public kitchenArea!: number;
 
   @column()
-  public distanceFromCenter!: number
+  public distanceFromCenter!: number;
 
   @column()
-  public admArea!: AdminDistrictsOfMoscow
+  public admArea!: AdminDistrictsOfMoscow;
 
   @column()
-  public district!: string
+  public district!: string;
 
   @column()
-  public sellingPoint!: string
+  public sellingPoint!: string;
 
   @column()
-  public geoCoordinateX!: string
+  public geoCoordinateX!: string;
 
   @column()
-  public geoCoordinateY!: string
+  public geoCoordinateY!: string;
 
   @column()
-  public subwayStation!: string
+  public subwayStation!: string;
 
   @column()
-  public timeToSubway!: number
+  public subwayLine!: string;
 
   @column()
-  public repairs!: number
+  public timeToSubway!: number;
 
   @column()
-  public purity!: number
+  public repairs!: number;
 
   @column()
-  public location!: number
+  public purity!: number;
 
   @column()
-  public priceQuality!: number
+  public location!: number;
 
   @column()
-  public totalRating!: number
+  public priceQuality!: number;
 
   @column()
-  public checkInStart!: DateTime
+  public totalRating!: number;
 
   @column()
-  public checkInEnd!: DateTime
+  public checkInStart!: DateTime;
 
   @column()
-  public checkOutEnd!: DateTime
+  public checkInEnd!: DateTime;
 
   @column()
-  public smokingAllowed!: boolean
+  public checkOutEnd!: DateTime;
 
   @column()
-  public partyingAllowed!: boolean
+  public smokingAllowed!: boolean;
 
   @column()
-  public childrenAllowed!: boolean
+  public partyingAllowed!: boolean;
 
   @column()
-  public petsAllowed!: boolean
+  public childrenAllowed!: boolean;
 
   @column()
-  public maxAdults!: number
+  public petsAllowed!: boolean;
 
   @column()
-  public maxChildren!: number
+  public maxAdults!: number;
+
+  @column()
+  public maxChildren!: number;
 
   @column.dateTime({ autoCreate: true })
-  public createdAt!: DateTime
+  public createdAt!: DateTime;
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt!: DateTime
+  public updatedAt!: DateTime;
 
   @manyToMany(() => Accommodation, {
     pivotTimestamps: true,
   })
-  public accommodations!: ManyToMany<typeof Accommodation>
+  public accommodations!: ManyToMany<typeof Accommodation>;
 
   @hasMany(() => Photo, {})
-  public photos!: HasMany<typeof Photo>
+  public photos!: HasMany<typeof Photo>;
 
   @manyToMany(() => SleepingPlace, {
-    pivotColumns: ['number'],
-    pivotTable: 'sleeping_places_to_apartments',
-    pivotTimestamps: true
+    pivotColumns: ["number"],
+    pivotTable: "sleeping_places_to_apartments",
+    pivotTimestamps: true,
   })
-  public sleepingPlaces!: ManyToMany<typeof SleepingPlace>
+  public sleepingPlaces!: ManyToMany<typeof SleepingPlace>;
 }
