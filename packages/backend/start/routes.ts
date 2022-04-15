@@ -83,15 +83,24 @@ Route
 
     Route
       .group(() => {
-        Route.get('/one/:id', 'ApartmentsController.one')
         Route.delete('/delete/:id', 'ApartmentsController.delete')
         Route.post('/create', 'ApartmentsController.create')
-        Route.get('/list/:page', 'ApartmentsController.list')
         Route.post('/update', 'ApartmentsController.update')
       })
       .prefix('apartments')
   })
   .prefix('/api/v1').middleware('apiAuth')
+
+Route
+  .group(() => {
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'ApartmentsController.one')
+        Route.get('/list/:page', 'ApartmentsController.list')
+      })
+      .prefix('apartments')
+  })
+  .prefix('/api/v1')
 
 Route
   .group(() => {
