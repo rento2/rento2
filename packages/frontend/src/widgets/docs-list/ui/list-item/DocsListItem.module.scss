@@ -6,27 +6,21 @@
   }
 
   &__title {
-    @include headline-4;
-    margin: 0 0 12px;
 
-    @include bp-399 {
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 22px;
+    @include subtitle-2;
+    padding: 0 0 0 32px;
+    margin: 0 0 12px;
+    text-align: left;
+
+    @include bp-479 {
+      padding: 0 0 0 16px;
     }
 
     &::before {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 26px;
+      @include subtitle-2;
+      margin: 0 5px 0 0;
       content: counters(count, '.') '.';
       counter-increment: count;
-
-      @include bp-399 {
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 22px;
-      }
     }
   }
 
@@ -35,16 +29,10 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 31px;
-    color: $gray-blue-500;
-
-    @include bp-399 {
-      font-size: 16px;
-      line-height: 25px;
-    }
+    color: $gray-blue-600;
   }
 
   &__list-2 {
-    padding: 0;
     list-style: none;
     counter-reset: count;
   }
@@ -52,11 +40,6 @@
   &__item-2 {
     @include subtitle-2;
     margin: 0 0 12px;
-
-    @include bp-399 {
-      font-size: 16px;
-      line-height: 25px;
-    }
 
     &::before {
       margin: 0 5px 0 0;
@@ -95,46 +78,33 @@
 }
 
 .item {
-  padding: 0 0 0 40px;
-  border-bottom: 2px solid $neutral-50;
-
-  @include bp-479 {
-    padding: 0 0 0 16px;
-  }
-
-  &:first-child {
-    border-top: 2px solid $neutral-50;
-  }
-
   &-title {
-    @include body-4;
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 0 0 0 32px;
     padding: 22px 0;
+    color: $gray-blue-500;
     cursor: pointer;
-    background-color: $neutral-0;
+    background-color: transparent;
     border: 0;
+    border-bottom: 2px solid $neutral-50;
     outline: 0;
 
-    @include bp-1279 {
-      max-width: 100%;
-    }
-
-    @include bp-359 {
-      width: 95%;
+    &:first-child {
+      border-top: 2px solid $neutral-50;
     }
 
     &::after {
       position: absolute;
-      top: 20px;
-      left: 93%;
+      top: 22px;
+      left: 93.5%;
       width: 32px;
       height: 32px;
       cursor: pointer;
       content: '';
-      background-image: url('/images/owners/crossDocs.svg');
+      background-image: url('/images/owners/cross.svg');
       background-repeat: no-repeat;
       transition: transform 0.35s ease-in-out;
     }
@@ -147,17 +117,7 @@
     &:focus::after {
       width: 32px;
       height: 32px;
-      background-color: rgba($iris-500, 0.2);
       border-radius: 100%;
-    }
-  }
-
-  &-p {
-    max-width: 90%;
-    text-align: justify;
-    @include bp-359 {
-      max-width: 88%;
-      text-align: left;
     }
   }
 
@@ -165,7 +125,7 @@
     @include body-4;
     width: 90%;
     padding: 0 0 32px;
-    color: $gray-blue-400;
+    color: $gray-blue-600;
   }
 
   &-description-open {
@@ -177,8 +137,13 @@
   }
 
   &-container {
+    padding: 0 0 0 32px;
     overflow: hidden;
     transition: height 0.35s ease-in-out;
+
+    @include bp-479 {
+      padding: 0 0 0 16px;
+    }
   }
 }
 

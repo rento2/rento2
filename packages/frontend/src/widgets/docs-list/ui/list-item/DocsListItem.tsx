@@ -56,15 +56,16 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
         { type === 'title'
           ? (
             <>
-              <Component ref={ ref }
-                className={ classNames(styles[classItem ?? '']) }
+              <button className={ classNames(styles['item-title'], isOpen ? styles['active'] : '') }
+                onClick={ btnOnclick }
               >
-                <button className={ classNames(styles['item-title'], isOpen ? styles['active'] : '') }
-                  onClick={ btnOnclick }
+                <Component ref={ ref }
+                  className={ classNames(styles[classItem ?? '']) }
                 >
                   {text}
-                </button>
-              </Component>
+                </Component>
+
+              </button>
 
               {Array.isArray(contents)
                 ? (contents.map((listItem: IListProps, index: number) => (

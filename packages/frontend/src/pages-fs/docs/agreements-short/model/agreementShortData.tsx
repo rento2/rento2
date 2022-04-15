@@ -12,7 +12,7 @@ export const agreementShortData: IListProps[] = [
           {
             type: 'title',
             classItem: 'document__title',
-            text: 'Права и обязанности Сторон',
+            text: 'Права и обязанности сторон',
             contents: [{
               type: 'list',
               classItem: 'document__list-2',
@@ -116,7 +116,7 @@ export const agreementShortData: IListProps[] = [
           {
             type: 'title',
             classItem: 'document__title',
-            text: 'Права и обязанности Сторон',
+            text: 'Права и обязанности сторон',
             contents: [{
               type: 'list',
               classItem: 'document__list-2',
@@ -220,7 +220,7 @@ export const agreementShortData: IListProps[] = [
           {
             type: 'title',
             classItem: 'document__title',
-            text: 'Права и обязанности Сторон',
+            text: 'Права и обязанности сторон',
             contents: [{
               type: 'list',
               classItem: 'document__list-2',
