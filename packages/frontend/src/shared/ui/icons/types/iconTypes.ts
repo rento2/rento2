@@ -1,3 +1,3 @@
 export interface IIconClassProps {
-  classProps?: string
+  classProps?: string | undefined
 }
