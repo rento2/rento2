@@ -81,9 +81,26 @@ Route
       })
       .prefix('photos')
 
-    Route.resource('/apartments', 'ApartmentsController').apiOnly()
+    Route
+      .group(() => {
+        Route.delete('/delete/:id', 'ApartmentsController.delete')
+        Route.post('/create', 'ApartmentsController.create')
+        Route.post('/update', 'ApartmentsController.update')
+      })
+      .prefix('apartments')
   })
   .prefix('/api/v1').middleware('apiAuth')
+
+Route
+  .group(() => {
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'ApartmentsController.one')
+        Route.get('/list/:page', 'ApartmentsController.list')
+      })
+      .prefix('apartments')
+  })
+  .prefix('/api/v1')
 
 Route
   .group(() => {
