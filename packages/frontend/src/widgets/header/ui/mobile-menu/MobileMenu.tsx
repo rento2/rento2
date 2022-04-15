@@ -8,7 +8,7 @@ interface IProps {
   onClose: () => void
 }
 
-export const MobileMenu = forwardRef((props: IProps, ref) => (
+export const MobileMenu = forwardRef<HTMLDivElement | null, IProps>(({ onClose }: IProps, ref) => (
   <div
     className={ styles['mobile-menu'] }
   >
@@ -20,7 +20,7 @@ export const MobileMenu = forwardRef((props: IProps, ref) => (
         font='m'
         grade='neutral'
         height='44'
-        onClick={ props.onClose }
+        onClick={ onClose }
       >
         <IconButtonClose classProps={ styles['mobile-menu__btn-close-svg'] } />
       </ButtonGeneral>

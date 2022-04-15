@@ -9,7 +9,7 @@ import styles from './Header.module.scss'
 
 export const Header = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false)
-  const dropdown = useRef<HTMLDivElement>(null)
+  const dropdown = useRef<HTMLDivElement | null>(null)
 
   useOnClickOutside(dropdown, () => setShowMenu(false))
 
@@ -67,19 +67,23 @@ export const Header = (): JSX.Element => {
         >
           +7 499 321 31 85
         </ButtonGeneral>
-
-        <ButtonGeneral
-          classProps={ classNames(styles['header__btn-open']) }
-          font='s'
-          grade='neutral'
-          height='40'
-          onClick={ () => setShowMenu(true) }
-        >
-          <IconBurger />
-        </ButtonGeneral>
-        {showMenu && (<MobileMenu ref={ dropdown }
-          onClose={ () => setShowMenu(false) }
-        />)}
+        {showMenu
+          ? (
+            <MobileMenu ref={ dropdown }
+              onClose={ () => setShowMenu(false) }
+            />
+            )
+          : (
+            <ButtonGeneral
+              classProps={ classNames(styles['header__btn-open']) }
+              font='s'
+              grade='neutral'
+              height='40'
+              onClick={ () => setShowMenu(true) }
+            >
+              <IconBurger />
+            </ButtonGeneral>
+            )}
       </div>
     </header>
   )

@@ -13,6 +13,9 @@
 
     @include bp-743 {
       height: 40px;
+    }
+
+    @include bp-479 {
       padding: 0 16px;
     }
   }

@@ -1,11 +1,12 @@
-import { useEffect, SyntheticEvent } from 'react'
+import { useEffect, RefObject } from 'react'
 
-export const useOnClickOutside = (ref: React.MutableRefObject<HTMLDivElement>, handler: () => void): void => (
+export const useOnClickOutside = (ref: RefObject<HTMLDivElement> | null, handler: () => void): void => (
   useEffect(
     () => {
-      const listener = (event: SyntheticEvent): any => {
+      const listener = (event: { target: EventTarget | null }): void => {
         if (ref === null) return
-        if (ref?.current?.contains(event.target as Element)) {
+        const div = ref.current as HTMLElement
+        if (div?.contains(event.target as HTMLElement)) {
           return
         }
         handler()
