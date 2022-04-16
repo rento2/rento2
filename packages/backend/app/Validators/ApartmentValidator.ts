@@ -1,12 +1,12 @@
-import { rules, schema } from "@ioc:Adonis/Core/Validator";
-import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
-import ValidatorMessages from "App/Validators/ValidatorMessages";
-import Term from "../../common/enums/Term";
-import { AdminDistrictsOfMoscow } from "../../common/enums/AdminDistrictsOfMoscow";
+import { rules, schema } from '@ioc:Adonis/Core/Validator'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import ValidatorMessages from 'App/Validators/ValidatorMessages'
+import Term from '../../common/enums/Term'
+import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 
 export default class ApartmentValidator extends ValidatorMessages {
-  constructor(protected ctx: HttpContextContract) {
-    super();
+  constructor (protected ctx: HttpContextContract) {
+    super()
   }
 
   public schema = schema.create({
@@ -15,13 +15,13 @@ export default class ApartmentValidator extends ValidatorMessages {
     name: schema.string({ trim: true }, [
       rules.minLength(3),
       rules.maxLength(255),
-      rules.unique({ table: "apartments", column: "name" }),
+      rules.unique({ table: 'apartments', column: 'name' }),
       rules.regex(/^[a-zA-Z0-9-_. ]+$/),
     ]),
     latin_name: schema.string({ trim: true }, [
       rules.minLength(3),
       rules.maxLength(255),
-      rules.unique({ table: "apartments", column: "latin_name" }),
+      rules.unique({ table: 'apartments', column: 'latin_name' }),
       rules.regex(/^[a-zA-Z0-9-_. ]+$/),
     ]),
     description: schema.string({ trim: true }, [
@@ -29,7 +29,7 @@ export default class ApartmentValidator extends ValidatorMessages {
       rules.maxLength(1024),
     ]),
     bnovo_id: schema.number([
-      rules.unique({ table: "apartments", column: "bnovo_id" }),
+      rules.unique({ table: 'apartments', column: 'bnovo_id' }),
       rules.unsigned(),
     ]),
     price: schema.number([rules.unsigned(), rules.range(0, 9999999.99)]),
@@ -119,5 +119,5 @@ export default class ApartmentValidator extends ValidatorMessages {
         number: schema.number([rules.unsigned(), rules.range(0, 32)]),
       })
     ),
-  });
+  })
 }

@@ -5,7 +5,7 @@ export default function subwayStationToLine (subwayStation: string): string {
     (station) => station.title === subwayStation
   )
   if (subwayLine != null) {
-    return subwayLine.title
+    return subwayLine.line.title
   } else {
     return 'These stations are not in our bases'
   }

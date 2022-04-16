@@ -1,14 +1,14 @@
-import Factory from "@ioc:Adonis/Lucid/Factory";
-import Apartment from "App/Models/Apartment";
-import { AccommodationsFactory } from "Database/factories/AccommodationsFactory";
-import Term from "../../common/enums/Term";
-import { returnRandomFromEnum } from "../../common/helpers/enumService";
-import { AdminDistrictsOfMoscow } from "../../common/enums/AdminDistrictsOfMoscow";
-import { ServicesFactory } from "./ServicesFactory";
-import { BannersFactory } from "./BannersFactory";
-import { OrdersFactory } from "./OrdersFactory";
-import { SleepingPlacesFactory } from "./SleepingPlacesFactory";
-import { PhotoFactory } from "./PhotoFactory";
+import Factory from '@ioc:Adonis/Lucid/Factory'
+import Apartment from 'App/Models/Apartment'
+import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
+import Term from '../../common/enums/Term'
+import { returnRandomFromEnum } from '../../common/helpers/enumService'
+import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
+import { ServicesFactory } from './ServicesFactory'
+import { BannersFactory } from './BannersFactory'
+import { OrdersFactory } from './OrdersFactory'
+import { SleepingPlacesFactory } from './SleepingPlacesFactory'
+import { PhotoFactory } from './PhotoFactory'
 
 export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
   return {
@@ -57,12 +57,12 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
 
     max_adults: faker.datatype.number(10),
     max_children: faker.datatype.number(10),
-  };
+  }
 })
-  .relation("accommodations", () => AccommodationsFactory)
-  .relation("services", () => ServicesFactory)
-  .relation("banners", () => BannersFactory)
-  .relation("orders", () => OrdersFactory)
-  .relation("sleepingPlaces", () => SleepingPlacesFactory)
-  .relation("photos", () => PhotoFactory)
-  .build();
+  .relation('accommodations', () => AccommodationsFactory)
+  .relation('services', () => ServicesFactory)
+  .relation('banners', () => BannersFactory)
+  .relation('orders', () => OrdersFactory)
+  .relation('sleepingPlaces', () => SleepingPlacesFactory)
+  .relation('photos', () => PhotoFactory)
+  .build()
