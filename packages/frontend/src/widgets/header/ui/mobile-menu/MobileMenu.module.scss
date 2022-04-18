@@ -21,19 +21,8 @@
     top: 10px;
     right: 10px;
     height: auto;
-    padding: 6px;
+    padding: 0;
     background: inherit;
-    border: 1px solid $neutral-900;
-    border-radius: 6px;
-  }
-
-  &__btn-close-svg {
-    width: 6px;
-    height: 6px;
-
-    path {
-      stroke: $neutral-900;
-    }
   }
 
   &__nav-wrapper {
@@ -86,5 +75,17 @@
 
   &__social-item:not(:last-child) {
     margin-right: 30px;
+  }
+
+  &__icon-telegram {
+    fill: $blue-400;
+  }
+
+  &__icon-whatsapp {
+    fill: $green-a400;
+  }
+
+  &__icon-vk {
+    fill: $blue-500;
   }
 }

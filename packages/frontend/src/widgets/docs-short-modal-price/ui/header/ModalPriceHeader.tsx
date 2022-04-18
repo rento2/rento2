@@ -1,4 +1,4 @@
-import { IconButtonClose } from '@shared/ui'
+import { IconClose } from '@shared/ui'
 import { FC } from 'react'
 import classNames from 'classnames'
 import styles from './ModalPriceHeader.module.scss'
@@ -20,7 +20,7 @@ export const ModalPriceHeader: FC<IModalHeader> = ({ handleHide }) => {
         type='button'
         onClick={ handleHide }
       >
-        <IconButtonClose />
+        <IconClose classProps={ styles['icon'] } />
       </button>
     </>
   )

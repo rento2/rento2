@@ -1,9 +1,11 @@
-import { IIconClassProps } from './types/iconTypes'
+import { IIconClassProps } from '../types/iconTypes'
+import classNames from 'classnames'
+import styles from '../IconBaseStyles.module.scss'
 
 export function IconMetro (props: IIconClassProps): JSX.Element {
   return (
     <svg
-      className={ props.classProps }
+      className={ classNames(styles['icon-filied'], props.classProps) }
       height="12"
       viewBox="0 0 16 12"
       width="16"
