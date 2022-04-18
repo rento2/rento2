@@ -29,7 +29,10 @@ export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMe
               {titleText}
             </h1>
             )
-          : ''}
+
+          : (
+            <h1 />
+            )}
         <div className={ style['wrapper-box'] }>
           {children}
         </div>

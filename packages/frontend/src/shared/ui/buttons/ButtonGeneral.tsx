@@ -14,7 +14,8 @@ export interface IButton {
   height: '56' | '48' | '44' | '40'
   classProps?: string
   onClick?: () => void
-  children: React.ReactNode | string
+  children?: React.ReactNode | string
+  text?: string
 }
 
 export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, onClick, children }) => {

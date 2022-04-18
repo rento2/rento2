@@ -1,5 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin: 25px 0 333px;
+
+  &_contract {
+    width: 844px;
+    margin-bottom: 40px;
+  }
 }
