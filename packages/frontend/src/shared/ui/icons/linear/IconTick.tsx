@@ -7,7 +7,6 @@ export const IconTick: FC<IIconClassStroke> = ({ figure = 'none', classProps }):
   const stylesFigure = styles[`${figure}`] ?? ''
   const stylesSize = styles['tick-figure'] ?? ''
   const isSize = figure !== 'none'
-  console.log(styles['test'])
 
   return (
     <svg className={ classNames(styles['icon'], classProps, {
