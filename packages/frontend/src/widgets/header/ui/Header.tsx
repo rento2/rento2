@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
-import { ButtonGeneral, LinkGeneral, IconBurger } from '@shared/ui'
+import { ButtonGeneral, LinkGeneral, IconMenu } from '@shared/ui'
 import { MobileMenu } from './mobile-menu/MobileMenu'
 import { dataNavLinks } from '../model/dataHeader'
 import { useOnClickOutside } from '@shared/lib/hooks/useClickOutside'
@@ -45,14 +45,14 @@ export const Header = (): JSX.Element => {
         {/* <ul className={ classNames(styles['header__auth-list'], 'flex-center') }>
           <li className={ styles['header__auth-item'] }>
             <LinkGeneral href='#'>
-              <IconFavourite />
+              <IconHeart />
             </LinkGeneral>
           </li>
           <li className={ styles['header__auth-item'] }>
             <LinkGeneral classProps='flex-center'
               href='#'
             >
-              <IconAuth />
+              <IconUserSquare />
               <span>
                 Войти
               </span>
@@ -81,7 +81,7 @@ export const Header = (): JSX.Element => {
               height='40'
               onClick={ () => setShowMenu(true) }
             >
-              <IconBurger />
+              <IconMenu />
             </ButtonGeneral>
             )}
       </div>

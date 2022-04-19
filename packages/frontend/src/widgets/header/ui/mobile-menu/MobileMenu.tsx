@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import classNames from 'classnames'
-import { ButtonGeneral, LinkGeneral, SocialItem, IconButtonClose, IconTelegram, IconVk, IconWhatsapp } from '@shared/ui'
+import { ButtonGeneral, LinkGeneral, SocialItem, IconClose, IconTelegram, IconVk, IconWhatsapp } from '@shared/ui'
 import { dataNavLinks } from '@widgets/header/model/dataHeader'
 import styles from './MobileMenu.module.scss'
 
@@ -22,7 +22,7 @@ export const MobileMenu = forwardRef<HTMLDivElement | null, IProps>(({ onClose }
         height='44'
         onClick={ onClose }
       >
-        <IconButtonClose classProps={ styles['mobile-menu__btn-close-svg'] } />
+        <IconClose figure='square' />
       </ButtonGeneral>
 
       <div className={ styles['mobile-menu__nav-wrapper'] }>
@@ -43,7 +43,7 @@ export const MobileMenu = forwardRef<HTMLDivElement | null, IProps>(({ onClose }
         {/* <ul className={ styles['mobile-menu__auth-list'] }>
             <li className={ styles['mobile-menu__auth-item'] }>
               <LinkGeneral href='#'>
-                <IconFavourite />
+                <IconHeart />
                 <span>
                   Избранное
                 </span>
@@ -51,7 +51,7 @@ export const MobileMenu = forwardRef<HTMLDivElement | null, IProps>(({ onClose }
             </li>
             <li className={ styles['mobile-menu__auth-item'] }>
               <LinkGeneral classProps='flex-center' href='#'>
-                <IconAuth />
+                <IconUserSquare />
                 <span>
                   Войти
                 </span>
@@ -62,18 +62,18 @@ export const MobileMenu = forwardRef<HTMLDivElement | null, IProps>(({ onClose }
           <SocialItem
             classProps={ styles['mobile-menu__social-item'] }
             hrefProps='#'
-            iconProps={ <IconTelegram /> }
+            iconProps={ <IconTelegram classProps={ styles['mobile-menu__icon-telegram'] } /> }
             titleProps='Telegram'
           />
           <SocialItem
             classProps={ styles['mobile-menu__social-item'] }
             hrefProps='#'
-            iconProps={ <IconWhatsapp /> }
+            iconProps={ <IconWhatsapp classProps={ styles['mobile-menu__icon-whatsapp'] } /> }
             titleProps='Whatsapp'
           />
           <SocialItem
             hrefProps='#'
-            iconProps={ <IconVk /> }
+            iconProps={ <IconVk classProps={ styles['mobile-menu__icon-vk'] } /> }
             titleProps='Vk'
           />
         </ul>

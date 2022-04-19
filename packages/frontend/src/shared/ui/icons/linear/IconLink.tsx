@@ -1,9 +1,11 @@
-import { IIconClassProps } from './types/iconTypes'
+import { IIconClassProps } from '../types/iconTypes'
+import classNames from 'classnames'
+import styles from '../IconBaseStyles.module.scss'
 
 export function IconLink (props: IIconClassProps): JSX.Element {
   return (
     <svg
-      className={ props.classProps }
+      className={ classNames(styles['icon'], props.classProps) }
       height="20"
       viewBox="0 0 20 20"
       width="20"
