@@ -6,12 +6,12 @@ import styles from '../IconBaseStyles.module.scss'
 export const IconMinus: FC<IIconClassStroke> = ({ figure = 'none', classProps }): JSX.Element => {
   const stylesFigure = styles[`${figure}`] ?? ''
   const stylesSize = styles['minus-figure'] ?? ''
-  const size = figure !== 'none'
+  const isSize = figure !== 'none'
 
   return (
     <svg className={ classNames(styles['icon'], classProps, {
       [stylesFigure]: true,
-      [stylesSize]: size
+      [stylesSize]: isSize
     }) }
       height="2"
       viewBox="0 0 10 2"

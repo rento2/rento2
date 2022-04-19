@@ -6,12 +6,13 @@ import styles from '../IconBaseStyles.module.scss'
 export const IconTick: FC<IIconClassStroke> = ({ figure = 'none', classProps }): JSX.Element => {
   const stylesFigure = styles[`${figure}`] ?? ''
   const stylesSize = styles['tick-figure'] ?? ''
-  const size = figure !== 'none'
+  const isSize = figure !== 'none'
+  console.log(styles['test'])
 
   return (
     <svg className={ classNames(styles['icon'], classProps, {
       [stylesFigure]: true,
-      [stylesSize]: size
+      [stylesSize]: isSize
     }) }
       height="8"
       viewBox="0 0 10 8"
