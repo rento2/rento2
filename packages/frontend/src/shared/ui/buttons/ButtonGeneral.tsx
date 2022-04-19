@@ -8,8 +8,8 @@ export interface IButton {
   href?: string
   disabled?: boolean
   round?: boolean
-  grade?: 'primary' | 'secondary' | 'neutral'
-  full?: 'filled' | 'stroke'
+  grade?: 'primary' | 'secondary' | 'neutral' | 'accent' | 'iris' // accent нужен для текстовых кнопок
+  full?: 'filled' | 'stroke' | 'outlined' | 'text' | 'icon' // stroke для чего вообще? Мб удалить его?
   font: 'l' | 'm' | 's'
   height: '56' | '48' | '44' | '40'
   classProps?: string
@@ -21,7 +21,10 @@ export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round
   const Component = href != null ? 'a' : 'button'
 
   const stylesRound = styles['round'] ?? ''
-  const stylesColor = styles[`grade-${grade}-full-${full}`] ?? ''
+  // предлагаю цвет и заполненность разнести в разные классы тк для outlined цвет не нужен а у text есть свой акцентный
+  // const stylesColor = styles[`grade-${grade}-full-${full}`] ?? ''
+  const stylesColor = styles[`grade-${grade}`] ?? ''
+  const styleFilling = styles[`full-${full}`] ?? ''
   const stylesFont = styles[`font-${font}`] ?? ''
   const stylesHeight = styles[`height-${height}`] ?? ''
 
@@ -33,6 +36,7 @@ export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round
         {
           [stylesRound]: round,
           [stylesColor]: true,
+          [styleFilling]: true,
           [stylesFont]: true,
           [stylesHeight]: true
         }
