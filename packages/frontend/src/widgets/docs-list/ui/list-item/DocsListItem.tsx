@@ -48,7 +48,7 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
     }, [isOpen])
 
     const styleOpen = useMemo((): string | undefined => {
-      return isOpen ? styles['item-description-open'] : styles['item-description-closed']
+      return isOpen ? styles['item__description-open'] : styles['item__description-closed']
     }, [isOpen])
 
     return (
@@ -56,7 +56,7 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
         { type === 'title'
           ? (
             <>
-              <button className={ classNames(styles['item-title'], isOpen ? styles['active'] : '') }
+              <div className={ classNames(styles['item__title'], isOpen ? styles['active'] : '') }
                 onClick={ btnOnclick }
               >
                 <Component ref={ ref }
@@ -65,16 +65,16 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
                   {text}
                 </Component>
 
-              </button>
+              </div>
 
               {Array.isArray(contents)
                 ? (contents.map((listItem: IListProps, index: number) => (
                   <div key={ `${listItem.type}-${index}` }
-                    className={ classNames(styles['item-container']) }
+                    className={ classNames(styles['item__container']) }
                     style={ { height } }
                   >
                     <div ref={ contentRef }
-                      className={ classNames(styles['item-description'], styleOpen) }
+                      className={ classNames(styles['item__description'], styleOpen) }
                     >
                       <DocsListItem
                         ref={ ref }

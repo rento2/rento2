@@ -78,7 +78,7 @@
 }
 
 .item {
-  &-title {
+  &__title {
     position: relative;
     display: flex;
     align-items: center;
@@ -89,7 +89,6 @@
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    border-bottom: 2px solid $neutral-50;
     outline: 0;
 
     &:first-child {
@@ -112,33 +111,27 @@
     &.active::after {
       transform: rotate(45deg);
     }
-
-    &:hover::after,
-    &:focus::after {
-      width: 32px;
-      height: 32px;
-      border-radius: 100%;
-    }
   }
 
-  &-description {
+  &__description {
     @include body-4;
     width: 90%;
     padding: 0 0 32px;
     color: $gray-blue-600;
   }
 
-  &-description-open {
+  &__description-open {
     animation: collapse-faq 0.35s ease-in-out both;
   }
 
-  &-description-closed {
+  &__description-closed {
     animation: collapse-faq-closed 0.35s ease-in-out both;
   }
 
-  &-container {
+  &__container {
     padding: 0 0 0 32px;
     overflow: hidden;
+    border-bottom: 2px solid $neutral-50;
     transition: height 0.35s ease-in-out;
 
     @include bp-479 {
