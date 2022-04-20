@@ -31,6 +31,7 @@ export default class Apartments extends BaseSchema {
       table.string('geo_coordinate_x', 20)
       table.string('geo_coordinate_y', 20)
       table.string('subway_station', 225)
+      table.string('subway_line', 225)
       table.integer('time_to_subway')
 
       table.decimal('repairs', 2, 1)

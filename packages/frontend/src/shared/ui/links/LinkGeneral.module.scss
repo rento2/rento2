@@ -1,0 +1,18 @@
+.link {
+  @include body-5;
+  display: flex;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    color: $iris-700;
+  }
+
+  &:active {
+    color: $iris-500;
+  }
+
+  &:disabled {
+    color: $iris-500;
+  }
+}
