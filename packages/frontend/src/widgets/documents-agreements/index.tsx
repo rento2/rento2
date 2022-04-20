@@ -1,2 +1,2 @@
-export * from './ui/Owners'
-export * from './ui/Tenants'
+export * from './ui/ItemAgreements/ItemAgreements'
+export * from './ui/Agreements/AgreementsList'

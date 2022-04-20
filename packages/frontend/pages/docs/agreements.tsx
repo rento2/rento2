@@ -1,7 +1,7 @@
-import { Agreements } from '@pages-fs/docs/agreements/Agreements'
+import { AgreementsPage } from '@pages-fs/docs/agreements/AgreementsPage'
 
-export default function Faq (): JSX.Element {
+export default function Agreements (): JSX.Element {
   return (
-    <Agreements />
+    <AgreementsPage />
   )
 }

@@ -2,16 +2,15 @@ import classNames from 'classnames'
 import style from './DocumentsLayout.module.scss'
 
 interface IDocumentsLayout {
-  titleText: string
+  titleText?: string
   children: JSX.Element
   widthWindowProps: number
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
-  pagePath?: string
 }
 
-export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps, pagePath }: IDocumentsLayout): JSX.Element {
+export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps }: IDocumentsLayout): JSX.Element {
   return (
     <div
       className={ classNames(style['flex-wrapper'], 'container-old') }
@@ -23,16 +22,13 @@ export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMe
           }
 
       <div className={ style['doc-container'] }>
-        {(pagePath !== '/docs/agreements')
+        {titleText != null
           ? (
             <h1 className={ style['title'] }>
               {titleText}
             </h1>
             )
-
-          : (
-            <h1 />
-            )}
+          : null}
         <div className={ style['wrapper-box'] }>
           {children}
         </div>

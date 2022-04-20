@@ -1,7 +1,6 @@
 .title-container {
   @include headline-5;
   width: 288px;
-  height: 23px;
   margin-bottom: 19px;
 }
 
@@ -9,26 +8,18 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 48px;
   padding: 14px 36px 14px 12px;
+  text-align: left;
   cursor: pointer;
+  background-color: transparent;
+  border: 0;
   border-bottom: 2px solid $neutral-50;
 
   &:first-child {
     border-top: 2px solid $neutral-50;
   }
-}
-
-.list-button {
-  @include body-4;
-  // width: 100%;
-  text-align: left;
-  background-color: transparent;
-  border: 0;
 
   a {
     @include body-4;
-    width: 100%;
-    outline: 0;
   }
 }

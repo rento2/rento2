@@ -3,21 +3,17 @@ import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { useWindowDimensions } from '@shared/lib'
 import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
-import { AgreementsList } from '@shared/ui/agreements-list'
-import { useRouter } from 'next/dist/client/router'
+import { AgreementsList } from '@widgets/documents-agreements'
 
-export const Agreements = (): JSX.Element => {
+export const AgreementsPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
-  const path = useRouter().asPath
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
 
       <DocumentsLayout headMenu={ <HeadMenu /> }
-        pagePath={ path }
         sideMenu={ <SideMenu /> }
-        titleText=""
         widthProps={ 1059 }
         widthWindowProps={ widthWindow }
       >

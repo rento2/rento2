@@ -14,7 +14,7 @@ export interface IButton {
   height: '56' | '48' | '44' | '40'
   classProps?: string
   onClick?: () => void
-  children?: React.ReactNode | string
+  children: React.ReactNode | string
   text?: string
 }
 
