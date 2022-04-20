@@ -80,7 +80,7 @@ export default class ApartmentValidator extends ValidatorMessages {
       rules.minLength(3),
       rules.maxLength(255),
     ]),
-    subway_line: schema.string({ trim: true }, [
+    subway_line: schema.string.nullableAndOptional({ trim: true }, [
       rules.minLength(3),
       rules.maxLength(255),
     ]),

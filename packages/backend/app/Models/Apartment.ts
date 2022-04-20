@@ -112,7 +112,7 @@ export default class Apartment extends BaseModel {
   public subwayStation!: string
 
   @column()
-  public subwayLine!: string
+  public subwayLine!: string | null
 
   @column()
   public timeToSubway!: number
