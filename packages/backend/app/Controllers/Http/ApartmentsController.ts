@@ -8,6 +8,7 @@ import {
 import { schema } from '@ioc:Adonis/Core/Validator'
 import ApartmentValidator from 'App/Validators/ApartmentValidator'
 import subwayStationToLine from '../../../common/helpers/subwayStationToLine'
+import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class ApartmentsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
@@ -50,6 +51,9 @@ export default class ApartmentsController {
     const subwayLine = subwayStationToLine(apartmentPayload.subway_station)
     apartmentPayload.subway_line = subwayLine
     const apartment = await Apartment.create(apartmentPayload)
+    if (subwayLine === null) {
+      Logger.warn(`'${apartmentPayload.subway_station}' stations are not in our bases`)
+    }
 
     await Promise.all([
       apartment
