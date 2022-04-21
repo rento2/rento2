@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .modal {
   &__header {
     border-bottom: 2px solid $iris-50;
