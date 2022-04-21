@@ -1,16 +1,14 @@
 .document {
   &__list {
     padding: 0;
-    list-style: none;
     counter-reset: count;
   }
 
   &__title {
-
     @include subtitle-2;
-    padding: 0 0 0 32px;
-    margin: 0 0 12px;
-    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 22px 0 22px 32px;
 
     @include bp-479 {
       padding: 0 0 0 16px;
@@ -22,18 +20,13 @@
       content: counters(count, '.') '.';
       counter-increment: count;
     }
-  }
 
-  &__text {
-    margin: 12px 0;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 31px;
-    color: $gray-blue-600;
+    &:first-child {
+      border-top: 2px solid $neutral-50;
+    }
   }
 
   &__list-2 {
-    list-style: none;
     counter-reset: count;
   }
 
@@ -51,7 +44,6 @@
   &__list-3 {
     padding: 0;
     margin: 12px 0 0;
-    list-style: none;
     counter-reset: count;
   }
 
@@ -83,24 +75,19 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0 0 0 32px;
-    padding: 22px 0;
+    padding: 0 48px 0 0;
     color: $gray-blue-500;
+    text-align: start;
     cursor: pointer;
     background-color: transparent;
     border: 0;
     outline: 0;
 
-    &:first-child {
-      border-top: 2px solid $neutral-50;
-    }
-
     &::after {
       position: absolute;
-      top: 22px;
       left: 93.5%;
-      width: 32px;
-      height: 32px;
+      width: 20px;
+      height: 20px;
       cursor: pointer;
       content: '';
       background-image: url('/images/owners/cross.svg');
@@ -110,6 +97,12 @@
 
     &.active::after {
       transform: rotate(45deg);
+    }
+
+    &:hover::after,
+    &:focus::after {
+      background-color: $iris-100;
+      border-radius: 50%;
     }
   }
 
