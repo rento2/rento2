@@ -1,5 +1,5 @@
+import { LinkGeneral } from '@shared/ui'
 import { IPropsMenu } from '@widgets/documents-side-menu'
-import Link from 'next/link'
 import style from './ItemAgreements.module.scss'
 
 export function ItemAgreements ({ title, data }: {title: string, data: IPropsMenu[] }): JSX.Element {
@@ -14,13 +14,9 @@ export function ItemAgreements ({ title, data }: {title: string, data: IPropsMen
             <li key={ idx }
               className={ style['list-container'] }
             >
-              <Link href={ contract.href }>
-                <a>
-
-                  {contract.title}
-
-                </a>
-              </Link>
+              <LinkGeneral href={ contract.href }>
+                {contract.title}
+              </LinkGeneral>
 
             </li>
           )

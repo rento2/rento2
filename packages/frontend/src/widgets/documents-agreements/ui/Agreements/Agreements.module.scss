@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   margin: 25px 0 333px;
+  @include bp-1059 {
+    margin-top: 90px;
+  }
 
   .contract {
-    width: 844px;
     margin-bottom: 40px;
   }
 }

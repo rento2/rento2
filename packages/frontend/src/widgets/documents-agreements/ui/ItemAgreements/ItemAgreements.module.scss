@@ -1,10 +1,10 @@
 .title-container {
   @include headline-5;
-  width: 288px;
   margin-bottom: 19px;
 }
 
 .list-container {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -22,4 +22,14 @@
   a {
     @include body-4;
   }
+}
+
+.list-container::before {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  margin-left: calc(100% - 35px);
+  content: '';
+  background-image: url('/images/docs/agreements-arrow.svg');
+  background-repeat: no-repeat;
 }
