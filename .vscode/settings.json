@@ -12,5 +12,7 @@
     { "directory": "packages/frontend", "changeProcessCWD": true },
     { "directory": "packages/backend", "changeProcessCWD": true },
     { "directory": "packages/admin", "changeProcessCWD": true }
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
