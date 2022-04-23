@@ -24,11 +24,10 @@ export default class AuthController {
         .send(creatingErrMsg('UNABLE_TO_AUTHORIZE', 'Wrong email or password'))
     }
 
-    return response
-      .status(HttpStatusCode.OK)
-      .send(creatingOkMsg(
-        await auth.use('jwt').generate(foundUser)
-      ))
+    const token = await auth.use('jwt').generate(foundUser)
+
+    response.cookie('access_token', token.accessToken, { expires: new Date(String(token.expiresAt)) })
+    response.cookie('refresh_token', token.refreshToken)
   }
 
   public async refresh ({ response, request, auth }: HttpContextContract): Promise<void> {
@@ -51,6 +50,9 @@ export default class AuthController {
 
   public async logout ({ response, auth }: HttpContextContract): Promise<void> {
     await auth.use('jwt').revoke()
+
+    response.clearCookie('access_token')
+    response.clearCookie('refresh_token')
 
     return response
       .status(HttpStatusCode.OK)
