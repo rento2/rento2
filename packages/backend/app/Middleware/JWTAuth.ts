@@ -13,11 +13,11 @@ export default class AuthMiddleware {
     const cookies = request.cookiesList()
     const expireTime = new Date(cookies['Expires'])
 
-    if (Date.now() >= expireTime.getTime()) {
+    if (!(Date.now() <= expireTime.getTime())) {
       return await next()
+    } else {
+      const token = await auth.use('jwt').loginViaRefreshToken(cookies['refresh_token'])
+      response.cookie('access_token', token.accessToken, { expires: new Date(String(token.expiresAt)) })
     }
-
-    const token = await auth.use('jwt').loginViaRefreshToken(cookies['refresh_token'])
-    response.cookie('access_token', token.accessToken, { expires: new Date(String(token.expiresAt)) })
   }
 }
