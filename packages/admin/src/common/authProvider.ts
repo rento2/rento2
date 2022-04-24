@@ -33,15 +33,13 @@ const authProvider = {
     }
   },
   checkError: async ({ status }: { status: number }) => {
-    try {
-      return await Promise.resolve()
-    } catch {
-      if (status === 401 || status === 403) {
-        localStorage.removeItem('auth')
+    if (status === 401 || status === 403) {
+      localStorage.removeItem('auth')
 
-        return await Promise.reject(new Error('Api error on auth request'))
-      }
+      return await Promise.reject(new Error('Api error on auth request'))
     }
+
+    return await Promise.resolve()
   },
   checkAuth: async () => {
     const auth = JSON.parse(String(localStorage.getItem('auth')))
