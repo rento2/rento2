@@ -1,28 +1,72 @@
+import axios from 'axios'
+
 const authProvider = {
-  // called when the user attempts to log in
-  login: async ({ username }: { username: string }) => {
-    localStorage.setItem('username', username)
-    // accept all username/password combinations
-    return await Promise.resolve()
-  },
-  // called when the user clicks on the logout button
-  logout: async () => {
-    localStorage.removeItem('username')
-    return await Promise.resolve()
-  },
-  // called when the API returns an error
-  checkError: async ({ status }: { status: number }) => {
-    if (status === 401 || status === 403) {
-      localStorage.removeItem('username')
-      return await Promise.reject(new Error('Api error on auth request'))
+  login: async ({ email, password }: { email: string, password: string }) => {
+    try {
+      const { data } = await axios.post(
+        `${String(process.env['REACT_APP_SERVER_URL'])}/auth/login`, {
+          email,
+          password
+        }
+      )
+
+      localStorage.setItem('auth', JSON.stringify({
+        accessToken: data.data.token,
+        refreshToken: data.data.refreshToken,
+        expiresAt: data.data.expires_at
+      }))
+
+      return await Promise.resolve()
+    } catch (error) {
+      console.log(error)
     }
-    return await Promise.resolve()
   },
-  // called when the user navigates to a new location, to check for authentication
+  logout: async () => {
+    try {
+      await axios.post(`${String(process.env['REACT_APP_SERVER_URL'])}/auth/logout`)
+
+      localStorage.removeItem('auth')
+
+      return await Promise.resolve()
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  checkError: async ({ status }: { status: number }) => {
+    try {
+      return await Promise.resolve()
+    } catch {
+      if (status === 401 || status === 403) {
+        localStorage.removeItem('auth')
+
+        return await Promise.reject(new Error('Api error on auth request'))
+      }
+    }
+  },
   checkAuth: async () => {
-    return localStorage.getItem('username') != null
-      ? await Promise.resolve()
-      : await Promise.reject(new Error('No username found in local storage'))
+    const auth = JSON.parse(String(localStorage.getItem('auth')))
+
+    try {
+      if (auth === null) {
+        return await Promise.reject(new Error('No auth data found in local storage'))
+      }
+
+      if (Date.now() >= auth.expiresAt * 1000) {
+        const { data } = await axios.post(`${String(process.env['REACT_APP_SERVER_URL'])}/auth/refresh`, {
+          refreshToken: auth.refreshToken
+        })
+
+        localStorage.setItem('auth', JSON.stringify({
+          accessToken: data.data.token,
+          refreshToken: data.data.refreshToken,
+          expiresAt: data.data.expires_at
+        }))
+      }
+
+      return await Promise.resolve()
+    } catch (error) {
+      console.log(error)
+    }
   },
   // called when the user navigates to a new location, to check for permissions / roles
   getPermissions: async () => await Promise.resolve()

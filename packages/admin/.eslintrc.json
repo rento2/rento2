@@ -19,6 +19,8 @@
     }
   },
   "rules": {
+    "no-return-await": "off",
+    "@typescript-eslint/return-await": "error",
     "react/self-closing-comp": "error",
     "react/sort-comp": "error",
     "react/state-in-constructor": ["error", "always"],
