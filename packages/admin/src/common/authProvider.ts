@@ -51,7 +51,7 @@ const authProvider = {
         return await Promise.reject(new Error('No auth data found in local storage'))
       }
 
-      if (Date.now() >= auth.expiresAt * 1000) {
+      if (Date.now() >= new Date(auth.expiresAt).getTime()) {
         const { data } = await axios.post(`${String(process.env['REACT_APP_SERVER_URL'])}/auth/refresh`, {
           refreshToken: auth.refreshToken
         })
