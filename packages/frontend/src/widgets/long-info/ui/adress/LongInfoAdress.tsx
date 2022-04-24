@@ -1,4 +1,4 @@
-import { IconMetro, IconWalking } from '@shared/ui/icons/index'
+import { IconMetro, IconWalker } from '@shared/ui/icons/index'
 
 import styles from './LongInfoAdress.module.scss'
 import classNames from 'classnames'
@@ -28,7 +28,7 @@ export default function LongInfoAdress ({
               </div>
 
               <div className={ styles['wrapper'] }>
-                <IconWalking classProps={ classNames(styles['icon-walking']) } />
+                <IconWalker classProps={ classNames(styles['icon-walking']) } />
                 <span className={ classNames(styles['metro-time']) }>
                   {metro.time}
                 </span>

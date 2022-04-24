@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  max-height: 260px;
+  padding-right: 36px;
+}
+
+.item {
+  @include body-4;
+  display: flex;
+  flex-wrap: wrap;
+  width: 195px;
+  margin-bottom: 24px;
+  color: $gray-blue-300;
+}
+
+.border {
+  display: flex;
+  justify-content: center;
+  height: 1018px;
+  padding: 52px 40px 0 0;
+  border-right: 2px solid $neutral-50;
+}

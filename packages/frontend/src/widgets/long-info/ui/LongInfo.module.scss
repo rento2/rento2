@@ -47,7 +47,8 @@
   color: $gray-blue-600;
   text-align: center;
   border-radius: 8px;
-  transition: all 0.2s;
+  transition-duration: 0.2s;
+  transition-property: color, background-color;
 
   @include bp-1023 {
     @include body-6;
@@ -120,9 +121,4 @@
 .icon-call {
   fill: none;
   stroke: $gray-blue-600;
-}
-
-.icon-location {
-  fill: none;
-  stroke: $neutral-900;
 }
