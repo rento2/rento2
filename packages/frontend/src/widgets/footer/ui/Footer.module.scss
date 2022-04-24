@@ -31,14 +31,14 @@
   }
 
   &__box {
-    width: 728px;
+    width: 797px;
 
     @include bp-1279 {
-      width: 648px;
+      width: 717px;
     }
 
     @include bp-1023 {
-      width: 401px;
+      width: 443px;
     }
 
     @include bp-743 {
@@ -56,7 +56,7 @@
   }
 
   &__title-socials {
-    @include body-5;
+    @include body-4;
     margin: 0 0 10px;
     color: $iris-900;
 

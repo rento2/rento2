@@ -3,11 +3,11 @@ import { IconVk, IconTelegram, IconWhatsapp, ButtonGeneral } from '@shared/ui'
 import { DocsItem } from './docs-item/DocsItem'
 import { SocialItem } from '@shared/ui/social-item/SocialItem'
 import { dataDocsGroup1, dataDocsGroup2 } from '@widgets/footer/model/dataFooter'
-import { useWindowSize } from 'react-use'
 import styles from './Footer.module.scss'
+import { useWindowDimensions } from '@shared/lib'
 
 export const Footer = (): JSX.Element => {
-  const { width } = useWindowSize()
+  const { widthWindow } = useWindowDimensions()
 
   return (
     <footer className={ styles['footer'] }>
@@ -20,7 +20,7 @@ export const Footer = (): JSX.Element => {
             />))}
           </ul>
           {
-          width > 1023 && (
+          widthWindow > 1023 && (
             <ul>
               {dataDocsGroup2.map((item, i) => (<DocsItem key={ i }
                 hrefProps={ item.hrefProps }
@@ -56,8 +56,8 @@ export const Footer = (): JSX.Element => {
           <li>
             <ButtonGeneral round
               classProps={ classNames(styles['footer__btn']) }
-              font={ width > 479 ? 's' : 'm' }
-              height={ width > 479 ? '40' : '44' }
+              font={ widthWindow > 479 ? 's' : 'm' }
+              height={ widthWindow > 479 ? '40' : '44' }
               type='button'
             >
               Сдать жильё
@@ -66,9 +66,9 @@ export const Footer = (): JSX.Element => {
           <li>
             <ButtonGeneral round
               classProps={ classNames(styles['footer__btn']) }
-              font={ width > 479 ? 's' : 'm' }
+              font={ widthWindow > 479 ? 's' : 'm' }
               grade='secondary'
-              height={ width > 479 ? '40' : '44' }
+              height={ widthWindow > 479 ? '40' : '44' }
               type='button'
             >
               Заказать звонок
