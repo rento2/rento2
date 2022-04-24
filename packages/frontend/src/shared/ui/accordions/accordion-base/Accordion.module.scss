@@ -11,7 +11,7 @@
   }
 
   &-title {
-    @include body-4;
+    @include subtitle-2;
     position: relative;
     display: flex;
     align-items: center;
@@ -51,8 +51,14 @@
     &:focus::after {
       width: 21px;
       height: 21px;
+      color: $iris-500;
       background-color: rgba($iris-500, 0.2);
       border-radius: 100%;
+    }
+
+    &:hover,
+    &:focus {
+      color: $iris-500;
     }
   }
 

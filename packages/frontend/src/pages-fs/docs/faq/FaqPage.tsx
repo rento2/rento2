@@ -7,6 +7,7 @@ import { SideMenu, HeadMenu } from '@widgets/documents-side-menu'
 
 export const FaqPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
+  const titleText = 'Частые вопросы'
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
@@ -14,8 +15,8 @@ export const FaqPage = (): JSX.Element => {
 
       <DocumentsLayout
         headMenu={ <HeadMenu /> }
-        sideMenu={ <SideMenu /> }
-        titleText="Частые вопросы"
+        sideMenu={ <SideMenu activeItem={ titleText } /> }
+        titleText={ titleText }
         widthProps={ 1060 }
         widthWindowProps={ widthWindow }
       >
