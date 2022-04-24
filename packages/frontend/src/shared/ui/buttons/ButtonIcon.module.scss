@@ -1,0 +1,65 @@
+.button-icon {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 8px;
+  transition: all 0.2s;
+
+  svg {
+    stroke-width: 2px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.grade-iris {
+  background-color: $iris-50;
+
+  svg {
+    fill: none;
+    stroke: $iris-400;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $iris-100;
+  }
+
+  &:active {
+    background-color: $iris-50;
+
+    svg {
+      stroke: $iris-200;
+    }
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: $gray-blue-50;
+
+    svg {
+      stroke: $gray-blue-200;
+    }
+  }
+}
+
+.size-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.size-32 {
+  width: 32px;
+  height: 32px;
+}
+
+.size-24 {
+  width: 24px;
+  height: 24px;
+
+  svg {
+    stroke-width: 1px;
+  }
+}
