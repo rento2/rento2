@@ -4,13 +4,15 @@ import { IListProps } from '../lib/types/IListProps'
 
 export const DocsList = (props: {items: IListProps[]}): JSX.Element => {
   const listItemRef = useRef<HTMLElement>(null)
+
   return (
     <>
-      {props.items.map((listItem: IListProps, index: number) => (
+      {props.items.map((listItem: IListProps, idx: number) => (
         <DocsListItem
-          key={ `${listItem.type}-${index}` }
+          key={ idx }
           ref={ listItemRef }
           { ...listItem }
+
         />
       ))}
     </>
