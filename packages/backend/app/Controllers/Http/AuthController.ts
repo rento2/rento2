@@ -57,3 +57,25 @@ export default class AuthController {
       .send(creatingOkMsg(true))
   }
 }
+
+/**
+* @login
+* @summary Logins a user and returns a JWT-token
+* @requestBody {"email": "admin@rento2.ru", "password": "123"}
+* @paramQuery email - Email - @enum(admin@rento2.ru)
+* @paramQuery password - Password - @enum(123)
+*/
+
+/**
+* @refresh
+* @summary Refresh a JWT-token
+* @paramQuery refreshToken - RefreshToken
+* @requestBody {"refreshToken": "a174d6a71982e3bab5b498ad24d1ee4db6ae9a6a56f7d86df097208f9f46eb07"}
+*/
+
+/**
+* @logout
+* @summary Logout
+* @paramQuery refreshToken - RefreshToken
+* @requestBody {"refreshToken": "a174d6a71982e3bab5b498ad24d1ee4db6ae9a6a56f7d86df097208f9f46eb07"}
+*/
