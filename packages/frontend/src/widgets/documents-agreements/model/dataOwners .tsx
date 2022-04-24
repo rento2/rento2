@@ -9,5 +9,4 @@ export const dataOwners: IPropsMenu[] = [
     title: 'Договор между собственником и арендатором ',
     href: '#'
   }
-
 ]

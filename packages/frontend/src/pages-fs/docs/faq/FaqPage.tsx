@@ -16,7 +16,7 @@ export const FaqPage = (): JSX.Element => {
         headMenu={ <HeadMenu /> }
         sideMenu={ <SideMenu /> }
         titleText="Частые вопросы"
-        widthProps={ 1059 }
+        widthProps={ 1060 }
         widthWindowProps={ widthWindow }
       >
         <AccordionList state={ dateAccordion } />

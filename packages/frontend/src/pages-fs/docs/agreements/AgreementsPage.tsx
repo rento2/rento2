@@ -14,7 +14,7 @@ export const AgreementsPage = (): JSX.Element => {
 
       <DocumentsLayout headMenu={ <HeadMenu /> }
         sideMenu={ <SideMenu /> }
-        widthProps={ 1059 }
+        widthProps={ 1060 }
         widthWindowProps={ widthWindow }
       >
         <AgreementsList />
