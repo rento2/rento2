@@ -12,6 +12,7 @@ interface IButtonIcon {
   background?: 'iris' | 'none' // бэкграунд кнопки
 }
 
+// Цвет передаваемых иконок может меняться за счет fill и stroke, Если цвет иконки меняется за счет stroke, то нужно передать full = stroke, иначе full = filled.
 export function ButtonIcon ({ children, size, classProps, onClick, grade = 'iris', full, disabled, background = 'none' }: IButtonIcon): JSX.Element {
   const stylesColor = styles[`grade-${grade}-full-${full}`] ?? ''
   const stylesSize = styles[`size-${size}`] ?? ''

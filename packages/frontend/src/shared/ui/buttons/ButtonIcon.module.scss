@@ -3,10 +3,12 @@
   background-color: transparent;
   border: 0;
   border-radius: 8px;
-  transition: all 0.2s;
+  transition-duration: 200ms;
+  transition-property: color, background-color;
 
   [class*='icon'] {
-    transition: all 0.2s;
+    transition-duration: 200ms;
+    transition-property: fill, stroke;
   }
 
   &:hover {

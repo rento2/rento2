@@ -97,6 +97,7 @@
 
   &:disabled {
     color: $gray-blue-300;
+    cursor: auto;
     background-color: $neutral-05;
     border: 1px solid $gray-blue-300;
   }
@@ -120,6 +121,7 @@
 
   &:disabled {
     color: $gray-blue-300;
+    cursor: auto;
     background-color: $neutral-05;
     border: 1px solid $gray-blue-300;
   }
@@ -144,6 +146,7 @@
 
   &:disabled {
     color: $gray-blue-300;
+    cursor: auto;
     background-color: $neutral-05;
     border: 1px solid $gray-blue-300;
   }
@@ -166,6 +169,7 @@
 
   &:disabled {
     color: $gray-blue-300;
+    cursor: auto;
     background-color: transparent;
   }
 }
@@ -259,12 +263,6 @@
   }
 }
 
-// .grade-primary-full-stroke {}
-
-// .grade-secondary-full-stroke {}
-
-// .grade-neutral-full-stroke {}
-
 .font-l {
   @include body-3;
 }
@@ -275,6 +273,10 @@
 
 .font-s {
   @include body-5;
+}
+
+.font-xs {
+  @include body-6;
 }
 
 .height-56 {

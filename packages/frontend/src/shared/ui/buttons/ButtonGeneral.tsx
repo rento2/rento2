@@ -10,7 +10,7 @@ export interface IButton {
   round?: boolean
   grade?: 'primary' | 'secondary' | 'neutral' | 'accent' // accent нужен для текстовых кнопок
   full?: 'filled' | 'outlined' | 'text' | 'icon'
-  font: 'l' | 'm' | 's'
+  font: 'l' | 'm' | 's' | 'xs'
   height: '56' | '48' | '44' | '40'
   classProps?: string
   onClick?: () => void
