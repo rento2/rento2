@@ -3,7 +3,7 @@ import execa from 'execa'
 
 export default class UserDatabaseReset extends BaseCommand {
   public static commandName = 'db:reset'
-  public static description = 'Drop all tables and execute seeders in new database (db:drop + db:schema:load + db:seed)'
+  public static description = 'Drop all tables and execute seeders in new database (db:wipe + migration:run + db:seed)'
 
   public static settings = {
     loadApp: false,

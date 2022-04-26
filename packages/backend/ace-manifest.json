@@ -7,7 +7,7 @@
       },
       "commandPath": "./commands/Db",
       "commandName": "db:reset",
-      "description": "Drop all tables and execute seeders in new database (db:drop + db:schema:load + db:seed)",
+      "description": "Drop all tables and execute seeders in new database (db:wipe + migration:run + db:seed)",
       "args": [],
       "aliases": [],
       "flags": []
