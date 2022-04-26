@@ -34,7 +34,7 @@
 - ``node ace db:seed``
 
 # Удалить БД и создать с нуля
-- ``db:reset``
+- ``npm run db:reset``
 
 # Todo
 - Add commit message standard (see cz-conventional-changelog)
