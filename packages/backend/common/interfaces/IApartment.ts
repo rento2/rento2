@@ -29,7 +29,7 @@ export interface IApartment {
   geo_coordinate_y: string
   subway_station: string
   subway_line: string | null
-  time_to_subway: number
+  time_to_subway_by_foot: number
   time_to_subway_by_vehicle: number
   repairs: number
   purity: number

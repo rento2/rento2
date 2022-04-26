@@ -84,7 +84,7 @@ export default class ApartmentValidator extends ValidatorMessages {
       rules.minLength(3),
       rules.maxLength(255),
     ]),
-    time_to_subway: schema.number([
+    time_to_subway_by_foot: schema.number([
       rules.unsigned(),
       rules.range(0, 9999999.99),
     ]),

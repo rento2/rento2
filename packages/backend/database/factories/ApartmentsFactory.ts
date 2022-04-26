@@ -38,7 +38,7 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     geoCoordinateY: faker.lorem.word(7),
     subwayStation: faker.lorem.words(4),
     subwayLine: faker.lorem.words(4),
-    timeToSubway: Math.floor(Math.random() * (200 - 100) + 100),
+    timeToSubwayByFoot: Math.floor(Math.random() * (200 - 100) + 100),
     timeToSubwayByVehicle: Math.floor(Math.random() * (200 - 100) + 100),
 
     repairs: +(Math.random() * (9 - 1) + 1).toFixed(1),
