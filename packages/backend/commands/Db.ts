@@ -12,20 +12,23 @@ export default class UserDatabaseReset extends BaseCommand {
 
   public async run (): Promise<void> {
     this.logger.warning('This action will destroy the data in the database!')
-    await this.prompt.confirm('Are you sure?')
+    const userChoice = await this.prompt.confirm('Are you sure?')
+    if (userChoice) {
+      const spinner = this.logger.await('Drop all tables, views and types in database')
+      await execa.node('ace', ['db:wipe'])
+      spinner.stop()
 
-    const spinner = this.logger.await('Drop all tables, views and types in database')
-    await execa.node('ace', ['db:wipe'])
-    spinner.stop()
+      const spinner1 = this.logger.await('Migrate database by running pending migrations')
+      await execa.node('ace', ['migration:run'])
+      spinner1.stop()
 
-    const spinner1 = this.logger.await('Migrate database by running pending migrations')
-    await execa.node('ace', ['migration:run'])
-    spinner1.stop()
+      const spinner3 = this.logger.await('Execute database seeders')
+      await execa.node('ace', ['db:seed'])
+      spinner3.stop()
 
-    const spinner3 = this.logger.await('Execute database seeders')
-    await execa.node('ace', ['db:seed'])
-    spinner3.stop()
-
-    this.logger.success('Created a new database!')
+      this.logger.success('Created a new database!')
+    } else {
+      this.logger.success('Operation canceled')
+    }
   }
 }
