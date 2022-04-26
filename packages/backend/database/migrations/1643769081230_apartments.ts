@@ -33,6 +33,7 @@ export default class Apartments extends BaseSchema {
       table.string('subway_station', 225)
       table.string('subway_line', 225)
       table.integer('time_to_subway')
+      table.integer('time_to_subway_by_vehicle')
 
       table.decimal('repairs', 2, 1)
       table.decimal('purity', 2, 1)

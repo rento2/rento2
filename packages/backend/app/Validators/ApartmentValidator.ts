@@ -88,6 +88,10 @@ export default class ApartmentValidator extends ValidatorMessages {
       rules.unsigned(),
       rules.range(0, 9999999.99),
     ]),
+    time_to_subway_by_vehicle: schema.number([
+      rules.unsigned(),
+      rules.range(0, 9999999.99),
+    ]),
 
     repairs: schema.number([rules.unsigned(), rules.range(0, 99.9)]),
     purity: schema.number([rules.unsigned(), rules.range(0, 99.9)]),

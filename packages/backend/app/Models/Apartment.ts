@@ -118,6 +118,9 @@ export default class Apartment extends BaseModel {
   public timeToSubway!: number
 
   @column()
+  public timeToSubwayByVehicle!: number
+
+  @column()
   public repairs!: number
 
   @column()
