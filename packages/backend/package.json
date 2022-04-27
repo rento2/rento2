@@ -10,7 +10,8 @@
     "lint-fix": "eslint . --ext .ts,.js --fix",
     "test": "node -r @adonisjs/assembler/build/register japaFile.ts",
     "coverage": "nyc npm run test",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "db:reset": "node ace db:reset"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.3.7",
