@@ -13,10 +13,10 @@ export const mockPhotos = [
   },
   {
     src: '/images/long/room3.png',
-    alt: 'roomt3'
+    alt: 'roomt4'
   },
   {
     src: '/images/long/room3.png',
-    alt: 'roomt3'
+    alt: 'roomt5'
   }
 ]
