@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { IconWalker, IconMetro } from '@shared/ui/icons'
 import { CardSlider } from './card-slider/CardSlider'
 import styles from './ApartmentCard.module.scss'
@@ -14,41 +15,42 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
     rooms_num: rooms,
     storey,
     total_storeys: total,
-    area
+    area,
+    id
   } = props
 
   return (
-    <li
-      className={ styles['card'] }
-    >
-      <CardSlider images={ mockPhotos } />
-      <div className={ styles['card__info'] }>
-        <h2 className={ styles['card__price'] }>
-          {`${price}₽ / месяц`}
-        </h2>
-        <span>
-          {`Депозит: 400000 ${deposit}`}
-        </span>
-        <p className={ styles['card__details'] }>
-          {`${rooms} комн · ${area} м2 · этаж${storey}/${total}`}
-        </p>
-        <p className={ styles['card__location'] }>
-          <span>
-            {name}
+    <Link href={ `/long/${id}` }>
+      <a className={ styles['card'] }>
+        <CardSlider images={ mockPhotos } />
+        <div className={ styles['card__info'] }>
+          <h2 className={ styles['card__price'] }>
+            {`${price}₽ / месяц`}
+          </h2>
+          <span className={ styles['card__deposit'] }>
+            {`Депозит: 400000 ${deposit}`}
           </span>
-          <div>
-            <span className={ styles['card__subway'] }>
-              <IconMetro classProps={ styles['card__icon'] } />
-              {subway}
+          <p className={ styles['card__details'] }>
+            {`${rooms} комн · ${area} м2 · этаж${storey}/${total}`}
+          </p>
+          <p>
+            <span className={ styles['card__location'] }>
+              {name}
             </span>
+            <div>
+              <span className={ styles['card__subway'] }>
+                <IconMetro classProps={ styles['card__icon'] } />
+                {subway}
+              </span>
 
-            <span className={ styles['card__distance'] }>
-              <IconWalker classProps={ styles['card__icon'] } />
-              {distance}
-            </span>
-          </div>
-        </p>
-      </div>
-    </li>
+              <span className={ styles['card__distance'] }>
+                <IconWalker classProps={ styles['card__icon'] } />
+                {`${distance} минут`}
+              </span>
+            </div>
+          </p>
+        </div>
+      </a>
+    </Link>
   )
 }
