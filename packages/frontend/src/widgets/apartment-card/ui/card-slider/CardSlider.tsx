@@ -11,7 +11,7 @@ interface IImage {
 
 export const CardSlider = ({ images }: { images: IImage[]}): JSX.Element => (
   <div className={ styles['slider'] }>
-    <Swiper lazy
+    <Swiper
       loop
       height={ 220 }
       modules={ [Navigation, Pagination, Scrollbar, A11y, Lazy] }
@@ -26,10 +26,11 @@ export const CardSlider = ({ images }: { images: IImage[]}): JSX.Element => (
       {images.map(({ src, alt }) => (
         <SwiperSlide key={ alt }>
           <Image alt={ alt }
-            height={ 220 }
+            className={ styles['slider__image'] }
+            height={ 253 }
             layout="responsive"
             src={ src }
-            width={ 295 }
+            width={ 340 }
           />
         </SwiperSlide>
       ))}

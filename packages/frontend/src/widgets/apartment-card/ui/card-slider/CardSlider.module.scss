@@ -1,7 +1,26 @@
 .slider {
-  position: relative;
   width: 295px;
   height: 220px;
+  overflow: hidden;
+
+  @include bp-1279 {
+    width: 194px;
+  }
+
+  @include bp-1023 {
+    width: 340px;
+    height: 170px;
+  }
+
+  @include bp-743 {
+    width: 156px;
+    height: 140px;
+  }
+
+  @include bp-479 {
+    width: 288px;
+    height: 170px;
+  }
 
   &__bullets {
     position: absolute;
@@ -22,12 +41,6 @@
     background-color: $neutral-0;
     border-radius: 50%;
     opacity: 1;
-
-    // &:last-child, // ?
-    // &:first-child {
-    //   width: 2px;
-    //   height: 2px;
-    // }
 
     &--active {
       width: 6px;

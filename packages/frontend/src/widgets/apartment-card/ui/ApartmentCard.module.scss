@@ -1,9 +1,24 @@
 .card {
   @include body-5;
+  position: relative;
   display: flex;
+  height: 100%;
+  overflow: hidden;
   background: $neutral-0;
   border-radius: 8px;
   box-shadow: 0 0 2px $overlay;
+
+  @include bp-1023 {
+    flex-direction: column;
+  }
+
+  @include bp-743 {
+    flex-direction: row;
+  }
+
+  @include bp-479 {
+    flex-direction: column;
+  }
 
   &:hover,
   &:focus {
@@ -12,6 +27,18 @@
 
   &__info {
     padding: 38px 10px 10px 16px;
+
+    @include bp-1023 {
+      padding: 30px 10px 16px;
+    }
+
+    @include bp-743 {
+      padding: 12px 10px 10px;
+    }
+
+    @include bp-479 {
+      padding: 22px 10px 10px 16px;
+    }
   }
 
   &__price {
@@ -22,12 +49,20 @@
     @include body-6;
     display: block;
     margin-bottom: 10px;
+
+    @include bp-743 {
+      margin-bottom: 8px;
+    }
   }
 
   &__details {
     @include subtitle-3;
     margin-bottom: 28px;
     white-space: nowrap;
+
+    @include bp-743 {
+      margin-bottom: 8px;
+    }
   }
 
   &__location {
@@ -36,7 +71,6 @@
 
   &__subway {
     margin-right: 10px;
-    white-space: nowrap;
   }
 
   &__distance {
@@ -46,5 +80,13 @@
 
   &__icon {
     margin-right: 2px;
+  }
+
+  &__favourite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    padding: 6px 0;
   }
 }

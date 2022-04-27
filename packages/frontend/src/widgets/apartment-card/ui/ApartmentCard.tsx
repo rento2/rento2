@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { IconWalker, IconMetro } from '@shared/ui/icons'
+import { IconWalker, IconMetro, IconHeart, ButtonIcon } from '@shared/ui'
 import { CardSlider } from './card-slider/CardSlider'
 import styles from './ApartmentCard.module.scss'
 import { mockPhotos } from '../model/mockData'
@@ -33,7 +33,7 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
           <p className={ styles['card__details'] }>
             {`${rooms} комн · ${area} м2 · этаж${storey}/${total}`}
           </p>
-          <p>
+          <div>
             <span className={ styles['card__location'] }>
               {name}
             </span>
@@ -48,7 +48,15 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
                 {`${distance} минут`}
               </span>
             </div>
-          </p>
+          </div>
+          <ButtonIcon
+            classProps={ styles['card__favourite'] }
+            full='stroke'
+            size='32'
+            onClick={ () => {} }
+          >
+            <IconHeart />
+          </ButtonIcon>
         </div>
       </a>
     </Link>
