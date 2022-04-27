@@ -27,6 +27,7 @@ function AccordionItem ({
     <li className={ classNames(style['item']) }>
       <h3>
         <button className={ classNames(style['item-title'], isOpen ? style['active'] : '') }
+          type='button'
           onClick={ btnOnclick }
         >
           <p className={ style['item-p'] }>

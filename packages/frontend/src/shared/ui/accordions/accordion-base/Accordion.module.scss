@@ -18,7 +18,7 @@
     width: 100%;
     padding: 22px 0;
     cursor: pointer;
-    background-color: $neutral-0;
+    background-color: $neutral-05;
     border: 0;
     outline: 0;
 
@@ -54,11 +54,6 @@
       color: $iris-500;
       background-color: rgba($iris-500, 0.2);
       border-radius: 100%;
-    }
-
-    &:hover,
-    &:focus {
-      color: $iris-500;
     }
   }
 
