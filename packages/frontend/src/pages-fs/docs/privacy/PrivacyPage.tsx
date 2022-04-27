@@ -12,7 +12,7 @@ export const PrivacyPage = (): JSX.Element => {
     >
       <DocumentsLayout
         headMenu={ <HeadMenu /> }
-        sideMenu={ <SideMenu /> }
+        sideMenu={ <SideMenu activeItem="Пользовательское соглашение" /> }
         titleText="igiu"
         widthProps={ 1059 }
         widthWindowProps={ widthWindow }
