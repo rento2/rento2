@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  background: $neutral-0;
+  border-radius: 8px;
+  box-shadow: 0 0 2px $overlay;
+
+  &__info {
+    padding: 38px 20px 56px 16px;
+  }
+
+  &__subway {
+    margin-right: 10px;
+  }
+
+  &__icon {
+    margin-right: 2px;
+  }
+
+  &__text {
+    @include body-5;
+  }
+}
