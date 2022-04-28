@@ -1,9 +1,18 @@
 import { useState } from 'react'
-import { email, required, SimpleForm, TextInput, useLogin, useNotify } from 'react-admin'
+import {
+  email,
+  required,
+  SimpleForm,
+  TextInput,
+  PasswordInput,
+  useLogin,
+  useNotify,
+  Notification
+} from 'react-admin'
 import './LoginPage.styles.css'
 
-const validatePassword = [required()]
-const validateEmail = [email(), required()]
+const validatePassword = [required('Обязательно для заполнения')]
+const validateEmail = [email('Неправильный email'), required('Обязательно для заполнения')]
 
 const LoginPage = (): JSX.Element => {
   const [email, setEmail] = useState('')
@@ -15,7 +24,7 @@ const LoginPage = (): JSX.Element => {
     e.preventDefault()
 
     login({ email, password }).catch(() =>
-      notify('Invalid email or password')
+      notify('Неправильный логин или пароль')
     )
   }
 
@@ -48,13 +57,14 @@ const LoginPage = (): JSX.Element => {
             validate={ validateEmail }
             onChange={ handleEmailChange }
           />
-          <TextInput
+          <PasswordInput
             source='password'
             type='password'
             validate={ validatePassword }
             onChange={ handlePasswordChange }
           />
         </SimpleForm>
+        <Notification />
       </div>
     </div>
   )
