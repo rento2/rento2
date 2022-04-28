@@ -39,7 +39,7 @@ const authProvider = {
     if (status === 401 || status === 403) {
       localStorage.removeItem('auth')
 
-      return await Promise.reject(new Error('Неабходимо авторизоваться'))
+      return await Promise.reject(new Error('Необходимо авторизоваться'))
     }
 
     return await Promise.resolve()
@@ -47,7 +47,7 @@ const authProvider = {
   checkAuth: async () => {
     const auth = JSON.parse(String(getItem('auth')))
     if (auth === null) {
-      return await Promise.reject(new Error('Неабходимо авторизоваться'))
+      return await Promise.reject(new Error('Необходимо авторизоваться'))
     }
 
     try {
