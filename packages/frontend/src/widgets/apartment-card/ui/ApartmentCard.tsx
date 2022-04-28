@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { IconWalker, IconMetro, IconHeart, ButtonIcon } from '@shared/ui'
+import { IconWalker, IconMetro, IconHeart, ButtonIcon, IconBus } from '@shared/ui'
 import { CardSlider } from './card-slider/CardSlider'
 import styles from './ApartmentCard.module.scss'
 import { mockPhotos } from '../model/mockData'
@@ -9,7 +9,8 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
   const {
     price_per_month: price,
     security_deposit_long: deposit,
-    distance_from_center: distance,
+    time_to_subway_by_foot: timeByFoot,
+    time_to_subway_by_vehicle: timeByBus,
     subway_station: subway,
     name,
     rooms_num: rooms,
@@ -42,10 +43,13 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
                 <IconMetro classProps={ styles['card__icon'] } />
                 {subway}
               </span>
-
               <span className={ styles['card__distance'] }>
                 <IconWalker classProps={ styles['card__icon'] } />
-                {`${distance} минут`}
+                {`${timeByFoot} минут`}
+              </span>
+              <span className={ styles['card__distance'] }>
+                <IconBus classProps={ styles['card__icon'] } />
+                {`${timeByBus} минут`}
               </span>
             </div>
           </div>
