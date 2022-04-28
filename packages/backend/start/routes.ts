@@ -86,7 +86,7 @@ Route
     Route
       .group(() => {
         Route.post('/create', 'PhotosController.create')
-        Route.get('/one', 'PhotosController.one')
+        Route.get('/one/:id', 'PhotosController.one')
         Route.get('/list/:page', 'PhotosController.list')
         Route.delete('/delete/:id', 'PhotosController.delete')
       })
