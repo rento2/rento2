@@ -6,17 +6,9 @@ import { DoubleInput } from '@shared/ui/inputs/doubleInput/DoubleInput'
 import { ButtonGeneral, IconLocation, IconSetting4 } from '@shared/ui'
 import { ChipBox } from '@shared/ui/checkboxes/chipBox/ChipBox'
 import { Select } from '@shared/ui/select/Select'
+import { options, chips } from '../model/mock'
 
 import styles from './Filter.module.scss'
-
-const chips = ['Студия', '1к', '2к', '3к+']
-
-const options = [
-  { value: '1', label: 'Сначала дешевле' },
-  { value: '2', label: 'Сначала дороже' },
-  { value: '3', label: 'Площадь больше' },
-  { value: '4', label: 'Площадь меньше' }
-]
 
 const defaultValues = {
   types: [],

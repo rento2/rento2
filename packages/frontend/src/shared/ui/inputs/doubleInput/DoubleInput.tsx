@@ -1,4 +1,5 @@
 import { ChangeEvent, FC } from 'react'
+import classNames from 'classnames'
 
 import styles from './DoubleInput.module.scss'
 
@@ -35,7 +36,7 @@ export const DoubleInput: FC<IDoubleInput> = ({ value, onChange }) => {
           ₽
         </label>
       </section>
-      <div className={ styles.double__devided } />
+      <div className={ classNames(styles.double__devided, 'flex-center') } />
       <section>
         <label className={ styles.double__label }>
           До

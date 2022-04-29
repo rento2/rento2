@@ -87,7 +87,7 @@ const customprovided = {
   clearIndicator: () => ({ display: 'none' })
 }
 
-const DropdownIndicator = (props: any): JSX.Element => {
+const DropdownIndicator: FC<any> = (props) => {
   return (
     <components.DropdownIndicator { ...props }>
       {props.selectProps.menuIsOpen ? <IconArrowUp /> : <IconArrowDown />}

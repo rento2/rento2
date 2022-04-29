@@ -29,7 +29,8 @@
       background-color: $iris-100;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: $iris-400;
     }
 
