@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .footer {
   padding: 30px 0 0;
   background-color: $iris-50;

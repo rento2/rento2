@@ -3,5 +3,5 @@ export interface IIconClassProps {
 }
 
 export interface IIconClassStroke extends IIconClassProps {
-  figure?: 'square' | 'circle' | 'none'
+  figure?: 'square' | 'circle'
 }
