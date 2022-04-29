@@ -1,0 +1,52 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.double {
+  @include body-5;
+  display: flex;
+  background-color: $gray-blue-50;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  &:hover,
+  &:focus-within {
+    border: 1px solid $iris-300;
+  }
+
+  &__label {
+    display: flex;
+    max-width: 230px;
+    padding: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0;
+    margin: 0 8px;
+    background-color: inherit;
+    border: 0;
+    outline: 0;
+    caret-color: $iris-500;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+
+  &__devided {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+
+    &::before {
+      width: 10px;
+      height: 2px;
+      content: '';
+      background-color: $gray-blue-500;
+      border: 0;
+    }
+  }
+}
