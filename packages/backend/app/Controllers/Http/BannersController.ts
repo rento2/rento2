@@ -51,3 +51,19 @@ export default class BannersController {
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(banner.id))
   }
 }
+
+/**
+* @list
+* @summary Gives the banners page.
+* @responseBody 200 - <Banner[]>.with(prices)
+* @responseBody 200-0 - Empty apartment page - {"meta":{"result":"OK","pagination":{"perPage":20,"currentPage":44444444222241,"hasMorePages":false,"total":24}},"data":[]}
+* @responseBody 401 - Not unauthorized - {"meta":{"result":"NOT_AUTHORIZED","error":{"message":"ERROR"}},"data":[]}
+*/
+
+/**
+* @one
+* @summary Gives the one banner.
+* @responseBody 200 - <Banner>.with(Prices)
+* @responseBody 404 - Not Found - {"meta":{"result":"ENTITY_NOT_FOUND","error":{"message":"ERROR"}},"data":"null"}
+* @responseBody 401 - Not unauthorized - {"meta":{"result":"NOT_AUTHORIZED","error":{"message":"ERROR"}},"data":"null"}
+*/

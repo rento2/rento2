@@ -19,6 +19,13 @@ export default class PhotosController {
     )
   }
 
+  public async one ({ response, request }: HttpContextContract): Promise<void> {
+    const photo = await Photo.findOrFail(request.param('id', null))
+
+    return response.status(HttpStatusCode.OK)
+      .send(creatingOkMsg(photo))
+  }
+
   public async create ({
     request,
     response,
@@ -50,13 +57,6 @@ export default class PhotosController {
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(photo))
   }
 
-  public async one ({ response, request }: HttpContextContract): Promise<void> {
-    const photo = await Photo.findOrFail(request.param('id', null))
-
-    return response.status(HttpStatusCode.OK)
-      .send(creatingOkMsg(photo))
-  }
-
   public async delete ({ response, request }: HttpContextContract): Promise<any> {
     const photo = await Photo.findOrFail(request.param('id', null))
 
@@ -69,3 +69,19 @@ export default class PhotosController {
       .send(creatingOkMsg(photo.id))
   }
 }
+
+/**
+* @list
+* @summary Gives the photos page.
+* @responseBody 200 - <Photo[]>
+* @responseBody 401 - Not unauthorized - {"meta":{"result":"NOT_AUTHORIZED","error":{"message":"ERROR"}},"data":"null"}
+* @responseBody 200-0 - Empty photos page  - {"meta":{"result":"OK","pagination":{"perPage":20,"currentPage":44444444222241,"hasMorePages":false,"total":24}},"data":[]}
+*/
+
+/**
+* @one
+* @summary Gives the one photo.
+* @responseBody 200 - <Photo>
+* @responseBody 401 - Not unauthorized - {"meta":{"result":"NOT_AUTHORIZED","error":{"message":"ERROR"}},"data":"null"}
+* @responseBody 404 - Not Found - {"meta":{"result":"ENTITY_NOT_FOUND","error":{"message":"ERROR"}},"data":"null"}
+*/
