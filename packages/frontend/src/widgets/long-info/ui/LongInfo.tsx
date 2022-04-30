@@ -48,7 +48,8 @@ export function LongInfo ({
         <ButtonGeneral
           classProps={ classNames(styles['btn'], styles['btn_first']) }
           font="m"
-          full="stroke"
+          full="filled"
+          grade='neutral'
           height="44"
           onClick={ () => {} }
         >

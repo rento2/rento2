@@ -10,6 +10,7 @@
     "@types/node": "^12.20.25",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
+    "axios": "^0.26.1",
     "ra-data-json-server": "^3.18.2",
     "react": "^17.0.2",
     "react-admin": "^3.18.2",

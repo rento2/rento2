@@ -1,0 +1,17 @@
+.long-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+
+  @include bp-1279 {
+    grid-gap: 16px;
+  }
+
+  @include bp-743 {
+    grid-template-columns: 1fr;
+  }
+
+  @include bp-479 {
+    padding: 0 16px;
+  }
+}

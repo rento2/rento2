@@ -12,6 +12,7 @@ export const DocsItem: FC<IDocsItem> = ({ hrefProps, textProps }) => {
     <li className={ styles['item'] }>
       <Link href={ hrefProps }>
         <a
+          className={ styles['item__link'] }
           target='_blank'
         >
           {textProps}

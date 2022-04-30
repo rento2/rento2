@@ -1,5 +1,17 @@
 {
   "commands": {
+    "db:reset": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/Db",
+      "commandName": "db:reset",
+      "description": "Drop all tables and execute seeders in new database (db:wipe + migration:run + db:seed)",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",
