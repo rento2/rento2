@@ -1,5 +1,6 @@
+import { DocsTitle } from '@widgets/docs-title'
 import classNames from 'classnames'
-import style from './DocumentsLayout.module.scss'
+import styles from './DocumentsLayout.module.scss'
 
 interface IDocumentsLayout {
   titleText?: string
@@ -8,28 +9,30 @@ interface IDocumentsLayout {
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
+  titleIcon?: string|undefined
+  update?: string
 }
 
-export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps }: IDocumentsLayout): JSX.Element {
+export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps, titleIcon, update }: IDocumentsLayout): JSX.Element {
   return (
-    <div
-      className={ classNames(style['flex-wrapper'], 'container-old') }
-    >
+    <div className={ classNames(styles['flex-wrapper'], 'container-old') }>
       {
           widthWindowProps >= widthProps
             ? sideMenu
             : headMenu
           }
 
-      <div className={ style['doc-container'] }>
+      <div className={ styles['doc-container'] }>
         {titleText != null
           ? (
-            <h1 className={ style['title'] }>
-              {titleText}
-            </h1>
+            <DocsTitle titleIcon={ titleIcon }
+              titleText={ titleText }
+              update={ update }
+            />
+
             )
           : null}
-        <div className={ style['wrapper-box'] }>
+        <div className={ styles['wrapper-box'] }>
           {children}
         </div>
       </div>

@@ -1,25 +1,24 @@
-import { DocumentsLayout, AccordionList, Layout } from '@shared/ui'
+import { AccordionList, DocumentsLayout, Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
-import { SideMenu, HeadMenu } from '@widgets/documents-side-menu'
+import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
+import { dateAccordion } from '../faq/model/dateAccordion'
 
-const titleText = 'Частые вопросы'
+const titleText = 'Договор аренды жилого помещения'
 
-export const FaqPage = (): JSX.Element => {
+export const AgreementsLongPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
-
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
 
-      <DocumentsLayout
-        headMenu={ <HeadMenu /> }
+      <DocumentsLayout headMenu={ <HeadMenu /> }
         sideMenu={ <SideMenu activeItem={ titleText } /> }
-        titleIcon='/images/docs/pic-question.svg'
+        titleIcon='/images/docs/agreements-treaty.svg'
         titleText={ titleText }
+        update='обновление от 06.12.2021'
         widthProps={ 1060 }
         widthWindowProps={ widthWindow }
       >
