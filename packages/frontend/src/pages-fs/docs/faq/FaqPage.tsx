@@ -5,9 +5,11 @@ import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
 import { SideMenu, HeadMenu } from '@widgets/documents-side-menu'
 
+const titleText = 'Частые вопросы'
+
 export const FaqPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
-  const titleText = 'Частые вопросы'
+
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }

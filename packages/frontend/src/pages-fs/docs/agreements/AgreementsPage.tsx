@@ -5,9 +5,10 @@ import { useWindowDimensions } from '@shared/lib'
 import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { AgreementsList } from '@widgets/documents-agreements'
 
+const titleText = 'Образцы документов'
+
 export const AgreementsPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
-  const titleText = 'Образцы документов'
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }

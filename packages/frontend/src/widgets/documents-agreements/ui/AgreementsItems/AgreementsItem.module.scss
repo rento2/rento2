@@ -3,7 +3,7 @@
   margin-bottom: 19px;
 }
 
-.list-container {
+.item-container {
   position: relative;
   display: flex;
   align-items: center;
@@ -38,19 +38,19 @@
     background-color: rgba($iris-500, 0.2);
     border-radius: 100%;
   }
-}
 
-.a {
-  @include body-4;
+  &__link {
+    @include body-4;
 
-  &:focus::after {
-    position: absolute;
-    width: 21px;
-    height: 20px;
-    margin-left: calc(100% - 42px);
-    color: $iris-700;
-    content: '';
-    background-color: rgba($iris-500, 0.2);
-    border-radius: 100%;
+    &:focus::after {
+      position: absolute;
+      width: 21px;
+      height: 20px;
+      margin-left: calc(100% - 42px);
+      color: $iris-700;
+      content: '';
+      background-color: rgba($iris-500, 0.2);
+      border-radius: 100%;
+    }
   }
 }
