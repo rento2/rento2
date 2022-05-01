@@ -88,6 +88,7 @@
 
   &:hover,
   &:focus {
+    padding: 0 6px;
     border: 1px solid $orange-a500;
   }
 
@@ -110,6 +111,7 @@
 
   &:hover,
   &:focus {
+    padding: 0 6px;
     color: $iris-900;
     border: 1px solid $iris-900;
   }
@@ -134,6 +136,7 @@
 
   &:hover,
   &:focus {
+    padding: 0 6px;
     color: $neutral-900;
     background-color: $neutral-05;
     border: 1px solid $neutral-900;
