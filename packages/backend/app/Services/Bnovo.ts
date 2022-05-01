@@ -3,6 +3,7 @@ import bnovoConfiguration from 'Config/bnovo'
 import axios from 'axios'
 import Redis from '@ioc:Adonis/Addons/Redis'
 import { Exception } from '@adonisjs/core/build/standalone'
+import { DateTime } from 'luxon'
 
 export enum RequestMethod {
   GET = 'get',
@@ -16,8 +17,8 @@ export default class Bnovo {
     this.config = bnovoConfiguration
   }
 
-  protected formatDate = (date: Date): string => {
-    return [date.getDay(), date.getMonth(), date.getFullYear()].join('-')
+  protected formatDate = (date: DateTime): string => {
+    return date.toFormat('dd-MM-yyyy')
   }
 
   protected request = async (
@@ -63,7 +64,7 @@ export default class Bnovo {
     return response.roomtypes
   }
 
-  protected getOneApartment = async (targetApartment: number, from?: Date, to?: Date): Promise<any> => {
+  protected getOneApartment = async (targetApartment: number, from?: DateTime, to?: DateTime): Promise<any> => {
     const token = await this.getAuthToken()
     const response = await this.request(
       RequestMethod.GET,
@@ -97,7 +98,7 @@ export default class Bnovo {
     return response.roomtype
   }
 
-  protected getPriceOnDateRange = async (targetApartment: number, from: Date, to: Date): Promise<any> => {
+  protected getPriceOnDateRange = async (targetApartment: number, from: DateTime, to: DateTime): Promise<any> => {
     const token = await this.getAuthToken()
 
     const pricesResponse = await this.request(
@@ -114,7 +115,7 @@ export default class Bnovo {
     return pricesResponse.plans_data[this.config.planId][targetApartment]
   }
 
-  protected getAvailability = async (from: Date, to: Date): Promise<any> => {
+  protected getAvailability = async (from: DateTime, to: DateTime): Promise<any> => {
     const token = await this.getAuthToken()
 
     const response = await this.request(
@@ -146,12 +147,18 @@ export default class Bnovo {
     return response
   }
 
-  protected bookApartment = async (from: Date, to: Date, apartmentId: number, payload: {
-    name: string
-    surname: string
-    email: string
-    phone: string
-  }): Promise<any> => {
+  protected bookApartment = async (
+    from: DateTime,
+    to: DateTime,
+    apartmentId: number,
+    priceRange: any[],
+    payload: {
+      name: string
+      surname: string
+      email: string
+      phone: string
+    }
+  ): Promise<any> => {
     const token = await this.getAuthToken()
     const data = {
       token,
@@ -169,7 +176,7 @@ export default class Bnovo {
         room_types: {
           [apartmentId]: {
             count: 1,
-            prices: this.getPriceOnDateRange(apartmentId, from, to),
+            prices: priceRange,
             room_type_services: [[]]
           }
         }
@@ -184,7 +191,7 @@ export default class Bnovo {
     return response
   }
 
-  protected getAllApartmentsPublicApi = async (from: Date, to: Date): Promise<any> => {
+  protected getAllApartmentsPublicApi = async (from: DateTime, to: DateTime): Promise<any> => {
     const url = buildUrl('https://public-api.reservationsteps.ru', {
       path: '/v1/api/rooms/',
       queryParams: {
