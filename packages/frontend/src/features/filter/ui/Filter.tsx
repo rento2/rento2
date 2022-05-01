@@ -2,10 +2,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 import { Controller, useForm } from 'react-hook-form'
 
-import { DoubleInput } from '@shared/ui/inputs/doubleInput/DoubleInput'
-import { ButtonGeneral, IconLocation, IconSetting4 } from '@shared/ui'
-import { ChipBox } from '@shared/ui/checkboxes/chipBox/ChipBox'
-import { Select } from '@shared/ui/select/Select'
+import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput } from '@shared/ui'
 import { options, chips } from '../model/mock'
 
 import styles from './Filter.module.scss'
@@ -63,6 +60,7 @@ export const Filter: FC = () => {
               name="sorting"
               render={ ({ field: { value, onChange } }) =>
                 (<Select
+                  isSearchable={ false }
                   options={ options }
                   value={ value }
                   onChange={ onChange }
