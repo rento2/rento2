@@ -3,7 +3,7 @@ import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
-import { SideMenu, HeadMenu } from '@widgets/documents-side-menu'
+import { SideMenu, HeadMenu, dataMenu } from '@widgets/documents-side-menu'
 
 const titleText = 'Частые вопросы'
 
@@ -17,7 +17,9 @@ export const FaqPage = (): JSX.Element => {
 
       <DocumentsLayout
         headMenu={ <HeadMenu /> }
-        sideMenu={ <SideMenu activeItem={ titleText } /> }
+        sideMenu={ <SideMenu activeItem={ titleText }
+          data={ dataMenu }
+        /> }
         titleIcon='/images/docs/pic-question.svg'
         titleText={ titleText }
         widthProps={ 1060 }

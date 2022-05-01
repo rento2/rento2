@@ -1,17 +1,26 @@
-import { dataMenu } from '@widgets/documents-side-menu/model/dataMenu'
 import { LinkGeneral } from '@shared/ui'
-import style from './SideMenu.module.scss'
+import styles from './SideMenu.module.scss'
 import classNames from 'classnames'
+import { IPropsMenu } from '@widgets/documents-side-menu'
 
-export function SideMenu ({ activeItem }: {activeItem: string}): JSX.Element {
+export function SideMenu ({ activeItem, data }: {activeItem: string, data: IPropsMenu[]}): JSX.Element {
   return (
-    <div className={ style['border'] }>
+    <div className={ styles['border'] }>
       <ul>
         {
-            dataMenu.map((item, indx) => (
+            data.map((item, indx) => (
               <li key={ indx + 1 }>
+                {item.chapter != null
+                  ? (
+                    <LinkGeneral classProps={ styles['chapter'] }
+                      href="/docs/agreements"
+                    >
+                      {item.chapter}
+                    </LinkGeneral>
+                    )
+                  : null}
                 <LinkGeneral key={ indx }
-                  classProps={ classNames(style['item'], (item.title === activeItem) ? style['active'] : '') }
+                  classProps={ classNames(styles['item'], (item.title === activeItem) ? styles['active'] : '') }
                   href={ item.href }
                 >
                   {item.title}

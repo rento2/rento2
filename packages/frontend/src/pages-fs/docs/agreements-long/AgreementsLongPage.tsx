@@ -2,7 +2,7 @@ import { AccordionList, DocumentsLayout, Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { useWindowDimensions } from '@shared/lib'
-import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
+import { dataAgreementsTenants, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { dateAccordion } from '../faq/model/dateAccordion'
 
 const titleText = 'Договор аренды жилого помещения'
@@ -15,7 +15,9 @@ export const AgreementsLongPage = (): JSX.Element => {
     >
 
       <DocumentsLayout headMenu={ <HeadMenu /> }
-        sideMenu={ <SideMenu activeItem={ titleText } /> }
+        sideMenu={ <SideMenu activeItem={ titleText }
+          data={ dataAgreementsTenants }
+        /> }
         titleIcon='/images/docs/agreements-treaty.svg'
         titleText={ titleText }
         update='обновление от 06.12.2021'
