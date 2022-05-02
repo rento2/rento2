@@ -1,5 +1,6 @@
 import { IAccordionProps } from './types/IAccordionPrors'
 import classNames from 'classnames'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import style from './Accordion.module.scss'
 
@@ -33,6 +34,15 @@ function AccordionItem ({
           <p className={ style['item-p'] }>
             {state.title}
           </p>
+          <div className={ style['item-title__closed-btn'] }>
+            <Image
+              height={ 20 }
+              src="/images/owners/cross.svg"
+              width={ 20 }
+            />
+
+          </div>
+
         </button>
       </h3>
       <div className={ classNames(style['item-container']) }

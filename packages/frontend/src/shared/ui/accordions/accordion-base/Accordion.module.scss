@@ -34,30 +34,35 @@
       width: 95%;
     }
 
-    &::after {
+    &__closed-btn {
       position: absolute;
       top: 20px;
-      left: 93%;
-      width: 21px;
-      height: 21px;
-      cursor: pointer;
-      content: '';
-      background-image: url('/images/owners/cross.svg');
-      background-repeat: no-repeat;
-      transition: transform 0.35s ease-in-out;
+      left: 90%;
+      width: 32px;
+      height: 32px;
+      overflow: visible;
+      border-radius: 8px;
+
+      div {
+        top: 5px;
+      }
     }
 
-    &.active::after {
+    &.active
+    &__closed-btn
+    img {
+      transition: transform 0.35s ease-in-out;
       transform: rotate(45deg);
     }
 
-    &:hover::after,
-    &:focus::after {
-      width: 21px;
-      height: 21px;
-      color: $iris-500;
-      background-color: rgba($iris-500, 0.2);
-      border-radius: 100%;
+    &:hover
+    &__closed-btn,
+    &:focus
+    &__closed-btn {
+      width: 32px;
+      height: 32px;
+      background-color: $iris-100;
+      background-position: center;
     }
   }
 

@@ -21,6 +21,10 @@
     padding-left: 0;
   }
 
+  @include bp-320 {
+    padding-left: 16px;
+  }
+
   &__text {
     @include headline-5;
   }
