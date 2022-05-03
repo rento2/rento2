@@ -95,7 +95,7 @@ Route
       .group(() => {
         Route.delete('/delete/:id', 'ApartmentsController.delete')
         Route.post('/create', 'ApartmentsController.create')
-        Route.post('/update', 'ApartmentsController.update')
+        Route.put('/update/:id', 'ApartmentsController.update')
       })
       .prefix('apartments')
   })

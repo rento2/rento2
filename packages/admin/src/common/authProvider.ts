@@ -11,16 +11,16 @@ const authProvider = {
         }
       )
 
-      setItem('auth', JSON.stringify({
+      setItem('auth', {
         accessToken: data.data.token,
         refreshToken: data.data.refreshToken,
         expiresAt: data.data.expires_at
-      }))
+      })
 
       return await Promise.resolve()
     } catch (err) {
       const error = err as Error
-      return await Promise.reject(new Error(error.message))
+      return await Promise.reject(new Error('Что-то пошло не так: ' + error.message))
     }
   },
   logout: async () => {
@@ -46,8 +46,9 @@ const authProvider = {
   },
   checkAuth: async () => {
     const auth = JSON.parse(String(getItem('auth')))
+
     if (auth === null) {
-      return await Promise.reject(new Error('Необходимо авторизоваться'))
+      return Promise.reject(new Error('Необходимо авторизоваться'))
     }
 
     try {
@@ -66,7 +67,7 @@ const authProvider = {
       return await Promise.resolve()
     } catch (err) {
       const error = err as Error
-      return await Promise.reject(new Error(error.message))
+      return await Promise.reject(new Error('Что-то пошло не так: ' + error.message))
     }
   },
   // called when the user navigates to a new location, to check for permissions / roles
