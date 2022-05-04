@@ -8,8 +8,23 @@
     counter-reset: count;
   }
 
+  &__general {
+    @include body-4;
+    display: flex;
+    align-items: center;
+    padding: 22px 0 22px 32px;
+
+    @include bp-479 {
+      padding: 0 0 0 16px;
+    }
+
+    &:first-child {
+      border-top: 2px solid $neutral-50;
+    }
+  }
+
   &__title {
-    @include subtitle-2;
+    @include body-4;
     display: flex;
     align-items: center;
     padding: 22px 0 22px 32px;
@@ -19,7 +34,7 @@
     }
 
     &::before {
-      @include subtitle-2;
+      @include body-4;
       margin: 0 5px 0 0;
       content: counters(count, '.') '.';
       counter-increment: count;
@@ -45,6 +60,27 @@
     }
   }
 
+  &__item-21 {
+    @include body-4;
+    margin: 0 0 12px;
+
+    &::before {
+      margin: 0 5px 0 0;
+      content: counters(count, '.') '.';
+      counter-increment: count;
+    }
+  }
+
+  &__item-bold {
+    @include subtitle-2;
+    margin: 0 0 12px;
+  }
+
+  &__item-22 {
+    @include body-4;
+    margin: 0 0 12px;
+  }
+
   &__list-3 {
     padding: 0;
     margin: 12px 0 0;
@@ -62,6 +98,18 @@
     &:not(:last-child) {
       margin: 0 0 12px;
     }
+  }
+
+  &__list-4 {
+    padding: 0;
+    margin: 0 0 0 18px;
+  }
+
+  &__item-4 {
+    @include body-4;
+    display: list-item;
+    margin: 0 0 12px;
+    list-style-type: disc;
   }
 
   &__btn-modal {
@@ -114,7 +162,7 @@
     @include body-4;
     width: 90%;
     padding: 0 0 32px;
-    color: $gray-blue-600;
+    color: $gray-blue-400;
   }
 
   &__description-open {
