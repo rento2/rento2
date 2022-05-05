@@ -1,4 +1,4 @@
-import { IPropsMenu } from '@widgets/documents-side-menu/lib/type/IPropsMenu'
+import { IPropsAgreements, IPropsMenu } from '@widgets/documents-side-menu/lib/type/IPropsMenu'
 
 export const dataMenu: IPropsMenu[] = [
   {
@@ -20,38 +20,40 @@ export const dataMenu: IPropsMenu[] = [
 
 ]
 
-export const dataAgreementsTenants: IPropsMenu[] = [
-  {
+export const dataAgreementsTenants: IPropsAgreements = {
+  chapter: 'Арендаторам',
+  listMenu: [{
     title: 'Договор долгосрочной аренды жилого помещения',
-    href: '/docs/agreements-long',
-    chapter: 'Арендаторам'
+    href: '/docs/agreements/long'
+
   },
   {
     title: 'Договор оферта краткосрочной аренды квартиры',
-    href: '#',
-    chapter: 'Арендаторам'
+    href: '#'
   },
   {
     title: 'Договор обслуживания арендуемой квартиры',
-    href: '#',
-    chapter: 'Арендаторам'
+    href: '#'
+
   },
   {
     title: 'Договор на подбор помещения в аренду',
-    href: '#',
-    chapter: 'Арендаторам'
-  }
-]
+    href: '#'
 
-export const dataAgreementsOwners: IPropsMenu[] = [
-  {
-    title: 'Договор между собственником и Rento',
-    href: '#',
-    chapter: 'Собственникам'
-  },
-  {
-    title: 'Договор между собственником и арендатором',
-    href: '#',
-    chapter: 'Собственникам'
-  }
-]
+  }]
+}
+
+export const dataAgreementsOwners: IPropsAgreements = {
+  chapter: 'Собственникам',
+  listMenu: [
+    {
+      title: 'Договор между собственником и Rento',
+      href: '#'
+
+    },
+    {
+      title: 'Договор между собственником и арендатором',
+      href: '#'
+    }
+  ]
+}

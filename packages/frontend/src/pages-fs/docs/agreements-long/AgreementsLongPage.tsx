@@ -5,7 +5,7 @@ import { useWindowDimensions } from '@shared/lib'
 import { dataAgreementsTenants, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { dateAccordion } from '../faq/model/dateAccordion'
 
-const titleText = 'Договор аренды жилого помещения'
+const titleText = 'Договор долгосрочной аренды жилого помещения'
 
 export const AgreementsLongPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
