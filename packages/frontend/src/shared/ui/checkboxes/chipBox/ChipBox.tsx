@@ -6,10 +6,11 @@ import styles from './ChipBox.module.scss'
 interface IChipBox {
   chips: string[]
   value: string[]
+  classProps?: string
   onChange: (value: string[]) => void
 }
 
-export const ChipBox: FC<IChipBox> = ({ value, onChange, chips }) => {
+export const ChipBox: FC<IChipBox> = ({ value, onChange, chips, classProps }) => {
   const handleSelect = (name: string) => () => {
     if (value.includes(name)) {
       onChange(value.filter(chipName => chipName !== name))
@@ -17,7 +18,7 @@ export const ChipBox: FC<IChipBox> = ({ value, onChange, chips }) => {
   }
 
   return (
-    <div className={ styles.select }>
+    <div className={ classNames(styles.select, classProps) }>
       {chips.map((chip, index) => (
         <button key={ index }
           className={ classNames(styles.select__chip, { [styles['select__chip-active']]: value.includes(chip) }) }

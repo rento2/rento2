@@ -9,18 +9,19 @@ interface IValue {
 }
 
 interface IDoubleInput {
+  classProps?: string
   value: IValue
   onChange: (value: IValue) => void
 }
 
-export const DoubleInput: FC<IDoubleInput> = ({ value, onChange }) => {
+export const DoubleInput: FC<IDoubleInput> = ({ value, onChange, classProps }) => {
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
     const range = { ...value, [target.name]: target.value }
     onChange(range)
   }
 
   return (
-    <div className={ styles.double }>
+    <div className={ classNames(styles.double, classProps) }>
       <section>
         <label className={ styles.double__label }>
           От

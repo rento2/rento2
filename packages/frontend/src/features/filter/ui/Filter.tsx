@@ -1,105 +1,129 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import classNames from 'classnames'
 import { Controller, useForm } from 'react-hook-form'
 
 import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput } from '@shared/ui'
 import { options, chips } from '../model/mock'
+import { useSticky } from '../hooks/useSticky'
 
-import styles from './Filter.module.scss'
+import mainStyles from './MainFilter.module.scss'
+import headerStyles from './HeaderFilter.module.scss'
 
 const defaultValues = {
   types: [],
   priceRange: { min: '', max: '' },
-  sorting: options[1]
+  sortType: options[1]
 }
 
 export const Filter: FC = () => {
-  const { control, handleSubmit, watch, reset } = useForm({ defaultValues })
+  const { control, handleSubmit, reset } = useForm({ defaultValues })
+  const { anchorRef, isHeaderMode } = useSticky()
 
-  console.log(watch())
+  const styles = useMemo(() => isHeaderMode ? headerStyles : mainStyles, [isHeaderMode])
 
   return (
-    <div className={ styles.filter }>
-      <form onSubmit={ handleSubmit(console.log) }>
-        <section className={ styles.filter__section }>
-          <Controller
-            control={ control }
-            name="priceRange"
-            render={ ({ field: { value, onChange } }) =>
-              (<DoubleInput
-                value={ value }
-                onChange={ onChange }
-              />) }
-          />
-          <Controller
-            control={ control }
-            name="types"
-            render={ ({ field: { value, onChange } }) =>
-              (<ChipBox
-                chips={ chips }
-                value={ value }
-                onChange={ onChange }
-              />) }
-          />
-          <ButtonGeneral
-            classProps={ classNames(styles['filter__button-map']) }
-            font='s'
-            grade='neutral'
-            height='40'
-          >
-            <span>
-              На карте
-            </span>
-            <IconLocation />
-          </ButtonGeneral>
-        </section>
-        <section className={ styles.filter__section }>
-          <div className={ styles.filter__other }>
+    <>
+      <div
+        className={ classNames(styles.filter, { [styles.sticky]: isHeaderMode }) }
+        onSubmit={ handleSubmit(console.log) }
+      >
+        <form className={ classNames(styles.filter__container, { container: isHeaderMode }) }>
+          <section className={ styles.section }>
             <Controller
               control={ control }
-              name="sorting"
+              name="priceRange"
               render={ ({ field: { value, onChange } }) =>
-                (<Select
-                  isSearchable={ false }
-                  options={ options }
+                (<DoubleInput
+                  classProps={ styles.section__item }
                   value={ value }
                   onChange={ onChange }
                 />) }
             />
+            <Controller
+              control={ control }
+              name="types"
+              render={ ({ field: { value, onChange } }) =>
+                (<ChipBox
+                  chips={ chips }
+                  classProps={ styles.section__item }
+                  value={ value }
+                  onChange={ onChange }
+                />) }
+            />
+            {!isHeaderMode && (
+              <ButtonGeneral
+                classProps={ classNames(styles['button-map']) }
+                font='s'
+                grade='neutral'
+                height='40'
+              >
+                <span className={ styles['button-map__text'] }>
+                  На карте
+                </span>
+                <IconLocation classProps={ styles['button-map__icon'] } />
+              </ButtonGeneral>
+            )}
+          </section>
+          <section className={ styles.section }>
+            <div className={ styles.other }>
+              <Controller
+                control={ control }
+                name="sortType"
+                render={ ({ field: { value, onChange } }) =>
+                  (<Select
+                    className={ classNames(styles.select, styles.other__item) }
+                    isSearchable={ false }
+                    options={ options }
+                    value={ value }
+                    onChange={ onChange }
+                  />) }
+              />
+              <ButtonGeneral
+                classProps={ classNames(styles['button-filters'], styles.other__item) }
+                font='s'
+                full="text"
+                grade="neutral"
+                height='40'
+              >
+                <span className={ styles['button-filters__text'] }>
+                  Фильтры
+                </span>
+                <IconSetting4 classProps={ styles['button-filters__icon'] } />
+              </ButtonGeneral>
+              <ButtonGeneral
+                classProps={ classNames(styles['button-reset'], styles.other__item) }
+                font='s'
+                full="text"
+                grade="neutral"
+                height='40'
+                onClick={ () => reset(defaultValues) }
+              >
+                Сбросить
+              </ButtonGeneral>
+            </div>
             <ButtonGeneral
-              classProps={ classNames(styles['filter__button-filters']) }
-              font='s'
-              full="text"
-              grade="neutral"
+              round
+              classProps={ classNames(styles['button-search']) }
+              font="s"
               height='40'
+              type='button'
             >
-              <span>
-                Фильтры
-              </span>
-              <IconSetting4 />
+              Показать 88888 квартир
             </ButtonGeneral>
-            <ButtonGeneral
-              classProps={ classNames(styles['filter__button-reset']) }
-              font='s'
-              full="text"
-              grade="neutral"
-              height='40'
-              onClick={ () => reset(defaultValues) }
-            >
-              Сбросить
-            </ButtonGeneral>
-          </div>
-          <ButtonGeneral
-            round
-            classProps={ classNames(styles['filter__button-search']) }
-            font="s"
-            height='40'
-            type='button'
-          >
-            Показать 88888 квартир
-          </ButtonGeneral>
-        </section>
-      </form>
-    </div>
+            {isHeaderMode && (
+              <ButtonGeneral
+                classProps={ classNames(styles['button-map']) }
+                font='s'
+                grade='neutral'
+                height='40'
+              >
+                <IconLocation />
+              </ButtonGeneral>
+            )}
+          </section>
+        </form>
+      </div>
+      <div ref={ anchorRef } />
+    </>
   )
 }
