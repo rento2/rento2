@@ -1,0 +1,168 @@
+  /api/v1/sleeping-places/one/{id}:
+    get:
+      summary: "Gives the one sleeping place. (SleepingPlacesController::one)"
+      description: "Returns a **single** instance of type `SleepingPlace` **without** any _relations_. Take a look at the example for further details."
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "SLEEPING-PLACES"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#definitions/SleepingPlace'
+              example:
+                id!: 241
+                name!: "string"
+                type!: {}
+                size!: 182
+                pivotNumber!: 649
+                createdAt!: "2021-03-23T16:13:08.489+01:00"
+                updatedAt!: "2021-03-23T16:13:08.489+01:00"
+          description: "Returns a **single** instance of type `SleepingPlace` **without** any _relations_. Take a look at the example for further details."
+        401:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "NOT_AUTHORIZED"
+                  error:
+                    message: "ERROR"
+                data: "null"
+          description: "Unauthorized: Not unauthorized"
+        403:
+          description: "Forbidden"
+        404:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "ENTITY_NOT_FOUND"
+                  error:
+                    message: "ERROR"
+                data: "null"
+          description: "Not Found: Not Found"
+      security:
+        - bearerAuth: []
+  /api/v1/sleeping-places/delete/{id}:
+    delete:
+      summary: " (SleepingPlacesController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "SLEEPING-PLACES"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+  /api/v1/sleeping-places/create:
+    post:
+      summary: " (SleepingPlacesController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "SLEEPING-PLACES"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+  /api/v1/sleeping-places/list/{page}:
+    get:
+      summary: "Gives the sleeping places page. (SleepingPlacesController::list)"
+      description: "Returns a **list** of type `SleepingPlace` **without** any _relations_. Take a look at the example for further details."
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "SLEEPING-PLACES"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#definitions/SleepingPlace'
+              example:
+                - id!: 241
+                  name!: "string"
+                  type!: {}
+                  size!: 182
+                  pivotNumber!: 649
+                  createdAt!: "2021-03-23T16:13:08.489+01:00"
+                  updatedAt!: "2021-03-23T16:13:08.489+01:00"
+          description: "Returns a **list** of type `SleepingPlace` **without** any _relations_. Take a look at the example for further details."
+        401:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "NOT_AUTHORIZED"
+                  error:
+                    message: "ERROR"
+                data: {}
+          description: "Unauthorized: Not unauthorized"
+        403:
+          description: "Forbidden"
+        200-0:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "OK"
+                  pagination:
+                    perPage: 20
+                    currentPage: 44444444222241
+                    hasMorePages: false
+                    total: 24
+                data: {}
+          description: "Unknown: Empty apartment page"
+      security:
+        - bearerAuth: []
+  /api/v1/sleeping-places/update:
+    post:
+      summary: "Update sleeping-places (SleepingPlacesController::update)"
+      description: ""
+      parameters: []
+      tags:
+        - "SLEEPING-PLACES"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}

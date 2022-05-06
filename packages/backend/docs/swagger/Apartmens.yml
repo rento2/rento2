@@ -1,0 +1,358 @@
+/api/v1/apartments/delete/{id}:
+    delete:
+      summary: " (ApartmentsController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "APARTMENTS"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+/api/v1/apartments/create:
+    post:
+      summary: " (ApartmentsController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "APARTMENTS"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/apartments/update:
+    post:
+      summary: "Update apartments (ApartmentsController::update)"
+      description: ""
+      parameters: []
+      tags:
+        - "APARTMENTS"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/apartments/one/{id}:
+    get:
+      summary: "Gives the one apartment. (ApartmentsController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#definitions/Apartments'
+              example:
+
+                meta:
+                  result: OK
+                  pagination:
+                    perPage: 20
+                    currentPage: 1
+                    hasMorePages: true
+                    total: 24
+                data:
+                  id: '1'
+                  type:
+                  is_active: true
+                  name: Barrett_Parisian99
+                  latin_name: Clara Hermiston
+                  description: Nulla sint est eveniet aut ab et consequatur. Quas omnis porro rerum
+                    odit itaque eum sequi ex non. Laboriosam cupiditate repudiandae quaerat eligendi
+                    repudiandae fugiat accusantium omnis animi.
+                  bnovo_id: '97480'
+                  price: '74397.00'
+                  price_per_month: '54882'
+                  discount: '143.00'
+                  commission: '112.00'
+                  utility_bills: '161.00'
+                  security_deposit_short: '188.00'
+                  security_deposit_long: '149.00'
+                  rooms_num: 183
+                  storey: 148
+                  total_storeys: 113
+                  area: '161.00'
+                  kitchen_area: '154.00'
+                  distance_from_center: 100
+                  adm_area:
+                  district: est blanditiis maiores quod et
+                  selling_point: nobis harum qui incidunt et
+                  geo_coordinate_x: laborum
+                  geo_coordinate_y: facilis
+                  subway_station: soluta est aut qui
+                  subway_line: accusamus consequatur inventore aliquid
+                  time_to_subway_by_foot: 181
+                  time_to_subway_by_vehicle: 187
+                  repairs: '1.5'
+                  purity: '6.9'
+                  location: '7.6'
+                  price_quality: '5.4'
+                  total_rating: '6.8'
+                  check_in_start: '1994-05-31T19:15:46.913Z'
+                  check_in_end: '2005-01-26T11:17:14.101Z'
+                  check_out_end: '2000-10-18T14:21:54.913Z'
+                  smoking_allowed: false
+                  partying_allowed: false
+                  children_allowed: false
+                  pets_allowed: true
+                  max_adults: 10
+                  max_children: 2
+                  created_at: '2022-04-27T10:19:37.226+03:00'
+                  updated_at: '2022-04-27T10:19:37.226+03:00'
+                  accommodations:
+                  - id: '1'
+                    name: Cordia69
+                    name_en: Dustin_Fisher37
+                    created_at: '2022-04-27T10:19:37.247+03:00'
+                    updated_at: '2022-04-27T10:19:37.247+03:00'
+                  - id: '2'
+                    name: Pinkie_Erdman
+                    name_en: Eric_Tremblay38
+                    created_at: '2022-04-27T10:19:37.250+03:00'
+                    updated_at: '2022-04-27T10:19:37.250+03:00'
+                  sleepingPlaces:
+                  - id: '1'
+                    name: Architecto est rerum dolor earum quidem.
+                    type: bed
+                    size: 3
+                    created_at: '2022-04-27T10:19:37.328+03:00'
+                    updated_at: '2022-04-27T10:19:37.328+03:00'
+                    number: 1
+                  - id: '2'
+                    name: Et aperiam dignissimos est qui.
+                    type: bed
+                    size: 1
+                    created_at: '2022-04-27T10:19:37.331+03:00'
+                    updated_at: '2022-04-27T10:19:37.331+03:00'
+                    number: 1
+                  services:
+                  - id: '1'
+                    type: long
+                    name: Mollitia reprehenderit nemo aliquam laudantium suscipit qui et iste at.
+                    created_at: '2022-04-27T10:19:37.277+03:00'
+                    updated_at: '2022-04-27T10:19:37.277+03:00'
+                  - id: '2'
+                    type: short
+                    name: Aliquam pariatur sit dolorem tempore nostrum ea provident rerum quas.
+                    created_at: '2022-04-27T10:19:37.281+03:00'
+                    updated_at: '2022-04-27T10:19:37.281+03:00'
+                  - id: '3'
+                    type: all
+                    name: Autem sit quae eius expedita.
+                    created_at: '2022-04-27T10:19:37.284+03:00'
+                    updated_at: '2022-04-27T10:19:37.284+03:00'
+                  photos:
+                  - id: '82118'
+                    apartment_id: '1'
+                    link: https://blue-component.info
+                    path: "/etc/ppp/account_egyptian.cco"
+                    created_at: '2022-04-27T10:19:37.339+03:00'
+                    updated_at: '2022-04-27T10:19:37.339+03:00'
+                  - id: '22467'
+                    apartment_id: '1'
+                    link: https://elementary-functionality.com
+                    path: "/sys/synthesizing_san_integrate.dump"
+                    created_at: '2022-04-27T10:19:37.346+03:00'
+                    updated_at: '2022-04-27T10:19:37.346+03:00'
+                  banners:
+                  - id: '1'
+                    name: Et quaerat et.
+                    created_at: '2022-04-27T10:19:37.292+03:00'
+                    updated_at: '2022-04-27T10:19:37.293+03:00'
+
+
+          description: ""
+        404:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "ENTITY_NOT_FOUND"
+                  error:
+                    message: "ERROR"
+                data: "null"
+          description: "Not Found"
+      security: []
+
+/api/v1/apartments/list/{page}:
+    get:
+      summary: "Gives the apartment page. (ApartmentsController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#definitions/Apartments'
+              example:
+
+                meta:
+                  result: OK
+                  pagination:
+                    perPage: 20
+                    currentPage: 1
+                    hasMorePages: true
+                    total: 24
+                data:
+                - id: '1'
+                  type:
+                  is_active: true
+                  name: Barrett_Parisian99
+                  latin_name: Clara Hermiston
+                  description: Nulla sint est eveniet aut ab et consequatur. Quas omnis porro rerum
+                    odit itaque eum sequi ex non. Laboriosam cupiditate repudiandae quaerat eligendi
+                    repudiandae fugiat accusantium omnis animi.
+                  bnovo_id: '97480'
+                  price: '74397.00'
+                  price_per_month: '54882'
+                  discount: '143.00'
+                  commission: '112.00'
+                  utility_bills: '161.00'
+                  security_deposit_short: '188.00'
+                  security_deposit_long: '149.00'
+                  rooms_num: 183
+                  storey: 148
+                  total_storeys: 113
+                  area: '161.00'
+                  kitchen_area: '154.00'
+                  distance_from_center: 100
+                  adm_area:
+                  district: est blanditiis maiores quod et
+                  selling_point: nobis harum qui incidunt et
+                  geo_coordinate_x: laborum
+                  geo_coordinate_y: facilis
+                  subway_station: soluta est aut qui
+                  subway_line: accusamus consequatur inventore aliquid
+                  time_to_subway_by_foot: 181
+                  time_to_subway_by_vehicle: 187
+                  repairs: '1.5'
+                  purity: '6.9'
+                  location: '7.6'
+                  price_quality: '5.4'
+                  total_rating: '6.8'
+                  check_in_start: '1994-05-31T19:15:46.913Z'
+                  check_in_end: '2005-01-26T11:17:14.101Z'
+                  check_out_end: '2000-10-18T14:21:54.913Z'
+                  smoking_allowed: false
+                  partying_allowed: false
+                  children_allowed: false
+                  pets_allowed: true
+                  max_adults: 10
+                  max_children: 2
+                  created_at: '2022-04-27T10:19:37.226+03:00'
+                  updated_at: '2022-04-27T10:19:37.226+03:00'
+                  accommodations:
+                  - id: '1'
+                    name: Cordia69
+                    name_en: Dustin_Fisher37
+                    created_at: '2022-04-27T10:19:37.247+03:00'
+                    updated_at: '2022-04-27T10:19:37.247+03:00'
+                  - id: '2'
+                    name: Pinkie_Erdman
+                    name_en: Eric_Tremblay38
+                    created_at: '2022-04-27T10:19:37.250+03:00'
+                    updated_at: '2022-04-27T10:19:37.250+03:00'
+                  sleepingPlaces:
+                  - id: '1'
+                    name: Architecto est rerum dolor earum quidem.
+                    type: bed
+                    size: 3
+                    created_at: '2022-04-27T10:19:37.328+03:00'
+                    updated_at: '2022-04-27T10:19:37.328+03:00'
+                    number: 1
+                  - id: '2'
+                    name: Et aperiam dignissimos est qui.
+                    type: bed
+                    size: 1
+                    created_at: '2022-04-27T10:19:37.331+03:00'
+                    updated_at: '2022-04-27T10:19:37.331+03:00'
+                    number: 1
+                  services:
+                  - id: '1'
+                    type: long
+                    name: Mollitia reprehenderit nemo aliquam laudantium suscipit qui et iste at.
+                    created_at: '2022-04-27T10:19:37.277+03:00'
+                    updated_at: '2022-04-27T10:19:37.277+03:00'
+                  - id: '2'
+                    type: short
+                    name: Aliquam pariatur sit dolorem tempore nostrum ea provident rerum quas.
+                    created_at: '2022-04-27T10:19:37.281+03:00'
+                    updated_at: '2022-04-27T10:19:37.281+03:00'
+                  - id: '3'
+                    type: all
+                    name: Autem sit quae eius expedita.
+                    created_at: '2022-04-27T10:19:37.284+03:00'
+                    updated_at: '2022-04-27T10:19:37.284+03:00'
+                  photos:
+                  - id: '82118'
+                    apartment_id: '1'
+                    link: https://blue-component.info
+                    path: "/etc/ppp/account_egyptian.cco"
+                    created_at: '2022-04-27T10:19:37.339+03:00'
+                    updated_at: '2022-04-27T10:19:37.339+03:00'
+                  - id: '22467'
+                    apartment_id: '1'
+                    link: https://elementary-functionality.com
+                    path: "/sys/synthesizing_san_integrate.dump"
+                    created_at: '2022-04-27T10:19:37.346+03:00'
+                    updated_at: '2022-04-27T10:19:37.346+03:00'
+                  banners:
+                  - id: '1'
+                    name: Et quaerat et.
+                    created_at: '2022-04-27T10:19:37.292+03:00'
+                    updated_at: '2022-04-27T10:19:37.293+03:00'
+
+          description: ""
+        200-0:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "OK"
+                  pagination:
+                    perPage: 20
+                    currentPage: 44444444222241
+                    hasMorePages: "false"
+                    total: 24
+                data: {}
+          description: "Last apartment page"
+      security: []

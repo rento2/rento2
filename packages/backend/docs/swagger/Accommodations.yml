@@ -1,0 +1,165 @@
+/api/v1/accommodations/one/{id}:
+    get:
+      summary: "Gives the one accommodation. (AccommodationsController::one)"
+      description: "Returns a **single** instance of type `Accommodation` **without** any _relations_. Take a look at the example for further details."
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#definitions/Accommodation'
+              example:
+                id!: 350
+                name!: "string"
+                nameEn!: "string"
+                createdAt!: "2021-03-23T16:13:08.489+01:00"
+                updatedAt!: "2021-03-23T16:13:08.489+01:00"
+          description: "Returns a **single** instance of type `Accommodation` **without** any _relations_. Take a look at the example for further details."
+        401:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "NOT_AUTHORIZED"
+                  error:
+                    message: "ERROR"
+                data: "null"
+          description: "Unauthorized: Not unauthorized"
+        403:
+          description: "Forbidden"
+        404:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "ENTITY_NOT_FOUND"
+                  error:
+                    message: "ERROR"
+                data: "null"
+          description: "Not Found: Not Found"
+      security:
+        - bearerAuth: []
+/api/v1/accommodations/delete/{id}:
+    delete:
+      summary: " (AccommodationsController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+/api/v1/accommodations/create:
+    post:
+      summary: " (AccommodationsController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/accommodations/list/{page}:
+    get:
+      summary: "Gives the accommodations page. (AccommodationsController::list)"
+      description: "Returns a **list** of type `Accommodation` **without** any _relations_. Take a look at the example for further details."
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#definitions/Accommodation'
+              example:
+                - id!: 350
+                  name!: "string"
+                  nameEn!: "string"
+                  createdAt!: "2021-03-23T16:13:08.489+01:00"
+                  updatedAt!: "2021-03-23T16:13:08.489+01:00"
+          description: "Returns a **list** of type `Accommodation` **without** any _relations_. Take a look at the example for further details."
+        401:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "NOT_AUTHORIZED"
+                  error:
+                    message: "ERROR"
+                data: {}
+          description: "Unauthorized: Not unauthorized"
+        403:
+          description: "Forbidden"
+        200-0:
+          content:
+            application/json:
+              schema:
+                type: "object"
+              example:
+                meta:
+                  result: "OK"
+                  pagination:
+                    perPage: 20
+                    currentPage: 44444444222241
+                    hasMorePages: false
+                    total: 24
+                data: {}
+          description: "Unknown: Empty apartment page"
+      security:
+        - bearerAuth: []
+/api/v1/accommodations/update:
+    post:
+      summary: "Update accommodations (AccommodationsController::update)"
+      description: ""
+      parameters: []
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+
