@@ -1,0 +1,13 @@
+components:
+  responses:
+    NOT_AUTHORIZED:
+      description: "Access token is missing or invalid"
+      content:
+        application/json:
+          schema:
+            example:
+              meta:
+                result: "NOT_AUTHORIZED"
+                error:
+                  message: "ERROR"
+              data: null
