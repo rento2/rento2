@@ -4,7 +4,7 @@ import { IHttpClientOptions } from 'types'
 
 export const httpClient = async (url: string, options = {}): Promise<IHttpClientOptions> => {
   // @ts-expect-error
-  if (options.headers == undefined || options.headers == null) {
+  if (options.headers == null) {
     // @ts-expect-error
     options.headers = new Headers({ Accept: 'application/json' })
   }
