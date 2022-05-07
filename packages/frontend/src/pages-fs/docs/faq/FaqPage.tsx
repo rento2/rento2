@@ -17,10 +17,10 @@ export const FaqPage = (): JSX.Element => {
 
       <DocumentsLayout
         headMenu={ <HeadMenu /> }
+        pathIcon='/images/docs/pic-question.svg'
         sideMenu={ <SideMenu activeItem={ titleText }
           data={ dataMenu }
         /> }
-        titleIcon='/images/docs/pic-question.svg'
         titleText={ titleText }
         widthProps={ 1060 }
         widthWindowProps={ widthWindow }

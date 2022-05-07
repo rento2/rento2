@@ -2,36 +2,35 @@ import { LinkGeneral } from '@shared/ui/links/LinkGeneral'
 import { IPropsAgreements } from '@widgets/documents-side-menu'
 import classNames from 'classnames'
 import styles from './AgreementsSideMenu.module.scss'
+interface IAgreementsSideMenuProps {
+  data: IPropsAgreements
+  activeItem: string
+}
 
-export const AgreementsSideMenu = ({ data, activeItem }: {data: IPropsAgreements, activeItem: string}): JSX.Element => {
+export const AgreementsSideMenu = ({ data, activeItem }: IAgreementsSideMenuProps): JSX.Element => {
   return (
-
     <div className={ styles['container-agreements'] }>
       <ul>
-        <LinkGeneral
-          href="/docs/agreements"
-        >
-          <li className={ styles['comback-buton'] }>
-
+        <li className={ styles['comback-buton'] }>
+          <LinkGeneral classProps={ styles['left-arrow'] }
+            href="/docs/agreements"
+          >
             {data.chapter}
-
-          </li>
-        </LinkGeneral>
+          </LinkGeneral>
+        </li>
         {data.listMenu.map((item, idx) => (
-          <li key={ idx + 1 }>
-            <LinkGeneral key={ idx }
-              classProps={ classNames(styles['item'], (item.title === activeItem) ? styles['active'] : '') }
+          <li key={ idx }>
+            <LinkGeneral
+              classProps={ classNames([styles.item], { [styles.active]: item.title === activeItem }) }
               href={ item.href }
             >
               {item.title}
             </LinkGeneral>
           </li>
-
         )
         )}
       </ul>
     </div>
   )
 }
-
 export default AgreementsSideMenu

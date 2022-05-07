@@ -12,18 +12,23 @@
 }
 
 .comback-buton {
-  @include body-4;
   position: relative;
   width: 320px;
   height: 58px;
   padding-left: 85px;
   margin: 21px 0 19px -85px;
-  color: $gray-blue-300;
   cursor: pointer;
   border-bottom: 2px solid $neutral-50;
 }
 
-.comback-buton::after {
+.left-arrow {
+  @include body-4;
+  width: 10px;
+  height: 18px;
+  color: $gray-blue-300;
+}
+
+.left-arrow::after {
   position: absolute;
   top: 0;
   right: 260px;

@@ -15,10 +15,10 @@ export const AgreementsLongPage = (): JSX.Element => {
     >
 
       <DocumentsLayout headMenu={ <HeadMenu /> }
+        pathIcon='/images/docs/agreements-treaty.svg'
         sideMenu={ <SideMenu activeItem={ titleText }
           data={ dataAgreementsTenants }
         /> }
-        titleIcon='/images/docs/agreements-treaty.svg'
         titleText={ titleText }
         update='обновление от 06.12.2021'
         widthProps={ 1060 }

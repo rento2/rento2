@@ -2,59 +2,58 @@ import styles from './DocsTitle.module.scss'
 import Image from 'next/image'
 
 interface IDocsTitle {
-  titleText?: string|number|undefined
-  titleIcon?: string|undefined
-  update?: string|number|undefined
+  titleText?: string
+  pathIcon?: string
+  update?: string|number
 }
 
-export const DocsTitle = ({ titleText, titleIcon, update }: IDocsTitle): any => {
-  switch (titleText) {
-    case 'Частые вопросы':
-      return (
-        <div className={ styles['title'] }>
-          <h1 className={ styles['title__text'] }>
-            {titleText}
-          </h1>
+const FAQ = 'Частые вопросы'
+const AGREEMENTS = 'Пользовательское соглашение'
+
+export const DocsTitle = ({ titleText, pathIcon, update }: IDocsTitle): any => {
+  function DocsSwich (title: string): JSX.Element {
+    switch (title) {
+      case FAQ:
+        return (
           <div className={ styles['title__icon'] }>
             <Image
               height={ 58 }
-              src={ titleIcon }
+              src={ pathIcon }
               width={ 61 }
             />
           </div>
-        </div>
-      )
-    case 'Пользовательское соглашение':
-      return (
-        <div className={ styles['title'] }>
-          <h1 className={ styles['title__text'] }>
-            {titleText}
-          </h1>
+        )
+      case AGREEMENTS :
+        return (
           <p className={ styles['title__update'] }>
             {update}
           </p>
-        </div>
-      )
-
-    default:
-      return (
-        <div className={ styles['title'] }>
-          <h1 className={ styles['title__text'] }>
-            {titleText}
-          </h1>
-          <button className={ styles['title__icon-button'] }
-            type='button'
-          >
-            <Image
-              height={ 32 }
-              src={ titleIcon }
-              width={ 32 }
-            />
-          </button>
-          <p className={ styles['title__update'] }>
-            {update}
-          </p>
-        </div>
-      )
+        )
+      default:
+        return (
+          <>
+            <button className={ styles['title__icon-button'] }
+              type='button'
+            >
+              <Image
+                height={ 32 }
+                src={ pathIcon }
+                width={ 32 }
+              />
+            </button>
+            <p className={ styles['title__update'] }>
+              {update}
+            </p>
+          </>
+        )
+    }
   }
+  return (
+    <div className={ styles['title'] }>
+      <h1 className={ styles['title__text'] }>
+        {titleText}
+      </h1>
+      {DocsSwich(titleText)}
+    </div>
+  )
 }

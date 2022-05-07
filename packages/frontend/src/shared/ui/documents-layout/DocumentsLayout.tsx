@@ -9,11 +9,12 @@ interface IDocumentsLayout {
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
-  titleIcon?: string|undefined
+  pathIcon?: string
   update?: string
 }
 
-export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps, titleIcon, update }: IDocumentsLayout): JSX.Element {
+export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {
+  const { titleText, children, widthWindowProps, sideMenu, headMenu, widthProps, pathIcon, update } = props
   return (
     <div className={ classNames(styles['flex-wrapper'], 'container-old') }>
       {
@@ -21,15 +22,13 @@ export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMe
             ? sideMenu
             : headMenu
           }
-
       <div className={ styles['doc-container'] }>
         {titleText != null
           ? (
-            <DocsTitle titleIcon={ titleIcon }
+            <DocsTitle pathIcon={ pathIcon }
               titleText={ titleText }
               update={ update }
             />
-
             )
           : null}
         <div className={ styles['wrapper-box'] }>

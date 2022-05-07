@@ -17,7 +17,6 @@ export const dataMenu: IPropsMenu[] = [
     title: 'Образцы документов',
     href: '/docs/agreements'
   }
-
 ]
 
 export const dataAgreementsTenants: IPropsAgreements = {
@@ -25,7 +24,6 @@ export const dataAgreementsTenants: IPropsAgreements = {
   listMenu: [{
     title: 'Договор долгосрочной аренды жилого помещения',
     href: '/docs/agreements/long'
-
   },
   {
     title: 'Договор оферта краткосрочной аренды квартиры',
@@ -34,13 +32,12 @@ export const dataAgreementsTenants: IPropsAgreements = {
   {
     title: 'Договор обслуживания арендуемой квартиры',
     href: '#'
-
   },
   {
     title: 'Договор на подбор помещения в аренду',
     href: '#'
-
-  }]
+  }
+  ]
 }
 
 export const dataAgreementsOwners: IPropsAgreements = {
@@ -49,7 +46,6 @@ export const dataAgreementsOwners: IPropsAgreements = {
     {
       title: 'Договор между собственником и Rento',
       href: '#'
-
     },
     {
       title: 'Договор между собственником и арендатором',

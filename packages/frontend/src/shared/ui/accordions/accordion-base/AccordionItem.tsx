@@ -2,7 +2,7 @@ import { IAccordionProps } from './types/IAccordionPrors'
 import classNames from 'classnames'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import style from './Accordion.module.scss'
+import styles from './Accordion.module.scss'
 
 function AccordionItem ({
   state,
@@ -25,31 +25,29 @@ function AccordionItem ({
   }, [isOpen])
 
   return (
-    <li className={ classNames(style['item']) }>
+    <li className={ classNames(styles['item']) }>
       <h3>
-        <button className={ classNames(style['item-title'], isOpen ? style['active'] : '') }
+        <button className={ classNames(styles['item-title'], isOpen ? styles['active'] : '') }
           type='button'
           onClick={ btnOnclick }
         >
-          <p className={ style['item-p'] }>
+          <p className={ styles['item-p'] }>
             {state.title}
           </p>
-          <div className={ style['item-title__closed-btn'] }>
+          <div className={ styles['item-title__closed-btn'] }>
             <Image
               height={ 20 }
               src="/images/owners/cross.svg"
               width={ 20 }
             />
-
           </div>
-
         </button>
       </h3>
-      <div className={ classNames(style['item-container']) }
+      <div className={ classNames(styles['item-container']) }
         style={ { height } }
       >
         <p ref={ contentRef }
-          className={ classNames(style['item-description'], isOpen ? style['item-description-open'] : style['item-description-closed']) }
+          className={ classNames(styles['item-description'], isOpen ? styles['item-description-open'] : styles['item-description-closed']) }
         >
           {state.description}
         </p>
@@ -57,5 +55,4 @@ function AccordionItem ({
     </li>
   )
 }
-
 export default AccordionItem

@@ -3,8 +3,12 @@ import { IPropsAgreements, IPropsMenu } from '@widgets/documents-side-menu'
 import classNames from 'classnames'
 import AgreementsSideMenu from './AgreementsSideMenu.tsx/AgreementsSideMenu'
 import styles from './SideMenu.module.scss'
+interface ISideMenuProps {
+  activeItem: string
+  data: IPropsMenu[] | IPropsAgreements
+}
 
-export function SideMenu ({ activeItem, data }: {activeItem: string, data: IPropsMenu[] | IPropsAgreements}): JSX.Element {
+export function SideMenu ({ activeItem, data }: ISideMenuProps): JSX.Element {
   return (
 
     <>
@@ -19,8 +23,8 @@ export function SideMenu ({ activeItem, data }: {activeItem: string, data: IProp
           <div className={ styles['border'] }>
             <ul>
               {data.map((item, idx) => (
-                <li key={ idx + 1 }>
-                  <LinkGeneral key={ idx }
+                <li key={ idx }>
+                  <LinkGeneral
                     classProps={ classNames(styles['item'], (item.title === activeItem) ? styles['active'] : '') }
                     href={ item.href }
                   >
@@ -31,7 +35,6 @@ export function SideMenu ({ activeItem, data }: {activeItem: string, data: IProp
             </ul>
           </div>
           )
-
           }
 
     </>
