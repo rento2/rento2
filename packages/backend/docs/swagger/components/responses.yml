@@ -36,3 +36,12 @@ components:
                 error:
                   message: "ERROR"
               data: null
+    ENTITY_DELETED:
+      description: "Empty deleted."
+      content:
+        application/json:
+          schema:
+            example:
+              meta:
+                result: "OK"
+              data: "2"

@@ -73,7 +73,7 @@
         - "PHOTOS"
       responses:
         200:
-          description: 'TODO: ADD ITEM'
+          $ref: '#components/responses/ENTITY_DELETED'
         401:
           $ref: '#components/responses/NOT_AUTHORIZED'
         404:
