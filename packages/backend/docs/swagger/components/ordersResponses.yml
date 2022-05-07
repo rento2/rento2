@@ -1,0 +1,83 @@
+components:
+  ordersResponses:
+    LIST:
+      description: "Array of orders."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Order'
+          example:
+            meta:
+              result: OK
+              pagination:
+                perPage: 20
+                currentPage: 1
+                hasMorePages: true
+                total: 24
+            data:
+            - id: '1'
+              apartment_id: '1'
+              name: 'Jan Schimmel'
+              email: "Garfield_Huels@yahoo.com"
+              phone: '902.447.8539 x20828'
+              date_from: '2066-10-16T03:08:01.859Z'
+              date_to: '1999-02-17T11:58:12.951Z'
+              fixed_price: '29100.00'
+              fixed_total_price: '63137.00'
+              nights_number: 25
+              payment_type: 'prepayment'
+              prices:
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 41
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 8257
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 72
+            - id: '2'
+              apartment_id: '1'
+              name: 'Jan Schimmel'
+              email: "Garfield_Huels@yahoo.com"
+              phone: '902.447.8539 x20828'
+              date_from: '2066-10-16T03:08:01.859Z'
+              date_to: '1999-02-17T11:58:12.951Z'
+              fixed_price: '29100.00'
+              fixed_total_price: '63137.00'
+              nights_number: 25
+              payment_type: 'prepayment'
+              prices:
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 41
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 8257
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 72
+
+    ONE:
+      description: "One order."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Order'
+          example:
+            meta:
+              result: OK
+            data:
+              id: '1'
+              apartment_id: '1'
+              name: 'Jan Schimmel'
+              email: "Garfield_Huels@yahoo.com"
+              phone: '902.447.8539 x20828'
+              date_from: '2066-10-16T03:08:01.859Z'
+              date_to: '1999-02-17T11:58:12.951Z'
+              fixed_price: '29100.00'
+              fixed_total_price: '63137.00'
+              nights_number: 25
+              payment_type: 'prepayment'
+              prices:
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 41
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 8257
+              - date: '2084-07-27T06:09:42.728Z'
+                price: 72
+

@@ -1,0 +1,45 @@
+components:
+  photosResponses:
+    LIST:
+      description: "Array of photos."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Photo'
+          example:
+            meta:
+              result: OK
+              pagination:
+                perPage: 20
+                currentPage: 1
+                hasMorePages: true
+                total: 24
+            data:
+              - id: '82118'
+                apartment_id: '1'
+                link: https://blue-component.info
+                path: "/etc/ppp/account_egyptian.cco"
+                created_at: '2022-04-27T10:19:37.339+03:00'
+                updated_at: '2022-04-27T10:19:37.339+03:00'
+              - id: '22467'
+                apartment_id: '1'
+                link: https://elementary-functionality.com
+                path: "/sys/synthesizing_san_integrate.dump"
+                created_at: '2022-04-27T10:19:37.346+03:00'
+                updated_at: '2022-04-27T10:19:37.346+03:00'
+    ONE:
+      description: "One photo."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Photo'
+          example:
+            meta:
+              result: OK
+            data:
+              id: '22467'
+              apartment_id: '1'
+              link: https://elementary-functionality.com
+              path: "/sys/synthesizing_san_integrate.dump"
+              created_at: '2022-04-27T10:19:37.346+03:00'
+              updated_at: '2022-04-27T10:19:37.346+03:00'

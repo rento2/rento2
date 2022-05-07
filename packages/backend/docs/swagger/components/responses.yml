@@ -11,3 +11,28 @@ components:
                 error:
                   message: "ERROR"
               data: null
+    EMPTY_PAGE:
+      description: "Empty page."
+      content:
+        application/json:
+          schema:
+            example:
+              meta:
+                result: "OK"
+                pagination:
+                  perPage: 20
+                  currentPage: 211
+                  hasMorePages: false
+                  total: 20
+              data: []
+    ENTITY_NOT_FOUND:
+      description: "Empty not found."
+      content:
+        application/json:
+          schema:
+            example:
+              meta:
+                result: "ENTITY_NOT_FOUND"
+                error:
+                  message: "ERROR"
+              data: null

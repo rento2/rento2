@@ -6,10 +6,12 @@
       tags:
         - "PHOTOS"
       responses:
+        200:
+          description: 'TODO: ADD ITEM'
         401:
-          description: "Unauthorized"
-        403:
-          description: "Forbidden"
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
       security:
         - bearerAuth: []
       requestBody:
@@ -18,7 +20,7 @@
 /api/v1/photos/one/{id}:
     get:
       summary: "Gives the one photo. (PhotosController::one)"
-      description: "Returns a **single** instance of type `Photo` **without** any _relations_. Take a look at the example for further details."
+      description: ""
       parameters:
         - in: "path"
           name: "id"
@@ -29,50 +31,17 @@
         - "PHOTOS"
       responses:
         200:
-          content:
-            application/json:
-              schema:
-                $ref: '#definitions/Photo'
-              example:
-                id!: 795
-                apartmentId!: 114
-                link!: "string"
-                path!: "string"
-                createdAt!: "2021-03-23T16:13:08.489+01:00"
-                updatedAt!: "2021-03-23T16:13:08.489+01:00"
-          description: "Returns a **single** instance of type `Photo` **without** any _relations_. Take a look at the example for further details."
+          $ref: '#components/photosResponses/ONE'
         401:
-          content:
-            application/json:
-              schema:
-                type: "object"
-              example:
-                meta:
-                  result: "NOT_AUTHORIZED"
-                  error:
-                    message: "ERROR"
-                data: "null"
-          description: "Unauthorized: Not unauthorized"
-        403:
-          description: "Forbidden"
+          $ref: '#components/responses/NOT_AUTHORIZED'
         404:
-          content:
-            application/json:
-              schema:
-                type: "object"
-              example:
-                meta:
-                  result: "ENTITY_NOT_FOUND"
-                  error:
-                    message: "ERROR"
-                data: "null"
-          description: "Not Found: Not Found"
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
       security:
         - bearerAuth: []
 /api/v1/photos/list/{page}:
     get:
       summary: "Gives the photos page. (PhotosController::list)"
-      description: "Returns a **list** of type `Photo` **without** any _relations_. Take a look at the example for further details."
+      description: ""
       parameters:
         - in: "path"
           name: "page"
@@ -83,49 +52,11 @@
         - "PHOTOS"
       responses:
         200:
-          content:
-            application/json:
-              schema:
-                type: "array"
-                items:
-                  $ref: '#definitions/Photo'
-              example:
-                - id!: 795
-                  apartmentId!: 114
-                  link!: "string"
-                  path!: "string"
-                  createdAt!: "2021-03-23T16:13:08.489+01:00"
-                  updatedAt!: "2021-03-23T16:13:08.489+01:00"
-          description: "Returns a **list** of type `Photo` **without** any _relations_. Take a look at the example for further details."
+          $ref: '#components/photosResponses/LIST'
+        200-1:
+          $ref: '#components/responses/EMPTY_PAGE'
         401:
-          content:
-            application/json:
-              schema:
-                type: "object"
-              example:
-                meta:
-                  result: "NOT_AUTHORIZED"
-                  error:
-                    message: "ERROR"
-                data: "null"
-          description: "Unauthorized: Not unauthorized"
-        403:
-          description: "Forbidden"
-        200-0:
-          content:
-            application/json:
-              schema:
-                type: "object"
-              example:
-                meta:
-                  result: "OK"
-                  pagination:
-                    perPage: 20
-                    currentPage: 44444444222241
-                    hasMorePages: false
-                    total: 24
-                data: {}
-          description: "Unknown: Empty photos page "
+          $ref: '#components/responses/NOT_AUTHORIZED'
       security:
         - bearerAuth: []
 /api/v1/photos/delete/{id}:
@@ -141,9 +72,11 @@
       tags:
         - "PHOTOS"
       responses:
+        200:
+          description: 'TODO: ADD ITEM'
         401:
-          description: "Unauthorized"
-        403:
-          description: "Forbidden"
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
       security:
         - bearerAuth: []
