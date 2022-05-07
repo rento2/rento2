@@ -1,4 +1,3 @@
-// import { getItem } from 'helpers/persistanceStorage'
 import { stringify } from 'query-string'
 import { fetchUtils, DataProvider } from 'ra-core'
 
