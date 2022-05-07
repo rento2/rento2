@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { LegacyRef } from 'react'
+import { RefObject } from 'react'
 import styles from './ButtonIcon.module.scss'
 
 interface IButtonIcon {
@@ -11,7 +11,7 @@ interface IButtonIcon {
   full: 'filled' | 'stroke' // должна ли иконка быть заполнена или только контуром
   disabled?: boolean
   background?: 'iris' | 'none' // бэкграунд кнопки
-  refProp?: LegacyRef<HTMLButtonElement>
+  refProp?: RefObject<HTMLButtonElement>
 }
 
 // Цвет передаваемых иконок может меняться за счет fill и stroke, Если цвет иконки меняется за счет stroke, то нужно передать full = stroke, иначе full = filled.
