@@ -4,7 +4,7 @@ import { IHttpClientOptions } from 'types'
 
 export const httpClient = async (url: string, options = {}): Promise<IHttpClientOptions> => {
   // @ts-expect-error
-  if (options.headers === undefined || options.headers === undefined === null) {
+  if (options.headers == undefined || options.headers == null) {
     // @ts-expect-error
     options.headers = new Headers({ Accept: 'application/json' })
   }
@@ -12,8 +12,9 @@ export const httpClient = async (url: string, options = {}): Promise<IHttpClient
   const auth = JSON.parse(String(getItem('auth')))
 
   if (auth === null) {
-    throw new Error('Необходимо авторизоваться')
+    throw new Error('Login required')
   }
+
   // @ts-expect-error
   options.headers.set('Authorization', `Bearer ${String(auth.accessToken)}`)
 

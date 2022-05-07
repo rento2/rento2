@@ -19,6 +19,7 @@
     }
   },
   "rules": {
+    "eqeqeq": "off",
     "no-return-await": "off",
     "@typescript-eslint/return-await": "off",
     "react/self-closing-comp": "error",

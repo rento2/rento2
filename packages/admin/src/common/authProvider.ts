@@ -20,7 +20,7 @@ const authProvider = {
       return await Promise.resolve()
     } catch (err) {
       const error = err as Error
-      return await Promise.reject(new Error('Что-то пошло не так: ' + error.message))
+      return await Promise.reject(new Error('Something went wrong: ' + error.message))
     }
   },
   logout: async () => {
@@ -39,7 +39,7 @@ const authProvider = {
     if (status === 401 || status === 403) {
       localStorage.removeItem('auth')
 
-      return await Promise.reject(new Error('Необходимо авторизоваться'))
+      return await Promise.reject(new Error('Login required'))
     }
 
     return await Promise.resolve()
@@ -48,7 +48,7 @@ const authProvider = {
     const auth = JSON.parse(String(getItem('auth')))
 
     if (auth === null) {
-      return Promise.reject(new Error('Необходимо авторизоваться'))
+      return Promise.reject(new Error('Login required'))
     }
 
     try {
@@ -67,7 +67,7 @@ const authProvider = {
       return await Promise.resolve()
     } catch (err) {
       const error = err as Error
-      return await Promise.reject(new Error('Что-то пошло не так: ' + error.message))
+      return await Promise.reject(new Error('Something went wrong: ' + error.message))
     }
   },
   // called when the user navigates to a new location, to check for permissions / roles
