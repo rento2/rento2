@@ -1,4 +1,7 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import classNames from 'classnames'
+
 import { IconWalker, IconMetro, IconHeart, ButtonIcon, IconBus } from '@shared/ui'
 import { CardSlider } from './card-slider/CardSlider'
 import styles from './ApartmentCard.module.scss'
@@ -17,14 +20,28 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
     storey,
     total_storeys: total,
     area,
-    id
+    id,
+    mode
   } = props
 
   return (
     <Link href={ `/long/${id}` }>
-      <a className={ styles['card'] }>
-        <CardSlider images={ mockPhotos } />
-        <div className={ styles['card__info'] }>
+      <a className={ classNames(styles['card'], mode === 'promo' ? styles['card--promo'] : '') }>
+        { mode === 'promo'
+          ? (
+            <div className={ styles['card__image'] }>
+              <Image alt='room1'
+                height={ 147 }
+                layout="responsive"
+                src='/images/long/room1.jpg'
+                width={ 260 }
+              />
+            </div>
+            )
+          : (
+            <CardSlider images={ mockPhotos } />
+            )}
+        <div className={ classNames(styles['card__info'], mode === 'promo' ? styles['card__info--promo'] : '') }>
           <h2 className={ styles['card__price'] }>
             {`${price}₽ / месяц`}
           </h2>

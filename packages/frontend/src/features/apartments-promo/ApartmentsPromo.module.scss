@@ -1,0 +1,59 @@
+.promo {
+  position: relative;
+  min-height: 460px;
+  padding: 40px 0 70px;
+  padding-left: 20px;
+  margin-bottom: 60px;
+  overflow: hidden;
+  background-color: $gray-blue-50;
+
+  &__title {
+    @include headline-3;
+    margin-bottom: 40px;
+
+    @include bp-743 {
+      @include headline-4;
+      margin-bottom: 30px;
+    }
+
+    @include bp-479 {
+      @include headline-4;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    left: 50%;
+    display: inline-block;
+    transform: translateX(-50%);
+
+    @include bp-1279 {
+      left: 20px;
+      transform: translateX(0);
+    }
+  }
+
+  &__button-next,
+  &__button-prev {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+
+    @include bp-1279 {
+      display: none;
+    }
+  }
+
+  &__button-next {
+    right: -62px;
+  }
+
+  &__button-prev {
+    left: -62px;
+  }
+
+  &__slider {
+    width: 1070px;
+  }
+}

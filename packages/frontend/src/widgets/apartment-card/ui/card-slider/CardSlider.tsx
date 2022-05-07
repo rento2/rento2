@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Scrollbar, A11y, Lazy } from 'swiper'
+import { Navigation, Pagination } from 'swiper'
 import classNames from 'classnames'
 import styles from './CardSlider.module.scss'
 
@@ -14,7 +14,7 @@ export const CardSlider = ({ images }: { images: IImage[]}): JSX.Element => (
     <Swiper
       loop
       height={ 220 }
-      modules={ [Navigation, Pagination, Scrollbar, A11y, Lazy] }
+      modules={ [Navigation, Pagination] }
       pagination={ {
         clickable: true,
         horizontalClass: classNames(styles['slider__bullets'], 'flex-center'),
