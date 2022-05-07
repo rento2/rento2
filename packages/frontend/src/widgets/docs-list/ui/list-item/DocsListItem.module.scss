@@ -49,7 +49,7 @@
     counter-reset: count;
   }
 
-  &__item-2 {
+  &__item-2-listed {
     @include subtitle-2;
     margin: 0 0 12px;
 
@@ -60,7 +60,7 @@
     }
   }
 
-  &__item-21 {
+  &__item-2-default {
     @include body-4;
     margin: 0 0 12px;
 
@@ -69,15 +69,15 @@
       content: counters(count, '.') '.';
       counter-increment: count;
     }
+  }
+
+  &__item-2-unnumbered {
+    @include body-4;
+    margin: 0 0 12px;
   }
 
   &__item-bold {
     @include subtitle-2;
-    margin: 0 0 12px;
-  }
-
-  &__item-22 {
-    @include body-4;
     margin: 0 0 12px;
   }
 
@@ -100,12 +100,12 @@
     }
   }
 
-  &__list-4 {
+  &__list-unordered {
     padding: 0;
     margin: 0 0 0 18px;
   }
 
-  &__item-4 {
+  &__item-unordered {
     @include body-4;
     display: list-item;
     margin: 0 0 12px;
