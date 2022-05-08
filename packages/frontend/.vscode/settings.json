@@ -5,5 +5,7 @@
     "stylelint.configFile": ".stylelintrc.json",
     "stylelint.validate": [
         "scss"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
 }

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .tsx,.ts,.js,.jsx && npx tsc --noEmit",
+    "lint": "eslint . --ext .tsx,.ts,.js,.jsx",
     "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "lint:styles": "stylelint **/*{.css,.scss}",
     "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
@@ -43,6 +43,7 @@
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-order": "^5.0.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

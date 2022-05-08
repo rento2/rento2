@@ -3,10 +3,10 @@ import { IIconClassStroke } from '../types/iconTypes'
 import classNames from 'classnames'
 import styles from '../IconBaseStyles.module.scss'
 
-export const IconTick: FC<IIconClassStroke> = ({ figure = 'none', classProps }): JSX.Element => {
-  const stylesFigure = styles[`${figure}`] ?? ''
-  const stylesSize = styles['tick-figure'] ?? ''
-  const isSize = figure !== 'none'
+export const IconTick: FC<IIconClassStroke> = ({ figure, classProps }): JSX.Element => {
+  const stylesFigure = figure !== undefined ? styles[figure] : ''
+  const stylesSize = styles['tick-figure']
+  const isSize = figure !== undefined
 
   return (
     <svg className={ classNames(styles['icon'], classProps, {
