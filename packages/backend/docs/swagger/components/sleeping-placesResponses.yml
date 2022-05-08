@@ -1,7 +1,7 @@
 components:
   sleeping-placesResponses:
     LIST:
-      description: "Array of sleeping-places."
+      description: "Array of sleeping-places. !!! The last page comes with 'hasMorePages: false' and an empty array 'data' = [] !!!"
       content:
         application/json:
           schema:

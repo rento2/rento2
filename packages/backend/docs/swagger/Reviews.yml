@@ -74,8 +74,6 @@
       responses:
         200:
           $ref: '#components/reviewsResponses/LIST'
-        200-1:
-          $ref: '#components/responses/EMPTY_PAGE'
         401:
           $ref: '#components/responses/NOT_AUTHORIZED'
       security:
