@@ -23,9 +23,9 @@ const LoginPage = (): JSX.Element => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
 
-    login({ email, password }).catch(() =>
-      notify('Неправильный логин или пароль')
-    )
+    login({ email, password }).catch(() => {
+      notify('Неправильный логин или пароль', 'error')
+    })
   }
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
