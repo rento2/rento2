@@ -14,7 +14,7 @@ export const AgreementsLongPage = (): JSX.Element => {
       header={ <Header /> }
     >
 
-      <DocumentsLayout headMenu={ <HeadMenu /> }
+      <DocumentsLayout headMenu={ <HeadMenu data={ dataAgreementsTenants } /> }
         pathIcon='/images/docs/agreements-treaty.svg'
         sideMenu={ <SideMenu activeItem={ titleText }
           data={ dataAgreementsTenants }

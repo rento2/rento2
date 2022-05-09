@@ -14,7 +14,7 @@ export const AgreementsPage = (): JSX.Element => {
       header={ <Header /> }
     >
 
-      <DocumentsLayout headMenu={ <HeadMenu /> }
+      <DocumentsLayout headMenu={ <HeadMenu data={ dataMenu } /> }
         sideMenu={ <SideMenu activeItem={ titleText }
           data={ dataMenu }
         /> }

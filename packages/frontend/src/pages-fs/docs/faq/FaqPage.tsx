@@ -16,7 +16,7 @@ export const FaqPage = (): JSX.Element => {
     >
 
       <DocumentsLayout
-        headMenu={ <HeadMenu /> }
+        headMenu={ <HeadMenu data={ dataMenu } /> }
         pathIcon='/images/docs/pic-question.svg'
         sideMenu={ <SideMenu activeItem={ titleText }
           data={ dataMenu }

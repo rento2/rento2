@@ -1,7 +1,7 @@
 import { DocumentsLayout, Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
+import { dataMenu, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { useWindowDimensions } from '@shared/lib'
 
 export const PrivacyPage = (): JSX.Element => {
@@ -11,8 +11,10 @@ export const PrivacyPage = (): JSX.Element => {
       header={ <Header /> }
     >
       <DocumentsLayout
-        headMenu={ <HeadMenu /> }
-        sideMenu={ <SideMenu activeItem="Пользовательское соглашение" /> }
+        headMenu={ <HeadMenu data={ dataMenu } /> }
+        sideMenu={ <SideMenu activeItem="Пользовательское соглашение"
+          data={ dataMenu }
+        /> }
         titleText="igiu"
         widthProps={ 1059 }
         widthWindowProps={ widthWindow }
