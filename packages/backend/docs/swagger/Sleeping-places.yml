@@ -98,12 +98,12 @@
         $ref: '#components/responses/NOT_AUTHORIZED'
     security:
       - bearerAuth: []
-/api/v1/sleeping-places/update:
+/api/v1/sleeping-places/update/{id}:
   post:
     summary: "Update sleeping-places (SleepingPlacesController::update)"
     description: ""
     parameters:
-      - in: "query"
+      - in: "path"
         name: "id"
         description: "id"
         schema:
@@ -138,7 +138,7 @@
       - "SLEEPING-PLACES"
     responses:
       200:
-        description: 'TODO: ADD ITEM'
+        $ref: '#components/sleeping-placesResponses/ONE'
       401:
         $ref: '#components/responses/NOT_AUTHORIZED'
       404:
