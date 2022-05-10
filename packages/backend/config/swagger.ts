@@ -1,6 +1,6 @@
 import { SwaggerConfig } from '@ioc:Adonis/Addons/Swagger'
 
-// eslint-disable-next-line
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
   uiEnabled: true, // disable or enable swaggerUi route
   uiUrl: 'docs', // url path to swaggerUI
