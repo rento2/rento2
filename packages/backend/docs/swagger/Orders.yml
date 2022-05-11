@@ -1,0 +1,80 @@
+/api/v1/orders/one/{id}:
+    get:
+      summary: "Gives the one order. (OrdersController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ORDERS"
+      responses:
+        200:
+          $ref: '#components/ordersResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/orders/delete/{id}:
+    delete:
+      summary: " (OrdersController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ORDERS"
+      responses:
+        200:
+          $ref: '#components/responses/ENTITY_DELETED'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/orders/create:
+    post:
+      summary: " (OrdersController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "ORDERS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/orders/list/{page}:
+    get:
+      summary: "Gives the orders page. (OrdersController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ORDERS"
+      responses:
+        200:
+          $ref: '#components/ordersResponses/LIST'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+      security:
+        - bearerAuth: []

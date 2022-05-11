@@ -1,0 +1,78 @@
+/api/v1/auth/login:
+    post:
+      summary: "Logins a user and returns a JWT-token (AuthController::login)"
+      description: ""
+      parameters:
+        - in: "query"
+          name: "email"
+          description: "Email"
+          schema:
+            example: "admin@rento2.ru"
+            type: "string"
+          required: false
+        - in: "query"
+          name: "password"
+          description: "Password"
+          schema:
+            example: "123"
+            type: "string"
+          required: false
+      tags:
+        - "AUTH"
+      security: []
+      requestBody:
+        $ref: '#components/authRequests/LOGIN_REQUEST'
+
+      responses:
+        200:
+          $ref: '#components/authResponses/SUCCESSFUL_LOGIN'
+        422:
+          $ref: '#components/authResponses/UNABLE_TO_AUTHORIZE'
+
+
+/api/v1/auth/refresh:
+    post:
+      summary: "Refresh a JWT-token (AuthController::refresh)"
+      description: ""
+      parameters:
+        - in: "query"
+          name: "refreshToken"
+          description: "RefreshToken"
+          schema:
+            example: "string"
+            type: "string"
+          required: false
+      tags:
+        - "AUTH"
+      security: []
+
+      requestBody:
+        $ref: '#components/authRequests/REFRESH_TOKEN_REQUEST'
+
+      responses:
+        200:
+          $ref: '#components/authResponses/TOKEN_REFRESHED'
+        422:
+          $ref: '#components/authResponses/WRONG_AUTH_TOKEN'
+
+/api/v1/auth/logout:
+    post:
+      summary: "Logout (AuthController::logout)"
+      description: ""
+      parameters:
+        - in: "query"
+          name: "logout"
+          description: "Logout"
+          schema:
+            example: "string"
+            type: "string"
+          required: false
+      tags:
+        - "AUTH"
+      security: []
+      requestBody:
+        $ref: '#components/authRequests/REFRESH_TOKEN_REQUEST'
+        
+      responses:
+        200:
+          $ref: '#components/authResponses/LOGOUT'
