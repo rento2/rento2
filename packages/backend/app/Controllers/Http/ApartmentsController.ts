@@ -96,3 +96,17 @@ export default class ApartmentsController {
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartment.id))
   }
 }
+
+/**
+* @list
+* @summary Gives the apartment page.
+* @responseBody 200 - <Apartment[]>.with(relations)
+* @responseBody 200-0 - Empty apartment page - {"meta":{"result":"OK","pagination":{"perPage":20,"currentPage":44444444222241,"hasMorePages":false,"total":24}},"data":[]}
+*/
+
+/**
+* @one
+* @summary Gives the one apartment.
+* @responseBody 200 - <Apartment>.with(relations)
+* @responseBody 404 - Not Found - {"meta":{"result":"ENTITY_NOT_FOUND","error":{"message":"ERROR"}},"data":"null"}
+*/

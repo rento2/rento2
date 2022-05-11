@@ -70,3 +70,19 @@ export default class ReviewsController {
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(review.id))
   }
 }
+
+/**
+* @list
+* @summary Gives the reviews page.
+* @responseBody 200 - <Review[]>
+* @responseBody 200-0 - Empty apartment page - {"meta":{"result":"OK","pagination":{"perPage":20,"currentPage":44444444222241,"hasMorePages":false,"total":24}},"data":[]}
+* @responseBody 401 - Not unauthorized - {"meta":{"result":"NOT_AUTHORIZED","error":{"message":"ERROR"}},"data":[]}
+*/
+
+/**
+* @one
+* @summary Gives the one review.
+* @responseBody 200 - <Review>
+* @responseBody 404 - Not Found - {"meta":{"result":"ENTITY_NOT_FOUND","error":{"message":"ERROR"}},"data":"null"}
+* @responseBody 401 - Not unauthorized - {"meta":{"result":"NOT_AUTHORIZED","error":{"message":"ERROR"}},"data":"null"}
+*/

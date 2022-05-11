@@ -41,5 +41,5 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
-  apiAuth: async () => await import('App/Middleware/JWTAuth'),
+  auth: async () => await import('App/Middleware/JWTAuth'),
 })

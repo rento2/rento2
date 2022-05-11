@@ -20,6 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
+import AutoSwagger from 'adonis-autoswagger'
 
 Route.get('/', async () => {
   return { hello: 'world' }
@@ -99,7 +100,7 @@ Route
       })
       .prefix('apartments')
   })
-  .prefix('/api/v1').middleware('apiAuth')
+  .prefix('/api/v1').middleware('auth')
 
 Route
   .group(() => {
@@ -109,6 +110,10 @@ Route
         Route.get('/list/:page', 'ApartmentsController.list')
       })
       .prefix('apartments')
+
+    Route.get('/docs', async () => {
+      return AutoSwagger.ui('/swagger')
+    })
   })
   .prefix('/api/v1')
 
@@ -119,3 +124,19 @@ Route
     Route.post('/logout', 'AuthController.logout')
   })
   .prefix('/api/v1/auth')
+
+Route.get('/swagger', async () => {
+  return await AutoSwagger.docs(Route.toJSON(), {
+    path: __dirname,
+    title: 'Rento',
+    version: '1.0.0',
+    tagIndex: 3,
+    ignore: ['/swagger', '/docs', '/', '/health', '/uploads/*'],
+    common: {
+      parameters: {
+      },
+      headers: {},
+    },
+    snakeCase: false
+  })
+})
