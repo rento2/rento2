@@ -1,3 +1,4 @@
+import { useWindowDimensions } from '@shared/lib'
 import { useEffect, useRef, useState } from 'react'
 
 import { SwipeableHandlers, SwipeEventData, useSwipeable } from 'react-swipeable'
@@ -5,7 +6,9 @@ import { IStyleMove } from '../types/IDrawer'
 
 export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal: number, transitionMs = 500): [SwipeableHandlers, IStyleMove, (el: HTMLDivElement) => void] => {
   const [styleMove, setStyleMove] = useState<IStyleMove>({})
-  const maxHeightModal = heightModal
+
+  const { heightWindow } = useWindowDimensions()
+  const maxHeightModal = heightModal > heightWindow ? heightWindow : heightModal
 
   useEffect(() => {
     if (isShown) {
@@ -16,7 +19,6 @@ export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal
   const handlers = useSwipeable({
     onSwiping: (e) => moveDrawer(e),
     onSwipedDown: (e) => closeDrawer(e)
-    // onSwipedUp: () => onSwipedUp()
   })
 
   const elementRef = useRef<HTMLDivElement>()
@@ -27,9 +29,9 @@ export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal
     elementRef.current = el
   }
 
-  // Это мне вообще нужно? Нужно, без этого не работает)))
   const moveDrawer = (e: SwipeEventData): void => {
     const scrollTop = elementRef.current?.scrollTop
+
     if (scrollTop === 0) {
       if (e.dir !== 'Down') return
 
@@ -40,8 +42,8 @@ export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal
   }
 
   const closeDrawer = (e: SwipeEventData): void => {
-    console.log('closeDrawer')
     const scrollTop = elementRef.current?.scrollTop
+
     if (scrollTop === 0) {
       if (e.deltaY >= maxHeightModal / 3) {
         setTimeout(() => {
@@ -55,19 +57,6 @@ export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal
       }
     }
   }
-
-  // const onSwipedUp = (): void => {
-  //   console.log('onSwipedUp')
-  //   const scrollTop = elementRef.current?.scrollTop
-  //   const scrollHeight = elementRef.current?.scrollHeight
-  //   console.log('scrollTop', scrollTop)
-  //   console.log('scrollHeight', scrollHeight)
-  //   console.log(`${scrollTop + maxHeightModal}`)
-  //   if (scrollTop + maxHeightModal === scrollHeight) {
-  //     setStyleMove({ height: `${maxHeightModal}px`, transition: `all ${transitionMs}ms ease` })
-  //   }
-
-  // }
 
   return [
     handlers,

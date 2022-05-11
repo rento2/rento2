@@ -23,6 +23,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   pointer-events: auto;
+  // background-color: $green-400;
   outline: 0;
 
   &__dialog {
@@ -30,14 +31,16 @@
     display: block;
     overflow-y: scroll;
     background-color: $neutral-0;
+    // background-color: $iris-300;
   }
 
   &__content {
-    max-height: 100vh;
+    // background-color: $pink-400;
     border-radius: 8px 8px 0 0;
   }
 
   &__body {
     background-color: $neutral-0;
+    // background-color: $orange-500;
   }
 }
