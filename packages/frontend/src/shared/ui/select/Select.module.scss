@@ -12,7 +12,7 @@
     justify-content: space-between;
     height: 40px;
     padding: 8px 10px;
-    cursor: default;
+    cursor: pointer;
     border: 1px solid $gray-blue-100;
     border-radius: 4px;
     outline: 0;
@@ -48,6 +48,7 @@
 
   [class^='styled-select__option'] {
     padding: 11px 16px;
+    cursor: pointer;
   }
 
   [class^='styled-select__option']:active,

@@ -4,7 +4,7 @@
 
 .filter {
   position: sticky;
-  top: -130px;
+  top: -150px;
   z-index: 11;
   display: flex;
   align-items: flex-end;
@@ -33,7 +33,7 @@
   }
 }
 
-.section {
+.fieldset {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -104,7 +104,7 @@
 .button-filters,
 .button-reset {
   @include body-6;
-  padding: 12.5px 8px;
+  padding: 13px 8px;
 
   &__text {
     margin-right: 2px;
@@ -138,9 +138,9 @@
 }
 
 .sticky {
-  transform: translateY(60px);
+  transform: translateY(80px);
 
   @include bp-1279 {
-    transform: translateY(50px);
+    transform: translateY(70px);
   }
 }

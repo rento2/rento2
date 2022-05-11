@@ -4,7 +4,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput } from '@shared/ui'
 import { options, chips } from '../model/mock'
-import { useSticky } from '../hooks/useSticky'
+import { useSticky } from '../lib/hooks/useSticky'
 
 import mainStyles from './MainFilter.module.scss'
 import headerStyles from './HeaderFilter.module.scss'
@@ -17,24 +17,24 @@ const defaultValues = {
 
 export const Filter: FC = () => {
   const { control, handleSubmit, reset } = useForm({ defaultValues })
-  const { anchorRef, isHeaderMode } = useSticky()
+  const { anchorRef, isHeaderMode, showHeader } = useSticky()
 
   const styles = useMemo(() => isHeaderMode ? headerStyles : mainStyles, [isHeaderMode])
 
   return (
     <>
       <div
-        className={ classNames(styles.filter, { [styles.sticky]: isHeaderMode }) }
+        className={ classNames(styles.filter, { [styles.sticky]: showHeader }) }
         onSubmit={ handleSubmit(console.log) }
       >
         <form className={ classNames(styles.filter__container, { container: isHeaderMode }) }>
-          <section className={ styles.section }>
+          <fieldset className={ styles.fieldset }>
             <Controller
               control={ control }
               name="priceRange"
               render={ ({ field: { value, onChange } }) =>
                 (<DoubleInput
-                  classProps={ styles.section__item }
+                  classProps={ styles.fieldset__item }
                   value={ value }
                   onChange={ onChange }
                 />) }
@@ -45,7 +45,7 @@ export const Filter: FC = () => {
               render={ ({ field: { value, onChange } }) =>
                 (<ChipBox
                   chips={ chips }
-                  classProps={ styles.section__item }
+                  classProps={ styles.fieldset__item }
                   value={ value }
                   onChange={ onChange }
                 />) }
@@ -63,8 +63,8 @@ export const Filter: FC = () => {
                 <IconLocation classProps={ styles['button-map__icon'] } />
               </ButtonGeneral>
             )}
-          </section>
-          <section className={ styles.section }>
+          </fieldset>
+          <fieldset className={ styles.fieldset }>
             <div className={ styles.other }>
               <Controller
                 control={ control }
@@ -120,7 +120,7 @@ export const Filter: FC = () => {
                 <IconLocation />
               </ButtonGeneral>
             )}
-          </section>
+          </fieldset>
         </form>
       </div>
       <div ref={ anchorRef } />

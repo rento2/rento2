@@ -4,13 +4,14 @@
 
 .filter {
   position: sticky;
-  top: -130px;
+  top: -150px;
   max-width: 1000px;
   height: 130px;
   margin: 0 auto;
   background-color: $neutral-0;
   border-radius: 20px;
   box-shadow: 0 10px 20px $overlay;
+  transition: transform 0.3s ease-out;
 
   @include bp-1023 {
     max-width: 705px;
@@ -64,7 +65,7 @@
 
 .button-filters,
 .button-reset {
-  padding: 12.5px 8px;
+  padding: 13px 8px;
 
   @include bp-1023 {
     @include body-6;
@@ -109,7 +110,7 @@
   }
 }
 
-.section {
+.fieldset {
   display: flex;
   justify-content: space-between;
 
@@ -154,9 +155,9 @@
 }
 
 .sticky {
-  transform: translateY(60px);
+  transform: translateY(80px);
 
   @include bp-1279 {
-    transform: translateY(50px);
+    transform: translateY(70px);
   }
 }
