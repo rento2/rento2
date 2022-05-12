@@ -27,6 +27,7 @@
 
   &__text {
     @include headline-5;
+    color: $gray-blue-500;
   }
 
   &__update {

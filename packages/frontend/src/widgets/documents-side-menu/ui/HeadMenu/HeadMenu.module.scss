@@ -33,6 +33,7 @@
     color: $gray-blue-300;
     text-align: left;
     @include bp-479 {
+      @include body-5;
       max-width: 247px;
     }
   }
