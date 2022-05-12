@@ -1,0 +1,74 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.list {
+  @include body-4;
+  margin-bottom: 62px;
+  color: $gray-blue-600;
+  white-space: nowrap;
+
+  @include bp-1279 {
+    margin-bottom: 18px;
+  }
+
+  @include bp-1023 {
+    @include body-5;
+  }
+
+  @include bp-743 {
+    margin-bottom: 16px;
+  }
+
+  @include bp-479 {
+    margin-bottom: 30px;
+  }
+
+  .item {
+    margin-bottom: 10px;
+
+    @include bp-1023 {
+      margin-bottom: 4px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.metro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: $gray-blue-400;
+
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .metro-name {
+    margin-right: 13px;
+    margin-left: 4px;
+  }
+
+  .metro-time {
+    @include body-6;
+    margin-left: 5.33px;
+  }
+
+  .icon-walking {
+    fill: $gray-blue-400;
+  }
+
+  // возможно, стоит добавить цвета метро в _colors.scss
+  .icon-light-green {
+    fill: #c5e265;
+  }
+
+  .icon-blue {
+    fill: #1770a7;
+  }
+}

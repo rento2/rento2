@@ -1,0 +1,98 @@
+/api/v1/apartments/delete/{id}:
+    delete:
+      summary: " (ApartmentsController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          $ref: '#components/responses/ENTITY_DELETED'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/apartments/create:
+    post:
+      summary: " (ApartmentsController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/apartments/update:
+    post:
+      summary: "Update apartments (ApartmentsController::update)"
+      description: ""
+      parameters: []
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/apartments/one/{id}:
+    get:
+      summary: "Gives the one apartment. (ApartmentsController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          $ref: '#components/apartmensResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security: []
+
+/api/v1/apartments/list/{page}:
+    get:
+      summary: "Gives the apartment page. (ApartmentsController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "APARTMENTS"
+      responses:
+        200:
+          $ref: '#components/apartmensResponses/LIST'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+      security: []

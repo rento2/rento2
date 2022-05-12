@@ -1,0 +1,29 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.list {
+  margin-bottom: 30px;
+
+  @include bp-1023 {
+    margin-bottom: 10px;
+  }
+}
+
+.item {
+  @include body-5;
+  margin-bottom: 4px;
+  color: $gray-blue-400;
+
+  @include bp-1023 {
+    margin-bottom: 0;
+  }
+
+  @include bp-743 {
+    @include body-6;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

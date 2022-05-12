@@ -1,0 +1,19 @@
+components:
+  sleeping-placesRequests:
+    CREATE_REQUEST:
+      content:
+        application/json:
+          schema:
+            example:
+              name: Et aperiam dignissimos est qui.
+              type: bed
+              size: 1
+    UPDATE_REQUEST:
+      content:
+        application/json:
+          schema:
+            example:
+              id: 12
+              name: Et aperiam dignissimos est qui.
+              type: bed
+              size: 1

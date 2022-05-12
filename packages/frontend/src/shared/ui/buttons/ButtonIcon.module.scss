@@ -1,0 +1,131 @@
+.button-icon {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 8px;
+  transition-duration: 200ms;
+  transition-property: color, background-color;
+
+  [class*='icon'] {
+    transition-duration: 200ms;
+    transition-property: fill, stroke;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: $gray-blue-50;
+  }
+}
+
+.grade-iris-full-filled {
+  &:hover,
+  &:focus {
+    background-color: $gray-blue-50;
+
+    [class*='icon'] {
+      fill: $iris-400;
+    }
+  }
+
+  &:active {
+    background-color: $iris-50;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: $gray-blue-50;
+
+    [class*='icon'] {
+      fill: $gray-blue-200;
+    }
+  }
+}
+
+.grade-iris-full-stroke {
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: $gray-blue-50;
+
+    [class*='icon'] {
+      stroke: $iris-400;
+    }
+  }
+
+  &:active {
+    background-color: $gray-blue-50;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: $gray-blue-50;
+
+    [class*='icon'] {
+      stroke: $gray-blue-200;
+    }
+  }
+}
+
+.bg-iris-full-stroke {
+  background-color: $iris-50;
+
+  [class*='icon'] {
+    stroke: $iris-400;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $iris-100;
+  }
+
+  &:active {
+    background-color: $iris-50;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: $gray-blue-50;
+  }
+}
+
+.bg-iris-full-filled {
+  background-color: $iris-50;
+
+  [class*='icon'] {
+    fill: $iris-400;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $iris-100;
+  }
+
+  &:active {
+    background-color: $iris-50;
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: $gray-blue-50;
+  }
+}
+
+.size-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.size-32 {
+  width: 32px;
+  height: 32px;
+}
+
+.size-24 {
+  width: 24px;
+  height: 24px;
+}

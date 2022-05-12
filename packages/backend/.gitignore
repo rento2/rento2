@@ -1,8 +1,9 @@
 node_modules
 build
 coverage
-.vscode
 .DS_STORE
 .env
 tmp
 .nyc_output
+_docker/data/*
+!_docker/data/.gitkeep

@@ -21,7 +21,7 @@ import Server from '@ioc:Adonis/Core/Server'
 |
 */
 Server.middleware.register([
-  async () => await import('@ioc:Adonis/Core/BodyParser')
+  async () => await import('@ioc:Adonis/Core/BodyParser'),
 ])
 
 /*
@@ -41,4 +41,5 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
+  apiAuth: async () => await import('App/Middleware/JWTAuth'),
 })

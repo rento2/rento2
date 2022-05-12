@@ -1,22 +1,20 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
-import { creatingErrMsg, creatingOkMsg } from '../../../common/helpers/creatingResponse'
+import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../common/helpers/creatingResponse'
 import Banner from 'App/Models/Banner'
-import CreateBannerValidator from 'App/Validators/CreateBannerValidator'
+import CreateBannerValidator from 'App/Validators/BannerValidator'
 
 export default class BannersController {
-  public async list ({ response }: HttpContextContract): Promise<void> {
-    return response
-      .status(HttpStatusCode.OK)
-      .send(creatingOkMsg(await Banner.query()))
+  public async list ({ response, request }: HttpContextContract): Promise<void> {
+    return response.status(HttpStatusCode.OK).send(
+      creatingPaginatedList(
+        await Banner.query().paginate(request.param('page', 1))
+      )
+    )
   }
 
   public async one ({ response, request }: HttpContextContract): Promise<void> {
-    const banner = await Banner.find(request.param('id', null))
-    if (!banner) {
-      return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', 'Banner not found'))
-    }
-
+    const banner = await Banner.findOrFail(request.param('id', null))
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(banner))
   }
 

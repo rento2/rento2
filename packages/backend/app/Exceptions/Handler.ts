@@ -10,9 +10,18 @@ export default class ExceptionHandler extends HttpExceptionHandler {
   }
 
   public async handle (error: any, ctx: HttpContextContract): Promise<any> {
-    if (error.code === 'E_VALIDATION_FAILURE') {
-      return ctx.response.status(HttpStatusCode.UnprocessableEntity)
-        .send(creatingErrMsg('VALIDATION_FAILURE', error.messages.errors))
+    switch (error.code) {
+      case 'E_VALIDATION_FAILURE':
+        return ctx.response.status(HttpStatusCode.UnprocessableEntity)
+          .send(creatingErrMsg('VALIDATION_FAILURE', error.messages.errors))
+
+      case 'E_ROW_NOT_FOUND':
+        return ctx.response.status(HttpStatusCode.NotFound)
+          .send(creatingErrMsg('ENTITY_NOT_FOUND'))
+
+      case 'ERR_JWS_INVALID':
+        return ctx.response.status(HttpStatusCode.NotFound)
+          .send(creatingErrMsg('WRONG_AUTH_TOKEN'))
     }
 
     return await super.handle(error, ctx)
