@@ -1,0 +1,14 @@
+.container {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  z-index: 3;
+  padding: 1.5px 4px;
+  background-color: $iris-900;
+  border-radius: 4px;
+}
+
+.text {
+  @include subtitle-3;
+  color: $neutral-0;
+}
