@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .tsx,.ts,.js,.jsx",
+    "lint": "eslint . --ext .tsx,.ts,.js,.jsx && node checkTsErrors.js",
     "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "lint:styles": "stylelint **/*{.css,.scss}",
     "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
