@@ -1,3 +1,5 @@
+@use 'src/app/styles/core/colors' as *;
+
 .modal {
   &__header {
     position: sticky;
