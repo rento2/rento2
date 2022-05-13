@@ -1,0 +1,131 @@
+.container {
+  position: relative;
+  display: flex;
+  max-width: 984px;
+  padding: 20px;
+  background-color: $neutral-0;
+  border-radius: 20px;
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.05);
+
+  @include bp-1023 {
+    max-width: 700px;
+  }
+
+  @include bp-743 {
+    max-width: 440px;
+    padding: 10px;
+  }
+
+  @include bp-479 {
+    flex-direction: column;
+    max-width: 300px;
+    min-height: 380px;
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  width: 301px;
+  height: 190px;
+  margin: 0 29px 0 0;
+  overflow: hidden;
+  border-radius: 20px;
+
+  @include bp-1023 {
+    width: 206px;
+    height: 160px;
+    margin: 0 21px 0 0;
+  }
+
+  @include bp-743 {
+    width: 130px;
+    height: 240px;
+    margin: 0 10px 0 0;
+  }
+
+  @include bp-479 {
+    width: 280px;
+    height: 160px;
+    margin: 0 0 20px;
+  }
+}
+
+.text {
+  max-width: 490px;
+  margin: 20px 0 0;
+
+  @include bp-1023 {
+    max-width: 363px;
+    margin: 9px 0 0;
+  }
+
+  @include bp-743 {
+    max-width: 280px;
+    margin: 20px 0 0;
+  }
+
+  @include bp-479 {
+    max-width: 490px;
+    margin: 0;
+  }
+}
+
+.title {
+  @include headline-4;
+  margin: 0 0 14px;
+  color: $iris-900;
+
+  @include bp-1023 {
+    @include headline-5;
+    margin: 0 0 4px;
+  }
+
+  @include bp-743 {
+    margin: 0 0 2px;
+  }
+}
+
+.subtitle {
+  @include headline-5;
+  margin: 0 0 10px;
+  color: $iris-300;
+
+  @include bp-1023 {
+    @include subtitle-1;
+  }
+
+  @include bp-743 {
+    @include subtitle-2;
+  }
+
+  @include bp-479 {
+    @include subtitle-3;
+  }
+}
+
+.paragraph {
+  @include body-4;
+  color: $iris-900;
+
+  @include bp-1023 {
+    max-width: 288px;
+  }
+
+  @include bp-479 {
+    @include body-5;
+  }
+}
+
+.button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  align-self: flex-end;
+  padding: 11px 17px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+  @include bp-743 {
+    right: 10px;
+    bottom: 10px;
+  }
+}
