@@ -3,14 +3,14 @@ import classNames from 'classnames'
 import styles from './DocumentsLayout.module.scss'
 
 interface IDocumentsLayout {
-  titleText?: string
+  titleText?: string|undefined
   children: JSX.Element
   widthWindowProps: number
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
-  pathIcon?: string
-  update?: string
+  pathIcon?: string |undefined
+  update?: string|undefined
 }
 
 export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {

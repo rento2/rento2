@@ -21,7 +21,7 @@ export const AgreementsSideMenu = ({ data, activeItem }: IAgreementsSideMenuProp
         {data.listMenu.map((item, idx) => (
           <li key={ idx }>
             <LinkGeneral
-              classProps={ classNames([styles.item], { [styles.active]: item.title === activeItem }) }
+              classProps={ classNames(styles['list-item'], item.title === activeItem && styles['active']) }
               href={ item.href }
             >
               {item.title}

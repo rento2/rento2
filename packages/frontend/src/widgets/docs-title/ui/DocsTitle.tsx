@@ -2,16 +2,16 @@ import styles from './DocsTitle.module.scss'
 import Image from 'next/image'
 
 interface IDocsTitle {
-  titleText?: string
-  pathIcon?: string
-  update?: string|number
+  titleText?: string|undefined
+  pathIcon?: string| undefined
+  update?: string|number|undefined
 }
 
 const FAQ = 'Частые вопросы'
 const AGREEMENTS = 'Пользовательское соглашение'
 
 export const DocsTitle = ({ titleText, pathIcon, update }: IDocsTitle): any => {
-  function DocsSwich (title: string): JSX.Element {
+  function DocsSwich (title: string|undefined): JSX.Element {
     switch (title) {
       case FAQ:
         return (
