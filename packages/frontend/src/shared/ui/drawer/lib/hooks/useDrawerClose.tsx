@@ -2,9 +2,9 @@ import { useWindowDimensions } from '@shared/lib'
 import { useEffect, useRef, useState } from 'react'
 
 import { SwipeableHandlers, SwipeEventData, useSwipeable } from 'react-swipeable'
-import { IStyleMove } from '../types/IDrawer'
+import { IStyleMove, IDrawerCloseProps } from '../types/IDrawer'
 
-export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal: number, transitionMs = 500): [SwipeableHandlers, IStyleMove, (el: HTMLDivElement) => void] => {
+export const useDrawerClose = ({ hide, isShown, heightModal, transitionMs }: IDrawerCloseProps): [SwipeableHandlers, IStyleMove, (el: HTMLDivElement) => void] => {
   const [styleMove, setStyleMove] = useState<IStyleMove>({})
 
   const { heightWindow } = useWindowDimensions()
@@ -47,7 +47,7 @@ export const useDrawerClose = (toggle: () => void, isShown: boolean, heightModal
     if (scrollTop === 0) {
       if (e.deltaY >= maxHeightModal / 3) {
         setTimeout(() => {
-          toggle()
+          hide()
           setStyleMove({})
         }, transitionMs)
 

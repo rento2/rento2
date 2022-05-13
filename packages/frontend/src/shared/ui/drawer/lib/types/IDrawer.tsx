@@ -1,4 +1,4 @@
-export interface IDrawer {
+export interface IDrawerBase {
   isShown: boolean
   hide: () => void
   bodyContent: JSX.Element
@@ -21,4 +21,11 @@ export interface IStyleMove {
   transition?: string
   overflowY?: '-moz-hidden-unscrollable' | 'auto' | 'clip' | 'hidden' | 'scroll' | 'visible'
   touchAction?: string
+}
+
+export interface IDrawerCloseProps {
+  hide: () => void
+  isShown: boolean
+  heightModal: number
+  transitionMs: number
 }

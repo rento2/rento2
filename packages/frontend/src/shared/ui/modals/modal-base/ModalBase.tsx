@@ -36,8 +36,12 @@ export const ModalBase: FC<IModal> = ({
 
   useEffect(() => {
     isShown
-      ? classNames(document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.paddingRight = '17px')
-      : classNames(document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.paddingRight = '0')
+      ? classNames(document.body.style.overflow = 'hidden',
+        document.body.style.touchAction = 'none',
+        document.body.style.paddingRight = '17px')
+      : classNames(document.body.style.overflow = 'unset',
+        document.body.style.touchAction = 'unset',
+        document.body.style.paddingRight = '0')
 
     document.addEventListener('keydown', onKeyDown, false)
     return () => {

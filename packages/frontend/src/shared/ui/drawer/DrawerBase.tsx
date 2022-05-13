@@ -2,26 +2,25 @@ import { FC, useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { useRenderCompleted, useWindowDimensions } from '@shared/lib'
-import { IDrawer } from './lib/types/IDrawer'
+import { IDrawerBase } from './lib/types/IDrawer'
 import { DrawerHeader } from './DrawerHeader'
 import { useDrawerClose } from './lib/hooks/useDrawerClose'
 import styles from './DrawerBase.module.scss'
 
-export const DrawerBase: FC<IDrawer> = ({
+export const DrawerBase: FC<IDrawerBase> = ({
   isShown,
   elementPortal,
   hide,
   bodyContent,
   labelledbyText,
   headerContent,
-  transitionMs,
+  transitionMs = 500,
   classes
 }) => {
   const isMounted = useRenderCompleted()
   const elementRef = useRef<HTMLDivElement>(null)
   const { heightWindow } = useWindowDimensions()
 
-  // Этот реф мне нужен будет??? А может и нужно брать высоту модалки?
   const [heightModal, setHeightModal] = useState(0)
   useEffect(() => {
     if (isShown) {
@@ -38,8 +37,14 @@ export const DrawerBase: FC<IDrawer> = ({
 
   useEffect(() => {
     isShown
-      ? classNames(document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.overscrollBehavior = 'none', document.body.style.paddingRight = '17px')
-      : classNames(document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.overscrollBehavior = 'auto', document.body.style.paddingRight = '0')
+      ? classNames(document.body.style.overflow = 'hidden',
+        document.body.style.touchAction = 'none',
+        document.body.style.overscrollBehavior = 'none',
+        document.body.style.paddingRight = '17px')
+      : classNames(document.body.style.overflow = 'unset',
+        document.body.style.touchAction = 'unset',
+        document.body.style.overscrollBehavior = 'auto',
+        document.body.style.paddingRight = '0')
 
     document.addEventListener('keydown', onKeyDown, false)
     return () => {
@@ -50,9 +55,9 @@ export const DrawerBase: FC<IDrawer> = ({
   const [element, setElement] = useState<Element>()
   useEffect(() => {
     setElement(elementPortal ?? document.body)
-  }, [isMounted])
+  }, [elementPortal, isMounted])
 
-  const [handlers, styleMove, refPassthrough] = useDrawerClose(hide, isShown, heightModal, transitionMs)
+  const [handlers, styleMove, refPassthrough] = useDrawerClose({ hide, isShown, heightModal, transitionMs })
 
   const drawer = (
     <div
