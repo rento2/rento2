@@ -1,13 +1,13 @@
 import { DocsList, DocsListContext } from '@widgets/docs-list'
 import { agreementShortData } from '../model/agreementShortData'
 import { DocsShortModalPrice } from '@widgets/docs-short-modal-price'
-import { DocumentsLayout, useModal } from '@shared/ui'
-import { useWindowDimensions } from '@shared/lib'
+import { DocumentsLayout } from '@shared/ui'
+import { useWindowDimensions, useToggle } from '@shared/lib'
 import { SideMenu, HeadMenu } from '@widgets/documents-side-menu'
 
 export const AgreementShortList = (): JSX.Element => {
-  const [isShownPriceDamage, setShownPriceDamage] = useModal()
-  const [isShownRules, setShownRules] = useModal()
+  const [isShownPriceDamage, setShownPriceDamage] = useToggle()
+  const [isShownRules, setShownRules] = useToggle()
   const { widthWindow } = useWindowDimensions()
 
   return (

@@ -23,16 +23,21 @@ export const ModalPriceBody = (): JSX.Element => {
   })
 
   return (
-    <ul className={ styles['modal__list'] }>
-      <li className={ styles['modal__item-title'] }>
-        <h3 className={ styles['modal__cell-inner'] }>
-          Наименование
-        </h3>
-        <h3 className={ styles['modal__cell-inner'] }>
-          Цена, руб
-        </h3>
-      </li>
-      {listBody}
-    </ul>
+    <>
+      <h3 className={ styles['modal__title'] }>
+        Прейскурант возмещения порчи имущества
+      </h3>
+      <ul className={ styles['modal__list'] }>
+        <li className={ styles['modal__item-title'] }>
+          <h3 className={ styles['modal__cell-inner'] }>
+            Наименование
+          </h3>
+          <h3 className={ styles['modal__cell-inner'] }>
+            Цена, руб
+          </h3>
+        </li>
+        {listBody}
+      </ul>
+    </>
   )
 }
