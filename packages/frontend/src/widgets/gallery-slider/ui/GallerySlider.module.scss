@@ -1,3 +1,6 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+
 .gallery {
   max-width: 744px;
 

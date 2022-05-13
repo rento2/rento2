@@ -1,1 +1,1 @@
-export * from './ui/GallerySlider'
+export { GallerySlider } from './ui/GallerySlider'
