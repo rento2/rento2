@@ -10,24 +10,29 @@ interface IPersonalSearchBanner {
   variant: 'catalog' | 'apartment'
 }
 
-export function PersonalSearchBanner ({ variant }: IPersonalSearchBanner): JSX.Element {
+export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearchBanner): JSX.Element {
+  const stylesTitle = variant === 'catalog' ? styles['title-grade-secondary'] : styles['title-grade-primary']
+  const stylesSubtitle = variant === 'catalog' ? styles['subtitle-grade-secondary'] : styles['subtitle-grade-primary']
+  const stylesParagraph = variant === 'catalog' ? styles['paragraph-grade-secondary'] : styles['paragraph-grade-primary']
+  const imageVariant = variant === 'catalog' ? catalogImage : apartmentImage
+
   return (
     <div className={ classNames(styles['container']) }>
       <div className={ classNames(styles['image-wrapper']) }>
         <Image
           layout='fill'
           objectFit='cover'
-          src={ variant === 'catalog' ? catalogImage : apartmentImage }
+          src={ imageVariant }
         />
       </div>
       <div className={ classNames(styles['text']) }>
-        <p className={ classNames(styles['title']) }>
+        <p className={ classNames(styles['title'], stylesTitle) }>
           Персональный поиск квартиры
         </p>
-        <p className={ classNames(styles['subtitle']) }>
+        <p className={ classNames(styles['subtitle'], stylesSubtitle) }>
           Ванная с окном или французский балкон? Конечно, найдём.
         </p>
-        <p className={ classNames(styles['paragraph']) }>
+        <p className={ classNames(styles['paragraph'], stylesParagraph) }>
           Поможем найти хорошую квартиру по вашим параметрам.
           {' '}
         </p>
