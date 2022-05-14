@@ -67,6 +67,12 @@
           schema:
             type: "string"
           required: true
+        - in: "query"
+          name: "fields"
+          description: "Fields for filter. Specify the displayed fields. example: purity, bnovo_id, description"
+          schema:
+            type: "string"
+          required: false
       tags:
         - "APARTMENTS"
       responses:
@@ -88,6 +94,12 @@
           schema:
             type: "string"
           required: true
+        - in: "query"
+          name: "fields"
+          description: "Fields for filter. Specify the displayed fields. example: purity, bnovo_id, description"
+          schema:
+            type: "string"
+          required: false
       tags:
         - "APARTMENTS"
       responses:
