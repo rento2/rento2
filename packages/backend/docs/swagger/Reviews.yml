@@ -1,0 +1,230 @@
+/api/v1/reviews/one/{id}:
+    get:
+      summary: "Gives the one review. (ReviewsController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "REVIEWS"
+      responses:
+        200:
+          $ref: '#components/reviewsResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/reviews/delete/{id}:
+    delete:
+      summary: " (ReviewsController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "REVIEWS"
+      responses:
+        200:
+          $ref: '#components/responses/ENTITY_DELETED'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/reviews/create:
+    post:
+      summary: " (ReviewsController::create)"
+      description: ""
+      parameters:
+        - in: "query"
+          name: "apartmentId"
+          description: "Apartment id"
+          schema:
+            example: 9
+            type: "number"
+          required: true
+        - in: "query"
+          name: "author"
+          description: "Author"
+          schema:
+            example: "Эдик"
+            type: "string"
+          required: true
+        - in: "query"
+          name: "avatar"
+          description: "Avatar"
+          schema:
+            example: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/696.jpg'
+            type: "string"
+          required: true
+        - in: "query"
+          name: "repairs"
+          description: "Repairs"
+          schema:
+            example: 4.0
+            type: "number"
+          required: true
+        - in: "query"
+          name: "purity"
+          description: "Purity"
+          schema:
+            example: 0.0
+            type: "number"
+          required: true
+        - in: "query"
+          name: "location"
+          description: "Location"
+          schema:
+            example: 3.0
+            type: "number"
+          required: true
+        - in: "query"
+          name: "priceQuality"
+          description: "Price quality"
+          schema:
+            example: 1.0
+            type: "number"
+          required: true
+        - in: "query"
+          name: "comment"
+          description: "Comment"
+          schema:
+            example: "Ut voluptatum facere aut."
+            type: "string"
+          required: true
+        - in: "query"
+          name: "is_approved"
+          description: "Is approved"
+          schema:
+            example: true
+            type: "boolean"
+          required: true
+      requestBody:
+        $ref: '#components/reviewsRequests/CREATE_REQUEST'
+      tags:
+          - "REVIEWS"
+      responses:
+        200:
+          $ref: '#components/reviewsResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/reviews/list/{page}:
+    get:
+      summary: "Gives the reviews page. (ReviewsController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "REVIEWS"
+      responses:
+        200:
+          $ref: '#components/reviewsResponses/LIST'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+      security:
+        - bearerAuth: []
+/api/v1/reviews/update/{id}:
+    post:
+      summary: "Update reviews (ReviewsController::update)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "id"
+          schema:
+            example: 1
+            type: "string"
+          required: true
+        - in: "query"
+          name: "apartmentId"
+          description: "Apartment id"
+          schema:
+            example: 9
+            type: "number"
+          required: false
+        - in: "query"
+          name: "author"
+          description: "Author"
+          schema:
+            example: "Эдик"
+            type: "string"
+          required: false
+        - in: "query"
+          name: "avatar"
+          description: "Avatar"
+          schema:
+            example: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/696.jpg'
+            type: "string"
+          required: false
+        - in: "query"
+          name: "repairs"
+          description: "Repairs"
+          schema:
+            example: 4.0
+            type: "number"
+          required: false
+        - in: "query"
+          name: "purity"
+          description: "Purity"
+          schema:
+            example: 0.0
+            type: "number"
+          required: false
+        - in: "query"
+          name: "location"
+          description: "Location"
+          schema:
+            example: 3.0
+            type: "number"
+          required: false
+        - in: "query"
+          name: "priceQuality"
+          description: "Price quality"
+          schema:
+            example: 1.0
+            type: "number"
+          required: false
+        - in: "query"
+          name: "comment"
+          description: "Comment"
+          schema:
+            example: "Ut voluptatum facere aut."
+            type: "string"
+          required: false
+        - in: "query"
+          name: "is_approved"
+          description: "Is approved"
+          schema:
+            example: true
+            type: "boolean"
+          required: false
+      requestBody:
+        $ref: '#components/reviewsRequests/UPDATE_REQUEST'
+      tags:
+        - "REVIEWS"
+      responses:
+        200:
+          $ref: '#components/reviewsResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []

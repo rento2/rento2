@@ -1,0 +1,32 @@
+components:
+  reviewsRequests:
+    CREATE_REQUEST:
+      content:
+        application/json:
+          schema:
+            example:
+              apartment_id: 9
+              author: 'Santino39'
+              avatar: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/696.jpg'
+              repairs: 4.0
+              purity: 0.0
+              location: 3.0
+              price_quality: 1.0
+              comment: "Ut voluptatum facere aut eveniet esse quia voluptatum quaerat."
+              is_approved: true
+
+    UPDATE_REQUEST:
+      content:
+        application/json:
+          schema:
+            example:
+              id: 5
+              apartment_id: 9
+              author: 'Santino39'
+              avatar: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/696.jpg'
+              repairs: 4.0
+              purity: 0.0
+              location: 3.0
+              price_quality: 1.0
+              comment: "Ut voluptatum facere aut eveniet esse quia voluptatum quaerat."
+              is_approved: true
