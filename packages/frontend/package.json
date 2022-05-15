@@ -10,7 +10,8 @@
     "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "lint:styles": "stylelint **/*{.css,.scss}",
     "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
-    "precommit": "npm run lint && npm run lint:styles"
+    "precommit": "npm run lint && npm run lint:styles",
+    "start:swagger": "cd ../backend/ && npm run start:swagger"
   },
   "dependencies": {
     "axios": "^0.24.0",
