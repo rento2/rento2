@@ -22,7 +22,7 @@
     "start:backend": "cd packages/backend && npm run dev",
     "start:frontend": "cd packages/frontend && npm run dev",
     "db:reset": "cd packages/backend && node ace db:reset",
-    "start:swagger": "cd packages/backend && npm run dev & start http://127.0.0.1:3333/docs/index.html & xdg-open http://127.0.0.1:3333/docs/index.html & open http://127.0.0.1:3333/docs/index.html"
+    "start:swagger": "cd packages/backend && npm run start:swagger"
   },
   "volta": {
     "node": "16.13.1",

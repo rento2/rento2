@@ -36,7 +36,7 @@
     "lint": "eslint . --ext .tsx,.ts,.js,.jsx && npx tsc --noEmit",
     "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "precommit": "npm run lint",
-    "start:swagger": "cd .. && cd backend/ && npm run dev & start http://127.0.0.1:3333/docs/index.html & xdg-open http://127.0.0.1:3333/docs/index.html & open http://127.0.0.1:3333/docs/index.html"
+    "start:swagger": "cd ../backend/ && npm run start:swagger"
   },
   "browserslist": {
     "production": [
