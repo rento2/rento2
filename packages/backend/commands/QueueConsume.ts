@@ -6,7 +6,7 @@ import { QueueTaskStatus } from './../common/enums/QueueTaskStatus'
 import * as handlers from './../queue'
 import { Process } from './../common/interfaces/ITask'
 
-export default class QueuePublish extends BaseCommand {
+export default class QueueConsume extends BaseCommand {
   public static commandName = 'queue:consume'
   public static description = 'Consume tasks from queue'
 
