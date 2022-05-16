@@ -27,8 +27,7 @@
     "adonis5-jwt",
     "@adonisjs/redis",
     "@adonisjs/drive-s3",
-    "adonis5-swagger",
-    "adonis-rabbit"
+    "adonis5-swagger"
   ],
   "aceProviders": [
     "@adonisjs/repl"

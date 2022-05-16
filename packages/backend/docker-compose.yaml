@@ -6,7 +6,7 @@ networks:
 
 services:
   rabbitmq:
-    image: rabbitmq:management-alpine
+    image: rabbitmq:3.10.1-management
     container_name: rento2_rabbitmq
     restart: unless-stopped
     ports:

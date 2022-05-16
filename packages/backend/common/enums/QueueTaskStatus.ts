@@ -2,5 +2,5 @@ export enum QueueTaskStatus {
   Pending = 'pending',
   Error = 'error',
   Done = 'done',
-  Process = 'process',
+  Process = 'inProcess',
 }
