@@ -47,7 +47,11 @@
       "adonis5-jwt",
       "@adonisjs/redis",
       "@adonisjs/drive-s3",
+<<<<<<< Updated upstream
       "adonis5-swagger"
+=======
+      "adonis-rabbit"
+>>>>>>> Stashed changes
     ]
   }
 }

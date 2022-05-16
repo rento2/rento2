@@ -12,6 +12,30 @@
       "aliases": [],
       "flags": []
     },
+    "queue:consume": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/QueueConsume",
+      "commandName": "queue:consume",
+      "description": "Consume tasks from queue",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
+    "queue:publish": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/QueuePublish",
+      "commandName": "queue:publish",
+      "description": "Publish tasks to messages queue",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",

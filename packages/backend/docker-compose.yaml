@@ -5,6 +5,15 @@ networks:
     name: rento2
 
 services:
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: rento2_rabbitmq
+    restart: unless-stopped
+    ports:
+      - ${RABBITMQ_PORT}:5672
+    networks:
+      rento2:
+
   redis:
     image: redis:6.2.4-alpine
     container_name: rento2_redis
