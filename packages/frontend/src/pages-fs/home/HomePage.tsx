@@ -21,6 +21,11 @@ export const HomePage = (): JSX.Element => {
               Договор оферта краткосрочной аренды квартиры
             </a>
           </Link>
+          <Link href='/docs/agreements/long'>
+            <a>
+              Договор долгосрочной аренды жилого помещения
+            </a>
+          </Link>
         </section>
       </main>
     </Layout>
