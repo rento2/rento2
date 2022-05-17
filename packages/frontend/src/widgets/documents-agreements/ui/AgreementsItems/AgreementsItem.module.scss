@@ -35,12 +35,13 @@
 
   &:hover ::after {
     position: absolute;
-    width: 21px;
-    height: 20px;
+    right: 3px;
+    width: 32px;
+    height: 32px;
     margin-left: calc(100% - 42px);
     content: '';
-    background-color: rgba($iris-500, 0.2);
-    border-radius: 100%;
+    background-color: $iris-100;
+    border-radius: 8px;
   }
 
   &__link {
@@ -48,13 +49,14 @@
 
     &:focus::after {
       position: absolute;
-      width: 21px;
-      height: 20px;
+      right: 3px;
+      width: 32px;
+      height: 32px;
       margin-left: calc(100% - 42px);
       color: $iris-700;
       content: '';
-      background-color: rgba($iris-500, 0.2);
-      border-radius: 100%;
+      background-color: $iris-100;
+      border-radius: 8px;
     }
   }
 }

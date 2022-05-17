@@ -34,7 +34,6 @@
     text-align: left;
     @include bp-479 {
       @include body-5;
-      max-width: 247px;
     }
   }
 
@@ -146,6 +145,7 @@
 
 .left-arrow {
   @include body-4;
+  min-height: 60px;
   color: $gray-blue-300;
 
   @include bp-767 {
@@ -155,11 +155,10 @@
 
 .left-arrow::after {
   position: absolute;
-  top: 0;
-  right: calc(100% + 24px);
+  left: 24px;
   width: 10px;
   height: 18px;
   content: '';
-  background-image: url('/images/docs/agreements-tenants-left_arrow.svg');
+  background-image: url('/images/docs/left_arrow.svg');
   background-repeat: no-repeat;
 }

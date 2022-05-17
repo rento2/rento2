@@ -35,9 +35,4 @@
     width: 90%;
     margin-left: 16px;
   }
-
-  @include bp-320 {
-    width: 100%;
-    margin: 0 auto;
-  }
 }

@@ -1,20 +1,20 @@
-import { DocsTitle } from '@widgets/docs-title'
+import { DocsTitle } from '@widgets/documents-layout/docs-title'
 import classNames from 'classnames'
 import styles from './DocumentsLayout.module.scss'
 
 interface IDocumentsLayout {
-  titleText?: string|undefined
+  containTitle?: string
   children: JSX.Element
   widthWindowProps: number
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
-  pathIcon?: string |undefined
-  update?: string|undefined
+  pathIcon?: string
+  update?: string|number
 }
 
 export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {
-  const { titleText, children, widthWindowProps, sideMenu, headMenu, widthProps, pathIcon, update } = props
+  const { containTitle, children, widthWindowProps, sideMenu, headMenu, widthProps, pathIcon, update } = props
   return (
     <div className={ classNames(styles['flex-wrapper'], 'container-old') }>
       {
@@ -23,10 +23,10 @@ export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {
             : headMenu
           }
       <div className={ styles['doc-container'] }>
-        {titleText != null
+        {containTitle != null
           ? (
-            <DocsTitle pathIcon={ pathIcon }
-              titleText={ titleText }
+            <DocsTitle containTitle={ containTitle }
+              pathIcon={ pathIcon }
               update={ update }
             />
             )

@@ -19,6 +19,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 22px 0;
     cursor: pointer;
@@ -35,34 +36,40 @@
     }
 
     &__closed-btn {
-      position: absolute;
-      top: 20px;
-      left: 90%;
+      position: relative;
       width: 32px;
       height: 32px;
-      overflow: visible;
       border-radius: 8px;
 
-      div {
-        top: 5px;
+      &::before {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 20px;
+        height: 20px;
+        content: '';
+        background-image: url('/images/owners/cross.svg');
+        background-repeat: no-repeat;
       }
     }
 
-    &.active
-    &__closed-btn
-    img {
-      transition: transform 0.35s ease-in-out;
-      transform: rotate(45deg);
+    &:hover &__closed-btn,
+    &:focus &__closed-btn {
+      background-color: $iris-100;
     }
 
-    &:hover
-    &__closed-btn,
-    &:focus
-    &__closed-btn {
-      width: 32px;
-      height: 32px;
-      background-color: $iris-100;
-      background-position: center;
+    // &:hover
+    // &__closed-btn::before,
+    // &:focus
+    // &__closed-btn::before {
+    //   transition: transform 0.35s ease-in-out;
+    //   transform: rotate(45deg);
+    // }
+
+    &.active
+    &__closed-btn::before {
+      transition: transform 0.35s ease-in-out;
+      transform: rotate(45deg);
     }
   }
 

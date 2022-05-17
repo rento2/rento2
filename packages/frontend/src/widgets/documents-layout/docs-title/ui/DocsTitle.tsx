@@ -1,26 +1,21 @@
 import styles from './DocsTitle.module.scss'
-import Image from 'next/image'
 
 interface IDocsTitle {
-  titleText?: string|undefined
-  pathIcon?: string| undefined
-  update?: string|number|undefined
+  containTitle?: string
+  pathIcon: string|undefined
+  update: string|number|undefined
 }
 
 const FAQ = 'Частые вопросы'
 const AGREEMENTS = 'Пользовательское соглашение'
 
-export const DocsTitle = ({ titleText, pathIcon, update }: IDocsTitle): any => {
-  function DocsSwich (title: string|undefined): JSX.Element {
+export const DocsTitle = ({ containTitle, pathIcon, update }: IDocsTitle): any => {
+  function DocsSwich (title: any): JSX.Element {
     switch (title) {
       case FAQ:
         return (
           <div className={ styles['title__icon'] }>
-            <Image
-              height={ 58 }
-              src={ pathIcon }
-              width={ 61 }
-            />
+            <img src={ pathIcon } />
           </div>
         )
       case AGREEMENTS :
@@ -35,11 +30,7 @@ export const DocsTitle = ({ titleText, pathIcon, update }: IDocsTitle): any => {
             <button className={ styles['title__icon-button'] }
               type='button'
             >
-              <Image
-                height={ 32 }
-                src={ pathIcon }
-                width={ 32 }
-              />
+              <img src={ pathIcon } />
             </button>
             <p className={ styles['title__update'] }>
               {update}
@@ -51,9 +42,9 @@ export const DocsTitle = ({ titleText, pathIcon, update }: IDocsTitle): any => {
   return (
     <div className={ styles['title'] }>
       <h1 className={ styles['title__text'] }>
-        {titleText}
+        {containTitle}
       </h1>
-      {DocsSwich(titleText)}
+      {DocsSwich(containTitle)}
     </div>
   )
 }

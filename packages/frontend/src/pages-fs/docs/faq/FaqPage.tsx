@@ -4,8 +4,8 @@ import { Footer } from '@widgets/footer'
 import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
 import { SideMenu, HeadMenu, dataMenu } from '@widgets/documents-side-menu'
-
-const titleText = 'Частые вопросы'
+const containTitle = 'Частые вопросы'
+const categorySideMenu = 'Частые вопросы'
 
 export const FaqPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
@@ -16,12 +16,12 @@ export const FaqPage = (): JSX.Element => {
     >
 
       <DocumentsLayout
+        containTitle={ containTitle }
         headMenu={ <HeadMenu data={ dataMenu } /> }
         pathIcon='/images/docs/pic-question.svg'
-        sideMenu={ <SideMenu activeItem={ titleText }
+        sideMenu={ <SideMenu activeItem={ categorySideMenu }
           data={ dataMenu }
         /> }
-        titleText={ titleText }
         widthProps={ 1060 }
         widthWindowProps={ widthWindow }
       >

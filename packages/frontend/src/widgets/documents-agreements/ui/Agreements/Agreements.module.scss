@@ -12,8 +12,5 @@
 
   .contract {
     margin-bottom: 40px;
-    @include bp-320 {
-      margin: 0 16px;
-    }
   }
 }

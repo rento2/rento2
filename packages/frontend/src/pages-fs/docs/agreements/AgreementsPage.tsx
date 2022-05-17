@@ -5,7 +5,7 @@ import { useWindowDimensions } from '@shared/lib'
 import { dataMenu, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { AgreementsList } from '@widgets/documents-agreements'
 
-const titleText = 'Образцы документов'
+const categorySideMenu = 'Образцы документов'
 
 export const AgreementsPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
@@ -15,7 +15,7 @@ export const AgreementsPage = (): JSX.Element => {
     >
 
       <DocumentsLayout headMenu={ <HeadMenu data={ dataMenu } /> }
-        sideMenu={ <SideMenu activeItem={ titleText }
+        sideMenu={ <SideMenu activeItem={ categorySideMenu }
           data={ dataMenu }
         /> }
         widthProps={ 1060 }

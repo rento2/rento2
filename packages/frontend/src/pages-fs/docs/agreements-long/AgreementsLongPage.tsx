@@ -5,7 +5,8 @@ import { useWindowDimensions } from '@shared/lib'
 import { dataAgreementsTenants, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { dateAccordion } from '../faq/model/dateAccordion'
 
-const titleText = 'Договор долгосрочной аренды жилого помещения'
+const containTitle = 'Договор аренды жилого помещения'
+const categorySideMenu = 'Договор долгосрочной аренды жилого помещения'
 
 export const AgreementsLongPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
@@ -14,12 +15,12 @@ export const AgreementsLongPage = (): JSX.Element => {
       header={ <Header /> }
     >
 
-      <DocumentsLayout headMenu={ <HeadMenu data={ dataAgreementsTenants } /> }
+      <DocumentsLayout containTitle={ containTitle }
+        headMenu={ <HeadMenu data={ dataAgreementsTenants } /> }
         pathIcon='/images/docs/agreements-treaty.svg'
-        sideMenu={ <SideMenu activeItem={ titleText }
+        sideMenu={ <SideMenu activeItem={ categorySideMenu }
           data={ dataAgreementsTenants }
         /> }
-        titleText={ titleText }
         update='обновление от 06.12.2021'
         widthProps={ 1060 }
         widthWindowProps={ widthWindow }

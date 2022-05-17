@@ -27,31 +27,26 @@ export const HeadMenuTitle = ({ btnOnClick, isOpen, data, chapter }: IHeadMenuTi
   return (
     (chapter != null && isOpen)
       ? (
-        <button className={ styles['agreements-title'] }
+        <h3 className={ classNames(styles['title__text'], styles['agreements-title']) }
           onClick={ btnOnClick }
         >
-          <LinkGeneral
+          <LinkGeneral classProps={ styles['left-arrow'] }
             href="/docs/agreements"
           >
-            <h3 className={ classNames(styles['title__text']) }>
-              <div className={ styles['left-arrow'] }>
-                {chapter}
-              </div>
-            </h3>
-
+            {chapter}
           </LinkGeneral>
-        </button>
+        </h3>
 
         )
       : (
-        <button className={ classNames(styles['title'], isOpen ? styles['active'] : '') }
-          onClick={ btnOnClick }
-        >
-          <h3 className={ styles['title__text'] }>
+        <h3 className={ styles['title__text'] }>
+          <button className={ classNames(styles['title'], isOpen ? styles['active'] : '') }
+            onClick={ btnOnClick }
+          >
             {titleText}
-          </h3>
 
-        </button>
+          </button>
+        </h3>
         )
   )
 }
