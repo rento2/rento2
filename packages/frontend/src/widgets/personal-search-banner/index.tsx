@@ -1,1 +1,1 @@
-export * from './PersonalSearchBanner'
+export * from './ui/PersonalSearchBanner'

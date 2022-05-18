@@ -27,7 +27,7 @@
 .grade-iris-full-filled {
   &:hover,
   &:focus {
-    background-color: $gray-blue-50;
+    background-color: $iris-100;
 
     [class*='icon'] {
       fill: $iris-400;
@@ -53,10 +53,14 @@
 
   &:hover,
   &:focus {
-    background-color: $gray-blue-50;
+    background-color: $iris-100;
 
     [class*='icon'] {
       stroke: $iris-400;
+    }
+
+    [class*='square'] {
+      border: 1px solid $iris-500;
     }
   }
 
