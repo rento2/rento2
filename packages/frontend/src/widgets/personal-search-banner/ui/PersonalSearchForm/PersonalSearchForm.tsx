@@ -1,5 +1,6 @@
-import { ButtonIcon, IconClose, ModalBase } from '@shared/ui'
+import { ButtonGeneral, ButtonIcon, IconClose, ModalBase } from '@shared/ui'
 import classNames from 'classnames'
+import { ChangeEvent, useState } from 'react'
 
 import styles from './PersonalSearchForm.module.scss'
 
@@ -9,6 +10,23 @@ interface IPersonalSearchForm {
 }
 
 export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): JSX.Element {
+  const [phoneInput, setPhoneInput] = useState('')
+
+  function handleInputChange (e: ChangeEvent<HTMLInputElement>): void {
+    const cardValue = e.target.value
+      .replace('+7', '').replace(/\D/g, '')
+      .match(/(\d{1,3})(\d{0,3})(\d{0,4})/)
+    let value
+
+    if (cardValue !== null) {
+      value = !cardValue[2]
+        ? `+7(${cardValue[1]}`
+        : `+7(${cardValue[1]})-${cardValue[2]}${(`${cardValue[3] ? `-${cardValue[3]}` : ''}`)}${(`${cardValue[4] ? `-${cardValue[4]}` : ''}`)}`
+    }
+
+    setPhoneInput(value ?? '')
+  }
+
   const modalHeaderContent = (
     <div className={ classNames(styles['header']) }>
       <ButtonIcon
@@ -23,10 +41,44 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
   )
 
   const formContent = (
-    <form>
-      <p>
+    <form className={ classNames(styles['form']) }>
+      <p className={ classNames(styles['title']) }>
         Оставьте заявку, и мы начнём поиск уже сегодня
       </p>
+      {/* где-то тут тоггл */}
+      <label
+        className={ classNames(styles['phone-label']) }
+        htmlFor='input-number'
+      >
+        Телефон для связи*
+      </label>
+      <input
+        required
+        className={ classNames(styles['phone-input']) }
+        id='input-number'
+        name='input-number'
+        placeholder="+7 (___) ___-____"
+        type="tel"
+        value={ phoneInput }
+        onChange={ handleInputChange }
+      />
+
+      <input id='checkbox-agreement'
+        name='checkbox-agreement'
+        type="checkbox"
+      />
+      <label htmlFor='checkbox-agreement'>
+        Я согласен на Обработку персональных данных
+      </label>
+
+      <ButtonGeneral
+        round
+        font='l'
+        height='48'
+        type='submit'
+      >
+        Отправить заявку
+      </ButtonGeneral>
     </form>
   )
 
@@ -36,7 +88,8 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
       classes={ {
         content: classNames(styles['content']),
         body: classNames(styles['body']),
-        dialog: classNames(styles['dialog'])
+        dialog: classNames(styles['dialog']),
+        header: classNames(styles['header'])
       } }
       headerContent={ modalHeaderContent }
       hide={ onClose }

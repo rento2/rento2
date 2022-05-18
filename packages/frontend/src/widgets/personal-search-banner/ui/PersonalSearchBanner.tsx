@@ -14,8 +14,8 @@ interface IPersonalSearchBanner {
 }
 
 export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearchBanner): JSX.Element {
-  const [isModalShown, setIsModalShown] = useState(true)
-  const [isFormShown, setIsFormShown] = useState(false)
+  const [isModalShown, setIsModalShown] = useState(false)
+  const [isFormShown, setIsFormShown] = useState(true)
 
   const stylesTitle = variant === 'catalog' ? styles['title-grade-secondary'] : styles['title-grade-primary']
   const stylesSubtitle = variant === 'catalog' ? styles['subtitle-grade-secondary'] : styles['subtitle-grade-primary']
@@ -57,7 +57,10 @@ export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearch
 
       <PersonalSearchModal
         isShown={ isModalShown }
-        showForm={ () => setIsFormShown(true) }
+        showForm={ () => {
+          setIsModalShown(false)
+          setIsFormShown(true)
+        } }
         onClose={ () => setIsModalShown(false) }
       />
 

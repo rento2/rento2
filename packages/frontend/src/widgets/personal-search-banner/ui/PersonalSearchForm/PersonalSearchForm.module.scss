@@ -1,0 +1,48 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.content {
+  padding: 0;
+}
+
+.body {
+  padding: 20px 40px 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 10px;
+}
+
+.dialog {
+  width: unset;
+  max-width: 600px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.title {
+  @include headline-4;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.phone-label {
+  @include body-5;
+  color: $gray-blue-400;
+}
+
+.phone-input {
+  @include body-5;
+  height: 40px;
+  color: $gray-blue-400;
+  background-color: $gray-blue-50;
+  border: 0;
+  border-radius: 4px;
+}
