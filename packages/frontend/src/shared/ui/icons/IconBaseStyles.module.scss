@@ -1,0 +1,64 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.icon {
+  fill: none;
+  stroke: $neutral-900;
+}
+
+.icon-lien {
+  fill: $gray-blue-600;
+}
+
+.icon-lien-stroke {
+  fill: none;
+  stroke: $gray-blue-600;
+}
+
+.icon-social {
+  fill: $iris-900;
+
+  circle {
+    fill: $neutral-0;
+  }
+}
+
+.icon-filied {
+  fill: $gray-blue-300;
+}
+
+.icon-map {
+  fill: $gray-blue-600;
+}
+
+.icon-fill-color {
+  fill: $neutral-900;
+}
+
+.icon-fill-white {
+  fill: $neutral-0;
+}
+
+.size-20 {
+  width: 20px;
+  height: 20px;
+}
+
+.square {
+  border: 1px solid $neutral-900;
+  border-radius: 6px;
+}
+
+.circle {
+  border: 1px solid $neutral-900;
+  border-radius: 50%;
+}
+
+.tick-figure {
+  padding: 5px 4px;
+}
+
+.minus-figure {
+  padding: 8px 4px;
+}

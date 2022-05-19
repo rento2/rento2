@@ -18,6 +18,10 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       case 'E_ROW_NOT_FOUND':
         return ctx.response.status(HttpStatusCode.NotFound)
           .send(creatingErrMsg('ENTITY_NOT_FOUND'))
+
+      case 'ERR_JWS_INVALID':
+        return ctx.response.status(HttpStatusCode.NotFound)
+          .send(creatingErrMsg('WRONG_AUTH_TOKEN'))
     }
 
     return await super.handle(error, ctx)

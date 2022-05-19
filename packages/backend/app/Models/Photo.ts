@@ -12,10 +12,13 @@ export default class Photo extends BaseModel {
   public apartment!: BelongsTo<typeof Apartment>
 
   @column()
-  public apartment_id!: number
+  public apartmentId!: number
 
   @column()
   public link!: string
+
+  @column()
+  public path!: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

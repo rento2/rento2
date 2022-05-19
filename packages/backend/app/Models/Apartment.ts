@@ -15,15 +15,22 @@ import Service from './Service'
 import Term from '../../common/enums/Term'
 import Banner from './Banner'
 import Order from './Order'
+import SleepingPlace from './SleepingPlace'
 
 export default class Apartment extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
 
-  @manyToMany(() => Service, { pivotTable: 'services_to_apartments', pivotTimestamps: true })
+  @manyToMany(() => Service, {
+    pivotTable: 'services_to_apartments',
+    pivotTimestamps: true,
+  })
   public services!: ManyToMany<typeof Service>
 
-  @manyToMany(() => Banner, { pivotTable: 'banners_to_apartments', pivotTimestamps: true })
+  @manyToMany(() => Banner, {
+    pivotTable: 'banners_to_apartments',
+    pivotTimestamps: true,
+  })
   public banners!: ManyToMany<typeof Banner>
 
   @hasMany(() => Order)
@@ -105,7 +112,13 @@ export default class Apartment extends BaseModel {
   public subwayStation!: string
 
   @column()
-  public timeToSubway!: number
+  public subwayLine!: string | null
+
+  @column()
+  public timeToSubwayByFoot!: number
+
+  @column()
+  public timeToSubwayByVehicle!: number
 
   @column()
   public repairs!: number
@@ -161,5 +174,12 @@ export default class Apartment extends BaseModel {
   public accommodations!: ManyToMany<typeof Accommodation>
 
   @hasMany(() => Photo, {})
-  public photo!: HasMany<typeof Photo>
+  public photos!: HasMany<typeof Photo>
+
+  @manyToMany(() => SleepingPlace, {
+    pivotColumns: ['number'],
+    pivotTable: 'sleeping_places_to_apartments',
+    pivotTimestamps: true,
+  })
+  public sleepingPlaces!: ManyToMany<typeof SleepingPlace>
 }

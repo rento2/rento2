@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { IconVk, IconTelegram, IconWhatsapp, ButtonGeneral } from '@shared/ui'
 import { DocsItem } from './docs-item/DocsItem'
-import { SocialItem } from './social-item/SocialItem'
+import { SocialItem } from '@shared/ui/social-item/SocialItem'
 import { dataDocsGroup1, dataDocsGroup2 } from '@widgets/footer/model/dataFooter'
 import styles from './Footer.module.scss'
 import { useWindowDimensions } from '@shared/lib'
@@ -54,7 +54,8 @@ export const Footer = (): JSX.Element => {
 
         <ul className={ classNames(styles['footer__btn-group'], 'flex-s-b') }>
           <li>
-            <ButtonGeneral classProps={ classNames(styles['footer__btn']) }
+            <ButtonGeneral round
+              classProps={ classNames(styles['footer__btn']) }
               font={ widthWindow > 479 ? 's' : 'm' }
               height={ widthWindow > 479 ? '40' : '44' }
               type='button'
@@ -63,7 +64,8 @@ export const Footer = (): JSX.Element => {
             </ButtonGeneral>
           </li>
           <li>
-            <ButtonGeneral classProps={ classNames(styles['footer__btn']) }
+            <ButtonGeneral round
+              classProps={ classNames(styles['footer__btn']) }
               font={ widthWindow > 479 ? 's' : 'm' }
               grade='secondary'
               height={ widthWindow > 479 ? '40' : '44' }

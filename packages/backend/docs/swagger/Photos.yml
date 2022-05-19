@@ -1,0 +1,80 @@
+/api/v1/photos/create:
+    post:
+      summary: " (PhotosController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "PHOTOS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/photos/one/{id}:
+    get:
+      summary: "Gives the one photo. (PhotosController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "PHOTOS"
+      responses:
+        200:
+          $ref: '#components/photosResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/photos/list/{page}:
+    get:
+      summary: "Gives the photos page. (PhotosController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "PHOTOS"
+      responses:
+        200:
+          $ref: '#components/photosResponses/LIST'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+      security:
+        - bearerAuth: []
+/api/v1/photos/delete/{id}:
+    delete:
+      summary: " (PhotosController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "PHOTOS"
+      responses:
+        200:
+          $ref: '#components/responses/ENTITY_DELETED'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []

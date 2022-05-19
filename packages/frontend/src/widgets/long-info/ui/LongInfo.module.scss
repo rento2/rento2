@@ -1,0 +1,128 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.container {
+  position: relative;
+  width: 438px;
+  padding: 40px 30px 60px;
+  background: $neutral-0;
+  border-radius: 2px;
+
+  @include bp-1279 {
+    width: 404px;
+    min-height: 450px;
+  }
+
+  @include bp-1023 {
+    width: 347px;
+    min-height: unset;
+    padding: 20px;
+  }
+
+  @include bp-743 {
+    width: 440px;
+  }
+
+  @include bp-479 {
+    width: 100%;
+    padding: 30px 16px;
+  }
+}
+
+.price {
+  @include headline-5;
+  margin-bottom: 10px;
+  color: $gray-blue-600;
+
+  @include bp-1023 {
+    @include subtitle-1;
+    margin-bottom: 0;
+  }
+}
+
+.location {
+  @include body-5;
+  display: flex;
+  align-items: center;
+  max-width: 166px;
+  padding: 11px 12px;
+  margin-bottom: 24px;
+  color: $gray-blue-600;
+  text-align: center;
+  border-radius: 8px;
+  transition-duration: 0.2s;
+  transition-property: color, background-color;
+
+  @include bp-1023 {
+    @include body-6;
+    margin-bottom: 20px;
+  }
+
+  @include bp-743 {
+    margin-bottom: 14px;
+  }
+
+  &:focus,
+  &:hover {
+    color: $neutral-900;
+    cursor: pointer;
+    background-color: $gray-blue-50;
+  }
+
+  &:active {
+    color: $gray-blue-500;
+  }
+}
+
+.buttons {
+  display: flex;
+
+  @include bp-743 {
+    margin-bottom: 0;
+  }
+
+  @include bp-479 {
+    flex-direction: column;
+  }
+
+  .btn {
+    @include body-4;
+    padding: 12px;
+    white-space: nowrap;
+
+    @include bp-743 {
+      @include body-5;
+      padding: 11px;
+    }
+
+    @include bp-479 {
+      @include body-4;
+      width: 100%;
+      padding: 12px;
+    }
+
+    &_first {
+      max-width: 44px;
+      margin: 0 10px 0 0;
+
+      @include bp-479 {
+        max-width: unset;
+        margin: 0 0 10px;
+      }
+    }
+
+    &_last {
+      flex-grow: 1;
+
+      @include bp-479 {
+        flex-grow: unset;
+      }
+    }
+  }
+}
+
+.icon-call {
+  fill: none;
+  stroke: $gray-blue-600;
+}

@@ -1,0 +1,42 @@
+components:
+  accommodationsResponses:
+    LIST:
+      description: "Array of accommodations. !!! The last page comes with 'hasMorePages: false' and an empty array 'data' = [] !!!"
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Accommodation'
+          example:
+            meta:
+              result: OK
+              pagination:
+                perPage: 20
+                currentPage: 1
+                hasMorePages: true
+                total: 24
+            data:
+            - id: '1'
+              type: 'Jeramie35'
+              name_en: 'Deon.Franey13'
+              created_at: '2022-04-27T10:19:37.292+03:00'
+              updated_at: '2022-04-27T10:19:37.293+03:00'
+            - id: '2'
+              type: 'Andrew79'
+              name_en: 'Jeramie35'
+              created_at: '2022-05-07T20:52:40.759+03:00'
+              updated_at: '2022-05-07T20:52:40.759+03:00'
+    ONE:
+      description: "One accommodation."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Accommodation'
+          example:
+            meta:
+              result: 'OK'
+            data:
+                  id: '1'
+                  type: 'Andrew79'
+                  name_en: 'Deon.Franey13'
+                  created_at: '2022-04-27T10:19:37.292+03:00'
+                  updated_at: '2022-04-27T10:19:37.293+03:00'

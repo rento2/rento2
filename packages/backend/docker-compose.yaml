@@ -5,6 +5,24 @@ networks:
     name: rento2
 
 services:
+  rabbitmq:
+    image: rabbitmq:3.10.1-management
+    container_name: rento2_rabbitmq
+    restart: unless-stopped
+    ports:
+      - ${RABBITMQ_PORT}:5672
+    networks:
+      rento2:
+
+  redis:
+    image: redis:6.2.4-alpine
+    container_name: rento2_redis
+    restart: unless-stopped
+    ports:
+      - ${REDIS_PORT}:6379
+    networks:
+      rento2:
+
   postgres:
     image: postgres:12.1
     container_name: rento2_postgres

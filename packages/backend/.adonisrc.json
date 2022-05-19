@@ -4,7 +4,8 @@
     "./commands",
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
-    "@adonisjs/lucid/build/commands"
+    "@adonisjs/lucid/build/commands",
+    "adonis5-swagger/build/commands"
   ],
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
   "aliases": {
@@ -21,7 +22,12 @@
     "./providers/AppProvider",
     "@adonisjs/core",
     "@adonisjs/lucid",
-    "adonis-lucid-soft-deletes"
+    "adonis-lucid-soft-deletes",
+    "@adonisjs/auth",
+    "adonis5-jwt",
+    "@adonisjs/redis",
+    "@adonisjs/drive-s3",
+    "adonis5-swagger"
   ],
   "aceProviders": [
     "@adonisjs/repl"

@@ -1,14 +1,11 @@
-.modal {
-  &__title {
-    @include subtitle-2;
-
-    @include bp-849 {
-      margin: 0 0 15px;
-    }
-  }
-}
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
 
 .btn-close {
+  position: absolute;
+  top: 26px;
+  right: 26px;
   width: 24px;
   height: 24px;
   padding: 0;
@@ -26,4 +23,8 @@
     background-color: $iris-100;
     border-radius: 50%;
   }
+}
+
+.icon {
+  stroke: $iris-500;
 }

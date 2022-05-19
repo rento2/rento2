@@ -1,4 +1,14 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .modal {
+  &__title {
+    @include subtitle-2;
+    padding: 0 0 22px;
+    border-bottom: 2px solid $iris-50;
+  }
+
   &__list {
     border-bottom: 2px solid $iris-50;
   }
@@ -8,7 +18,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    height: 32px;
+    min-height: 41px;
 
     @include bp-479 {
       grid-template-columns: 57% 43%;

@@ -1,10 +1,13 @@
 import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
+import { ApartmentCard } from '@widgets/apartment-card'
+import { IApartmentCard } from '@shared/types'
+import styles from './LongPage.module.scss'
 
 const titlePage = 'Снять хорошую квартиру от 6 месяцев &#128156;'
 
-export const LongPage = (): JSX.Element => {
+export const LongPage = ({ data }: { data: IApartmentCard[]}): JSX.Element => {
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
@@ -15,6 +18,13 @@ export const LongPage = (): JSX.Element => {
           <h1>
             Долгосрочная аренда
           </h1>
+          <ul className={ styles['long-page'] }>
+            {data?.map((el: IApartmentCard) => (
+              <li key={ el.id }>
+                <ApartmentCard { ...el } />
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
     </Layout>

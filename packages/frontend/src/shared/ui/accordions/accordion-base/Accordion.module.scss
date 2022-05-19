@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .item {
   padding: 0 0 0 40px;
   border-bottom: 2px solid $neutral-50;
@@ -58,7 +62,7 @@
 
   &-p {
     max-width: 90%;
-    text-align: justify;
+    text-align: left;
     @include bp-359 {
       max-width: 88%;
       text-align: left;
