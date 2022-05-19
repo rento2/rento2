@@ -32,7 +32,7 @@ export function SwitchBase ({ name, labelText, labelTextPlacement = 'right', con
           type="checkbox"
         />
         <label
-          className={ classNames(styles['switch__inner'], styles['inner']) }
+          className={ classNames(styles['switch__inner']) }
           htmlFor={ name }
         >
           <span className={ classNames(styles['switch__dot']) } />
