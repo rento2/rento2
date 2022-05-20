@@ -24,28 +24,28 @@ export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearch
 
   return (
     <>
-      <div className={ classNames(styles['container']) }>
-        <div className={ classNames(styles['image-wrapper']) }>
+      <div className={ classNames(styles['banner']) }>
+        <div className={ classNames(styles['banner__image-wrapper']) }>
           <Image
             layout='fill'
             objectFit='cover'
             src={ imageVariant }
           />
         </div>
-        <div className={ classNames(styles['text']) }>
-          <p className={ classNames(styles['title'], stylesTitle) }>
+        <div className={ classNames(styles['banner__text-container']) }>
+          <p className={ classNames(styles['banner__title'], stylesTitle) }>
             Персональный поиск квартиры
           </p>
-          <p className={ classNames(styles['subtitle'], stylesSubtitle) }>
+          <p className={ classNames(styles['banner__subtitle'], stylesSubtitle) }>
             Ванная с окном или французский балкон? Конечно, найдём.
           </p>
-          <p className={ classNames(styles['paragraph'], stylesParagraph) }>
+          <p className={ classNames(styles['banner__paragraph'], stylesParagraph) }>
             Поможем найти хорошую квартиру по вашим параметрам.
           </p>
         </div>
         <ButtonGeneral
           round
-          classProps={ classNames(styles['button']) }
+          classProps={ classNames(styles['banner__button']) }
           font='s'
           grade={ variant === 'catalog' ? 'secondary' : 'primary' }
           height='40'

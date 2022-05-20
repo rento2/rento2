@@ -2,7 +2,7 @@
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
-.container {
+.banner {
   position: relative;
   display: flex;
   max-width: 984px;
@@ -27,7 +27,7 @@
   }
 }
 
-.image-wrapper {
+.banner__image-wrapper {
   position: relative;
   width: 301px;
   height: 190px;
@@ -54,7 +54,7 @@
   }
 }
 
-.text {
+.banner__text-container {
   max-width: 490px;
   margin: 20px 0 0;
 
@@ -74,7 +74,7 @@
   }
 }
 
-.title {
+.banner__title {
   @include headline-4;
   margin: 0 0 14px;
   color: $iris-900;
@@ -97,7 +97,7 @@
   color: $iris-900;
 }
 
-.subtitle {
+.banner__subtitle {
   @include headline-5;
   margin: 0 0 10px;
 
@@ -122,7 +122,7 @@
   color: $iris-300;
 }
 
-.paragraph {
+.banner__paragraph {
   @include body-4;
 
   @include bp-1023 {
@@ -142,7 +142,7 @@
   color: $iris-900;
 }
 
-.button {
+.banner__button {
   position: absolute;
   right: 20px;
   bottom: 20px;

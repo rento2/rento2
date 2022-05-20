@@ -13,7 +13,7 @@ export interface IButton {
   font: 'l' | 'm' | 's' | 'xs'
   height: '56' | '48' | '44' | '40'
   classProps?: string
-  onClick?: () => void
+  onClick?: (e?: any) => void
   children: React.ReactNode | string
 }
 

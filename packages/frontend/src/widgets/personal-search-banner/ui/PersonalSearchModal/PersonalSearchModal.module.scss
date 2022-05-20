@@ -4,17 +4,34 @@
 
 .dialog {
   justify-content: center;
+  width: fit-content;
 }
 
 .content {
   max-width: 600px;
   padding: 0;
   overflow: hidden;
+
+  @include bp-743 {
+    max-width: 400px;
+  }
+
+  @include bp-479 {
+    max-width: 310px;
+  }
 }
 
 .body {
   padding: 30px 20px 40px;
   background-color: #e3f0ff;
+
+  @include bp-743 {
+    padding: 30px 10px 40px;
+  }
+
+  @include bp-479 {
+    padding: 20px 10px;
+  }
 }
 
 .header {
@@ -30,11 +47,56 @@
   margin-bottom: 26px;
   background-color: $neutral-0;
   border-radius: 20px;
+
+  @include bp-743 {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  @include bp-479 {
+    margin-bottom: 14px;
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 20px;
+
+  @include bp-743 {
+    width: 80px;
+    height: 80px;
+  }
+
+  @include bp-479 {
+    width: 40px;
+    height: 68px;
+    border-radius: 10px;
+  }
 }
 
 .title {
   @include headline-4;
   max-width: 391px;
+  margin: 3px 0 0;
+
+  @include bp-743 {
+    @include headline-5;
+    max-width: 266px;
+    margin: 5px 0 0 10px;
+  }
+
+  @include bp-479 {
+    @include subtitle-1;
+    max-width: 226px;
+    margin: 0;
+  }
+
+  &_highlighted {
+    color: $orange-a500;
+  }
 }
 
 .list {
@@ -44,31 +106,77 @@
   background-color: $neutral-0;
   border-radius: 20px;
   box-shadow: 0 30px 40px rgba(0, 0, 0, 0.05);
-}
 
-.item {
-  margin-bottom: 30px;
+  @include bp-743 {
+    padding: 40px 20px;
+  }
 
-  &:last-of-type {
+  @include bp-479 {
+    padding: 16px;
+  }
+
+  &-item {
     margin-bottom: 42px;
+
+    @include bp-743 {
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-bottom: 30px;
+      }
+    }
+
+    @include bp-479 {
+      margin-bottom: 10px;
+
+      &:last-of-type {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__bullet {
+      width: 10px;
+      height: 10px;
+      margin-right: 10px;
+      content: '';
+      background-color: $orange-300;
+      border-radius: 50%;
+
+      @include bp-743 {
+        width: 8px;
+        height: 8px;
+      }
+
+      @include bp-479 {
+        width: 6px;
+        height: 6px;
+      }
+    }
+
+    &__title {
+      @include headline-4;
+      display: flex;
+      align-items: center;
+
+      @include bp-743 {
+        @include subtitle-1;
+      }
+
+      @include bp-479 {
+        @include subtitle-2;
+      }
+    }
+
+    &__paragraph {
+      @include body-3;
+
+      @include bp-743 {
+        @include body-4;
+      }
+
+      @include bp-479 {
+        @include body-5;
+      }
+    }
   }
-
-  &-bullet {
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-    content: '';
-    background-color: $orange-300;
-    border-radius: 50%;
-  }
-}
-
-.item-title {
-  @include headline-4;
-  display: flex;
-  align-items: center;
-}
-
-.item-paragraph {
-  @include body-3;
 }

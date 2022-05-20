@@ -1,6 +1,6 @@
 import { ButtonGeneral, ButtonIcon, IconClose, ModalBase } from '@shared/ui'
 import classNames from 'classnames'
-import { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 import styles from './PersonalSearchForm.module.scss'
 
@@ -16,15 +16,27 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
     const cardValue = e.target.value
       .replace('+7', '').replace(/\D/g, '')
       .match(/(\d{1,3})(\d{0,3})(\d{0,4})/)
+
     let value
 
+    // маскирование номера (шоб красиво было)
     if (cardValue !== null) {
-      value = !cardValue[2]
-        ? `+7(${cardValue[1]}`
-        : `+7(${cardValue[1]})-${cardValue[2]}${(`${cardValue[3] ? `-${cardValue[3]}` : ''}`)}${(`${cardValue[4] ? `-${cardValue[4]}` : ''}`)}`
+      if (cardValue[2] && cardValue[3] && cardValue[4]) {
+        value = `+7(${cardValue[1]})-${cardValue[2]}-${cardValue[3]}-${cardValue[4]}`
+      } else if (cardValue[2] && cardValue[3] && !cardValue[4]) {
+        value = `+7(${cardValue[1]})-${cardValue[2]}-${cardValue[3]}`
+      } else if (cardValue[2] && !cardValue[3]) {
+        value = `+7(${cardValue[1]})-${cardValue[2]}`
+      } else {
+        value = `+7(${cardValue[1]}`
+      }
     }
 
     setPhoneInput(value ?? '')
+  }
+
+  function handleSubmit (e: SubmitEvent) {
+    e.preventDefault()
   }
 
   const modalHeaderContent = (
@@ -54,6 +66,7 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
       </label>
       <input
         required
+        autoComplete="off"
         className={ classNames(styles['phone-input']) }
         id='input-number'
         name='input-number'
@@ -76,6 +89,7 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
         font='l'
         height='48'
         type='submit'
+        onClick={ handleSubmit }
       >
         Отправить заявку
       </ButtonGeneral>
