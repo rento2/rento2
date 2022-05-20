@@ -11,14 +11,14 @@ interface ISwitchBase {
 export function SwitchBase ({ name, labelText, labelTextPlacement = 'right', containerClass }: ISwitchBase): JSX.Element {
   const labelStyles = styles[`switch__text-label-${labelTextPlacement}`]
 
-  const textLabel = labelText ? (
+  const textLabel = (
     <label
       className={ labelStyles }
       htmlFor={ name }
     >
       {labelText}
     </label>
-  ) : null
+  )
 
   return (
     <div className={ classNames(styles['switch'], containerClass) }>
