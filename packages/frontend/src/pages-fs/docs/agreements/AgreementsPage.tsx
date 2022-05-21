@@ -1,4 +1,5 @@
-import { DocumentsLayout, Layout } from '@shared/ui'
+import { DocumentsLayout } from '@widgets/documents-layout'
+import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { useWindowDimensions } from '@shared/lib'
@@ -13,8 +14,8 @@ export const AgreementsPage = (): JSX.Element => {
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
-
-      <DocumentsLayout headMenu={ <HeadMenu data={ dataMenu } /> }
+      <DocumentsLayout
+        headMenu={ <HeadMenu data={ dataMenu } /> }
         sideMenu={ <SideMenu activeItem={ categorySideMenu }
           data={ dataMenu }
         /> }

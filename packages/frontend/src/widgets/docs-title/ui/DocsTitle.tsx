@@ -2,15 +2,15 @@ import styles from './DocsTitle.module.scss'
 
 interface IDocsTitle {
   containTitle?: string
-  pathIcon: string|undefined
-  update: string|number|undefined
+  pathIcon?: string
+  update?: string|number
 }
 
 const FAQ = 'Частые вопросы'
 const AGREEMENTS = 'Пользовательское соглашение'
 
-export const DocsTitle = ({ containTitle, pathIcon, update }: IDocsTitle): any => {
-  function DocsSwich (title: any): JSX.Element {
+export const DocsTitle = ({ containTitle, pathIcon, update }: IDocsTitle): JSX.Element => {
+  function DocsSwich (title?: string): JSX.Element {
     switch (title) {
       case FAQ:
         return (

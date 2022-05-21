@@ -1,9 +1,12 @@
-import { DocumentsLayout, AccordionList, Layout } from '@shared/ui'
+import { DocumentsLayout } from '@widgets/documents-layout'
+import { Layout, AccordionList } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
 import { SideMenu, HeadMenu, dataMenu } from '@widgets/documents-side-menu'
+import { DocsTitle } from '@widgets/docs-title'
+
 const containTitle = 'Частые вопросы'
 const categorySideMenu = 'Частые вопросы'
 
@@ -16,9 +19,11 @@ export const FaqPage = (): JSX.Element => {
     >
 
       <DocumentsLayout
-        containTitle={ containTitle }
+        docTitle={ <DocsTitle containTitle={ containTitle }
+          pathIcon='/images/docs/pic-question.svg'
+        /> }
         headMenu={ <HeadMenu data={ dataMenu } /> }
-        pathIcon='/images/docs/pic-question.svg'
+
         sideMenu={ <SideMenu activeItem={ categorySideMenu }
           data={ dataMenu }
         /> }

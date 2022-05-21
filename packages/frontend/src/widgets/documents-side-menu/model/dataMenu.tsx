@@ -23,7 +23,7 @@ export const dataAgreementsTenants: IPropsAgreements = {
   chapter: 'Арендаторам',
   listMenu: [{
     title: 'Договор долгосрочной аренды жилого помещения',
-    href: '/docs/agreements/long'
+    href: '#'
   },
   {
     title: 'Договор оферта краткосрочной аренды квартиры',

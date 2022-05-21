@@ -58,14 +58,6 @@
       background-color: $iris-100;
     }
 
-    // &:hover
-    // &__closed-btn::before,
-    // &:focus
-    // &__closed-btn::before {
-    //   transition: transform 0.35s ease-in-out;
-    //   transform: rotate(45deg);
-    // }
-
     &.active
     &__closed-btn::before {
       transition: transform 0.35s ease-in-out;
