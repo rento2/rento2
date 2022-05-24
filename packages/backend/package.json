@@ -11,7 +11,8 @@
     "test": "node -r @adonisjs/assembler/build/register japaFile.ts",
     "coverage": "nyc npm run test",
     "precommit": "npm run lint",
-    "db:reset": "node ace db:reset"
+    "db:reset": "node ace db:reset",
+    "start:swagger": "npm run dev & start http://127.0.0.1:3333/docs/index.html & xdg-open http://127.0.0.1:3333/docs/index.html & open http://127.0.0.1:3333/docs/index.html"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.6.2",
@@ -47,6 +48,7 @@
     "pg": "^8.7.3",
     "phc-bcrypt": "^1.0.7",
     "proxy-addr": "^2.0.7",
+    "rabbit-queue": "^5.4.1",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.20",
     "uuid": "^8.3.2"
