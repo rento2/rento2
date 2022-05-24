@@ -1,7 +1,7 @@
-import { LongContractPage } from '@pages-fs/docs/agreements-long/LongContractPage'
+import { AgreementLongPage } from '@pages-fs/docs/agreements-long/AgreementLongPage'
 
-export default function Short (): JSX.Element {
+export default function Long (): JSX.Element {
   return (
-    <LongContractPage />
+    <AgreementLongPage />
   )
 }
