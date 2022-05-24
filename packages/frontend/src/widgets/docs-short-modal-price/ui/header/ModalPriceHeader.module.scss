@@ -2,17 +2,10 @@
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
-.modal {
-  &__title {
-    @include subtitle-2;
-
-    @include bp-849 {
-      margin: 0 0 15px;
-    }
-  }
-}
-
 .btn-close {
+  position: absolute;
+  top: 26px;
+  right: 26px;
   width: 24px;
   height: 24px;
   padding: 0;

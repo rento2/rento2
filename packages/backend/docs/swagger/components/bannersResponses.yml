@@ -1,0 +1,39 @@
+components:
+  bannersResponses:
+    LIST:
+      description: "Array of banners. !!! The last page comes with 'hasMorePages: false' and an empty array 'data' = [] !!!"
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Banner'
+          example:
+            meta:
+              result: OK
+              pagination:
+                perPage: 20
+                currentPage: 1
+                hasMorePages: true
+                total: 24
+            data:
+              - id: '1'
+                name: Et quaerat et.
+                created_at: '2022-04-27T10:19:37.292+03:00'
+                updated_at: '2022-04-27T10:19:37.293+03:00'
+              - id: '2'
+                name: Aliquam pariatur.
+                created_at: '2022-04-27T10:19:37.292+03:00'
+                updated_at: '2022-04-27T10:19:37.293+03:00'
+    ONE:
+      description: "One banner."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Banner'
+          example:
+            meta:
+              result: 'OK'
+            data:
+              - id: '1'
+                name: Et quaerat et.
+                created_at: '2022-04-27T10:19:37.292+03:00'
+                updated_at: '2022-04-27T10:19:37.293+03:00'

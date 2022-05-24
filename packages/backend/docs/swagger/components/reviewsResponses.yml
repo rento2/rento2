@@ -1,0 +1,204 @@
+components:
+  reviewsResponses:
+    LIST:
+      description: "Array of reviews. !!! The last page comes with 'hasMorePages: false' and an empty array 'data' = [] !!!"
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Review'
+          example:
+            meta:
+              result: OK
+              pagination:
+                perPage: 20
+                currentPage: 1
+                hasMorePages: true
+                total: 24
+            data:
+            - id: '1'
+              apartment_id: '5'
+              author: Louvenia.Miller41
+              avatar: https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/467.jpg
+              repairs: '0.0'
+              purity: '4.0'
+              location: '4.0'
+              price_quality: '0.0'
+              comment: Quisquam nam harum consequuntur velit culpa assumenda deserunt.
+              is_approved: true
+              created_at: '2022-05-07T20:52:41.154+03:00'
+              updated_at: '2022-05-07T20:52:41.154+03:00'
+              apartment:
+                id: '5'
+                type:
+                is_active: false
+                name: April9
+                latin_name: Alfredo Schinner II
+                description: Et excepturi quod ut et at consequuntur ipsum eligendi tempora.
+                bnovo_id: '23607'
+                price: '72799.00'
+                price_per_month: '85889'
+                discount: '159.00'
+                commission: '118.00'
+                utility_bills: '183.00'
+                security_deposit_short: '165.00'
+                security_deposit_long: '188.00'
+                rooms_num: 197
+                storey: 147
+                total_storeys: 105
+                area: '193.00'
+                kitchen_area: '188.00'
+                distance_from_center: 186
+                adm_area:
+                district: dolor dolore non qui itaque
+                selling_point: neque voluptas optio nemo accusamus
+                geo_coordinate_x: officia
+                geo_coordinate_y: facilis
+                subway_station: eos repellendus molestias consequatur
+                subway_line: eum perferendis reiciendis id
+                time_to_subway_by_foot: 181
+                time_to_subway_by_vehicle: 114
+                repairs: '3.9'
+                purity: '4.5'
+                location: '1.1'
+                price_quality: '6.0'
+                total_rating: '5.5'
+                check_in_start: '2032-02-10T23:10:38.109Z'
+                check_in_end: '2053-03-01T21:45:36.786Z'
+                check_out_end: '2067-11-16T05:43:32.511Z'
+                smoking_allowed: false
+                partying_allowed: true
+                children_allowed: true
+                pets_allowed: true
+                max_adults: 9
+                max_children: 5
+                created_at: '2022-05-07T20:52:41.150+03:00'
+                updated_at: '2022-05-07T20:52:41.150+03:00'
+            - id: '2'
+              apartment_id: '6'
+              author: Josefa48
+              avatar: https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/838.jpg
+              repairs: '1.0'
+              purity: '2.0'
+              location: '3.0'
+              price_quality: '0.0'
+              comment: Velit qui fugiat quia et ullam labore aut aut.
+              is_approved: true
+              created_at: '2022-05-07T20:52:41.165+03:00'
+              updated_at: '2022-05-07T20:52:41.165+03:00'
+              apartment:
+                id: '6'
+                type:
+                is_active: true
+                name: Jordy.Schmidt48
+                latin_name: Levi Harris DVM
+                description: Nihil velit asperiores odio ratione minus quia. Vero tempora quibusdam.
+                bnovo_id: '51657'
+                price: '69860.00'
+                price_per_month: '17032'
+                discount: '179.00'
+                commission: '166.00'
+                utility_bills: '194.00'
+                security_deposit_short: '197.00'
+                security_deposit_long: '189.00'
+                rooms_num: 143
+                storey: 146
+                total_storeys: 162
+                area: '110.00'
+                kitchen_area: '163.00'
+                distance_from_center: 178
+                adm_area:
+                district: aut exercitationem autem delectus hic
+                selling_point: id placeat quam molestiae voluptatem
+                geo_coordinate_x: eveniet
+                geo_coordinate_y: numquam
+                subway_station: sit non quasi quam
+                subway_line: alias numquam cumque illum
+                time_to_subway_by_foot: 126
+                time_to_subway_by_vehicle: 164
+                repairs: '3.3'
+                purity: '3.2'
+                location: '6.8'
+                price_quality: '4.8'
+                total_rating: '8.9'
+                check_in_start: '2028-04-04T00:20:10.098Z'
+                check_in_end: '2093-03-23T02:52:24.018Z'
+                check_out_end: '2008-06-07T18:48:34.549Z'
+                smoking_allowed: true
+                partying_allowed: true
+                children_allowed: true
+                pets_allowed: false
+                max_adults: 7
+                max_children: 6
+                created_at: '2022-05-07T20:52:41.163+03:00'
+                updated_at: '2022-05-07T20:52:41.163+03:00'
+
+
+    ONE:
+      description: "One review."
+      content:
+        application/json:
+          schema:
+            $ref: '#definitions/Review'
+          example:
+            meta:
+              result: OK
+            data:
+              id: '1'
+              apartment_id: '5'
+              author: Louvenia.Miller41
+              avatar: https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/467.jpg
+              repairs: '0.0'
+              purity: '4.0'
+              location: '4.0'
+              price_quality: '0.0'
+              comment: Quisquam nam harum consequuntur velit culpa assumenda deserunt.
+              is_approved: true
+              created_at: '2022-05-07T20:52:41.154+03:00'
+              updated_at: '2022-05-07T20:52:41.154+03:00'
+              apartment:
+                id: '5'
+                type:
+                is_active: false
+                name: April9
+                latin_name: Alfredo Schinner II
+                description: Et excepturi quod ut et at consequuntur ipsum eligendi tempora.
+                bnovo_id: '23607'
+                price: '72799.00'
+                price_per_month: '85889'
+                discount: '159.00'
+                commission: '118.00'
+                utility_bills: '183.00'
+                security_deposit_short: '165.00'
+                security_deposit_long: '188.00'
+                rooms_num: 197
+                storey: 147
+                total_storeys: 105
+                area: '193.00'
+                kitchen_area: '188.00'
+                distance_from_center: 186
+                adm_area:
+                district: dolor dolore non qui itaque
+                selling_point: neque voluptas optio nemo accusamus
+                geo_coordinate_x: officia
+                geo_coordinate_y: facilis
+                subway_station: eos repellendus molestias consequatur
+                subway_line: eum perferendis reiciendis id
+                time_to_subway_by_foot: 181
+                time_to_subway_by_vehicle: 114
+                repairs: '3.9'
+                purity: '4.5'
+                location: '1.1'
+                price_quality: '6.0'
+                total_rating: '5.5'
+                check_in_start: '2032-02-10T23:10:38.109Z'
+                check_in_end: '2053-03-01T21:45:36.786Z'
+                check_out_end: '2067-11-16T05:43:32.511Z'
+                smoking_allowed: false
+                partying_allowed: true
+                children_allowed: true
+                pets_allowed: true
+                max_adults: 9
+                max_children: 5
+                created_at: '2022-05-07T20:52:41.150+03:00'
+                updated_at: '2022-05-07T20:52:41.150+03:00'
+

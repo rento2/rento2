@@ -1,0 +1,147 @@
+/api/v1/sleeping-places/one/{id}:
+  get:
+    summary: "Gives the one sleeping place. (SleepingPlacesController::one)"
+    description: ""
+    parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+    tags:
+      - "SLEEPING-PLACES"
+    responses:
+      200:
+        $ref: '#components/sleeping-placesResponses/ONE'
+      401:
+        $ref: '#components/responses/NOT_AUTHORIZED'
+      404:
+        $ref: '#components/responses/ENTITY_NOT_FOUND'
+    security:
+      - bearerAuth: []
+/api/v1/sleeping-places/delete/{id}:
+  delete:
+    summary: " (SleepingPlacesController::delete)"
+    description: ""
+    parameters:
+      - in: "path"
+        name: "id"
+        schema:
+          type: "string"
+        required: true
+    tags:
+      - "SLEEPING-PLACES"
+    responses:
+      200:
+        $ref: '#components/responses/ENTITY_DELETED'
+      401:
+        $ref: '#components/responses/NOT_AUTHORIZED'
+      404:
+        $ref: '#components/responses/ENTITY_NOT_FOUND'
+    security:
+      - bearerAuth: []
+/api/v1/sleeping-places/create:
+  post:
+    summary: " (SleepingPlacesController::create)"
+    description: ""
+    parameters:
+      - in: "query"
+        name: "name"
+        description: "Name"
+        schema:
+          example: "Dolor repellat asperiores."
+          type: "string"
+        required: true
+      - in: "query"
+        name: "type"
+        description: "Type"
+        schema:
+          example: "sofa"
+          type: "string"
+        required: true
+      - in: "query"
+        name: "size"
+        description: "Size"
+        schema:
+          example: 1
+          type: "string"
+        required: true
+    requestBody:
+      $ref: '#components/sleeping-placesRequests/UPDATE_REQUEST'
+    tags:
+      - "SLEEPING-PLACES"
+    responses:
+      201:
+        $ref: '#components/sleeping-placesResponses/ONE'
+      401:
+        $ref: '#components/responses/NOT_AUTHORIZED'
+      404:
+        $ref: '#components/responses/ENTITY_NOT_FOUND'
+    security:
+      - bearerAuth: []
+/api/v1/sleeping-places/list/{page}:
+  get:
+    summary: "Gives the sleeping places page. (SleepingPlacesController::list)"
+    description: ""
+    parameters:
+      - in: "path"
+        name: "page"
+        schema:
+          type: "string"
+        required: true
+    tags:
+      - "SLEEPING-PLACES"
+    responses:
+      200:
+        $ref: '#components/sleeping-placesResponses/LIST'
+      401:
+        $ref: '#components/responses/NOT_AUTHORIZED'
+    security:
+      - bearerAuth: []
+/api/v1/sleeping-places/update/{id}:
+  post:
+    summary: "Update sleeping-places (SleepingPlacesController::update)"
+    description: ""
+    parameters:
+      - in: "path"
+        name: "id"
+        description: "id"
+        schema:
+          example: 1
+          type: "string"
+        required: true
+      - in: "query"
+        name: "name"
+        description: "Name"
+        schema:
+          example: "Dolor repellat asperiores."
+          type: "string"
+        required: false
+      - in: "query"
+        name: "type"
+        description: "Type"
+        schema:
+          example: "sofa"
+          type: "string"
+        required: false
+      - in: "query"
+        name: "size"
+        description: "Size"
+        schema:
+          example: 1
+          type: "string"
+        required: false
+    requestBody:
+      id: '2'
+      $ref: '#components/sleeping-placesRequests/CREATE_REQUEST'
+    tags:
+      - "SLEEPING-PLACES"
+    responses:
+      200:
+        $ref: '#components/sleeping-placesResponses/ONE'
+      401:
+        $ref: '#components/responses/NOT_AUTHORIZED'
+      404:
+        $ref: '#components/responses/ENTITY_NOT_FOUND'
+    security:
+      - bearerAuth: []

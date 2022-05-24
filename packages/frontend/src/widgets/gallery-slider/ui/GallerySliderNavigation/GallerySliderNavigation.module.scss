@@ -1,0 +1,21 @@
+@use 'src/app/styles/core/breakpoints' as *;
+
+.button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 2;
+  transform: translateY(-50%);
+
+  @include bp-1023 {
+    display: none;
+  }
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.prev-btn {
+  left: 10px;
+}

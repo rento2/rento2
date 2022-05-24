@@ -8,18 +8,33 @@
     counter-reset: count;
   }
 
-  &__title {
-    @include subtitle-2;
+  &__general {
+    @include body-4;
     display: flex;
     align-items: center;
     padding: 22px 0 22px 32px;
 
     @include bp-479 {
-      padding: 0 0 0 16px;
+      padding: 22px 0 22px 16px;
+    }
+
+    &:first-child {
+      border-top: 2px solid $neutral-50;
+    }
+  }
+
+  &__title {
+    @include body-4;
+    display: flex;
+    align-items: center;
+    padding: 22px 0 22px 32px;
+
+    @include bp-479 {
+      padding: 22px 0 22px 16px;
     }
 
     &::before {
-      @include subtitle-2;
+      @include body-4;
       margin: 0 5px 0 0;
       content: counters(count, '.') '.';
       counter-increment: count;
@@ -34,7 +49,7 @@
     counter-reset: count;
   }
 
-  &__item-2 {
+  &__item-2-listed {
     @include subtitle-2;
     margin: 0 0 12px;
 
@@ -43,6 +58,27 @@
       content: counters(count, '.') '.';
       counter-increment: count;
     }
+  }
+
+  &__item-2-default {
+    @include body-4;
+    margin: 0 0 12px;
+
+    &::before {
+      margin: 0 5px 0 0;
+      content: counters(count, '.') '.';
+      counter-increment: count;
+    }
+  }
+
+  &__item-2-unnumbered {
+    @include body-4;
+    margin: 0 0 12px;
+  }
+
+  &__item-bold {
+    @include subtitle-2;
+    margin: 0 0 12px;
   }
 
   &__list-3 {
@@ -62,6 +98,18 @@
     &:not(:last-child) {
       margin: 0 0 12px;
     }
+  }
+
+  &__list-unordered {
+    padding: 0;
+    margin: 0 0 0 18px;
+  }
+
+  &__item-unordered {
+    @include body-4;
+    display: list-item;
+    margin: 0 0 12px;
+    list-style-type: disc;
   }
 
   &__btn-modal {
@@ -114,7 +162,7 @@
     @include body-4;
     width: 90%;
     padding: 0 0 32px;
-    color: $gray-blue-600;
+    color: $gray-blue-400;
   }
 
   &__description-open {
