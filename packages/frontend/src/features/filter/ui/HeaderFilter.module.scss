@@ -1,0 +1,146 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.filter {
+  position: sticky;
+  top: -150px;
+  z-index: 11;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 130px;
+  background-color: $neutral-0;
+  box-shadow: 0 10px 20px $overlay;
+  transition: transform 0.3s ease-out;
+
+  &__container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px 0;
+
+    @include bp-1279 {
+      padding: 5px 0;
+    }
+    @include bp-1023 {
+      display: block;
+      width: 100%;
+    }
+    @include bp-479 {
+      padding: 5px;
+    }
+  }
+}
+
+.fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:first-child {
+    margin-right: 66px;
+
+    @include bp-1279 {
+      margin-right: 12px;
+    }
+  }
+
+  &:last-child {
+    @include bp-1023 {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    margin-right: 10px;
+
+    @include bp-1023 {
+      display: none;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.other {
+  display: flex;
+
+  @include bp-1023 {
+    width: 100%;
+  }
+
+  &__item {
+    margin-right: 10px;
+  }
+}
+
+.select {
+  width: 200px;
+
+  @include bp-1279 {
+    width: 180px;
+  }
+  @include bp-1023 {
+    width: 200px;
+  }
+}
+
+.button-map {
+  padding: 8px;
+
+  &__text {
+    white-space: nowrap;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.button-filters,
+.button-reset {
+  @include body-6;
+  padding: 13px 8px;
+
+  &__text {
+    margin-right: 2px;
+    white-space: nowrap;
+
+    @include bp-1279 {
+      display: none;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.button-filters {
+  @include bp-1023 {
+    margin-left: auto;
+  }
+}
+
+.button-reset {
+  @include bp-1023 {
+    display: none;
+  }
+}
+
+.button-search {
+  display: none;
+}
+
+.sticky {
+  transform: translateY(80px);
+
+  @include bp-1279 {
+    transform: translateY(70px);
+  }
+}

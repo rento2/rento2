@@ -1,0 +1,163 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.filter {
+  position: sticky;
+  top: -150px;
+  max-width: 1000px;
+  height: 130px;
+  margin: 0 auto;
+  background-color: $neutral-0;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px $overlay;
+  transition: transform 0.3s ease-out;
+
+  @include bp-1023 {
+    max-width: 705px;
+  }
+  @include bp-743 {
+    height: 50px;
+    border-radius: 8px;
+  }
+
+  &__container {
+    padding: 20px;
+
+    @include bp-743 {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+    }
+  }
+}
+
+.select {
+  width: 200px;
+}
+
+.button-map {
+  padding: 11px 44.5px;
+
+  @include bp-1023 {
+    padding: 8px;
+  }
+
+  &__text {
+    margin-right: 10px;
+    white-space: nowrap;
+
+    @include bp-1023 {
+      display: none;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    @include bp-1023 {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.button-filters,
+.button-reset {
+  padding: 13px 8px;
+
+  @include bp-1023 {
+    @include body-6;
+  }
+}
+
+.button-reset {
+  @include bp-743 {
+    display: none;
+  }
+}
+
+.button-filters {
+  @include bp-743 {
+    margin-left: auto;
+  }
+
+  &__text {
+    margin-right: 2px;
+
+    @include bp-1023 {
+      display: none;
+    }
+  }
+
+  &__icon {
+    @include bp-1023 {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.button-search {
+  padding: 11px 40px;
+
+  @include bp-1023 {
+    padding: 11px 21px;
+  }
+  @include bp-743 {
+    display: none;
+  }
+}
+
+.fieldset {
+  display: flex;
+  justify-content: space-between;
+
+  &:first-child {
+    @include bp-743 {
+      order: 2;
+    }
+  }
+
+  &:last-child {
+    margin-top: 10px;
+
+    @include bp-743 {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    margin-right: 10px;
+
+    @include bp-743 {
+      display: none;
+    }
+  }
+}
+
+.other {
+  display: flex;
+
+  @include bp-743 {
+    width: 100%;
+  }
+
+  &__item {
+    margin-right: 30px;
+
+    @include bp-743 {
+      margin-right: 10px;
+    }
+  }
+}
+
+.sticky {
+  transform: translateY(80px);
+
+  @include bp-1279 {
+    transform: translateY(70px);
+  }
+}
