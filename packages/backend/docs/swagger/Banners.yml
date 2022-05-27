@@ -1,0 +1,99 @@
+/api/v1/banners/one/{id}:
+    get:
+      summary: "Gives the one banner. (BannersController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "BANNERS"
+      responses:
+        200:
+          $ref: '#components/bannersResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/banners/delete/{id}:
+    delete:
+      summary: " (BannersController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "BANNERS"
+      responses:
+        200:
+          $ref: '#components/responses/ENTITY_DELETED'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/banners/create:
+    post:
+      summary: " (BannersController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "BANNERS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/banners/list/{page}:
+    get:
+      summary: "Gives the banners page. (BannersController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "BANNERS"
+      responses:
+        200:
+          $ref: '#components/bannersResponses/LIST'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+      security:
+        - bearerAuth: []
+/api/v1/banners/update:
+    post:
+      summary: "Update banners (BannersController::update)"
+      description: ""
+      parameters: []
+      tags:
+        - "BANNERS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}

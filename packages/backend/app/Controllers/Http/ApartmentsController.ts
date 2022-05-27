@@ -2,6 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Apartment } from 'App/Models'
 import { HttpStatusCode } from '../../../common/constants/HttpStatusCode'
 import {
+  creatingErrMsg,
   creatingOkMsg,
   creatingPaginatedList,
 } from '../../../common/helpers/creatingResponse'
@@ -11,11 +12,15 @@ import subwayStationToLine from '../../../common/helpers/subwayStationToLine'
 
 export default class ApartmentsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
-    const { search } = await request.validate({
+    const { search, fields } = await request.validate({
       schema: schema.create({
         search: schema.string.optional(),
+        fields: schema.string.optional(),
       }),
     })
+    const selectedFields = []
+
+    fields ? selectedFields.push('id', 'name', ...fields.split(',')) : selectedFields.push('*')
 
     let apartments = Apartment.query()
       .preload('accommodations')
@@ -23,6 +28,7 @@ export default class ApartmentsController {
       .preload('services')
       .preload('banners')
       .preload('photos')
+      .select(selectedFields)
 
     if (search) {
       apartments = apartments.where('name', 'ilike', `%${search}%`)
@@ -38,8 +44,29 @@ export default class ApartmentsController {
   }
 
   public async one ({ request, response }: HttpContextContract): Promise<void> {
-    const apartment = await Apartment.findOrFail(request.param('id', null))
-    return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartment))
+    const { fields } = await request.validate({
+      schema: schema.create({
+        fields: schema.string.optional(),
+      }),
+    })
+    const selectedFields = []
+    fields ? selectedFields.push('id', ...fields.split(',')) : selectedFields.push('*')
+
+    const apartment = await Apartment
+      .query()
+      .preload('accommodations')
+      .preload('sleepingPlaces')
+      .preload('services')
+      .preload('banners')
+      .preload('photos')
+      .select(selectedFields)
+      .where('id', request.param('id')).first()
+
+    if (!apartment) {
+      return response.send(creatingErrMsg('error', 'Apartment not found'))
+    } else {
+      return response.status(HttpStatusCode.OK).send(creatingOkMsg(apartment))
+    }
   }
 
   public async create ({

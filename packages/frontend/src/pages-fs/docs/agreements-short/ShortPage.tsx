@@ -8,14 +8,7 @@ export const ShortPage = (): JSX.Element => {
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
-      <main className='container'>
-        <section>
-          <h1>
-            Договор оферта краткосрочной аренды квартиры
-          </h1>
-        </section>
-        <AgreementShortList />
-      </main>
+      <AgreementShortList />
     </Layout>
   )
 }
