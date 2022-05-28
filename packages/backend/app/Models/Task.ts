@@ -14,7 +14,7 @@ export default class Task extends BaseModel {
   public handler!: keyof typeof handlers
 
   @column({ prepare: v => JSON.stringify(v) })
-  public params!: { [key: string]: any }
+  public params!: { [key: string]: uknown }
 
   @column()
   public info!: string
