@@ -25,5 +25,5 @@ export default async (process: Process): Promise<Process> => {
 
   return process.later(DateTime.now().plus({ seconds: 15 })).param({
     lastId: nextPage
-  }).info('DONEEEE')
+  })
 }
