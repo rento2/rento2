@@ -56,8 +56,6 @@ export default class Inpars {
       }
     })
 
-    console.info(url)
-
     const output = (await axios[method](url, body, {
       headers: {
         Accept: 'application/json'
@@ -80,7 +78,7 @@ export default class Inpars {
       lastId,
     })
     let nextPage = null
-    console.info(data.length)
+
     if (data.length >= this.paginationPerPage) {
       nextPage = data[data.length - 1].id
     }
