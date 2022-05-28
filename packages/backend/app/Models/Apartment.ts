@@ -46,13 +46,16 @@ export default class Apartment extends BaseModel {
   public name!: string
 
   @column()
-  public latinName!: string
+  public latinName!: string|null
 
   @column()
   public description!: string
 
   @column()
-  public bnovoId!: number
+  public bnovoId!: number | null
+
+  @column()
+  public inparsId!: number | null
 
   @column()
   public price!: number
@@ -136,31 +139,31 @@ export default class Apartment extends BaseModel {
   public totalRating!: number
 
   @column()
-  public checkInStart!: DateTime
+  public checkInStart!: DateTime | null // fixme
 
   @column()
-  public checkInEnd!: DateTime
+  public checkInEnd!: DateTime | null // fixme
 
   @column()
-  public checkOutEnd!: DateTime
+  public checkOutEnd!: DateTime | null // fixme
 
   @column()
-  public smokingAllowed!: boolean
+  public smokingAllowed!: boolean | null // fixme
 
   @column()
-  public partyingAllowed!: boolean
+  public partyingAllowed!: boolean | null // fixme
 
   @column()
-  public childrenAllowed!: boolean
+  public childrenAllowed!: boolean | null // fixme
 
   @column()
-  public petsAllowed!: boolean
+  public petsAllowed!: boolean | null // fixme
 
   @column()
-  public maxAdults!: number
+  public maxAdults!: number | null // fixme
 
   @column()
-  public maxChildren!: number
+  public maxChildren!: number | null // fixme
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
