@@ -57,6 +57,7 @@ export const NewModal: FC<INewModal> = ({
     return (
       <BottomSheet
         aria-modal
+        expandOnContentDrag
         className={ classNames(styles['bottom-sheet']) }
         header={
           <div className={ styles['modal__header--mobile'] }>
