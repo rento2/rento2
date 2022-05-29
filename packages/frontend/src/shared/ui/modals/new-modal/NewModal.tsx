@@ -8,7 +8,7 @@ import 'react-spring-bottom-sheet/dist/style.css'
 import { IconClose } from './icons/IconClose'
 import { useWindowDimensions } from '@shared/lib'
 
-import buttomStyles from './Buttom.module.scss'
+import bottomStyles from './Bottom.module.scss'
 import rightStyles from './Right.module.scss'
 
 interface INewModal {
@@ -51,7 +51,7 @@ export const NewModal: FC<INewModal> = ({
     }
   }, [isOpen, onKeyDown])
 
-  const styles = translate === 'bottom' ? buttomStyles : rightStyles
+  const styles = translate === 'bottom' ? bottomStyles : rightStyles
 
   if (isSwipe && widthWindow < 480) {
     return (

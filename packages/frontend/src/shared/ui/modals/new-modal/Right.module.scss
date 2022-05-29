@@ -99,11 +99,14 @@
   height: 100vh;
   visibility: hidden;
   background-color: $neutral-900;
-  opacity: 0.2;
-  transition: visibility 300ms;
+  opacity: 0;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  transition-property: visibility, opacity;
 
   &--visible {
     visibility: visible;
+    opacity: 0.2;
   }
 }
 
