@@ -1,4 +1,4 @@
-import { DocumentsLayout } from '@widgets/documents-layout'
+import { DocumentsLayout } from '@shared/ui/documents-layout'
 import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
