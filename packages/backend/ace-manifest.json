@@ -14,8 +14,7 @@
     },
     "queue:consume": {
       "settings": {
-        "loadApp": false,
-        "stayAlive": false
+        "loadApp": true
       },
       "commandPath": "./commands/QueueConsume",
       "commandName": "queue:consume",
@@ -26,8 +25,7 @@
     },
     "queue:publish": {
       "settings": {
-        "loadApp": false,
-        "stayAlive": false
+        "loadApp": true
       },
       "commandPath": "./commands/QueuePublish",
       "commandName": "queue:publish",
