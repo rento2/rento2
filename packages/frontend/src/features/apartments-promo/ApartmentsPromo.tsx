@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 
 import { IApartmentCard } from '@shared/types'
-import { ApartmentCard } from '@widgets/apartment-card'
-import styles from './ApartmentsPromo.module.scss'
 import { IconArrowLeft, IconArrowRight, ButtonIcon } from '@shared/ui'
 
-export const ApartmentsPromo = ({ cards }: {cards: IApartmentCard[]}): JSX.Element => {
+import styles from './ApartmentsPromo.module.scss'
+
+export const ApartmentsPromo = ({ cards }: {cards: IApartmentCard[]}, render): JSX.Element => {
   const swiperRef = useRef(null)
 
   return (
@@ -39,9 +39,7 @@ export const ApartmentsPromo = ({ cards }: {cards: IApartmentCard[]}): JSX.Eleme
         >
           {cards?.map((el) => (
             <SwiperSlide key={ el.id }>
-              <ApartmentCard { ...el }
-                mode="promo"
-              />
+              {render}
             </SwiperSlide>
           ))}
         </Swiper>

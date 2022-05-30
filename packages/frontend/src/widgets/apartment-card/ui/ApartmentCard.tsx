@@ -45,9 +45,11 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
           <h2 className={ styles['card__price'] }>
             {`${price}₽ / месяц`}
           </h2>
-          <span className={ styles['card__deposit'] }>
-            {`Депозит: 400000 ${deposit}`}
-          </span>
+          { mode !== 'promo' && (
+            <span className={ styles['card__deposit'] }>
+              {`Депозит: 400000 ${deposit}`}
+            </span>)
+          }
           <p className={ styles['card__details'] }>
             {`${rooms} комн · ${area} м2 · этаж${storey}/${total}`}
           </p>
