@@ -58,10 +58,10 @@ export default class Apartment extends BaseModel {
   public inparsId!: number | null
 
   @column()
-  public price!: number
+  public price!: number | null
 
   @column()
-  public pricePerMonth!: number
+  public pricePerMonth!: number | null
 
   @column()
   public discount!: number
