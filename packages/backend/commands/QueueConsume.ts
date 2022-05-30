@@ -28,7 +28,7 @@ export default class QueueConsume extends BaseCommand {
           .first()
 
         if (!task) {
-          this.logger.warning('Task accepted and ack\'ed, but row in db didn\'t found - old message or already done task')
+          this.logger.warning('Task accepted and ack\'ed, but row in db not found - old message or already done task')
           return resolve(ack())
         }
 

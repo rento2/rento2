@@ -46,7 +46,7 @@ export default class Apartment extends BaseModel {
   public name!: string
 
   @column()
-  public latinName!: string|null
+  public latinName!: string | null
 
   @column()
   public description!: string
