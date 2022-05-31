@@ -4,14 +4,12 @@
 
 .filter {
   position: sticky;
-  top: -150px;
   max-width: 1000px;
   height: 130px;
   margin: 0 auto;
   background-color: $neutral-0;
   border-radius: 20px;
   box-shadow: 0 10px 20px $overlay;
-  transition: transform 0.3s ease-out;
 
   @include bp-1023 {
     max-width: 705px;
@@ -155,9 +153,5 @@
 }
 
 .sticky {
-  transform: translateY(80px);
-
-  @include bp-1279 {
-    transform: translateY(70px);
-  }
+  visibility: hidden;
 }

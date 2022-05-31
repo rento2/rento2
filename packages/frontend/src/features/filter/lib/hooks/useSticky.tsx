@@ -12,7 +12,7 @@ export const useSticky = (): IUseSticky => {
   const anchorRef = useRef<HTMLDivElement>(null)
 
   const toggleMode = useCallback(() => {
-    const offsetTop = (anchorRef.current?.offsetTop ?? 0) + 40
+    const offsetTop = (anchorRef.current?.offsetTop ?? 0) + 100
     const currentScrollTop = window.scrollY
 
     if (lastScrollTop.current <= currentScrollTop && currentScrollTop > offsetTop) {
@@ -30,10 +30,8 @@ export const useSticky = (): IUseSticky => {
 
   useEffect(() => {
     window.addEventListener('scroll', toggleMode)
-    window.addEventListener('resize', toggleMode)
     return () => {
       window.removeEventListener('scroll', toggleMode)
-      window.removeEventListener('resize', toggleMode)
     }
   }, [toggleMode])
 

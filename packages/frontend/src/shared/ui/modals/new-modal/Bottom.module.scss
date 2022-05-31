@@ -53,23 +53,44 @@
 }
 
 .button-close {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  padding: 0;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   background-color: $neutral-0;
-  border: 1px solid $neutral-900;
+  border: 0;
   border-radius: 8px;
   outline: 0;
+  transition: background-color 0.2s;
 
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: $neutral-0;
+  &::before {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    content: ' ';
+    border: 1px solid $neutral-900;
+    border-radius: 8px;
+  }
+
+  &__icon {
+    position: absolute;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $iris-100;
+
+    .button-close__icon {
+      stroke: $iris-500;
+    }
+
+    &::before {
+      border-color: $iris-500;
+    }
   }
 }
 
@@ -84,12 +105,20 @@
   cursor: pointer;
   background-color: $neutral-0;
   border: 0;
+  border-radius: 8px;
   outline: 0;
 
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: $neutral-0;
+  &__icon {
+    position: absolute;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $iris-100;
+
+    .button-close__icon {
+      stroke: $iris-500;
+    }
   }
 }
 
@@ -136,7 +165,7 @@
 // BottomSheet
 
 .bottom-sheet {
-  [data-rsbs-header] {
+  [role='dialog'] > div:first-child {
     position: relative;
     display: flex;
     flex-shrink: 0;

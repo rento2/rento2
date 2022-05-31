@@ -56,9 +56,9 @@ export const NewModal: FC<INewModal> = ({
   if (isSwipe && widthWindow < 480) {
     return (
       <BottomSheet
-        aria-modal
         expandOnContentDrag
-        className={ classNames(styles['bottom-sheet']) }
+        skipInitialTransition
+        className={ styles['bottom-sheet'] }
         header={
           <div className={ styles['modal__header--mobile'] }>
             <button
@@ -66,7 +66,7 @@ export const NewModal: FC<INewModal> = ({
               type='button'
               onClick={ onClose }
             >
-              <IconClose />
+              <IconClose classProps={ classNames(styles['button-close__icon']) } />
             </button>
           </div>
         }
@@ -111,7 +111,7 @@ export const NewModal: FC<INewModal> = ({
               type='button'
               onClick={ onClose }
             >
-              <IconClose />
+              <IconClose classProps={ classNames(styles['button-close__icon']) } />
             </button>
           </div>
           <div className={ styles.modal__body }>

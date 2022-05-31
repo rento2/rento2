@@ -4,7 +4,7 @@
 
 .filter {
   position: sticky;
-  top: -150px;
+  top: -160px;
   z-index: 2;
   display: flex;
   align-items: flex-end;
@@ -12,7 +12,7 @@
   height: 130px;
   background-color: $neutral-0;
   box-shadow: 0 10px 20px $overlay;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-in-out;
 
   &__container {
     display: flex;
@@ -138,9 +138,9 @@
 }
 
 .sticky {
-  transform: translateY(80px);
+  transform: translateY(90px);
 
   @include bp-1279 {
-    transform: translateY(70px);
+    transform: translateY(80px);
   }
 }
