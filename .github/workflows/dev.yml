@@ -1,0 +1,69 @@
+name: Go
+
+on:
+  push:
+    # todo manual deploy
+    branches: [ develop ]
+
+jobs:
+  dev-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Node.JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.0.0
+
+    - name: Install and build backend
+      working-directory: ./packages/backend
+      run: |
+        npm ci --production
+        node ace build --production
+
+    - name: Install and build frontend
+      working-directory: ./packages/frontend
+      run: |
+        npm ci
+
+    - name: Install and build admin
+      working-directory: ./packages/admin
+      run: |
+        npm ci
+
+    - name: Configure
+      env:
+        SECRET_BACKEND: ${{ secrets.CONFIG_BACKEND }}
+        SECRET_ADMIN: ${{ secrets.CONFIG_ADMIN }}
+        SECRET_FRONTEND: ${{ secrets.CONFIG_FRONTEND }}
+      run: |
+        echo "$ENV_BACKEND" > ./packages/backend/build/.env
+        echo "$ENV_BACKEND" > ./packages/backend/.env
+        echo "$ENV_ADMIN" > ./packages/admin/.env
+        echo "$ENV_FRONTEND" > ./packages/frontend/.env
+
+    - name: Deploy
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DEV_IP }}
+        username: ${{ secrets.DEV_USERNAME }}
+        password: ${{ secrets.DEV_PASS }}
+        port: ${{ secrets.DEV_PORT }}
+        target: ${{ secrets.DEV_PATH }}
+        source: "."
+        rm: true
+
+    - name: Backend apply changes
+      uses: appleboy/ssh-action@master
+      env:
+        SECRET_PASSWORD: ${{ secrets.DEV_PASS }}
+      with:
+        host: ${{ secrets.DEV_IP }}
+        username: ${{ secrets.DEV_USERNAME }}
+        password: ${{ secrets.DEV_PASS }}
+        port: ${{ secrets.DEV_PORT }}
+
+        script: |
+          pm2 restart /var/www/rento/ecosystem.config.js
+          node /var/www/rento/packages/backend/ace migration:run
