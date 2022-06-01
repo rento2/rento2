@@ -6,6 +6,7 @@ const Apartments: FC<ListProps> = (props) => {
     <List { ...props }>
       <Datagrid rowClick='edit'>
         <TextField source='id' />
+        <TextField source='type' />
         <TextField source='name' />
         <TextField source='latin_name' />
       </Datagrid>
