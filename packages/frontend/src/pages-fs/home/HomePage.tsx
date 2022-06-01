@@ -41,6 +41,11 @@ export const HomePage = (): JSX.Element => {
               Пользовательское соглашение
             </a>
           </Link>
+          <Link href='/docs/agreements/owner-rento'>
+            <a>
+              Договор между собственником и Rento
+            </a>
+          </Link>
         </section>
       </main>
     </Layout>
