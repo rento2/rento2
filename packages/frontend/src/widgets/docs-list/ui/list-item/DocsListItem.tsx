@@ -1,10 +1,22 @@
-/* eslint-disable react/prop-types */
 import { forwardRef, Ref, useState, useRef, useContext, useEffect, useMemo } from 'react'
-import { IListProps } from '@widgets/docs-list/lib/types/IListProps'
 import classNames from 'classnames'
 import { ITagName } from '@widgets/docs-list/lib/types/ITagName'
 import styles from './DocsListItem.module.scss'
 import { DocsListContext } from '@widgets/docs-list/model/DocsListContext'
+
+interface IListProps {
+  type: keyof ITagName
+  classItem?: string
+  text?: string
+  button?: {
+    buttonText: string
+    classButton: string
+    buttonType: string
+  }
+  contents?: IListProps[]
+  as?: React.ElementType // Этот тип если нужно будет передать тег или компонент через пропс
+
+}
 
 export const DocsListItem = forwardRef<HTMLElement, IListProps>(
   (
@@ -15,7 +27,6 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
       button,
       contents,
       as
-
     },
     ref: Ref<HTMLElement>
   ): JSX.Element => {
