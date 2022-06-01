@@ -18,7 +18,7 @@ jobs:
 
     - name: Process backend
       env:
-        SECRET_BACKEND: ${{ secrets.CONFIG_BACKEND }}
+        ENV_BACKEND: ${{ secrets.CONFIG_BACKEND }}
       working-directory: ./packages/backend
       run: |
         npm ci
@@ -28,7 +28,7 @@ jobs:
     - name: Process frontend
       working-directory: ./packages/frontend
       env:
-        SECRET_FRONTEND: ${{ secrets.CONFIG_FRONTEND }}
+        ENV_FRONTEND: ${{ secrets.CONFIG_FRONTEND }}
       run: |
         echo "$ENV_FRONTEND" > ./.env
         npm ci
@@ -36,7 +36,7 @@ jobs:
     - name: Process admin
       working-directory: ./packages/admin
       env:
-        SECRET_ADMIN: ${{ secrets.CONFIG_ADMIN }}
+        ENV_ADMIN: ${{ secrets.CONFIG_ADMIN }}
       run: |
         echo "$ENV_ADMIN" > ./.env
         npm ci
@@ -61,5 +61,5 @@ jobs:
         port: ${{ secrets.DEV_PORT }}
 
         script: |
-          pm2 restart /var/www/rento/ecosystem.config.js
+          /usr/bin/pm2 restart /var/www/rento/ecosystem.config.js
           node /var/www/rento/packages/backend/build/ace migration:run
