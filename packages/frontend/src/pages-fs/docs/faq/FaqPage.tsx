@@ -1,11 +1,9 @@
-import { DocumentsLayout } from '@shared/ui/documents-layout'
-import { Layout, AccordionList } from '@shared/ui'
+import { Layout, AccordionList, DocumentsLayout, DocsTitle } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
 import { SideMenu, HeadMenu, dataMenu } from '@widgets/documents-side-menu'
-import { DocsTitle } from '@shared/ui/docs-title'
 
 const containTitle = 'Частые вопросы'
 const categorySideMenu = 'Частые вопросы'
