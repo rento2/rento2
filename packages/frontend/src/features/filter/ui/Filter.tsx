@@ -37,6 +37,8 @@ export const Filter: FC = () => {
               render={ ({ field: { value, onChange } }) =>
                 (<DoubleInput
                   classProps={ styles.fieldset__item }
+                  placeholder={ { min: '50000', max: '2000000' } }
+                  unit="₽"
                   value={ value }
                   onChange={ onChange }
                 />) }

@@ -15,6 +15,9 @@
     max-width: 705px;
   }
   @include bp-743 {
+    max-width: 440px;
+  }
+  @include bp-743 {
     height: 50px;
     border-radius: 8px;
   }

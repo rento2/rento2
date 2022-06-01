@@ -19,6 +19,8 @@ interface INewModal {
   isSwipe?: boolean
 }
 
+const paddingBottom = 40
+
 export const NewModal: FC<INewModal> = ({
   isOpen,
   onClose,
@@ -72,7 +74,7 @@ export const NewModal: FC<INewModal> = ({
         }
         open={ isOpen }
         snapPoints={ ({ maxHeight }) => contentRef.current != null
-          ? contentRef.current.offsetHeight + 40
+          ? contentRef.current.offsetHeight + paddingBottom
           : maxHeight }
         onDismiss={ onClose }
       >

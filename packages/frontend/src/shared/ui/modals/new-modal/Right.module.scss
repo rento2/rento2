@@ -119,7 +119,7 @@
   width: 100%;
   height: 100vh;
   visibility: hidden;
-  background-color: $neutral-900;
+  background-color: $overlay;
   opacity: 0;
   transition-timing-function: ease-in-out;
   transition-duration: 0.3s;
@@ -127,7 +127,7 @@
 
   &--visible {
     visibility: visible;
-    opacity: 0.2;
+    opacity: 1;
   }
 }
 
@@ -154,6 +154,10 @@
 // BottomSheet
 
 .bottom-sheet {
+  > div:first-child {
+    background-color: $overlay;
+  }
+
   [role='dialog'] > div:first-child {
     position: relative;
     display: flex;

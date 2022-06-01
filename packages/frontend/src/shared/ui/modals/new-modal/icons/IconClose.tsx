@@ -6,6 +6,7 @@ import { IIconClassStroke } from '@shared/ui/icons/types/iconTypes'
 import styles from './IconBaseStyles.module.scss'
 
 export const IconClose: FC<IIconClassStroke> = ({ figure = 'none', classProps }): JSX.Element => {
+  // Кто исправит ошибку, удали пожалуйста лишнии стили из ./IconBaseStyles.scss
   const stylesFigure = styles[`${figure}`] ?? ''
   const stylesSize = styles['size-20'] ?? ''
   const isSize = figure !== 'none'
