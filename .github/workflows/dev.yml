@@ -29,8 +29,8 @@ jobs:
       env:
         SECRET_FRONTEND: ${{ secrets.CONFIG_FRONTEND }}
       run: |
-        echo "$ENV_FRONTEND" > ./packages/frontend/.env
-        npm ci --production
+        echo "$ENV_FRONTEND" > ./.env
+        npm ci
 
     - name: Process admin
       working-directory: ./packages/admin
@@ -38,7 +38,7 @@ jobs:
         SECRET_ADMIN: ${{ secrets.CONFIG_ADMIN }}
       run: |
         echo "$ENV_ADMIN" > ./packages/admin/.env
-        npm ci --production
+        npm ci
         npm run build
 
     - name: Deploy
