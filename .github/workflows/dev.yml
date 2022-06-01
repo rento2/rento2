@@ -53,8 +53,6 @@ jobs:
 
     - name: Backend apply changes
       uses: appleboy/ssh-action@master
-      env:
-        SECRET_PASSWORD: ${{ secrets.DEV_PASSWORD }}
       with:
         host: ${{ secrets.DEV_IP }}
         username: ${{ secrets.DEV_USERNAME }}
