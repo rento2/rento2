@@ -1,4 +1,4 @@
-name: Go
+name: Deploy development server
 
 on:
   push:
@@ -20,8 +20,8 @@ jobs:
         SECRET_BACKEND: ${{ secrets.CONFIG_BACKEND }}
       working-directory: ./packages/backend
       run: |
-        npm ci --production
-        node ace build --production
+        npm ci
+        node ./ace build --production
         echo "$ENV_BACKEND" > ./build/.env
 
     - name: Process frontend
