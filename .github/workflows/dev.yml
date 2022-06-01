@@ -37,7 +37,7 @@ jobs:
       env:
         SECRET_ADMIN: ${{ secrets.CONFIG_ADMIN }}
       run: |
-        echo "$ENV_ADMIN" > ./packages/admin/.env
+        echo "$ENV_ADMIN" > ./.env
         npm ci
         npm run build
 
