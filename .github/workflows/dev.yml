@@ -39,7 +39,6 @@ jobs:
       run: |
         echo "$ENV_ADMIN" > ./.env
         npm ci
-        npm run build
 
     - name: Deploy
       uses: appleboy/scp-action@master
