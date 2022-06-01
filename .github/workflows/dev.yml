@@ -2,7 +2,6 @@ name: Go
 
 on:
   push:
-    # todo manual deploy
     branches: [ develop ]
 
 jobs:
@@ -16,54 +15,53 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install and build backend
+    - name: Process backend
+      env:
+        SECRET_BACKEND: ${{ secrets.CONFIG_BACKEND }}
       working-directory: ./packages/backend
       run: |
         npm ci --production
         node ace build --production
+        echo "$ENV_BACKEND" > ./build/.env
 
-    - name: Install and build frontend
+    - name: Process frontend
       working-directory: ./packages/frontend
-      run: |
-        npm ci
-
-    - name: Install and build admin
-      working-directory: ./packages/admin
-      run: |
-        npm ci
-
-    - name: Configure
       env:
-        SECRET_BACKEND: ${{ secrets.CONFIG_BACKEND }}
-        SECRET_ADMIN: ${{ secrets.CONFIG_ADMIN }}
         SECRET_FRONTEND: ${{ secrets.CONFIG_FRONTEND }}
       run: |
-        echo "$ENV_BACKEND" > ./packages/backend/build/.env
-        echo "$ENV_BACKEND" > ./packages/backend/.env
-        echo "$ENV_ADMIN" > ./packages/admin/.env
         echo "$ENV_FRONTEND" > ./packages/frontend/.env
+        npm ci --production
+
+    - name: Process admin
+      working-directory: ./packages/admin
+      env:
+        SECRET_ADMIN: ${{ secrets.CONFIG_ADMIN }}
+      run: |
+        echo "$ENV_ADMIN" > ./packages/admin/.env
+        npm ci --production
+        npm run build
 
     - name: Deploy
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.DEV_IP }}
         username: ${{ secrets.DEV_USERNAME }}
-        password: ${{ secrets.DEV_PASS }}
+        password: ${{ secrets.DEV_PASSWORD }}
         port: ${{ secrets.DEV_PORT }}
-        target: ${{ secrets.DEV_PATH }}
+        target: /var/www/rento/
         source: "."
         rm: true
 
     - name: Backend apply changes
       uses: appleboy/ssh-action@master
       env:
-        SECRET_PASSWORD: ${{ secrets.DEV_PASS }}
+        SECRET_PASSWORD: ${{ secrets.DEV_PASSWORD }}
       with:
         host: ${{ secrets.DEV_IP }}
         username: ${{ secrets.DEV_USERNAME }}
-        password: ${{ secrets.DEV_PASS }}
+        password: ${{ secrets.DEV_PASSWORD }}
         port: ${{ secrets.DEV_PORT }}
 
         script: |
           pm2 restart /var/www/rento/ecosystem.config.js
-          node /var/www/rento/packages/backend/ace migration:run
+          node /var/www/rento/packages/backend/build/ace migration:run
