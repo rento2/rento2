@@ -1,34 +1,27 @@
-import { Layout, AccordionList, DocumentsLayout, DocsTitle } from '@shared/ui'
+import { DocumentsLayout, Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-import { dateAccordion } from './model/dateAccordion'
 import { useWindowDimensions } from '@shared/lib'
-import { SideMenu, HeadMenu, dataMenu } from '@widgets/documents-side-menu'
+import { dataMenu, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
+import { AgreementsList } from '@widgets/documents-agreements'
 
-const containTitle = 'Частые вопросы'
-const categorySideMenu = 'Частые вопросы'
+const categorySideMenu = 'Образцы документов'
 
-export const FaqPage = (): JSX.Element => {
+export const AgreementsPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
-
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
     >
-
       <DocumentsLayout
-        docTitle={ <DocsTitle containTitle={ containTitle }
-          pathIcon='/images/docs/pic-question.svg'
-        /> }
         headMenu={ <HeadMenu data={ dataMenu } /> }
-
         sideMenu={ <SideMenu activeItem={ categorySideMenu }
           data={ dataMenu }
         /> }
         widthProps={ 1060 }
         widthWindowProps={ widthWindow }
       >
-        <AccordionList state={ dateAccordion } />
+        <AgreementsList />
       </DocumentsLayout>
     </Layout>
   )
