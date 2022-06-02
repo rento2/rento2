@@ -60,7 +60,7 @@ export const NewModal: FC<INewModal> = ({
       <BottomSheet
         expandOnContentDrag
         skipInitialTransition
-        className={ styles['bottom-sheet'] }
+        className={ classNames(styles['bottom-sheet']) }
         header={
           <div className={ styles['modal__header--mobile'] }>
             <button
