@@ -2,7 +2,7 @@ import { FC, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { Controller, useForm } from 'react-hook-form'
 
-import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput, NewModal } from '@shared/ui'
+import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput, ModalBase } from '@shared/ui'
 import { options, chips } from '../model/mock'
 import { useSticky } from '../lib/hooks/useSticky'
 
@@ -130,7 +130,7 @@ export const Filter: FC = () => {
         </form>
       </div>
       <div ref={ anchorRef } />
-      <NewModal
+      <ModalBase
         isSwipe
         isOpen={ showAdvancedOptions }
         title="Headlien Text"
@@ -140,7 +140,7 @@ export const Filter: FC = () => {
         <div>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum laudantium nobis hic voluptates. Nobis corporis ipsa pariatur laborum ut quae, impedit cum error. Porro accusamus dignissimos nulla nesciunt, et explicabo ab pariatur reiciendis maxime reprehenderit architecto nisi, tempora, dolorum ipsa voluptatibus quibusdam aspernatur expedita! Assumenda ab quis repellendus asperiores at omnis explicabo suscipit facilis, quam fugit facere natus est nobis doloremque libero ea porro, tempora mollitia necessitatibus, animi neque quo impedit! Itaque doloribus a repudiandae iste. Impedit adipisci molestiae nobis magnam praesentium, veniam rem aspernatur aut. Obcaecati, minima? Libero, officiis tempore itaque pariatur dolorem fugiat nostrum ad, quos officia non temporibus quo, accusamus velit? Est explicabo rerum incidunt ullam, iusto quisquam
         </div>
-      </NewModal>
+      </ModalBase>
     </>
   )
 }
