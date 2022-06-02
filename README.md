@@ -15,6 +15,7 @@
 - Запустить админку: ``npm run start:admin``
 - Запустить бэк: ``npm run start:backend``
 - Запустить фронт: ``npm run start:frontend``
+- Запустить swagger: ``npm run start:swagger``, залогиниться в AUTH (значения по умолчанию можно не менять) и вставить полученный токен (зелёная кнопка Authorize).
 
 # Особенности монорепозитория
 - При добавлении в один из проектов зависимости необходимо сделать ``lerna bootstrap``
@@ -32,6 +33,9 @@
 В директории ``packages/backend`` запустить команды:
 - ``node ace migration:run``
 - ``node ace db:seed``
+
+# Удалить БД и создать с нуля
+- ``npm run db:reset``
 
 # Todo
 - Add commit message standard (see cz-conventional-changelog)

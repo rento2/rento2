@@ -1,31 +1,28 @@
 import classNames from 'classnames'
-import style from './DocumentsLayout.module.scss'
+import styles from './DocumentsLayout.module.scss'
 
 interface IDocumentsLayout {
-  titleText: string
   children: JSX.Element
   widthWindowProps: number
   sideMenu: JSX.Element
   headMenu: JSX.Element
   widthProps: number
+  docTitle?: JSX.Element
+
 }
 
-export function DocumentsLayout ({ titleText, children, widthWindowProps, sideMenu, headMenu, widthProps }: IDocumentsLayout): JSX.Element {
+export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {
+  const { docTitle, children, widthWindowProps, sideMenu, headMenu, widthProps } = props
   return (
-    <div
-      className={ classNames(style['flex-wrapper'], 'container-old') }
-    >
+    <div className={ classNames(styles['flex-wrapper'], 'container-old') }>
       {
           widthWindowProps >= widthProps
             ? sideMenu
             : headMenu
           }
-
-      <div className={ style['doc-container'] }>
-        <h1 className={ style['title'] }>
-          {titleText}
-        </h1>
-        <div className={ style['wrapper-box'] }>
+      <div className={ styles['doc-container'] }>
+        {docTitle}
+        <div className={ styles['wrapper-box'] }>
           {children}
         </div>
       </div>

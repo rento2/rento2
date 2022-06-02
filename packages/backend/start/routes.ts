@@ -39,7 +39,7 @@ Route
         Route.delete('/delete/:id', 'ReviewsController.delete')
         Route.post('/create', 'ReviewsController.create')
         Route.get('/list/:page', 'ReviewsController.list')
-        Route.post('/update', 'ReviewsController.update')
+        Route.post('/update/:id', 'ReviewsController.update')
       })
       .prefix('reviews')
 
@@ -49,7 +49,7 @@ Route
         Route.delete('/delete/:id', 'BannersController.delete')
         Route.post('/create', 'BannersController.create')
         Route.get('/list/:page', 'BannersController.list')
-        Route.post('/update', 'BannersController.update')
+        Route.post('/update/:id', 'BannersController.update')
       })
       .prefix('banners')
 
@@ -68,7 +68,7 @@ Route
         Route.delete('/delete/:id', 'SleepingPlacesController.delete')
         Route.post('/create', 'SleepingPlacesController.create')
         Route.get('/list/:page', 'SleepingPlacesController.list')
-        Route.post('/update', 'SleepingPlacesController.update')
+        Route.post('/update/:id', 'SleepingPlacesController.update')
       })
       .prefix('sleeping-places')
 
@@ -78,14 +78,14 @@ Route
         Route.delete('/delete/:id', 'AccommodationsController.delete')
         Route.post('/create', 'AccommodationsController.create')
         Route.get('/list/:page', 'AccommodationsController.list')
-        Route.post('/update', 'AccommodationsController.update')
+        Route.post('/update/:id', 'AccommodationsController.update')
       })
       .prefix('accommodations')
 
     Route
       .group(() => {
         Route.post('/create', 'PhotosController.create')
-        Route.get('/one', 'PhotosController.one')
+        Route.get('/one/:id', 'PhotosController.one')
         Route.get('/list/:page', 'PhotosController.list')
         Route.delete('/delete/:id', 'PhotosController.delete')
       })
@@ -95,7 +95,7 @@ Route
       .group(() => {
         Route.delete('/delete/:id', 'ApartmentsController.delete')
         Route.post('/create', 'ApartmentsController.create')
-        Route.post('/update', 'ApartmentsController.update')
+        Route.post('/update/:id', 'ApartmentsController.update')
       })
       .prefix('apartments')
   })

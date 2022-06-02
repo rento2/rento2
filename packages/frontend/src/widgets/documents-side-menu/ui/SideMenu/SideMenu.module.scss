@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .list {
   display: flex;
   flex-direction: column;
@@ -20,4 +24,8 @@
   height: 1018px;
   padding: 52px 40px 0 0;
   border-right: 2px solid $neutral-50;
+}
+
+.active {
+  color: $iris-500;
 }

@@ -1,5 +1,9 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .item {
-  @include body-5;
+  @include body-4;
 
   &:not(:last-child) {
     margin: 0 0 4px;
@@ -11,14 +15,18 @@
 
   &:focus,
   &:hover {
-    @include subtitle-3;
+    color: $iris-500;
   }
 
   &:active {
-    @include body-5;
+    color: $iris-700;
   }
 
   &:disabled {
-    @include body-5;
+    color: $gray-blue-300;
+  }
+
+  &__link {
+    color: $iris-900;
   }
 }

@@ -9,6 +9,9 @@ const nextConfig = {
 @use 'src/app/styles/core/typography' as *;
 @use 'src/app/styles/core/breakpoints' as *;
 `
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 }
 

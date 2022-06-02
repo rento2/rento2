@@ -1,5 +1,39 @@
 {
   "commands": {
+    "db:reset": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/Db",
+      "commandName": "db:reset",
+      "description": "Drop all tables and execute seeders in new database (db:wipe + migration:run + db:seed)",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
+    "queue:consume": {
+      "settings": {
+        "loadApp": true
+      },
+      "commandPath": "./commands/QueueConsume",
+      "commandName": "queue:consume",
+      "description": "Consume tasks from queue",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
+    "queue:publish": {
+      "settings": {
+        "loadApp": true
+      },
+      "commandPath": "./commands/QueuePublish",
+      "commandName": "queue:publish",
+      "description": "Publish tasks to messages queue",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",
@@ -457,6 +491,17 @@
           "description": "Drop all custom types (Postgres only)"
         }
       ]
+    },
+    "swagger:generate": {
+      "settings": {
+        "loadApp": true
+      },
+      "commandPath": "adonis5-swagger/build/commands/GenerateSwaggerFile",
+      "commandName": "swagger:generate",
+      "description": "Generate swagger file",
+      "args": [],
+      "aliases": [],
+      "flags": []
     }
   },
   "aliases": {}
