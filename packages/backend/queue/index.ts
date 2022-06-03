@@ -1,1 +1,2 @@
-export * as testTask from './testTask'
+export * as inparsPaginateEstate from './inparsPaginateEstate'
+export * as inparsProcessSingleProperty from './inparsProcessSingleProperty'
