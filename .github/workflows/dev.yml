@@ -54,7 +54,6 @@ jobs:
     #     target: /var/www/rento/
     #     source: "."
     #     rm: true
-
     - name: Backend apply changes
       uses: appleboy/ssh-action@master
       with:
