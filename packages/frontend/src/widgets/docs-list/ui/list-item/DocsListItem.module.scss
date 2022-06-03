@@ -8,6 +8,10 @@
     counter-reset: count;
   }
 
+  &__text {
+    padding: 0;
+  }
+
   &__general {
     @include subtitle-2;
     display: flex;

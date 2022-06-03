@@ -4,7 +4,7 @@ import { Footer } from '@widgets/footer'
 import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { useWindowDimensions } from '@shared/lib'
 import { DocsList } from '@widgets/docs-list'
-import { privacyData } from './model/PrivacyData'
+import { privacyData } from './model/privacyData'
 
 export const PrivacyPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
