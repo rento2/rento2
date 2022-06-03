@@ -62,4 +62,4 @@ jobs:
         password: ${{ secrets.DEV_PASSWORD }}
         port: ${{ secrets.DEV_PORT }}
 
-        script: bash ./var/www/apply.sh
+        script: bash /var/www/apply.sh
