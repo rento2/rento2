@@ -33,7 +33,7 @@ jobs:
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
         echo "$ENV_FRONTEND" > ./.env
-        unzip -qq -P "$ZIP_PASSWORD" ./../../.github/fonts.zip -d ./src/app/styles
+        unzip -P -qq "$ZIP_PASSWORD" ./../../.github/fonts.zip -d ./src/app/styles
         npm ci
 
     - name: Process admin
