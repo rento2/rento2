@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: montudor/action-zip@v1
 
     - name: Install Node.JS
       uses: actions/setup-node@v3
@@ -37,7 +38,6 @@ jobs:
       working-directory: ./
       env:
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
-      uses: montudor/action-zip@v1
       with:
         args: unzip -qq -P "$ZIP_PASSWORD" ./.github/fonts.zip -d ./packages/frontend/src/app/styles
 
@@ -45,8 +45,10 @@ jobs:
       working-directory: ./packages/frontend
       env:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
+        ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
         echo "$ENV_FRONTEND" > ./.env
+        unzip -qq -P "$ZIP_PASSWORD" ./../../.github/fonts.zip -d ./src/app/styles
         npm ci
 
     - name: Process admin
