@@ -26,21 +26,6 @@ jobs:
         node ./ace build --production
         echo "$ENV_BACKEND" > ./build/.env
 
-    - name: Prepare frontend fonts
-      working-directory: ./
-      env:
-        ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
-      run: |
-        echo "$ZIP_PASSWORD" > ./.env
-        npm ci
-
-    - name: Prepare frontend fonts
-      working-directory: ./
-      env:
-        ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
-      with:
-        args: unzip -qq -P "$ZIP_PASSWORD" ./.github/fonts.zip -d ./packages/frontend/src/app/styles
-
     - name: Process frontend
       working-directory: ./packages/frontend
       env:
