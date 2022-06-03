@@ -300,7 +300,7 @@ export const agreementSelectionData: IListProps[] = [
                       ]
                     }
                   ]
-                },
+                }
               ]
             }]
           },

@@ -46,6 +46,16 @@ export const HomePage = (): JSX.Element => {
               Договор между собственником и Rento
             </a>
           </Link>
+          <Link href='/docs/agreements/long'>
+            <a>
+              Договор между собственником и арендатором
+            </a>
+          </Link>
+          <Link href='/docs/privacy'>
+            <a>
+              Политика обработки персональных данных
+            </a>
+          </Link>
         </section>
       </main>
     </Layout>

@@ -3,6 +3,8 @@ import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { useWindowDimensions } from '@shared/lib'
+import { DocsList } from '@widgets/docs-list'
+import { privacyData } from './model/PrivacyData'
 
 export const PrivacyPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
@@ -16,9 +18,7 @@ export const PrivacyPage = (): JSX.Element => {
         widthProps={ 1059 }
         widthWindowProps={ widthWindow }
       >
-        <div>
-          guyhu
-        </div>
+        <DocsList items={ privacyData } />
       </DocumentsLayout>
     </Layout>
   )

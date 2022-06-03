@@ -188,7 +188,7 @@ export const rulesData: IListProps[] = [
                   type: 'item',
                   classItem: 'document__item-2-default',
                   text: 'Использование материалов и сервисов Сайта регулируется нормами действующего законодательства Российской Федерации.'
-                },
+                }
               ]
             }]
           },
