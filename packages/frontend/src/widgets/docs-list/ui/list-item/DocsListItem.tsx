@@ -36,7 +36,8 @@ export const DocsListItem = forwardRef<HTMLElement, IListProps>(
       list: 'ol',
       item: 'li',
       title: 'h3',
-      description: 'span'
+      description: 'span',
+      text: 'div'
     }
 
     const Component = as ?? tagName[type]

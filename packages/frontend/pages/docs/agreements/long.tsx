@@ -1,4 +1,4 @@
-import { AgreementLongPage } from '@pages-fs/docs/agreements-long/AgreementLongPage'
+import { AgreementLongPage } from '@pages-fs/docs'
 
 export default function Long (): JSX.Element {
   return (

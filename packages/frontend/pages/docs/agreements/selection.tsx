@@ -1,4 +1,4 @@
-import { AgreementSelectionPage } from '@pages-fs/docs/agreements-selection/AgreementSelectionPage'
+import { AgreementSelectionPage } from '@pages-fs/docs'
 
 export default function Selection (): JSX.Element {
   return (

@@ -10,7 +10,7 @@ export const privacyData: IListProps[] = [
         classItem: 'document__item',
         contents: [
           {
-            type: 'item',
+            type: 'text',
             classItem: 'document__text',
             text: '',
             contents: [{
