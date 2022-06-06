@@ -3,48 +3,52 @@
 @use 'src/app/styles/core/typography' as *;
 
 .modal {
-  &__header {
+  &__title {
+    @include subtitle-2;
+    padding: 0 0 22px;
     border-bottom: 2px solid $iris-50;
-
-    @include bp-849 {
-      min-height: 40px;
-    }
   }
 
-  &__dialog {
-    width: 688px;
-
-    @include bp-849 {
-      width: 100%;
-      border-radius: 16px 16px 0 0;
-    }
+  &__list {
+    border-bottom: 2px solid $iris-50;
   }
 
-  &__body {
-    @include bp-849 {
-      padding: 20px 40px 40px;
-    }
-
-    @include bp-743 {
-      padding: 20px 24px 40px;
-    }
+  &__item-title {
+    @include subtitle-3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 41px;
 
     @include bp-479 {
-      padding: 20px 20px 40px;
+      grid-template-columns: 57% 43%;
     }
   }
 
-  &__content {
-    padding: 60px 40px 40px;
-    border-radius: 16px;
+  &__item {
+    @include body-5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 32px;
 
-    @include bp-849 {
-      padding: 0;
+    @include bp-479 {
+      grid-template-columns: 57% 43%;
+    }
+
+    &_color {
+      background-color: $iris-50;
     }
   }
 
-  &__position-content {
+  &__cell-inner {
+    display: flex;
+    align-items: center;
     height: 100%;
-    border-radius: 16px 16px 0 0;
+    padding: 8px;
+
+    &:first-child {
+      border-right: 2px solid $iris-100;
+    }
   }
 }

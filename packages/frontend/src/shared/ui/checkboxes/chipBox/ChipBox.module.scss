@@ -1,0 +1,43 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.select {
+  @include body-5;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 16px;
+  background-color: $gray-blue-50;
+  border-radius: 4px;
+
+  &__chip {
+    padding: 7px 9px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: $gray-blue-50;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &-active {
+      background-color: $iris-100;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $iris-400;
+    }
+
+    &:active {
+      color: $iris-200;
+      background-color: $iris-50;
+      border-color: $iris-100;
+    }
+  }
+}
