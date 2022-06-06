@@ -5,7 +5,7 @@ import { DateTime } from 'luxon'
 export class Process {
   constructor (readonly task: Task) {}
 
-  param (params: Record<string, string>): Process {
+  param (params: Record<string, any>): Process {
     return new Process({
       ...this.task,
       params,
@@ -15,7 +15,7 @@ export class Process {
   info (msg: string): Process {
     return new Process({
       ...this.task,
-      info: `${this.task.info}${msg}`,
+      info: `${msg ?? ''}\n${this.task.info ?? ''}`,
     })
   }
 
@@ -23,7 +23,7 @@ export class Process {
     return new Process({
       ...this.task,
       status: QueueTaskStatus.Done,
-      updatedAt: new DateTime(),
+      updatedAt: DateTime.now(),
     })
   }
 
@@ -32,7 +32,7 @@ export class Process {
       ...this.task,
       status: QueueTaskStatus.Pending,
       startAt,
-      updatedAt: new DateTime(),
+      updatedAt: DateTime.now(),
     })
   }
 
@@ -41,7 +41,7 @@ export class Process {
       ...this.task,
       status: QueueTaskStatus.Error,
       error: e.stack ?? e.message,
-      updatedAt: new DateTime(),
+      updatedAt: DateTime.now(),
     })
   }
 }

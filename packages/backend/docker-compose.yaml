@@ -4,6 +4,10 @@ networks:
   rento2:
     name: rento2
 
+volumes:
+  dbdata:
+    name: rento2_dbdata
+
 services:
   rabbitmq:
     image: rabbitmq:3.10.1-management
@@ -35,6 +39,6 @@ services:
     ports:
       - ${POSTGRES_PORT}:5432
     volumes:
-      - ./_docker/data/postgres:/data/postgres
+      - dbdata:/data/postgres
     networks:
       rento2:

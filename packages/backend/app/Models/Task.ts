@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-import { QueueTaskStatus } from 'common/enums/QueueTaskStatus'
-import * as handlers from 'queue'
+import { QueueTaskStatus } from './../../common/enums/QueueTaskStatus'
+import * as handlers from 'queue/index'
 
 export default class Task extends BaseModel {
   @column({ isPrimary: true })
@@ -14,7 +14,7 @@ export default class Task extends BaseModel {
   public handler!: keyof typeof handlers
 
   @column({ prepare: v => JSON.stringify(v) })
-  public params!: { [key: string]: string }
+  public params!: { [key: string]: any }
 
   @column()
   public info!: string
@@ -30,4 +30,21 @@ export default class Task extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt!: DateTime
+
+  public static async push (
+    handler: keyof typeof handlers,
+    params: Record<string, any> = {},
+    startAt: DateTime = DateTime.now(),
+  ): Promise<Task> {
+    const task = new this()
+
+    task.status = QueueTaskStatus.Pending
+    task.handler = handler
+    task.params = params
+    task.info = ''
+    task.error = ''
+    task.startAt = startAt
+
+    return await task.save()
+  }
 }
