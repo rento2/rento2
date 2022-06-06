@@ -2,7 +2,7 @@ name: Deploy development server
 
 on:
   push:
-    branches: [ lukentui/github-actions ]
+    branches: [ develop ]
 
 jobs:
   dev-deploy:
