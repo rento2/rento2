@@ -1,7 +1,6 @@
 import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-import Link from 'next/link'
 import { Filter } from '@features/filter'
 
 const titlePage = 'Аренда квартир на любой срок. Обслужим, проконтролируем, решим бытовые вопросы'
@@ -17,46 +16,6 @@ export const HomePage = (): JSX.Element => {
           <h1>
             Главная
           </h1>
-          <Link href='/docs/agreements/short'>
-            <a>
-              Договор оферта краткосрочной аренды квартиры
-            </a>
-          </Link>
-          <Link href='/docs/agreements/long'>
-            <a>
-              Договор долгосрочной аренды жилого помещения
-            </a>
-          </Link>
-          <Link href='/docs/agreements/service'>
-            <a>
-              Договор обслуживания арендуемой квартиры
-            </a>
-          </Link>
-          <Link href='/docs/agreements/selection'>
-            <a>
-              Договор на подбор помещения в аренду
-            </a>
-          </Link>
-          <Link href='/docs/rules'>
-            <a>
-              Пользовательское соглашение
-            </a>
-          </Link>
-          <Link href='/docs/agreements/owner-rento'>
-            <a>
-              Договор между собственником и Rento
-            </a>
-          </Link>
-          <Link href='/docs/agreements/long'>
-            <a>
-              Договор между собственником и арендатором
-            </a>
-          </Link>
-          <Link href='/docs/privacy'>
-            <a>
-              Политика обработки персональных данных
-            </a>
-          </Link>
         </section>
         <Filter />
         <section className='container'

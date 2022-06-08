@@ -1,10 +1,13 @@
-import { Layout, DocumentsLayout } from '@shared/ui'
+import { Layout, DocumentsLayout, DocsTitle } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { useWindowDimensions } from '@shared/lib'
 import { DocsList } from '@widgets/docs-list'
-import { HeadMenu, SideMenu } from '@widgets/documents-side-menu'
+import { dataAgreementsTenants, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { agreementLongData } from './model/agreementLongData'
+
+const containTitle = 'Договор аренды жилого помещения'
+const categorySideMenu = 'Договор долгосрочной аренды жилого помещения'
 
 export const AgreementLongPage = (): JSX.Element => {
   const { widthWindow } = useWindowDimensions()
@@ -13,10 +16,12 @@ export const AgreementLongPage = (): JSX.Element => {
       header={ <Header /> }
     >
       <article>
-        <DocumentsLayout headMenu={ <HeadMenu /> }
-          sideMenu={ <SideMenu /> }
-          titleText="Частые вопросы"
-          widthProps={ 1059 }
+        <DocumentsLayout docTitle={ <DocsTitle containTitle={ containTitle } /> }
+          headMenu={ <HeadMenu data={ dataAgreementsTenants } /> }
+          sideMenu={ <SideMenu activeItem={ categorySideMenu }
+            data={ dataAgreementsTenants }
+          /> }
+          widthProps={ 1060 }
           widthWindowProps={ widthWindow }
         >
           <DocsList items={ agreementLongData } />
