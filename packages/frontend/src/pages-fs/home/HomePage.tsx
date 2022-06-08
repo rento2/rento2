@@ -2,6 +2,7 @@ import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import Link from 'next/link'
+import { Filter } from '@features/filter'
 
 const titlePage = 'Аренда квартир на любой срок. Обслужим, проконтролируем, решим бытовые вопросы'
 
@@ -57,6 +58,10 @@ export const HomePage = (): JSX.Element => {
             </a>
           </Link>
         </section>
+        <Filter />
+        <section className='container'
+          style={ { height: '1500px' } }
+        />
       </main>
     </Layout>
   )

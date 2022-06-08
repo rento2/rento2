@@ -1,10 +1,18 @@
 import { useRouter } from 'next/dist/client/router'
+import { LinkGeneral } from '@shared/ui'
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
-import style from './HeadMenu.module.scss'
+import styles from './HeadMenu.module.scss'
 import { IPropsMenu } from '../../lib/type/IPropsMenu'
 
-export const HeadMenuTitle = ({ btnOnClick, isOpen, data }: {btnOnClick: () => void, isOpen: boolean, data: IPropsMenu[]}): JSX.Element => {
+interface IHeadMenuTitleProps {
+  btnOnClick: () => void
+  isOpen: boolean
+  data: IPropsMenu[]
+  chapter?: string
+}
+
+export const HeadMenuTitle = ({ btnOnClick, isOpen, data, chapter }: IHeadMenuTitleProps): JSX.Element => {
   const [titleText, setTitleText] = useState('')
   const router = useRouter()
   useEffect(() => {
@@ -17,10 +25,28 @@ export const HeadMenuTitle = ({ btnOnClick, isOpen, data }: {btnOnClick: () => v
   }, [data, router.pathname])
 
   return (
-    <button className={ classNames(style['title'], style['title__text'], isOpen ? style['active'] : '') }
-      onClick={ btnOnClick }
-    >
-      {titleText}
-    </button>
+    (chapter != null && isOpen)
+      ? (
+        <h3 className={ classNames(styles['title__text'], styles['agreements-title']) }
+          onClick={ btnOnClick }
+        >
+          <LinkGeneral classProps={ styles['left-arrow'] }
+            href="/docs/agreements"
+          >
+            {chapter}
+          </LinkGeneral>
+        </h3>
+
+        )
+      : (
+        <h3 className={ styles['title__text'] }>
+          <button className={ classNames(styles['title'], isOpen ? styles['active'] : '') }
+            onClick={ btnOnClick }
+          >
+            {titleText}
+
+          </button>
+        </h3>
+        )
   )
 }

@@ -1,27 +1,42 @@
-import Link from 'next/dist/client/link'
-import { dataMenu } from '@widgets/documents-side-menu/model/dataMenu'
-import style from './SideMenu.module.scss'
+import { LinkGeneral } from '@shared/ui'
+import { IPropsAgreements, IPropsMenu } from '@widgets/documents-side-menu'
+import classNames from 'classnames'
+import AgreementsSideMenu from './AgreementsSideMenu.tsx/AgreementsSideMenu'
+import styles from './SideMenu.module.scss'
+interface ISideMenuProps {
+  activeItem: string
+  data: IPropsMenu[] | IPropsAgreements
+}
 
-export function SideMenu (): JSX.Element {
+export function SideMenu ({ activeItem, data }: ISideMenuProps): JSX.Element {
   return (
-    <div className={ style['border'] }>
-      <ul>
 
-        {
-            dataMenu.map((item, indx) => (
-              <li key={ indx + 1 }>
-                <Link key={ indx }
-                  href={ item.href }
-                >
-                  <a className={ style['item'] }>
+    <>
+      {!Array.isArray(data)
+        ? (
+          <AgreementsSideMenu activeItem={ activeItem }
+            data={ data }
+          />
+          )
+
+        : (
+          <div className={ styles['border'] }>
+            <ul>
+              {data.map((item, idx) => (
+                <li key={ idx }>
+                  <LinkGeneral
+                    classProps={ classNames(styles['item'], (item.title === activeItem) ? styles['active'] : '') }
+                    href={ item.href }
+                  >
                     {item.title}
-                  </a>
-                </Link>
-              </li>
-            )
-            )}
+                  </LinkGeneral>
+                </li>
+              ))}
+            </ul>
+          </div>
+          )
+          }
 
-      </ul>
-    </div>
+    </>
   )
 }
