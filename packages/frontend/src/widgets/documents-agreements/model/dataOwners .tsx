@@ -3,10 +3,10 @@ import { IPropsMenu } from '@widgets/documents-side-menu'
 export const dataOwners: IPropsMenu[] = [
   {
     title: 'Договор между собственником и Rento',
-    href: '#'
+    href: '/docs/agreements/owner-rento'
   },
   {
     title: 'Договор между собственником и арендатором ',
-    href: '#'
+    href: '/docs/agreements/long'
   }
 ]

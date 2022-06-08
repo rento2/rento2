@@ -1,29 +1,29 @@
 export const dataDocsGroup1 = [
   {
-    hrefProps: '#',
+    hrefProps: '/docs/privacy',
     textProps: 'Политика конфеденциальности'
   },
   {
-    hrefProps: '#',
+    hrefProps: '/docs/agreements',
     textProps: 'Образцы документов'
   },
   {
-    hrefProps: '#',
+    hrefProps: '/docs/faq',
     textProps: 'Частые вопросы'
   }
 ]
 
 export const dataDocsGroup2 = [
   {
-    hrefProps: '#',
-    textProps: 'Аренда от 2х дней'
+    hrefProps: '/short',
+    textProps: 'Аренда посуточно'
   },
   {
-    hrefProps: '#',
-    textProps: 'Аренда от 11 месяцев'
+    hrefProps: '/long',
+    textProps: 'Аренда долгосрочно'
   },
   {
-    hrefProps: '#',
+    hrefProps: '/owners',
     textProps: 'Собственникам'
   }
 ]
