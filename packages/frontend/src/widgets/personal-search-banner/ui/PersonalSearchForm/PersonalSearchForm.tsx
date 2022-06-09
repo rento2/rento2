@@ -1,6 +1,6 @@
-import { ButtonGeneral, ButtonIcon, IconClose, ModalBase } from '@shared/ui'
+import { ButtonGeneral, ButtonIcon, IconClose, ModalBase, SwitchBase } from '@shared/ui'
 import classNames from 'classnames'
-import React, { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import styles from './PersonalSearchForm.module.scss'
 
@@ -20,22 +20,26 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
     let value
 
     // маскирование номера (шоб красиво было)
+    // if (cardValue !== null) {
+    //   if (cardValue[2] !== undefined && cardValue[3] !== undefined && cardValue[4] !== undefined) {
+    //     value = `+7(${cardValue[1] ?? ''})-${cardValue[2]}-${cardValue[3]}-${cardValue[4]}`
+    //   } else if (cardValue[2] !== undefined && cardValue[3] !== undefined && cardValue[4] === undefined) {
+    //     value = `+7(${cardValue[1] ?? ''})-${cardValue[2]}-${cardValue[3]}`
+    //   } else if (cardValue[2] !== undefined && cardValue[3] === undefined) {
+    //     value = `+7(${cardValue[1] ?? ''})-${cardValue[2]}`
+    //   } else {
+    //     value = `+7(${cardValue[1] ?? ''}`
+    //   }
+    // }
+
     if (cardValue !== null) {
-      if (cardValue[2] && cardValue[3] && cardValue[4]) {
-        value = `+7(${cardValue[1]})-${cardValue[2]}-${cardValue[3]}-${cardValue[4]}`
-      } else if (cardValue[2] && cardValue[3] && !cardValue[4]) {
-        value = `+7(${cardValue[1]})-${cardValue[2]}-${cardValue[3]}`
-      } else if (cardValue[2] && !cardValue[3]) {
-        value = `+7(${cardValue[1]})-${cardValue[2]}`
-      } else {
-        value = `+7(${cardValue[1]}`
-      }
+      value = `+7(${cardValue[1] ?? ''})-${cardValue[2] ?? '___'}-${cardValue[3] ?? '___'}-${cardValue[4] ?? '____'}`
     }
 
     setPhoneInput(value ?? '')
   }
 
-  function handleSubmit (e: SubmitEvent) {
+  function handleSubmit (e: SubmitEvent): void {
     e.preventDefault()
   }
 
@@ -58,6 +62,7 @@ export function PersonalSearchForm ({ isShown, onClose }: IPersonalSearchForm): 
         Оставьте заявку, и мы начнём поиск уже сегодня
       </p>
       {/* где-то тут тоггл */}
+      <SwitchBase name='personal-search-switch' />
       <label
         className={ classNames(styles['phone-label']) }
         htmlFor='input-number'
