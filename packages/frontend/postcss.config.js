@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    'tailwindcss',
     'postcss-flexbugs-fixes',
     [
       'postcss-preset-env',
@@ -11,17 +12,6 @@ module.exports = {
         features: {
           'custom-properties': false
         }
-      }
-    ],
-    [
-      '@fullhuman/postcss-purgecss',
-      {
-        content: [
-          './pages/**/*.{js,jsx,ts,tsx}',
-          './src/**/*.{js,jsx,ts,tsx}'
-        ],
-        defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-        safelist: ['html', 'body']
       }
     ]
   ]
