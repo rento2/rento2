@@ -4,6 +4,8 @@ import { creatingErrMsg, creatingOkMsg, creatingPaginatedList } from '../../../c
 import Order from 'App/Models/Order'
 import CreateOrderValidator from 'App/Validators/OrderValidator'
 import { schema } from '@ioc:Adonis/Core/Validator'
+import { mailingOrderMessage } from '../../../common/helpers/mailingOrderMessage'
+
 
 export default class OrdersController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
@@ -32,6 +34,8 @@ export default class OrdersController {
     if (!order) {
       return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', 'Order not found'))
     }
+
+    await mailingOrderMessage(order);
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(order))
   }
