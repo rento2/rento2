@@ -6,7 +6,6 @@ import CreateOrderValidator from 'App/Validators/OrderValidator'
 import { schema } from '@ioc:Adonis/Core/Validator'
 import { mailingOrderMessage } from '../../../common/helpers/mailingOrderMessage'
 
-
 export default class OrdersController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
     const { search } = await request.validate({
@@ -35,7 +34,7 @@ export default class OrdersController {
       return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', 'Order not found'))
     }
 
-    await mailingOrderMessage(order);
+    await mailingOrderMessage(order)
 
     return response.status(HttpStatusCode.OK).send(creatingOkMsg(order))
   }
