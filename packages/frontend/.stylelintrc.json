@@ -28,7 +28,6 @@
     "no-empty-first-line": true,
     "no-duplicate-selectors": true,
     "no-extra-semicolons": true,
-    "order/properties-alphabetical-order": null,
-    "property-no-vendor-prefix": [true, {"ignoreProperties": ["transition"]}]
+    "order/properties-alphabetical-order": null
   }
 }
