@@ -1,7 +1,7 @@
 # System requirements
 - Node.js version >=16
 - Docker
-
+ 
 # Install
 1. Установка
 - Склонировать репозиторий (основная ветка для разработки: develop)

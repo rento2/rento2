@@ -6,16 +6,16 @@ export const dataTenants: IPropsMenu[] = [
     href: '/docs/agreements/long'
   },
   {
-    title: 'Договор оферта краткосрочной аренды квартиры ',
-    href: '#'
+    title: 'Договор оферта краткосрочной аренды квартиры',
+    href: '/docs/agreements/short'
   },
   {
-    title: 'Договор оферта краткосрочной аренды квартиры ',
-    href: '#'
+    title: 'Договор обслуживания арендуемой квартиры',
+    href: '/docs/agreements/service'
   },
   {
     title: 'Договор на услуги подбора помещения в аренду',
-    href: '#'
+    href: '/docs/agreements/selection'
   }
 
 ]
