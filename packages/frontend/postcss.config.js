@@ -12,17 +12,6 @@ module.exports = {
           'custom-properties': false
         }
       }
-    ],
-    [
-      '@fullhuman/postcss-purgecss',
-      {
-        content: [
-          './pages/**/*.{js,jsx,ts,tsx}',
-          './src/**/*.{js,jsx,ts,tsx}'
-        ],
-        defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-        safelist: ['html', 'body']
-      }
     ]
   ]
 }
