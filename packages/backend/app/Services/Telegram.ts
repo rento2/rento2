@@ -2,8 +2,14 @@ import axios from 'axios'
 import telegramConfiguration from 'Config/telegram'
 import { DateTime } from 'luxon'
 
+export interface ItelegramConfiguration {
+  token: string
+  chat_id: string
+  test_token: string
+  test_chat_id: string
+}
 class TelegramBot {
-  private readonly config: typeof telegramConfiguration
+  private readonly config: ItelegramConfiguration
   constructor () {
     this.config = telegramConfiguration
   }
