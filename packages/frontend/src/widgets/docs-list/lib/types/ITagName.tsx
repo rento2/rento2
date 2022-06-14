@@ -3,4 +3,5 @@ export interface ITagName {
   item: string
   title: string
   description: string
+  text: string
 }

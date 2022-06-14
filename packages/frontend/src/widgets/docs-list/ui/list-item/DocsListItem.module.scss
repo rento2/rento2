@@ -8,8 +8,12 @@
     counter-reset: count;
   }
 
+  &__text {
+    padding: 0;
+  }
+
   &__general {
-    @include body-4;
+    @include subtitle-2;
     display: flex;
     align-items: center;
     padding: 22px 0 22px 32px;
@@ -24,7 +28,7 @@
   }
 
   &__title {
-    @include body-4;
+    @include subtitle-2;
     display: flex;
     align-items: center;
     padding: 22px 0 22px 32px;
@@ -34,7 +38,7 @@
     }
 
     &::before {
-      @include body-4;
+      @include subtitle-2;
       margin: 0 5px 0 0;
       content: counters(count, '.') '.';
       counter-increment: count;
@@ -51,6 +55,17 @@
 
   &__item-2-listed {
     @include subtitle-2;
+    margin: 0 0 12px;
+
+    &::before {
+      margin: 0 5px 0 0;
+      content: counters(count, '.') '.';
+      counter-increment: count;
+    }
+  }
+
+  &__item-2-listed-ordinary {
+    @include body-4;
     margin: 0 0 12px;
 
     &::before {
@@ -88,6 +103,25 @@
   }
 
   &__item-3 {
+    @include body-4;
+
+    &::before {
+      content: counters(count, '.') '.' ' ';
+      counter-increment: count;
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 12px;
+    }
+  }
+
+  &__list-4 {
+    padding: 0;
+    margin: 12px 0 0;
+    counter-reset: count;
+  }
+
+  &__item-4 {
     @include body-4;
 
     &::before {

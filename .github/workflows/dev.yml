@@ -1,0 +1,68 @@
+name: Deploy development server
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  dev-deploy:
+    environment: staging
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: montudor/action-zip@v1
+
+    - name: Install Node.JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.0.0
+
+    - name: Process backend
+      env:
+        ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
+      working-directory: ./packages/backend
+      run: |
+        npm ci
+        node ./ace build --production
+        echo "$ENV_BACKEND" > ./build/.env
+
+    - name: Process frontend
+      working-directory: ./packages/frontend
+      env:
+        ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
+        ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
+      run: |
+        echo "$ENV_FRONTEND" > ./.env
+        unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
+        npm ci
+        npm run build
+
+    - name: Process admin
+      working-directory: ./packages/admin
+      env:
+        ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
+      run: |
+        echo "$ENV_ADMIN" > ./.env
+        npm ci
+
+    - name: Deploy
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DEV_IP }}
+        username: ${{ secrets.DEV_USERNAME }}
+        password: ${{ secrets.DEV_PASSWORD }}
+        port: ${{ secrets.DEV_PORT }}
+        target: /var/www/rento/
+        source: "."
+        rm: true
+
+    - name: Backend apply changes
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DEV_IP }}
+        username: ${{ secrets.DEV_USERNAME }}
+        password: ${{ secrets.DEV_PASSWORD }}
+        port: ${{ secrets.DEV_PORT }}
+        script: |
+          pm2 restart /var/www/rento/ecosystem.config.js
+          node /var/www/rento/packages/backend/build/ace migration:run --force

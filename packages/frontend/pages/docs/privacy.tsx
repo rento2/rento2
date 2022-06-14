@@ -1,4 +1,4 @@
-import { PrivacyPage } from '@pages-fs/docs/privacy/PrivacyPage'
+import { PrivacyPage } from '@pages-fs/docs'
 
 export default function Privacy (): JSX.Element {
   return (

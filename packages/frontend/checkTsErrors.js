@@ -1,7 +1,7 @@
 const { exec } = require('child_process')
 
 const main = () => {
-  exec('npx tsc --noEmit --pretty false | grep -v TS2464 || true', async (err, stdout, stderr) => {
+  exec('npx tsc --noEmit --pretty false | grep -Ev "TS2464|TS4111" || true', async (err, stdout, stderr) => {
     if (err) {
       console.log('Callback error:', err)
       return
