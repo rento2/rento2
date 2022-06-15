@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { ChangeEvent } from 'react'
 import styles from './SwitchBase.module.scss'
 
 interface ISwitchBase {
@@ -6,9 +7,10 @@ interface ISwitchBase {
   labelText?: string // текст лейбла рядом с переключателем
   labelTextPlacement?: 'right' | 'left' // расположение текстового лейбла относительно свича
   containerClass?: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export function SwitchBase ({ name, labelText, labelTextPlacement = 'right', containerClass }: ISwitchBase): JSX.Element {
+export function SwitchBase ({ name, labelText, labelTextPlacement = 'right', containerClass, onChange }: ISwitchBase): JSX.Element {
   const labelStyles = styles[`switch__text-label-${labelTextPlacement}`]
 
   const textLabel = (
@@ -30,6 +32,7 @@ export function SwitchBase ({ name, labelText, labelTextPlacement = 'right', con
           id={ name }
           name={ name }
           type="checkbox"
+          onChange={ e => onChange(e) }
         />
         <label
           className={ classNames(styles['switch__inner']) }

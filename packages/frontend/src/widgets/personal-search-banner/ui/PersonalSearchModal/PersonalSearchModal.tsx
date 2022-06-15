@@ -1,4 +1,4 @@
-import { ButtonGeneral, ButtonIcon, IconClose, ModalBase } from '@shared/ui'
+import { ButtonGeneral, ModalBase } from '@shared/ui'
 import classNames from 'classnames'
 import Image from 'next/image'
 import styles from './PersonalSearchModal.module.scss'
@@ -6,29 +6,20 @@ import image from '../../images/key-image.svg'
 import { useWindowDimensions } from '@shared/lib'
 
 interface IPersonalSearchModal {
-  isShown: boolean
+  isOpen: boolean
   onClose: () => void
   showForm: () => void
 }
 
-export function PersonalSearchModal ({ isShown, onClose, showForm }: IPersonalSearchModal): JSX.Element {
+export function PersonalSearchModal ({ isOpen, onClose, showForm }: IPersonalSearchModal): JSX.Element {
   const { widthWindow } = useWindowDimensions()
 
-  const modalHeaderContent = (
-    <div className={ classNames(styles['header']) }>
-      <ButtonIcon
-        background='none'
-        full='stroke'
-        size='32'
-        onClick={ onClose }
-      >
-        <IconClose figure='square' />
-      </ButtonIcon>
-    </div>
-  )
-
-  const modalContent = (
-    <>
+  return (
+    <ModalBase
+      bodyClass={ classNames(styles['body']) }
+      isOpen={ isOpen }
+      onClose={ onClose }
+    >
       <div className={ classNames(styles['headline']) }>
         <h3 className={ classNames(styles['title']) }>
           Поможем найти
@@ -50,7 +41,6 @@ export function PersonalSearchModal ({ isShown, onClose, showForm }: IPersonalSe
       <ul className={ classNames(styles['list']) }>
         <li className={ classNames(styles['list-item']) }>
           <p className={ classNames(styles['list-item__title']) }>
-            <div className={ classNames(styles['list-item__bullet']) } />
             Действительно удобно
           </p>
           <p className={ classNames(styles['list-item__paragraph']) }>
@@ -59,7 +49,6 @@ export function PersonalSearchModal ({ isShown, onClose, showForm }: IPersonalSe
         </li>
         <li className={ classNames(styles['list-item']) }>
           <p className={ classNames(styles['list-item__title']) }>
-            <div className={ classNames(styles['list-item__bullet']) } />
             В ваших интересах
           </p>
           <p className={ classNames(styles['list-item__paragraph']) }>
@@ -68,7 +57,6 @@ export function PersonalSearchModal ({ isShown, onClose, showForm }: IPersonalSe
         </li>
         <li className={ classNames(styles['list-item']) }>
           <p className={ classNames(styles['list-item__title']) }>
-            <div className={ classNames(styles['list-item__bullet']) } />
             Чувствуйте себя как дома
           </p>
           <p className={ classNames(styles['list-item__paragraph']) }>
@@ -77,7 +65,6 @@ export function PersonalSearchModal ({ isShown, onClose, showForm }: IPersonalSe
         </li>
         <li className={ classNames(styles['list-item']) }>
           <p className={ classNames(styles['list-item__title']) }>
-            <div className={ classNames(styles['list-item__bullet']) } />
             Новоселье с гарантией
           </p>
           <p className={ classNames(styles['list-item__paragraph']) }>
@@ -94,21 +81,6 @@ export function PersonalSearchModal ({ isShown, onClose, showForm }: IPersonalSe
           Заказать поиск
         </ButtonGeneral>
       </ul>
-    </>
-  )
-
-  return (
-    <ModalBase
-      bodyContent={ modalContent }
-      classes={ {
-        content: classNames(styles['content']),
-        body: classNames(styles['body']),
-        dialog: classNames(styles['dialog'])
-      } }
-      headerContent={ modalHeaderContent }
-      hide={ onClose }
-      isShown={ isShown }
-      labelledbyText='PersonalSearchModal'
-    />
+    </ModalBase>
   )
 }

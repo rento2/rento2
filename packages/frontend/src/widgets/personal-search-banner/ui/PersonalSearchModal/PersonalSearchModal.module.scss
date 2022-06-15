@@ -134,7 +134,34 @@
       }
     }
 
-    &__bullet {
+    &__paragraph {
+      @include body-3;
+
+      @include bp-743 {
+        @include body-4;
+      }
+
+      @include bp-479 {
+        @include body-5;
+      }
+    }
+  }
+
+  &-item__title {
+    @include headline-4;
+    display: flex;
+    align-items: center;
+
+    @include bp-743 {
+      @include subtitle-1;
+    }
+
+    @include bp-479 {
+      @include subtitle-2;
+    }
+
+    &::before {
+      display: inline-block;
       width: 10px;
       height: 10px;
       margin-right: 10px;
@@ -150,32 +177,6 @@
       @include bp-479 {
         width: 6px;
         height: 6px;
-      }
-    }
-
-    &__title {
-      @include headline-4;
-      display: flex;
-      align-items: center;
-
-      @include bp-743 {
-        @include subtitle-1;
-      }
-
-      @include bp-479 {
-        @include subtitle-2;
-      }
-    }
-
-    &__paragraph {
-      @include body-3;
-
-      @include bp-743 {
-        @include body-4;
-      }
-
-      @include bp-479 {
-        @include body-5;
       }
     }
   }

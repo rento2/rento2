@@ -56,7 +56,7 @@ export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearch
       </div>
 
       <PersonalSearchModal
-        isShown={ isModalShown }
+        isOpen={ isModalShown }
         showForm={ () => {
           setIsModalShown(false)
           setIsFormShown(true)
@@ -65,7 +65,7 @@ export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearch
       />
 
       <PersonalSearchForm
-        isShown={ isFormShown }
+        isOpen={ isFormShown }
         onClose={ () => setIsFormShown(false) }
       />
     </>

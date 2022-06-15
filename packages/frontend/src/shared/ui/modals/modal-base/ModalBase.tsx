@@ -17,6 +17,7 @@ interface IModal {
   title?: string
   translate?: 'right' | 'bottom'
   isSwipe?: boolean
+  bodyClass? : string
 }
 
 const paddingBottom = 40
@@ -27,7 +28,8 @@ export const ModalBase: FC<IModal> = ({
   children,
   translate = 'bottom',
   title,
-  isSwipe = false
+  isSwipe = false,
+  bodyClass
 }) => {
   const { widthWindow } = useWindowDimensions()
 
@@ -117,7 +119,7 @@ export const ModalBase: FC<IModal> = ({
               <IconClose classProps={ classNames(styles['button-close__icon']) } />
             </button>
           </div>
-          <div className={ styles.modal__body }>
+          <div className={ classNames(styles.modal__body, bodyClass) }>
             {children}
           </div>
         </div>

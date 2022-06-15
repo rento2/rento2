@@ -2,47 +2,68 @@
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
-.content {
-  padding: 0;
-}
-
-.body {
-  padding: 20px 40px 40px;
-}
-
-.header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 4px 10px;
-}
-
-.dialog {
-  width: unset;
-  max-width: 600px;
-}
-
 .form {
   display: flex;
   flex-direction: column;
   max-width: 600px;
+  padding: 0 20px 20px;
+
+  @include bp-743 {
+    padding: 0 0 16px;
+  }
 }
 
 .title {
   @include headline-4;
   margin-bottom: 20px;
   text-align: center;
+
+  @include bp-743 {
+    @include headline-5;
+  }
+
+  @include bp-479 {
+    @include subtitle-2;
+    margin-bottom: 2px;
+  }
 }
 
-.phone-label {
+.subtitle {
+  @include body-5;
+  max-width: 228px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.switch {
+  margin-bottom: 20px;
+}
+
+.label {
   @include body-5;
   color: $gray-blue-400;
 }
 
-.phone-input {
+.input {
   @include body-5;
+  box-sizing: border-box;
   height: 40px;
+  padding: 11px 10px;
+  margin-bottom: 21px;
   color: $gray-blue-400;
   background-color: $gray-blue-50;
   border: 0;
   border-radius: 4px;
+}
+
+.checkbox {
+  margin-bottom: 18px;
+
+  @include bp-743 {
+    margin-bottom: 20px;
+  }
+
+  @include bp-479 {
+    margin-bottom: 30px;
+  }
 }
