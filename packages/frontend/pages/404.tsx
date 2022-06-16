@@ -1,6 +1,6 @@
 import { NotFoundPage } from '@pages-fs/notFoundPage/NotFoundPage'
 
-export default function FoundPage (): JSX.Element {
+export default function Error404 (): JSX.Element {
   return (
     <NotFoundPage />
   )
