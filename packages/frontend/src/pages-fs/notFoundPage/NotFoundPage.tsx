@@ -1,10 +1,10 @@
-// import { useWindowDimensions } from '@shared/lib/hooks/useWindowDimensions'
 import { ButtonGeneral, Layout } from '@shared/ui'
 import { Footer } from '@widgets/footer'
 import { Header } from '@widgets/header'
-import styles from './NotFoundPage.module.scss'
 import router from 'next/router'
+import Image from 'next/dist/client/image'
 import classNames from 'classnames'
+import styles from './NotFoundPage.module.scss'
 
 export const NotFoundPage = (): JSX.Element => {
   return (
@@ -16,10 +16,16 @@ export const NotFoundPage = (): JSX.Element => {
         <div className={ styles['content'] }>
           <div className={ styles['key'] }>
 
-            <img src="/images/notFoundPage/rectangle.svg" />
+            <Image height='115'
+              src="/images/notFoundPage/rectangle.png"
+              width='124'
+            />
           </div>
           <div className={ styles['error'] }>
-            <img src="/images/notFoundPage/img_404.svg" />
+            <Image height='143.5'
+              src="/images/notFoundPage/img-404.png"
+              width='340'
+            />
             <p className={ styles['error-title'] }>
               Упс!.. Страница не найдена
             </p>
@@ -39,7 +45,10 @@ export const NotFoundPage = (): JSX.Element => {
             </ButtonGeneral>
           </div>
           <div className={ styles['tag'] }>
-            <img src="/images/notFoundPage/tag.svg" />
+            <Image height='120'
+              src="/images/notFoundPage/tag.png"
+              width='130'
+            />
           </div>
 
         </div>

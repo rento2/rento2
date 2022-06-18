@@ -15,28 +15,19 @@
     margin: 0 35px 376px 219px;
   }
   @include bp-1023 {
-    margin: 0 35px 85px 74px;
+    margin: 0 0 331px 74px;
   }
   @include bp-743 {
-    margin: 0 0 309px -16px;
+    margin: 0 0 445px -50px;
   }
 }
 
 .error {
-  // position: relative;
-  // top:50%;
-  grid-area: error;
   padding-top: 68px;
   margin: 0 auto;
-  background-image: url('/images/notFoundPage/pagenotfouldBG.svg');
+  background-image: url('/images/notFoundPage/pagenotfould-bg.png');
   background-repeat: no-repeat;
   background-position-x: 10px;
-  @include bp-1023 {
-    margin-top: 272px;
-  }
-  @include bp-743 {
-    margin-top: 229px;
-  }
 
   &-title {
     @include headline-5;
@@ -61,19 +52,15 @@
     margin: 1px 0 0 681px;
   }
   @include bp-1023 {
-    margin: 232px 0 0 540px;
+    margin: -15px 0 0 561px;
   }
   @include bp-743 {
-    margin: 312px 0 0 380px;
+    margin: 135px 0 0 387px;
   }
 }
 
 .button {
-  @include body-4;
-  grid-area: button;
   width: 170px;
   padding: 12px;
   margin: 92px auto;
-  color: $neutral-900;
-  border-radius: 40px;
 }
