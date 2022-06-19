@@ -2,8 +2,9 @@ import Factory from '@ioc:Adonis/Lucid/Factory'
 import Apartment from 'App/Models/Apartment'
 import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
 import Term from '../../common/enums/Term'
-import { returnRandomFromEnum } from '../../common/helpers/enumService'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
+import { SubwayStations } from './../../common/enums/SubwayStations'
+import { SubwayLines } from '../../common/enums/SubwayLine'
 import { ServicesFactory } from './ServicesFactory'
 import { BannersFactory } from './BannersFactory'
 import { OrdersFactory } from './OrdersFactory'
@@ -12,12 +13,13 @@ import { PhotoFactory } from './PhotoFactory'
 
 export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
   return {
-    type: returnRandomFromEnum(Term),
+    type: faker.random.arrayElement(Object.values(Term)),
     isActive: faker.datatype.boolean(),
     name: faker.internet.userName(),
     latinName: faker.name.findName(),
     description: faker.lorem.paragraph(),
     bnovoId: faker.datatype.number(),
+    inpars_id: faker.datatype.number(),
     price: faker.datatype.number(100_000),
     pricePerMonth: faker.datatype.number(100_000),
     discount: Math.floor(Math.random() * (200 - 100) + 100),
@@ -31,13 +33,13 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     area: Math.floor(Math.random() * (200 - 100) + 100),
     kitchenArea: Math.floor(Math.random() * (200 - 100) + 100),
     distanceFromCenter: Math.floor(Math.random() * (200 - 100) + 100),
-    admArea: returnRandomFromEnum(AdminDistrictsOfMoscow),
+    admArea: faker.random.arrayElement(Object.values(AdminDistrictsOfMoscow)),
     district: faker.lorem.words(5),
     sellingPoint: faker.lorem.words(5),
     geoCoordinateX: faker.lorem.word(7),
     geoCoordinateY: faker.lorem.word(7),
-    subwayStation: faker.lorem.words(4),
-    subwayLine: faker.lorem.words(4),
+    subwayStation: faker.random.arrayElement(Object.values(SubwayStations)),
+    subwayLine: faker.random.arrayElement(Object.values(SubwayLines)),
     timeToSubwayByFoot: Math.floor(Math.random() * (200 - 100) + 100),
     timeToSubwayByVehicle: Math.floor(Math.random() * (200 - 100) + 100),
 
