@@ -33,7 +33,7 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     kitchenArea: Math.floor(Math.random() * (200 - 100) + 100),
     distanceFromCenter: Math.floor(Math.random() * (200 - 100) + 100),
     admArea: faker.random.arrayElement(Object.values(AdminDistrictsOfMoscow)),
-    district: faker.lorem.words(5),
+    district: faker.address.city(),
     sellingPoint: faker.lorem.words(5),
     geoCoordinateX: faker.lorem.word(7),
     geoCoordinateY: faker.lorem.word(7),
