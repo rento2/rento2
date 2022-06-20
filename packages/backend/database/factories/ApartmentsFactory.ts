@@ -27,7 +27,7 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     securityDepositShort: Math.floor(Math.random() * (200 - 100) + 100),
     securityDepositLong: Math.floor(Math.random() * (200 - 100) + 100),
     roomsNum: Math.floor(Math.random() * (200 - 100) + 100),
-    storey: Math.floor(Math.random() * (200 - 100) + 100),
+    storey: faker.datatype.number({ min: 1, max: 19, precision: 1 }),
     totalStoreys: Math.floor(Math.random() * (200 - 100) + 100),
     area: Math.floor(Math.random() * (200 - 100) + 100),
     kitchenArea: Math.floor(Math.random() * (200 - 100) + 100),
