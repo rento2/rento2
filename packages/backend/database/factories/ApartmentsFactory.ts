@@ -3,13 +3,12 @@ import Apartment from 'App/Models/Apartment'
 import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
 import Term from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
-import { SubwayStations } from './../../common/enums/SubwayStations'
-import { SubwayLines } from '../../common/enums/SubwayLine'
 import { ServicesFactory } from './ServicesFactory'
 import { BannersFactory } from './BannersFactory'
 import { OrdersFactory } from './OrdersFactory'
 import { SleepingPlacesFactory } from './SleepingPlacesFactory'
 import { PhotoFactory } from './PhotoFactory'
+import { SubwayStations } from '../../common/constants/SubwayStations'
 
 export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
   return {
@@ -38,8 +37,8 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     sellingPoint: faker.lorem.words(5),
     geoCoordinateX: faker.lorem.word(7),
     geoCoordinateY: faker.lorem.word(7),
-    subwayStation: faker.random.arrayElement(Object.values(SubwayStations)),
-    subwayLine: faker.random.arrayElement(Object.values(SubwayLines)),
+    subwayStation: faker.random.arrayElement(SubwayStations).title,
+    subwayLine: faker.random.arrayElement(SubwayStations).line.title,
     timeToSubwayByFoot: Math.floor(Math.random() * (200 - 100) + 100),
     timeToSubwayByVehicle: Math.floor(Math.random() * (200 - 100) + 100),
 
