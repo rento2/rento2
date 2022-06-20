@@ -36,7 +36,7 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     district: faker.address.city(),
     sellingPoint: faker.lorem.words(5),
     geoCoordinateX: faker.address.latitude(56, 55, 4),
-    geoCoordinateY: faker.address.latitude(38, 36, 4),
+    geoCoordinateY: faker.address.longitude(38, 36, 4),
     subwayStation: faker.random.arrayElement(SubwayStations).title,
     subwayLine: faker.random.arrayElement(SubwayStations).line.title,
     timeToSubwayByFoot: faker.datatype.number({ min: 0, max: 180, precision: 5 }),
