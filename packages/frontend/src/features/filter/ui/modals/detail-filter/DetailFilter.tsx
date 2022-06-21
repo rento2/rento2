@@ -16,7 +16,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
       footer={
         <div className={ styles.footer }>
           <ButtonGeneral
-            classProps={ styles['footer__button-reset'] }
+            classProps={ classNames(styles['footer__button-reset']) }
             font='s'
             full="text"
             grade="primary"
@@ -25,7 +25,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
             Очистить фильтры
           </ButtonGeneral>
           <ButtonGeneral
-            classProps={ styles['footer__button-search'] }
+            classProps={ classNames(styles['footer__button-search']) }
             font="s"
             height='40'
             type='button'
@@ -61,7 +61,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
         </h2>
         <div className={ styles.options }>
           <DoubleInput
-            classProps={ styles.options__double }
+            classProps={ classNames(styles.options__double) }
             placeholder={ { min: '888', max: '888' } }
             unit="м2"
             value={ { min: '', max: '' } }
@@ -69,7 +69,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
           />
           <ChipBox
             chips={ ['Студия', '1к', '2к', '3к+'] }
-            classProps={ styles['options__chip-box'] }
+            classProps={ classNames(styles['options__chip-box']) }
             value={ [] }
             onChange={ () => {} }
           />
@@ -97,7 +97,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
           <ChipBox
             isSwipeable
             chips={ ['5 мин.', '10 мин.', '15 мин.', '20+ мин.'] }
-            classProps={ styles['time__chip-box'] }
+            classProps={ classNames(styles['time__chip-box']) }
             marginRight={ 10 }
             value={ [] }
             onChange={ () => {} }
@@ -122,7 +122,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
         </h2>
         <div className={ classNames(styles.floor) }>
           <DoubleInput
-            classProps={ styles.floor__double }
+            classProps={ classNames(styles.floor__double) }
             placeholder={ { min: '88', max: '88' } }
             value={ { min: '', max: '' } }
             onChange={ () => {} }
@@ -155,7 +155,7 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
         <ChipBox
           isSwipeable
           chips={ ['Холодильник', 'Телевизор', 'Стиральная машинка'] }
-          classProps={ styles['technique__chip-box'] }
+          classProps={ classNames(styles['technique__chip-box']) }
           marginRight={ 10 }
           value={ [] }
           onChange={ () => {} }
