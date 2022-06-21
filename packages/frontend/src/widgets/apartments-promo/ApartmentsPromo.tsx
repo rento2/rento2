@@ -1,76 +1,64 @@
-import { useRef, useReducer } from 'react'
+import { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper'
+import SwiperCore, { Navigation, Pagination } from 'swiper'
+import classNames from 'classnames'
 
-import { IApartmentCard } from '@shared/types'
-import { ApartmentCard } from '@widgets/apartment-card'
-import styles from './ApartmentsPromo.module.scss'
 import { IconArrowLeft, IconArrowRight, ButtonIcon } from '@shared/ui'
+import { IApartmentsData } from '@shared/api'
+import { ApartmentCard } from '@widgets/apartment-card'
+import { titleSlider } from './model/constants'
+import styles from './ApartmentsPromo.module.scss'
 
-const initialState = { prevButton: true, nextButton: false }
+export const ApartmentsPromo = ({ cards, pathPage }: {cards: IApartmentsData[], pathPage: string}): JSX.Element => {
+  const prevRef = useRef<HTMLButtonElement>(null)
+  const nextRef = useRef<HTMLButtonElement>(null)
 
-const reducer = (state, action): { nxtButton: boolean, prevButton: boolean} => {
-  switch (action.type) {
-    case 'initial':
-      return { nextButton: false, prevButton: false }
-    case 'nextButton':
-      return { ...state, nextButton: true }
-    case 'prevButton':
-      return { ...state, prevButton: true }
-    default:
-      throw new Error()
+  const initSwiperParams = {
+    className: styles['promo__slider'],
+    modules: [Navigation, Pagination],
+    slidesPerView: 4,
+    spaceBetween: 10,
+    onBeforeInit: onBeforeInit
   }
-}
 
-export const ApartmentsPromo = ({ cards }: {cards: IApartmentCard[]}): JSX.Element => {
-  const swiperRef = useRef(null)
-  const [state, dispatch] = useReducer(reducer, initialState)
+  function onBeforeInit (Swiper: SwiperCore): void {
+    const navigation = Swiper.params.navigation
+    if (typeof navigation !== 'boolean' && typeof navigation !== 'undefined') {
+      navigation.prevEl = prevRef.current
+      navigation.nextEl = nextRef.current
+    }
+  }
 
   return (
     <div className={ styles['promo'] }>
       <div className={ styles['promo__wrapper'] }>
         <h2 className={ styles['promo__title'] }>
-          Квартиры в центре
+          {titleSlider.apartmentsCenter}
         </h2>
-        <ButtonIcon classProps={ styles['promo__button-prev'] }
-          disabled={ state.prevButton }
+        <ButtonIcon classProps={ classNames(styles['promo__button-prev']) }
           full='stroke'
+          refProp={ prevRef }
           size='40'
-          onClick={ () => swiperRef?.current.swiper.slidePrev() }
         >
           <IconArrowLeft />
         </ButtonIcon>
-        <ButtonIcon classProps={ styles['promo__button-next'] }
-          disabled={ state.nextButton }
+
+        <ButtonIcon classProps={ classNames(styles['promo__button-next']) }
           full='stroke'
+          refProp={ nextRef }
           size='40'
-          onClick={ () => swiperRef?.current.swiper.slideNext() }
         >
           <IconArrowRight />
         </ButtonIcon>
-        <Swiper
-          ref={ swiperRef }
-          className={ styles['promo__slider'] }
-          modules={ [Navigation, Pagination] }
-          slidesPerView={ 4 }
-          spaceBetween={ 10 }
-          onSlideChange={ () => {
-            console.log(swiperRef?.current.swiper.realIndex)
-            if (swiperRef?.current.swiper.realIndex === 6) {
-              dispatch({ type: 'nextButton' })
-            } else if (swiperRef?.current.swiper.realIndex === 0) {
-              dispatch({ type: 'prevButton' })
-            } else {
-              dispatch({ type: 'initial' })
-            }
-          } }
-        >
+
+        <Swiper { ...initSwiperParams }>
           {cards?.map((el) => (
             <SwiperSlide key={ el.id }
               className={ styles['promo__slide'] }
             >
               <ApartmentCard { ...el }
                 mode="promo"
+                pathPage={ pathPage }
               />
             </SwiperSlide>
           ))}
