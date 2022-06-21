@@ -18,19 +18,18 @@ export const CardSlider = ({ images }: { images: IImage[]}): JSX.Element => (
       pagination={ {
         clickable: true,
         horizontalClass: classNames(styles['slider__bullets'], 'flex-center'),
-        bulletClass: styles['slider__bullet'],
-        bulletActiveClass: styles['slider__bullet--active']
+        bulletClass: classNames(styles['slider__bullet']),
+        bulletActiveClass: classNames(styles['slider__bullet--active'])
       } }
       width={ 295 }
     >
       {images.map(({ src, alt }) => (
         <SwiperSlide key={ alt }>
           <Image alt={ alt }
-            className={ styles['slider__image'] }
-            height={ 253 }
+            height={ 220 }
             layout="responsive"
             src={ src }
-            width={ 340 }
+            width={ 295 }
           />
         </SwiperSlide>
       ))}

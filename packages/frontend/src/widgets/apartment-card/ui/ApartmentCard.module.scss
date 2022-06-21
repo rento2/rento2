@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .card {
   @include body-5;
   position: relative;
@@ -99,13 +103,17 @@
   }
 
   &__subway {
-    display: block;
     margin-right: 10px;
   }
 
   &__distance {
     @include body-6;
-    display: flex;
+    display: inline-flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin: 0 10px 0 0;
+    }
   }
 
   &__icon {

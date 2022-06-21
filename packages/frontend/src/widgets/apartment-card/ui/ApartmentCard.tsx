@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import classNames from 'classnames'
@@ -6,30 +7,52 @@ import { IconWalker, IconMetro, IconHeart, ButtonIcon, IconBus } from '@shared/u
 import { CardSlider } from './card-slider/CardSlider'
 import styles from './ApartmentCard.module.scss'
 import { mockPhotos } from '../model/mockData'
-import { IApartmentCard } from '@shared/types'
+import { IApartmentCard } from '../lib/types'
+
+const MetroInfo = (subwayStation: string, timeFoot: number, timeVehicle: number): JSX.Element => {
+  return (
+    <li>
+      <span className={ styles.card__subway }>
+        <IconMetro classProps={ styles.card__icon } />
+        {subwayStation}
+      </span>
+      <span className={ styles.card__distance }>
+        <IconWalker classProps={ styles.card__icon } />
+        {`${timeFoot} минут`}
+      </span>
+      <span className={ styles.card__distance }>
+        <IconBus classProps={ styles.card__icon } />
+        {`${timeVehicle} минут`}
+      </span>
+    </li>
+  )
+}
 
 export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
   const {
-    price_per_month: price,
-    security_deposit_long: deposit,
-    time_to_subway_by_foot: timeByFoot,
-    time_to_subway_by_vehicle: timeByBus,
-    subway_station: subway,
+    price_per_month,
+    security_deposit_long,
+    time_to_subway_by_foot,
+    time_to_subway_by_vehicle,
+    subway_station,
     name,
-    rooms_num: rooms,
+    rooms_num,
     storey,
-    total_storeys: total,
+    total_storeys,
     area,
     id,
-    mode
+    mode,
+    pathPage
   } = props
 
+  const click = (e: MouseEvent<HTMLButtonElement>): void => { e.preventDefault() }
+
   return (
-    <Link href={ `/long/${id}` }>
-      <a className={ classNames(styles['card'], mode === 'promo' ? styles['card--promo'] : '') }>
+    <Link href={ `/${pathPage}/${id}` }>
+      <a className={ classNames(styles.card, { [styles['card--promo']]: mode === 'promo' }) }>
         { mode === 'promo'
           ? (
-            <div className={ styles['card__image'] }>
+            <div className={ styles.card__image }>
               <Image alt='room1'
                 height={ 147 }
                 layout="responsive"
@@ -41,42 +64,35 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
           : (
             <CardSlider images={ mockPhotos } />
             )}
-        <div className={ classNames(styles['card__info'], mode === 'promo' ? styles['card__info--promo'] : '') }>
-          <h2 className={ styles['card__price'] }>
-            {`${price}₽ / месяц`}
-          </h2>
+        <div
+          className={ classNames(
+            styles.card__info,
+            { [styles['card__info--promo']]: mode === 'promo' })
+          }
+        >
+          <h3 className={ styles.card__price }>
+            {`${price_per_month}₽ / месяц`}
+          </h3>
+
           { mode !== 'promo' && (
-            <span className={ styles['card__deposit'] }>
-              {`Депозит: 400000 ${deposit}`}
+            <span className={ styles.card__deposit }>
+              {`Депозит: ${security_deposit_long}`}
             </span>)
           }
-          <p className={ styles['card__details'] }>
-            {`${rooms} комн · ${area} м2 · этаж${storey}/${total}`}
+          <p className={ styles.card__details }>
+            {`${rooms_num} комн · ${area} м2 · этаж ${storey}/${total_storeys}`}
           </p>
-          <div>
-            <span className={ styles['card__location'] }>
-              {name}
-            </span>
-            <div>
-              <span className={ styles['card__subway'] }>
-                <IconMetro classProps={ styles['card__icon'] } />
-                {subway}
-              </span>
-              <span className={ styles['card__distance'] }>
-                <IconWalker classProps={ styles['card__icon'] } />
-                {`${timeByFoot} минут`}
-              </span>
-              <span className={ styles['card__distance'] }>
-                <IconBus classProps={ styles['card__icon'] } />
-                {`${timeByBus} минут`}
-              </span>
-            </div>
-          </div>
+          <span className={ styles['card__location'] }>
+            {name}
+          </span>
+          <ul>
+            {MetroInfo(subway_station, time_to_subway_by_foot, time_to_subway_by_vehicle)}
+          </ul>
           <ButtonIcon
-            classProps={ styles['card__favourite'] }
+            classProps={ classNames(styles.card__favourite) }
             full='stroke'
             size='32'
-            onClick={ () => {} }
+            onClick={ click }
           >
             <IconHeart />
           </ButtonIcon>
