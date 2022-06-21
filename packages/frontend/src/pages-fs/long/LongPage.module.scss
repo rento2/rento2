@@ -1,3 +1,5 @@
+@use 'src/app/styles/core/breakpoints' as *;
+
 .long-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
