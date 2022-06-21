@@ -1,4 +1,7 @@
 // Публичное АПИ.
 @use './styles/abstracts/reset';
 @use './styles/core/fonts';
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
 @use './styles/abstracts/global';
