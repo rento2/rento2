@@ -1,0 +1,193 @@
+@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.sub-header {
+  display: flex;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  background-color: $gray-blue-50;
+
+  @include bp-743 {
+    padding: 10px;
+  }
+}
+
+.container {
+  padding: 20px;
+
+  @include bp-743 {
+    padding: 20px 16px;
+  }
+}
+
+.subtitle {
+  @include subtitle-2;
+  margin-bottom: 20px;
+  color: $gray-blue-500;
+}
+
+.options {
+  display: flex;
+  margin-bottom: 60px;
+
+  @include bp-743 {
+    flex-direction: column;
+  }
+
+  &__chip-box {
+    justify-content: flex-start;
+    padding: 3px 0;
+
+    @include bp-479 {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__double {
+    margin-right: 20px;
+    border: 1px solid $gray-blue-100;
+
+    @include bp-743 {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.time {
+  display: flex;
+  margin-bottom: 20px;
+
+  &__chip-box {
+    margin-left: 0;
+  }
+
+  &__icon-walker,
+  &__icon-bus {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 20px;
+
+      @include bp-743 {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.floor {
+  display: flex;
+  align-items: center;
+
+  @include bp-743 {
+    display: block;
+  }
+
+  &__double {
+    max-width: 204px;
+    margin-right: 10px;
+    border: 1px solid $gray-blue-100;
+
+    @include bp-743 {
+      max-width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.technique {
+  &__chip-box {
+    margin-bottom: 10px;
+  }
+}
+
+.separator {
+  margin-bottom: 40px;
+}
+
+.devider {
+  height: 1px;
+  margin-bottom: 60px;
+  background: $gray-blue-50;
+}
+
+.button-metro {
+  @include body-5;
+  position: relative;
+  width: 100%;
+  padding: 11px 36px;
+  color: $neutral-900;
+  text-align: start;
+  cursor: pointer;
+  background-color: $neutral-0;
+  border: 0;
+  border-top: 1px solid $gray-blue-50;
+  border-bottom: 1px solid $gray-blue-50;
+
+  &:hover {
+    background: $gray-blue-50;
+  }
+
+  &:active {
+    color: $gray-blue-500;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include bp-479 {
+    flex-direction: column;
+  }
+
+  &__button-search {
+    @include btn-4;
+    padding: 13px 40px;
+    white-space: nowrap;
+
+    @include bp-743 {
+      padding: 12px 13px;
+    }
+
+    @include bp-479 {
+      width: 100%;
+    }
+  }
+
+  &__button-reset {
+    @include btn-4;
+    padding: 13px 8px;
+    white-space: nowrap;
+
+    @include bp-743 {
+      padding: 12px 8px;
+    }
+
+    @include bp-479 {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+}

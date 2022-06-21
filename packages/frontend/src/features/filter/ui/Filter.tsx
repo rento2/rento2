@@ -2,12 +2,13 @@ import { FC, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { Controller, useForm } from 'react-hook-form'
 
-import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput, ModalBase } from '@shared/ui'
+import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput } from '@shared/ui'
 import { options, chips } from '../model/mock'
 import { useSticky } from '../lib/hooks/useSticky'
 
 import mainStyles from './MainFilter.module.scss'
 import headerStyles from './HeaderFilter.module.scss'
+import { DetailFilеr } from './modals/detail-filter/DetailFilter'
 
 const defaultValues = {
   types: [],
@@ -36,7 +37,7 @@ export const Filter: FC = () => {
               name="priceRange"
               render={ ({ field: { value, onChange } }) =>
                 (<DoubleInput
-                  classProps={ classNames(styles.fieldset__item) }
+                  classProps={ classNames(styles.fieldset__item, styles.double) }
                   placeholder={ { min: '50000', max: '2000000' } }
                   unit="₽"
                   value={ value }
@@ -49,7 +50,7 @@ export const Filter: FC = () => {
               render={ ({ field: { value, onChange } }) =>
                 (<ChipBox
                   chips={ chips }
-                  classProps={ classNames(styles.fieldset__item) }
+                  classProps={ classNames(styles.fieldset__item, styles['chip-box']) }
                   value={ value }
                   onChange={ onChange }
                 />) }
@@ -130,17 +131,10 @@ export const Filter: FC = () => {
         </form>
       </div>
       <div ref={ anchorRef } />
-      <ModalBase
-        isSwipe
+      <DetailFilеr
         isOpen={ showAdvancedOptions }
-        title="Headlien Text"
-        translate="bottom"
         onClose={ () => setShowAdvancedOptions(false) }
-      >
-        <div>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum laudantium nobis hic voluptates. Nobis corporis ipsa pariatur laborum ut quae, impedit cum error. Porro accusamus dignissimos nulla nesciunt, et explicabo ab pariatur reiciendis maxime reprehenderit architecto nisi, tempora, dolorum ipsa voluptatibus quibusdam aspernatur expedita! Assumenda ab quis repellendus asperiores at omnis explicabo suscipit facilis, quam fugit facere natus est nobis doloremque libero ea porro, tempora mollitia necessitatibus, animi neque quo impedit! Itaque doloribus a repudiandae iste. Impedit adipisci molestiae nobis magnam praesentium, veniam rem aspernatur aut. Obcaecati, minima? Libero, officiis tempore itaque pariatur dolorem fugiat nostrum ad, quos officia non temporibus quo, accusamus velit? Est explicabo rerum incidunt ullam, iusto quisquam
-        </div>
-      </ModalBase>
+      />
     </>
   )
 }
