@@ -7,7 +7,7 @@ import { dataAgreementsTenants, HeadMenu, SideMenu } from '@widgets/documents-si
 import { DocsShortModalPrice } from '@widgets/docs-short-modal-price'
 import { agreementShortData } from './model/agreementShortData'
 import { useMemo } from 'react'
-import {DocsShortModalRules} from "@widgets/docs-short-modal-rules";
+import { DocsShortModalRules } from '@widgets/docs-short-modal-rules'
 
 const containTitle = 'Договор оферта краткосрочной аренды квартиры'
 const categorySideMenu = 'Договор оферта краткосрочной аренды квартиры'
