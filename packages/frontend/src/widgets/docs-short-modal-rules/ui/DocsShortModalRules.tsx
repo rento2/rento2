@@ -57,7 +57,7 @@ export const DocsShortModalRules = ({ isShownProps, hideProps }: {isShownProps: 
           <li>мусор нельзя оставлять у входной двери или около мусоропровода, если вы не знаете куда его выбросить - наши менеджеры обязательно подскажут;</li>
           <li>не выбрасывайте мусор/тряпки/средства личной гигиены в унитаз (рядом стоит ведро).</li>
         </ul>
-        <h3 className={ styles['modal__title_sub'] }>Штрафы за нарушения правил проживания</h3>
+        <h3 className={ styles['modal__title_sub'] }>Штрафы за нарушения правил проживания:</h3>
 
 
         <ul className={ styles['modal__list'] }>
