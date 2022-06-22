@@ -3,11 +3,11 @@ import { SwaggerConfig } from '@ioc:Adonis/Addons/Swagger'
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export default {
   uiEnabled: true, // disable or enable swaggerUi route
-  uiUrl: 'docs', // url path to swaggerUI
+  uiUrl: 'docs-short-modal-rules', // url path to swaggerUI
   specEnabled: true, // disable or enable swagger.json route
   specUrl: '/swagger.json',
 
-  middleware: [], // middlewares array, to protect your swagger docs and spec endpoints
+  middleware: [], // middlewares array, to protect your swagger docs-short-modal-rules and spec endpoints
 
   options: {
     definition: {
@@ -15,7 +15,7 @@ export default {
       info: {
         title: 'API Rento',
         version: '1.0.0',
-        description: 'API Rento swagger docs'
+        description: 'API Rento swagger docs-short-modal-rules'
       },
       components: {
         securitySchemes: {
@@ -30,12 +30,12 @@ export default {
 
     apis: [
       'app/**/*.ts',
-      'docs/swagger/**/*.yml',
-      'docs/swagger/*.yml',
+      'docs-short-modal-rules/swagger/**/*.yml',
+      'docs-short-modal-rules/swagger/*.yml',
       'start/routes.ts'
     ],
     basePath: '/api/v1/'
   },
   mode: process.env['NODE_ENV'] === 'production' ? 'PRODUCTION' : 'RUNTIME',
-  specFilePath: 'docs/swagger.json'
+  specFilePath: 'docs-short-modal-rules/swagger.json'
 } as SwaggerConfig

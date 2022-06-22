@@ -1,7 +1,7 @@
 import { Layout } from '@shared/ui'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-// import { AgreementShortList } from '@modules/docs/AgreementShort/AgreementShortList'
+// import { AgreementShortList } from '@modules/docs-short-modal-rules/AgreementShort/AgreementShortList'
 
 const titlePage = 'Снять квартиру посуточно в центре Москвы &#128156;'
 

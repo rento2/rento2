@@ -3,19 +3,19 @@ import { IPropsAgreements, IPropsMenu } from '@widgets/documents-side-menu/lib/t
 export const dataMenu: IPropsMenu[] = [
   {
     title: 'Частые вопросы',
-    href: '/docs/faq'
+    href: '/docs-short-modal-rules/faq'
   },
   {
     title: 'Политика обработки персональных данных',
-    href: '/docs/privacy'
+    href: '/docs-short-modal-rules/privacy'
   },
   {
     title: 'Пользовательское соглашение',
-    href: '/docs/rules'
+    href: '/docs-short-modal-rules/rules'
   },
   {
     title: 'Образцы документов',
-    href: '/docs/agreements'
+    href: '/docs-short-modal-rules/agreements'
   }
 ]
 

@@ -1,14 +1,14 @@
 export const dataDocsGroup1 = [
   {
-    hrefProps: '/docs/privacy',
+    hrefProps: '/docs-short-modal-rules/privacy',
     textProps: 'Политика конфеденциальности'
   },
   {
-    hrefProps: '/docs/agreements',
+    hrefProps: '/docs-short-modal-rules/agreements',
     textProps: 'Образцы документов'
   },
   {
-    hrefProps: '/docs/faq',
+    hrefProps: '/docs-short-modal-rules/faq',
     textProps: 'Частые вопросы'
   }
 ]
