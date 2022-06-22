@@ -10,10 +10,20 @@ import mainStyles from './MainFilter.module.scss'
 import headerStyles from './HeaderFilter.module.scss'
 import { DetailFilеr } from './modals/detail-filter/DetailFilter'
 
-const defaultValues = {
+// TODO: Типизировать после того как станет понятно в каком формате нужны данные
+const defaultValues: any = {
   types: [],
+  mayWidth: [],
   priceRange: { min: '', max: '' },
-  sortType: options[1]
+  square: { min: '', max: '' },
+  floorRange: { min: '', max: '' },
+  floor: [],
+  sortType: options[1],
+  technique: [],
+  time: [],
+  apartment: [],
+  house: [],
+  radio: ''
 }
 
 export const Filter: FC = () => {
@@ -24,13 +34,18 @@ export const Filter: FC = () => {
 
   const styles = useMemo(() => isHeaderMode ? headerStyles : mainStyles, [isHeaderMode])
 
+  const onReset = (): void => {
+    reset(defaultValues)
+  }
+  const onSubmit = handleSubmit(data => console.log(data))
+
   return (
     <>
-      <div
-        className={ classNames(styles.filter, { [styles.sticky]: showHeader }) }
-        onSubmit={ handleSubmit(console.log) }
-      >
-        <form className={ classNames(styles.filter__container, { container: isHeaderMode }) }>
+      <div className={ classNames(styles.filter, { [styles.sticky]: showHeader }) }>
+        <form
+          className={ classNames(styles.filter__container, { container: isHeaderMode }) }
+          onSubmit={ onSubmit }
+        >
           <fieldset className={ styles.fieldset }>
             <Controller
               control={ control }
@@ -49,7 +64,7 @@ export const Filter: FC = () => {
               name="types"
               render={ ({ field: { value, onChange } }) =>
                 (<ChipBox
-                  chips={ chips }
+                  chips={ chips.options }
                   classProps={ classNames(styles.fieldset__item, styles['chip-box']) }
                   value={ value }
                   onChange={ onChange }
@@ -103,7 +118,7 @@ export const Filter: FC = () => {
                 full="text"
                 grade="neutral"
                 height='40'
-                onClick={ () => reset(defaultValues) }
+                onClick={ onReset }
               >
                 Сбросить
               </ButtonGeneral>
@@ -113,7 +128,7 @@ export const Filter: FC = () => {
               classProps={ classNames(styles['button-search']) }
               font="s"
               height='40'
-              type='button'
+              type='submit'
             >
               Показать 88888 квартир
             </ButtonGeneral>
@@ -131,9 +146,13 @@ export const Filter: FC = () => {
         </form>
       </div>
       <div ref={ anchorRef } />
+
       <DetailFilеr
+        control={ control }
         isOpen={ showAdvancedOptions }
         onClose={ () => setShowAdvancedOptions(false) }
+        onReset={ onReset }
+        onSubmit={ onSubmit }
       />
     </>
   )

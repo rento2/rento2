@@ -1,58 +1,79 @@
 import { FC } from 'react'
 import classNames from 'classnames'
+import { Controller, Control, SubmitHandler } from 'react-hook-form'
 
-import { ButtonGeneral, ChipBox, DoubleInput, IconArrowRight, IconBus, IconMetro, IconWalker, ModalBase } from '@shared/ui'
+import { ButtonGeneral, ChipBox, DoubleInput, IconArrowRight, IconBus, IconMetro, IconWalker, ModalBase, RadioButton } from '@shared/ui'
+import { chips } from '@features/filter/model/mock'
 
 import styles from './DetailFilter.module.scss'
 
 interface IDetailFilter {
   isOpen: boolean
   onClose: () => void
+  // TODO: После типизации defaultValue, заменить any
+  control: Control<any>
+  onSubmit: SubmitHandler<any>
+  onReset: () => void
 }
 
-export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
-  return (
-    <ModalBase
-      footer={
-        <div className={ styles.footer }>
-          <ButtonGeneral
-            classProps={ classNames(styles['footer__button-reset']) }
-            font='s'
-            full="text"
-            grade="primary"
-            height='40'
-          >
-            Очистить фильтры
-          </ButtonGeneral>
-          <ButtonGeneral
-            classProps={ classNames(styles['footer__button-search']) }
-            font="s"
-            height='40'
-            type='button'
-          >
-            Показать 888888 квартир
-          </ButtonGeneral>
-        </div>
+export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onReset, onSubmit }) => (
+  <ModalBase
+    footer={
+      <div className={ styles.footer }>
+        <ButtonGeneral
+          classProps={ classNames(styles['footer__button-reset']) }
+          font='s'
+          full="text"
+          grade="primary"
+          height='40'
+          onClick={ onReset }
+        >
+          Очистить фильтры
+        </ButtonGeneral>
+        <ButtonGeneral
+          classProps={ classNames(styles['footer__button-search']) }
+          font="s"
+          form="detailFilter"
+          height='40'
+          type='submit'
+        >
+          Показать 888888 квартир
+        </ButtonGeneral>
+      </div>
       }
-      isOpen={ isOpen }
-      translate="right"
-      onClose={ onClose }
+    isOpen={ isOpen }
+    translate="right"
+    onClose={ onClose }
+  >
+    <form
+      id="detailFilter"
+      onSubmit={ onSubmit }
     >
       <div className={ styles['sub-header'] }>
-        <DoubleInput
-          placeholder={ { min: '50000', max: '2000000' } }
-          unit="₽"
-          value={ { min: '', max: '' } }
-          onChange={ () => {} }
+        <Controller
+          control={ control }
+          name="priceRange"
+          render={ ({ field: { value, onChange } }) =>
+            (<DoubleInput
+              placeholder={ { min: '50000', max: '2000000' } }
+              unit="₽"
+              value={ value }
+              onChange={ onChange }
+            />) }
         />
       </div>
       <div className={ styles.container }>
-        <ChipBox
-          isSwipeable
-          chips={ ['Можно с детьми', 'Можно с животными'] }
-          marginRight={ 10 }
-          value={ [] }
-          onChange={ () => {} }
+        <Controller
+          control={ control }
+          name="mayWidth"
+          render={ ({ field: { value, onChange } }) =>
+            (<ChipBox
+              isSwipeable
+              chips={ chips.mayWidth }
+              marginRight={ 10 }
+              value={ value }
+              onChange={ onChange }
+            />) }
         />
         <div className={ styles.separator } />
 
@@ -60,18 +81,28 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
           Параметры квартиры
         </h2>
         <div className={ styles.options }>
-          <DoubleInput
-            classProps={ classNames(styles.options__double) }
-            placeholder={ { min: '888', max: '888' } }
-            unit="м2"
-            value={ { min: '', max: '' } }
-            onChange={ () => {} }
+          <Controller
+            control={ control }
+            name="square"
+            render={ ({ field: { value, onChange } }) =>
+              (<DoubleInput
+                classProps={ classNames(styles.options__double) }
+                placeholder={ { min: '888', max: '888' } }
+                unit="м2"
+                value={ value }
+                onChange={ onChange }
+              />) }
           />
-          <ChipBox
-            chips={ ['Студия', '1к', '2к', '3к+'] }
-            classProps={ classNames(styles['options__chip-box']) }
-            value={ [] }
-            onChange={ () => {} }
+          <Controller
+            control={ control }
+            name="types"
+            render={ ({ field: { value, onChange } }) =>
+              (<ChipBox
+                chips={ chips.options }
+                classProps={ classNames(styles['options__chip-box']) }
+                value={ value }
+                onChange={ onChange }
+              />) }
           />
         </div>
 
@@ -86,21 +117,46 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
           Время до метро
         </h2>
         <div className={ classNames(styles.time, 'flex-center') }>
-          <div className="flex-center">
-            <span className={ classNames(styles['time__icon-walker'], 'flex-center') }>
-              <IconWalker />
-            </span>
-            <span className={ classNames(styles['time__icon-walker'], 'flex-center') }>
-              <IconBus />
-            </span>
+          <div className={ classNames('flex-center') }>
+            <Controller
+              control={ control }
+              name="radio"
+              render={ ({ field }) => (
+                <RadioButton
+                  { ...field }
+                  checked={ field.value === 'walker' }
+                  classProps={ classNames(styles.time__radio) }
+                  icon={ <IconWalker /> }
+                  value='walker'
+                />
+              ) }
+            />
+            <Controller
+              control={ control }
+              name="radio"
+              render={ ({ field }) => (
+                <RadioButton
+                  { ...field }
+                  checked={ field.value === 'bus' }
+                  classProps={ classNames(styles.time__radio) }
+                  icon={ <IconBus /> }
+                  value='bus'
+                />
+              ) }
+            />
           </div>
-          <ChipBox
-            isSwipeable
-            chips={ ['5 мин.', '10 мин.', '15 мин.', '20+ мин.'] }
-            classProps={ classNames(styles['time__chip-box']) }
-            marginRight={ 10 }
-            value={ [] }
-            onChange={ () => {} }
+          <Controller
+            control={ control }
+            name="time"
+            render={ ({ field: { value, onChange } }) =>
+              (<ChipBox
+                isSwipeable
+                chips={ chips.time }
+                classProps={ classNames(styles['time__chip-box']) }
+                marginRight={ 10 }
+                value={ value }
+                onChange={ onChange }
+              />) }
           />
         </div>
         <div className={ styles.devider } />
@@ -108,12 +164,17 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
         <h2 className={ styles.subtitle }>
           Дом
         </h2>
-        <ChipBox
-          isSwipeable
-          chips={ ['Любой', 'Сталинки', 'Новостройки', 'В центре'] }
-          marginRight={ 10 }
-          value={ [] }
-          onChange={ () => {} }
+        <Controller
+          control={ control }
+          name="house"
+          render={ ({ field: { value, onChange } }) =>
+            (<ChipBox
+              isSwipeable
+              chips={ chips.house }
+              marginRight={ 10 }
+              value={ value }
+              onChange={ onChange }
+            />) }
         />
         <div className={ styles.separator } />
 
@@ -121,18 +182,28 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
           Этаж
         </h2>
         <div className={ classNames(styles.floor) }>
-          <DoubleInput
-            classProps={ classNames(styles.floor__double) }
-            placeholder={ { min: '88', max: '88' } }
-            value={ { min: '', max: '' } }
-            onChange={ () => {} }
+          <Controller
+            control={ control }
+            name="floorRange"
+            render={ ({ field: { value, onChange } }) =>
+              (<DoubleInput
+                classProps={ classNames(styles.floor__double) }
+                placeholder={ { min: '88', max: '88' } }
+                value={ value }
+                onChange={ onChange }
+              />) }
           />
-          <ChipBox
-            isSwipeable
-            chips={ ['Не первый', 'Не последний', 'Последний'] }
-            marginRight={ 4 }
-            value={ [] }
-            onChange={ () => {} }
+          <Controller
+            control={ control }
+            name="floor"
+            render={ ({ field: { value, onChange } }) =>
+              (<ChipBox
+                isSwipeable
+                chips={ chips.floor }
+                marginRight={ 4 }
+                value={ value }
+                onChange={ onChange }
+              />) }
           />
         </div>
         <div className={ styles.separator } />
@@ -140,34 +211,49 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose }) => {
         <h2 className={ styles.subtitle }>
           Квартира
         </h2>
-        <ChipBox
-          isSwipeable
-          chips={ ['С мебелью', 'Без мебели', 'Хороший ремонт', 'Балкон / лоджия'] }
-          marginRight={ 10 }
-          value={ [] }
-          onChange={ () => {} }
+        <Controller
+          control={ control }
+          name="apartment"
+          render={ ({ field: { value, onChange } }) =>
+            (<ChipBox
+              isSwipeable
+              chips={ chips.apartment }
+              marginRight={ 10 }
+              value={ value }
+              onChange={ onChange }
+            />) }
         />
         <div className={ styles.separator } />
 
         <h2 className={ styles.subtitle }>
           Техника
         </h2>
-        <ChipBox
-          isSwipeable
-          chips={ ['Холодильник', 'Телевизор', 'Стиральная машинка'] }
-          classProps={ classNames(styles['technique__chip-box']) }
-          marginRight={ 10 }
-          value={ [] }
-          onChange={ () => {} }
+        <Controller
+          control={ control }
+          name="technique"
+          render={ ({ field: { value, onChange } }) =>
+            (<ChipBox
+              isSwipeable
+              chips={ chips.techniqueFirst }
+              classProps={ classNames(styles['technique__chip-box']) }
+              marginRight={ 10 }
+              value={ value }
+              onChange={ onChange }
+            />) }
         />
-        <ChipBox
-          isSwipeable
-          chips={ ['Посудомоечная машинка', 'Кондиционер'] }
-          marginRight={ 10 }
-          value={ [] }
-          onChange={ () => {} }
+        <Controller
+          control={ control }
+          name="technique"
+          render={ ({ field: { value, onChange } }) =>
+            (<ChipBox
+              isSwipeable
+              chips={ chips.techniqueSecond }
+              marginRight={ 10 }
+              value={ value }
+              onChange={ onChange }
+            />) }
         />
       </div>
-    </ModalBase>
-  )
-}
+    </form>
+  </ModalBase>
+)
