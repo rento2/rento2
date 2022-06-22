@@ -18,7 +18,7 @@
     "classnames": "^2.3.1",
     "date-fns": "^2.24.0",
     "gray-matter": "^4.0.3",
-    "next": "^11.0.0",
+    "next": "^12.1.6",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
     "react": "17.0.2",
@@ -33,7 +33,7 @@
     "remark": "^13.0.0",
     "remark-html": "^13.0.2",
     "sass": "^1.42.1",
-    "swiper": "^8.0.7",
+    "swiper": "^8.2.4",
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
