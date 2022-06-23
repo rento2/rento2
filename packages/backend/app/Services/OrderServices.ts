@@ -1,59 +1,31 @@
-import { telegram } from 'App/Services/Telegram'
-import Bnovo from 'App/Services/Bnovo'
-import { Order } from 'App/Models/Order'
-import { DateTime } from 'luxon'
+import { telegram } from "App/Services/Telegram";
+import Bnovo from "App/Services/Bnovo";
+import { IpaidOrder } from "../../common/interfaces/IOrderServices";
+
 
 class OrderServices {
-  public async notifyPayment (order: InstanceType<Order>): Promise<void> {
-    const {
-      dateFrom,
-      dateTo,
-      apartmentId,
-      fixedPrice,
-      name,
-      email,
-      phone,
-      prices,
-    } = order
-    const surname = name.split(' ')[0]
-    const payload = { name, surname, email, phone }
+  public async notifyPayment(paidOrder: IpaidOrder): Promise<void> {
+    const newBnovo = new Bnovo();
+    let response = await newBnovo.bookApartment(
+      paidOrder.dateFrom,
+      paidOrder.dateTo,
+      paidOrder.apartmentId,
+      paidOrder.prices,
+      paidOrder.payload
+    );
 
-    await telegram.createMessageBody(
-      dateFrom,
-      dateTo,
-      apartmentId,
-      fixedPrice,
-      name,
-      email,
-      phone,
-    )
-
-    class NewBnova extends Bnovo {
-      public async sendBookApartment (
-        dateFrom: DateTime,
-        dateTo: DateTime,
-        apartmentId: number,
-        prices: any[],
-        payload: {
-          name: string
-          surname: string
-          email: string
-          phone: string
-        }
-      ): Promise<void> {
-        this.bookApartment(dateFrom, dateTo, apartmentId, prices, payload)
-      }
+    if (response) {
+      await telegram.createMessageBody(
+        paidOrder.id,
+        paidOrder.dateFrom,
+        paidOrder.dateTo,
+        paidOrder.fixedTotalPrice,
+        paidOrder.payload.name,
+        paidOrder.payload.phone,
+        response.payment_url
+      );
     }
-
-    const newBnova = new NewBnova()
-    await newBnova.sendBookApartment(
-      dateFrom,
-      dateTo,
-      apartmentId,
-      prices,
-      payload
-    )
   }
 }
 
-export const orderServices = new OrderServices()
+export const orderServices = new OrderServices();
