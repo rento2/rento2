@@ -2,17 +2,28 @@ import { FC, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { Controller, useForm } from 'react-hook-form'
 
-import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput, ModalBase } from '@shared/ui'
+import { ButtonGeneral, IconLocation, IconSetting4, Select, ChipBox, DoubleInput } from '@shared/ui'
 import { options, chips } from '../model/mock'
 import { useSticky } from '../lib/hooks/useSticky'
 
 import mainStyles from './MainFilter.module.scss'
 import headerStyles from './HeaderFilter.module.scss'
+import { DetailFilеr } from './modals/detail-filter/DetailFilter'
 
-const defaultValues = {
+// TODO: Типизировать после того как станет понятно в каком формате нужны данные
+const defaultValues: any = {
   types: [],
+  mayWidth: [],
   priceRange: { min: '', max: '' },
-  sortType: options[1]
+  square: { min: '', max: '' },
+  floorRange: { min: '', max: '' },
+  floor: [],
+  sortType: options[1],
+  technique: [],
+  time: [],
+  apartment: [],
+  house: [],
+  radio: ''
 }
 
 export const Filter: FC = () => {
@@ -23,20 +34,25 @@ export const Filter: FC = () => {
 
   const styles = useMemo(() => isHeaderMode ? headerStyles : mainStyles, [isHeaderMode])
 
+  const onReset = (): void => {
+    reset(defaultValues)
+  }
+  const onSubmit = handleSubmit(data => console.log(data))
+
   return (
     <>
-      <div
-        className={ classNames(styles.filter, { [styles.sticky]: showHeader }) }
-        onSubmit={ handleSubmit(console.log) }
-      >
-        <form className={ classNames(styles.filter__container, { container: isHeaderMode }) }>
+      <div className={ classNames(styles.filter, { [styles.sticky]: showHeader }) }>
+        <form
+          className={ classNames(styles.filter__container, { container: isHeaderMode }) }
+          onSubmit={ onSubmit }
+        >
           <fieldset className={ styles.fieldset }>
             <Controller
               control={ control }
               name="priceRange"
               render={ ({ field: { value, onChange } }) =>
                 (<DoubleInput
-                  classProps={ classNames(styles.fieldset__item) }
+                  classProps={ classNames(styles.fieldset__item, styles.double) }
                   placeholder={ { min: '50000', max: '2000000' } }
                   unit="₽"
                   value={ value }
@@ -48,8 +64,8 @@ export const Filter: FC = () => {
               name="types"
               render={ ({ field: { value, onChange } }) =>
                 (<ChipBox
-                  chips={ chips }
-                  classProps={ classNames(styles.fieldset__item) }
+                  chips={ chips.options }
+                  classProps={ classNames(styles.fieldset__item, styles['chip-box']) }
                   value={ value }
                   onChange={ onChange }
                 />) }
@@ -102,7 +118,7 @@ export const Filter: FC = () => {
                 full="text"
                 grade="neutral"
                 height='40'
-                onClick={ () => reset(defaultValues) }
+                onClick={ onReset }
               >
                 Сбросить
               </ButtonGeneral>
@@ -112,7 +128,7 @@ export const Filter: FC = () => {
               classProps={ classNames(styles['button-search']) }
               font="s"
               height='40'
-              type='button'
+              type='submit'
             >
               Показать 88888 квартир
             </ButtonGeneral>
@@ -130,17 +146,14 @@ export const Filter: FC = () => {
         </form>
       </div>
       <div ref={ anchorRef } />
-      <ModalBase
-        isSwipe
+
+      <DetailFilеr
+        control={ control }
         isOpen={ showAdvancedOptions }
-        title="Headlien Text"
-        translate="bottom"
         onClose={ () => setShowAdvancedOptions(false) }
-      >
-        <div>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum laudantium nobis hic voluptates. Nobis corporis ipsa pariatur laborum ut quae, impedit cum error. Porro accusamus dignissimos nulla nesciunt, et explicabo ab pariatur reiciendis maxime reprehenderit architecto nisi, tempora, dolorum ipsa voluptatibus quibusdam aspernatur expedita! Assumenda ab quis repellendus asperiores at omnis explicabo suscipit facilis, quam fugit facere natus est nobis doloremque libero ea porro, tempora mollitia necessitatibus, animi neque quo impedit! Itaque doloribus a repudiandae iste. Impedit adipisci molestiae nobis magnam praesentium, veniam rem aspernatur aut. Obcaecati, minima? Libero, officiis tempore itaque pariatur dolorem fugiat nostrum ad, quos officia non temporibus quo, accusamus velit? Est explicabo rerum incidunt ullam, iusto quisquam
-        </div>
-      </ModalBase>
+        onReset={ onReset }
+        onSubmit={ onSubmit }
+      />
     </>
   )
 }

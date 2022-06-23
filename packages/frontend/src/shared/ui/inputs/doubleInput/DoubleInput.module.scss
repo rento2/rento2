@@ -5,7 +5,7 @@
 .double {
   @include body-5;
   display: flex;
-  background-color: $gray-blue-50;
+  background-color: $neutral-0;
   border: 1px solid transparent;
   border-radius: 4px;
 
@@ -16,6 +16,7 @@
 
   &__label {
     display: flex;
+    min-width: 94px;
     padding: 10px;
   }
 
