@@ -77,9 +77,9 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onRe
         />
         <div className={ styles.separator } />
 
-        <h2 className={ styles.subtitle }>
+        <h3 className={ styles.subtitle }>
           Параметры квартиры
-        </h2>
+        </h3>
         <div className={ styles.options }>
           <Controller
             control={ control }
@@ -113,9 +113,9 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onRe
         </button>
         <div className={ styles.separator } />
 
-        <h2 className={ styles.subtitle }>
+        <h3 className={ styles.subtitle }>
           Время до метро
-        </h2>
+        </h3>
         <div className={ classNames(styles.time, 'flex-center') }>
           <div className={ classNames('flex-center') }>
             <Controller
@@ -161,9 +161,9 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onRe
         </div>
         <div className={ styles.devider } />
 
-        <h2 className={ styles.subtitle }>
+        <h3 className={ styles.subtitle }>
           Дом
-        </h2>
+        </h3>
         <Controller
           control={ control }
           name="house"
@@ -178,9 +178,9 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onRe
         />
         <div className={ styles.separator } />
 
-        <h2 className={ styles.subtitle }>
+        <h3 className={ styles.subtitle }>
           Этаж
-        </h2>
+        </h3>
         <div className={ classNames(styles.floor) }>
           <Controller
             control={ control }
@@ -208,9 +208,9 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onRe
         </div>
         <div className={ styles.separator } />
 
-        <h2 className={ styles.subtitle }>
+        <h3 className={ styles.subtitle }>
           Квартира
-        </h2>
+        </h3>
         <Controller
           control={ control }
           name="apartment"
@@ -225,9 +225,9 @@ export const DetailFilеr: FC<IDetailFilter> = ({ isOpen, onClose, control, onRe
         />
         <div className={ styles.separator } />
 
-        <h2 className={ styles.subtitle }>
+        <h3 className={ styles.subtitle }>
           Техника
-        </h2>
+        </h3>
         <Controller
           control={ control }
           name="technique"
