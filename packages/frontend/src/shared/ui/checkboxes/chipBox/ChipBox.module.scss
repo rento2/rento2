@@ -2,19 +2,20 @@
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
-.select {
-  @include body-5;
+.box {
   display: flex;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
   padding: 3px 16px;
-  background-color: $gray-blue-50;
+  background-color: $neutral-0;
   border-radius: 4px;
 
   &__chip {
+    @include body-5;
     padding: 7px 9px;
     margin-right: 10px;
+    white-space: nowrap;
     cursor: pointer;
     background-color: $gray-blue-50;
     border: 1px solid transparent;
@@ -39,5 +40,9 @@
       background-color: $iris-50;
       border-color: $iris-100;
     }
+  }
+
+  &__slide {
+    width: min-content;
   }
 }
