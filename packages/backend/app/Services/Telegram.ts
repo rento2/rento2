@@ -1,17 +1,13 @@
-import axios from 'axios'
-import telegramConfiguration from 'Config/telegram'
-import { DateTime } from 'luxon'
+import { ItelegramConfiguration } from './../../common/interfaces/Itelegram';
+import axios from "axios";
+import telegramConfiguration from "Config/telegram";
+import { DateTime } from "luxon";
 
-export interface ItelegramConfiguration {
-  token: string
-  chat_id: string
-  test_token: string
-  test_chat_id: string
-}
+
 class TelegramBot {
-  private readonly config: ItelegramConfiguration
-  constructor () {
-    this.config = telegramConfiguration
+  private readonly config: ItelegramConfiguration;
+  constructor() {
+    this.config = telegramConfiguration;
   }
 
   private async sendRequest<T extends Record<string, void>>(
@@ -19,42 +15,39 @@ class TelegramBot {
     _data?: Record<string, void>
   ): Promise<{ ok: boolean } & Partial<T>> {
     const response = await axios.get(
-      `https://api.telegram.org/bot${this.config.test_token}${path}`
-    )
-    return response.data
+      `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
+    );
+    return response.data;
   }
 
-  public async sendMsgToTelegram (msg: string): Promise<boolean> {
+  public async sendMsgToTelegram(msg: string): Promise<boolean> {
     return (
-      (
-        await this.sendRequest(
-          `/sendMessage?&chat_id=${this.config.test_chat_id}&parse_mode=html&text=${msg}`
-        )
-      ).ok
-    )
+      await this.sendRequest(
+        `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
+      )
+    ).ok;
   }
 
-  public async createMessageBody (
+  public async createMessageBody(
+    id: number,
     dateFrom: DateTime | Date,
     dateTo: DateTime | Date,
-    apartmentId: number,
-    fixedPrice: number,
+    fixedTotalPrice: number,
     name: string,
-    email: string,
-    phone: string
-  ): Promise<boolean> {
-    const msg = `
-  from: ${dateFrom},
-  to:  ${dateTo},
-  apartmentId:  ${apartmentId},
-  fixedPrice:  ${fixedPrice},
-  name:  ${name},
-  email: ${email},
-  phone:  ${phone}
-  `
-
-    return await this.sendMsgToTelegram(msg)
+    phone: string,
+    payment_url: string
+    ): Promise<boolean> {
+    const msg =encodeURIComponent(`
+      Заказ № ${id}
+      забранирован на имя ${name}
+      контактный телефон:  ${phone}.
+      Даты проживания:
+      с ${dateFrom.toLocaleString()} по ${dateTo.toLocaleString()}.
+      Оплатить: ${fixedTotalPrice}.
+      Cсылка на оплату:${payment_url}
+    `);
+    return await this.sendMsgToTelegram(msg);
   }
 }
 
-export const telegram = new TelegramBot()
+export const telegram = new TelegramBot();
