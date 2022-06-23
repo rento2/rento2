@@ -148,7 +148,7 @@ export default class Bnovo {
     return response
   }
 
-  protected bookApartment = async (
+  public bookApartment = async (
     from: DateTime,
     to: DateTime,
     apartmentId: number,
