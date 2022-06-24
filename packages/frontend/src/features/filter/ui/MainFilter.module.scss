@@ -1,4 +1,4 @@
-@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/variables' as *;
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
@@ -31,6 +31,11 @@
       padding: 5px 10px;
     }
   }
+}
+
+.double,
+.chip-box {
+  background-color: $gray-blue-50;
 }
 
 .select {
