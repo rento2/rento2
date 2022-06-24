@@ -3,6 +3,10 @@
 @use 'src/app/styles/core/typography' as *;
 
 .modal {
+  &__body{
+    padding: 20px;
+
+  }
   &__title {
     @include subtitle-2;
     &_sub{
@@ -18,7 +22,7 @@
       padding-top:  10px;
     }
 
-    &_list li{
+    &_list_li{
       @include body-5;
       list-style: disc;
       margin-left: 20px;
@@ -52,12 +56,12 @@
       grid-template-columns: 57% 43%;
     }
 
-    &_color {
+    &_color:nth-child(odd) {
       background-color: $iris-50;
     }
   }
 
-  &__cell-inner {
+  &__cell--inner {
     display: flex;
     align-items: center;
     height: 100%;
