@@ -2,6 +2,7 @@ import { DateTime } from "luxon";
 
 export interface IPaidOrder {
   id: number;
+  apartmentAddress: string;
   dateFrom: DateTime;
   dateTo: DateTime;
   fixedTotalPrice: number;

@@ -16,8 +16,9 @@ export default class OrderService {
 
     if (response) {
       const NewTelegramBot = new TelegramBot();
-      await NewTelegramBot.createMessageBody(
+      await NewTelegramBot.sendMsgToTelegram(
         paidOrder.id,
+        paidOrder.apartmentAddress,
         paidOrder.dateFrom,
         paidOrder.dateTo,
         paidOrder.fixedTotalPrice,
