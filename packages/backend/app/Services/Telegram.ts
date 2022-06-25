@@ -1,4 +1,4 @@
-import { IPositiveResponse,INegativeResponse } from './../../common/interfaces/IResponse';
+import { IPositiveResponse, INegativeResponse } from './../../common/interfaces/IResponse';
 import { ITelegram } from "../../common/interfaces/Itelegram";
 import axios from "axios";
 import telegramConfiguration from "Config/telegram";
@@ -52,7 +52,7 @@ export default class TelegramBot {
 
     try {
       const telegramResponse = await this.sendRequest(
-        `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
+        `/sendMessage?&chat_id=1${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
       );
       return creatingOkMsg(telegramResponse)
     } catch (err) {

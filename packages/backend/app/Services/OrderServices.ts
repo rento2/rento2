@@ -3,10 +3,15 @@ import Bnovo from "App/Services/Bnovo";
 import { IPaidOrder } from "../../common/interfaces/IPaidOrder";
 
 export default class OrderService {
-  public async notifyPayment(paidOrder: IPaidOrder): Promise<void> {
-    const newBnovo = new Bnovo();
+  newBnovo
+  newTelegramBot
+  constructor() {
+    this.newBnovo = new Bnovo();
+    this.newTelegramBot = new TelegramBot();
+  }
 
-    const response = await newBnovo.bookApartment(
+  public async notifyPayment(paidOrder: IPaidOrder): Promise<void> {
+    const response = await this.newBnovo.bookApartment(
       paidOrder.dateFrom,
       paidOrder.dateTo,
       paidOrder.apartmentId,
@@ -15,8 +20,7 @@ export default class OrderService {
     );
 
     if (response) {
-      const NewTelegramBot = new TelegramBot();
-      await NewTelegramBot.sendMsgToTelegram(
+      await this.newTelegramBot.sendMsgToTelegram(
         paidOrder.id,
         paidOrder.apartmentAddress,
         paidOrder.dateFrom,
