@@ -1,12 +1,12 @@
-import { telegram } from "App/Services/Telegram";
+import TelegramBot from "App/Services/Telegram";
 import Bnovo from "App/Services/Bnovo";
-import { IpaidOrder } from "../../common/interfaces/IOrderServices";
+import { IPaidOrder } from "../../common/interfaces/IPaidOrder";
 
-
-class OrderServices {
-  public async notifyPayment(paidOrder: IpaidOrder): Promise<void> {
+export default class OrderService {
+  public async notifyPayment(paidOrder: IPaidOrder): Promise<void> {
     const newBnovo = new Bnovo();
-    let response = await newBnovo.bookApartment(
+
+    const response = await newBnovo.bookApartment(
       paidOrder.dateFrom,
       paidOrder.dateTo,
       paidOrder.apartmentId,
@@ -15,7 +15,8 @@ class OrderServices {
     );
 
     if (response) {
-      await telegram.createMessageBody(
+      const NewTelegramBot = new TelegramBot();
+      await NewTelegramBot.createMessageBody(
         paidOrder.id,
         paidOrder.dateFrom,
         paidOrder.dateTo,
@@ -27,5 +28,3 @@ class OrderServices {
     }
   }
 }
-
-export const orderServices = new OrderServices();

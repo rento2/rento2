@@ -1,11 +1,11 @@
-import { ItelegramConfiguration } from './../../common/interfaces/Itelegram';
+import { Itelegram } from '../../common/interfaces/Itelegram';
 import axios from "axios";
 import telegramConfiguration from "Config/telegram";
 import { DateTime } from "luxon";
 
 
-class TelegramBot {
-  private readonly config: ItelegramConfiguration;
+export default class TelegramBot {
+  private readonly config: Itelegram;
   constructor() {
     this.config = telegramConfiguration;
   }
@@ -44,10 +44,8 @@ class TelegramBot {
       Даты проживания:
       с ${dateFrom.toLocaleString()} по ${dateTo.toLocaleString()}.
       Оплатить: ${fixedTotalPrice}.
-      Cсылка на оплату:${payment_url}
+      Cсылка на оплату: ${payment_url}
     `);
     return await this.sendMsgToTelegram(msg);
   }
 }
-
-export const telegram = new TelegramBot();

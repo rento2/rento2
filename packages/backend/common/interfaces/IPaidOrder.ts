@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-export interface IpaidOrder {
+export interface IPaidOrder {
   id: number;
   dateFrom: DateTime;
   dateTo: DateTime;
