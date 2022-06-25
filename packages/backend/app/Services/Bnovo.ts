@@ -1,4 +1,4 @@
-import { IResponseBnovo } from './../../common/interfaces/IResponseBnovo';
+import { IResponseBnovo } from './../../common/interfaces/IResponseBnovo'
 import { buildUrl, IQueryParams } from 'build-url-ts'
 import bnovoConfiguration from 'Config/bnovo'
 import axios from 'axios'
