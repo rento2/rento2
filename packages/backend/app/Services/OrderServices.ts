@@ -12,18 +12,18 @@ import Bnovo from 'App/Services/Bnovo'
 import { IPaidOrder } from '../../common/interfaces/IPaidOrder'
 
 export default class OrderService {
-  newBnovo
-  newTelegramBot
+  bnovo
+  telegramBot
   constructor () {
-    this.newBnovo = new Bnovo()
-    this.newTelegramBot = new TelegramBot()
+    this.bnovo = new Bnovo()
+    this.telegramBot = new TelegramBot()
   }
 
   public async notifyPayment (
     paidOrder: IPaidOrder
   ): Promise<INegativeResponse | IPositiveResponse<IPaidOrder>> {
     try {
-      const response = await this.newBnovo.bookApartment(
+      const response = await this.bnovo.bookApartment(
         paidOrder.dateFrom,
         paidOrder.dateTo,
         paidOrder.apartmentId,
@@ -32,7 +32,7 @@ export default class OrderService {
       )
 
       if (response) {
-        await this.newTelegramBot.sendMsgToTelegram(
+        await this.telegramBot.sendMsgToTelegram(
           paidOrder.id,
           paidOrder.apartmentAddress,
           paidOrder.dateFrom,
