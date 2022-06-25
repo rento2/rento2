@@ -1,8 +1,11 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Apartment from 'App/Models/Apartment'
+import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class Review extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true })
   public id!: number
 
