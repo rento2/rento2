@@ -1,34 +1,35 @@
-import { IPositiveResponse, INegativeResponse } from './../../common/interfaces/IResponse';
-import { ITelegram } from "../../common/interfaces/Itelegram";
-import axios from "axios";
-import telegramConfiguration from "Config/telegram";
-import { DateTime } from "luxon";
-import { creatingErrMsg, creatingOkMsg } from "../../common/helpers/creatingResponse";
+import Logger from '@ioc:Adonis/Core/Logger'
+import { IPositiveResponse, INegativeResponse } from './../../common/interfaces/IResponse'
+import { ITelegram } from '../../common/interfaces/Itelegram'
+import axios from 'axios'
+import telegramConfiguration from 'Config/telegram'
+import { DateTime } from 'luxon'
+import { creatingErrMsg, creatingOkMsg } from '../../common/helpers/creatingResponse'
 
 export default class TelegramBot {
-  private readonly config: ITelegram;
-  constructor() {
-    this.config = telegramConfiguration;
+  private readonly config: ITelegram
+  constructor () {
+    this.config = telegramConfiguration
   }
 
   protected formatDate = (date: DateTime): string => {
     return date
-      .setLocale("ru")
-      .setZone("Europe/Moscow")
-      .toLocaleString(DateTime.DATETIME_MED);
-  };
-
-  private async sendRequest(
-    path: string,
-    _data?: Record<string, void>
-  ): Promise<INegativeResponse | IPositiveResponse<Record<string, void>>> {
-    const response = await axios.get(
-      `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
-    );
-    return response.data;
+      .setLocale('ru')
+      .setZone('Europe/Moscow')
+      .toLocaleString(DateTime.DATETIME_MED)
   }
 
-  public async sendMsgToTelegram(
+  private async sendRequest<T extends Record<string, void>>(
+    path: string,
+    _data?: Record<string, void>
+  ): Promise<{ ok: boolean } & Partial<T>> {
+    const response = await axios.get(
+      `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
+    )
+    return response.data
+  }
+
+  public async sendMsgToTelegram (
     id: number,
     apartmentAddress: string,
     dateFrom: DateTime,
@@ -36,9 +37,8 @@ export default class TelegramBot {
     fixedTotalPrice: number,
     name: string,
     phone: string,
-    payment_url: string
-  ): Promise<any> {
-
+    paymentUrl: string
+  ): Promise<INegativeResponse | IPositiveResponse<Record<string, void>>> {
     const msg = this.createMessageBody(
       id,
       apartmentAddress,
@@ -47,21 +47,22 @@ export default class TelegramBot {
       fixedTotalPrice,
       name,
       phone,
-      payment_url
-    );
+      paymentUrl
+    )
 
     try {
       const telegramResponse = await this.sendRequest(
-        `/sendMessage?&chat_id=1${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
-      );
+        `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
+      )
       return creatingOkMsg(telegramResponse)
     } catch (err) {
       const error = err as Error
+      Logger.error(`Order '${id}' not sent via telegram bot`)
       return creatingErrMsg('Failed telegram response.', error.message)
     }
   }
 
-  private createMessageBody(
+  private createMessageBody (
     id: number,
     apartmentAddress: string,
     dateFrom: DateTime,
@@ -69,7 +70,7 @@ export default class TelegramBot {
     fixedTotalPrice: number,
     name: string,
     phone: string,
-    payment_url: string
+    paymentUrl: string
   ): string {
     return encodeURIComponent(`
       Заказ № ${id}
@@ -80,7 +81,7 @@ export default class TelegramBot {
       с ${this.formatDate(dateFrom)}
       по ${this.formatDate(dateTo)}.
       Оплатить: ${fixedTotalPrice} руб.
-      Cсылка на оплату: ${payment_url}
-    `);
+      Cсылка на оплату: ${paymentUrl}
+    `)
   }
 }
