@@ -1,0 +1,32 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.label {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 8px;
+
+  [class*='icon'] {
+    fill: $gray-blue-500;
+  }
+
+  &:hover {
+    background-color: $iris-100;
+
+    [class*='icon'] {
+      fill: $iris-400;
+    }
+  }
+}
+
+.radio {
+  display: none;
+}
+
+.checked {
+  [class*='icon'] {
+    fill: $iris-400;
+  }
+}

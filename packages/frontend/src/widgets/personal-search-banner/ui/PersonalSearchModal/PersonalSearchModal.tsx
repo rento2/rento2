@@ -16,7 +16,6 @@ export function PersonalSearchModal ({ isOpen, onClose, showForm }: IPersonalSea
 
   return (
     <ModalBase
-      bodyClass={ classNames(styles['body']) }
       isOpen={ isOpen }
       onClose={ onClose }
     >

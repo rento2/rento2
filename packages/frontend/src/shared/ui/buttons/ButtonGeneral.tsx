@@ -15,9 +15,10 @@ export interface IButton {
   classProps?: string
   onClick?: (e?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
   children: React.ReactNode | string
+  form?: string
 }
 
-export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, onClick, children }) => {
+export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, onClick, children, form }) => {
   const Component = href != null ? 'a' : 'button'
 
   const stylesRound = styles['round'] ?? ''
@@ -38,6 +39,7 @@ export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round
         }
       ) }
       disabled={ disabled }
+      form={ form }
       href={ href }
       type={ type }
       onClick={ onClick }

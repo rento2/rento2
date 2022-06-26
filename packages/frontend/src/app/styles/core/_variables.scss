@@ -1,3 +1,5 @@
+// COLORS
+
 $neutral-0: #fff;
 $neutral-05: #fafafa;
 $neutral-50: #ebebeb;
@@ -45,3 +47,14 @@ $orange-a500: #ff6b3d;
 
 $overlay-a05: rgba($gray-blue-500, 0.5);
 $overlay: rgba(0, 0, 0, 0.2);
+
+// Z-INDEX
+
+$zindex-dropdown: 1000;
+$zindex-sticky: 1020;
+$zindex-fixed: 1030;
+$zindex-modal-backdrop: 1040;
+$zindex-offcanvas: 1050;
+$zindex-modal: 1060;
+$zindex-popover: 1070;
+$zindex-tooltip: 1080;

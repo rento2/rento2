@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useRef } from 'react'
+import { FC, ReactNode, useCallback, useEffect, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import FocusLock from 'react-focus-lock'
 import classNames from 'classnames'
@@ -17,7 +17,7 @@ interface IModal {
   title?: string
   translate?: 'right' | 'bottom'
   isSwipe?: boolean
-  bodyClass? : string
+  footer?: ReactNode
 }
 
 const paddingBottom = 40
@@ -29,7 +29,7 @@ export const ModalBase: FC<IModal> = ({
   translate = 'bottom',
   title,
   isSwipe = false,
-  bodyClass
+  footer
 }) => {
   const { widthWindow } = useWindowDimensions()
 
@@ -86,6 +86,11 @@ export const ModalBase: FC<IModal> = ({
         >
           {children}
         </div>
+        {footer != null && (
+          <div className={ styles.modal__footer }>
+            {footer}
+          </div>
+        )}
       </BottomSheet>
     )
   }
@@ -122,6 +127,11 @@ export const ModalBase: FC<IModal> = ({
           <div className={ classNames(styles.modal__body, bodyClass) }>
             {children}
           </div>
+          {footer != null && (
+            <div className={ styles.modal__footer }>
+              {footer}
+            </div>
+          )}
         </div>
       </CSSTransition>
       <div
