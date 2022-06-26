@@ -25,7 +25,6 @@
     background-color: $neutral-0;
     border: 1px solid $gray-blue-600;
     border-radius: 4px;
-    transition: 0.2s border-color;
     transition: 0.1s background-color;
 
     @include bp-743 {

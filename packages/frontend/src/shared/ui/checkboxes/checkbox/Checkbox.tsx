@@ -8,27 +8,27 @@ interface ICheckboxProps {
   id: string
   conatinerClass?: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  defaultChecked?: boolean
 }
 
-export function Checkbox ({ label, id, conatinerClass, onChange }: ICheckboxProps): JSX.Element {
+export function Checkbox ({ label, id, conatinerClass, onChange, defaultChecked = false }: ICheckboxProps): JSX.Element {
   return (
-    <div className={ classNames(styles['checkbox__container'], conatinerClass) }>
-      <label
-        className={ styles['checkbox__label'] }
-        htmlFor={ id }
-      >
-        <input
-          className={ styles['checkbox__hidden-input'] }
-          id={ id }
-          name={ id }
-          type="checkbox"
-          onChange={ onChange }
-        />
-        <span className={ styles['checkbox__checkbox'] }>
-          <IconTick classProps={ styles['checkbox__icon'] } />
-        </span>
-        {label}
-      </label>
-    </div>
+    <label
+      className={ classNames(styles['checkbox__label'], conatinerClass) }
+      htmlFor={ id }
+    >
+      <input
+        className={ styles['checkbox__hidden-input'] }
+        defaultChecked={ defaultChecked }
+        id={ id }
+        name={ id }
+        type="checkbox"
+        onChange={ onChange }
+      />
+      <span className={ styles['checkbox__checkbox'] }>
+        <IconTick classProps={ styles['checkbox__icon'] } />
+      </span>
+      {label}
+    </label>
   )
 }

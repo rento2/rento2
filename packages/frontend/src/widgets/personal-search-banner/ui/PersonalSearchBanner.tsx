@@ -1,11 +1,11 @@
-import { ButtonGeneral } from '@shared/ui'
-import classNames from 'classnames'
+import { useState } from 'react'
 import Image from 'next/image'
-
+import classNames from 'classnames'
 import catalogImage from '../images/variant-catalog.svg'
 import apartmentImage from '../images/variant-apartment.svg'
+import { ButtonGeneral } from '@shared/ui'
+
 import styles from './PersonalSearchBanner.module.scss'
-import { useState } from 'react'
 import { PersonalSearchModal } from './PersonalSearchModal/PersonalSearchModal'
 import { PersonalSearchForm } from './PersonalSearchForm/PersonalSearchForm'
 
@@ -24,7 +24,7 @@ export function PersonalSearchBanner ({ variant = 'apartment' }: IPersonalSearch
 
   return (
     <>
-      <div className={ classNames(styles['banner']) }>
+      <div className={ styles['banner'] }>
         <div className={ classNames(styles['banner__image-wrapper']) }>
           <Image
             layout='fill'

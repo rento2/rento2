@@ -9,7 +9,7 @@
   padding: 20px;
   background-color: $neutral-0;
   border-radius: 20px;
-  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: $soft-004;
 
   @include bp-1023 {
     max-width: 700px;

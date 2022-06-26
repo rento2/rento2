@@ -32,7 +32,7 @@ export function SwitchBase ({ name, labelText, labelTextPlacement = 'right', con
           id={ name }
           name={ name }
           type="checkbox"
-          onChange={ e => onChange(e) }
+          onChange={ onChange }
         />
         <label
           className={ classNames(styles['switch__inner']) }
