@@ -1,5 +1,5 @@
 import Logger from '@ioc:Adonis/Core/Logger'
-import { IPositiveResponse, INegativeResponse } from './../../common/interfaces/IResponse'
+import { IPositiveResponse, INegativeResponse } from '../../common/interfaces/IResponse'
 import { ITelegram } from '../../common/interfaces/Itelegram'
 import axios from 'axios'
 import telegramConfiguration from 'Config/telegram'
@@ -19,10 +19,10 @@ export default class TelegramBot {
       .toLocaleString(DateTime.DATETIME_MED)
   }
 
-  private async sendRequest<T extends Record<string, void>>(
+  private async sendRequest (
     path: string,
     _data?: Record<string, void>
-  ): Promise<{ ok: boolean } & Partial<T>> {
+  ): Promise<{ ok: boolean } & Record<string, void>> {
     const response = await axios.get(
       `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
     )
@@ -56,9 +56,12 @@ export default class TelegramBot {
       )
       return creatingOkMsg(telegramResponse)
     } catch (err) {
-      const error = err as Error
-      Logger.error(`Order '${id}' not sent via telegram bot`)
-      return creatingErrMsg('Failed telegram response.', error.message)
+      if (err instanceof Error) {
+        const error = err
+        Logger.error(`Order '${id}' not sent via telegram bot`)
+        return creatingErrMsg('Failed telegram response.', error.message)
+      }
+      return creatingErrMsg('Failed bnovo response.', 'Unknown error')
     }
   }
 

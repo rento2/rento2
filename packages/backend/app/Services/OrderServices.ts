@@ -5,7 +5,7 @@ import {
 import {
   IPositiveResponse,
   INegativeResponse,
-} from './../../common/interfaces/IResponse'
+} from '../../common/interfaces/IResponse'
 import Logger from '@ioc:Adonis/Core/Logger'
 import TelegramBot from 'App/Services/Telegram'
 import Bnovo from 'App/Services/Bnovo'
@@ -31,7 +31,7 @@ export default class OrderService {
         paidOrder.payload
       )
 
-      if (response) {
+      if (response.bookings) {
         await this.telegramBot.sendMsgToTelegram(
           paidOrder.id,
           paidOrder.apartmentAddress,
@@ -45,9 +45,12 @@ export default class OrderService {
       }
       return creatingOkMsg(paidOrder)
     } catch (err) {
-      const error = err as Error
-      Logger.error(`Order '${paidOrder.id}' not registered in Bnovo`)
-      return creatingErrMsg('Failed bnovo response.', error.message)
+      if (err instanceof Error) {
+        const error = err
+        Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo`)
+        return creatingErrMsg('Failed bnovo response.', error.message)
+      }
+      return creatingErrMsg('Failed bnovo response.', 'Unknown error')
     }
   }
 }
