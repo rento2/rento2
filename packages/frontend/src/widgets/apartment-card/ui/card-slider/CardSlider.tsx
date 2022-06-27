@@ -24,12 +24,15 @@ export const CardSlider = ({ images }: { images: IImage[]}): JSX.Element => (
       width={ 295 }
     >
       {images.map(({ src, alt }) => (
-        <SwiperSlide key={ alt }>
+        <SwiperSlide key={ alt }
+          className={ classNames(styles.slider__image) }
+        >
           <Image alt={ alt }
-            height={ 220 }
-            layout="responsive"
+            height='100%'
+            layout='fill'
+            objectFit='cover'
             src={ src }
-            width={ 295 }
+            width='100%'
           />
         </SwiperSlide>
       ))}

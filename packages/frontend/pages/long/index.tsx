@@ -11,5 +11,7 @@ export default function Long ({ data }: { data: IApartmentsData[]}): JSX.Element
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await getApartmentsList()
 
+  console.log(data)
+
   return { props: data }
 }

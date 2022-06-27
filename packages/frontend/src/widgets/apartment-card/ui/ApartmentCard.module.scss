@@ -59,7 +59,8 @@
   }
 
   &__info {
-    padding: 38px 10px 10px 16px;
+    height: 100%;
+    padding: 38px 16px 10px;
 
     @include bp-1023 {
       padding: 30px 10px 16px;
@@ -76,7 +77,6 @@
 
   &__price {
     @include subtitle-2;
-    margin-bottom: 4px;
   }
 
   &__deposit {
@@ -90,16 +90,12 @@
   }
 
   &__details {
-    @include subtitle-3;
-    margin-bottom: 28px;
-
-    @include bp-743 {
-      margin-bottom: 8px;
-    }
+    @include subtitle-2;
+    margin: 0 0 8px;
   }
 
   &__location {
-    margin-bottom: 2px;
+    margin: 0 0 2px;
   }
 
   &__subway {

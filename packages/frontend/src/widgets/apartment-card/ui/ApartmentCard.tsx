@@ -70,21 +70,21 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
             { [styles['card__info--promo']]: mode === 'promo' })
           }
         >
-          <h3 className={ styles.card__price }>
+          <p className={ styles.card__price }>
             {`${price_per_month}₽ / месяц`}
-          </h3>
+          </p>
 
           { mode !== 'promo' && (
-            <span className={ styles.card__deposit }>
+            <p className={ styles.card__deposit }>
               {`Депозит: ${security_deposit_long}`}
-            </span>)
+            </p>)
           }
           <p className={ styles.card__details }>
             {`${rooms_num} комн · ${area} м2 · этаж ${storey}/${total_storeys}`}
           </p>
-          <span className={ styles['card__location'] }>
+          <p className={ styles['card__location'] }>
             {name}
-          </span>
+          </p>
           <ul>
             {MetroInfo(subway_station, time_to_subway_by_foot, time_to_subway_by_vehicle)}
           </ul>
