@@ -27,5 +27,8 @@ export interface IPaginatedResponse {
       total: number
     }
   }
-  data: LucidRow[]
+  data: {
+    items: LucidRow[]
+    additionals: Object | null
+  }
 }

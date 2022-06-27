@@ -163,6 +163,12 @@ export default class Apartment extends BaseModel {
   public petsAllowed!: boolean | null
 
   @column()
+  public isPopular!: boolean
+
+  @column()
+  public isRentoChoose!: boolean
+
+  @column()
   public maxAdults!: number | null
 
   @column()

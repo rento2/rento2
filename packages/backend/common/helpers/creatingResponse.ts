@@ -22,7 +22,7 @@ export function creatingOkMsg<U> (data: U, message: string = 'OK'): IPositiveRes
   }
 }
 
-export function creatingPaginatedList<T extends LucidRow> (paginatedResults: ModelPaginatorContract<T>): IPaginatedResponse {
+export function creatingPaginatedList<T extends LucidRow> (paginatedResults: ModelPaginatorContract<T>, additionals: Object | null = null): IPaginatedResponse {
   const { perPage, currentPage, hasMorePages, total } = paginatedResults
 
   return {
@@ -32,6 +32,9 @@ export function creatingPaginatedList<T extends LucidRow> (paginatedResults: Mod
         perPage, currentPage, hasMorePages, total
       },
     },
-    data: paginatedResults.all(),
+    data: {
+      items: paginatedResults.all(),
+      additionals,
+    },
   }
 }
