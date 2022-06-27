@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 
 import { Layout } from '@shared/ui'
-import { IApartmentsData } from '@shared/api'
+import { IApartmentsDataList, IApartmentItem } from '@shared/api'
 import { pathPages } from '@shared/config'
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
@@ -11,7 +11,9 @@ import styles from './LongPage.module.scss'
 
 const titlePage = 'Снять хорошую квартиру от 6 месяцев &#128156;'
 
-export const LongPage = ({ data }: { data: IApartmentsData[]}): JSX.Element => {
+export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element => {
+  console.log(data)
+  const { items } = data
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
@@ -24,7 +26,7 @@ export const LongPage = ({ data }: { data: IApartmentsData[]}): JSX.Element => {
           </h1>
 
           <ul className={ classNames(styles['long-page'], 'container') }>
-            {data?.slice(0, 10).map((el: IApartmentsData) => (
+            {items?.slice(0, 10).map((el: IApartmentItem) => (
               <li key={ el['id'] }>
                 <ApartmentCard { ...el }
                   pathPage={ pathPages.long }
@@ -32,11 +34,11 @@ export const LongPage = ({ data }: { data: IApartmentsData[]}): JSX.Element => {
               </li>
             ))}
           </ul>
-          <ApartmentsPromo cards={ data?.slice(0, 10) }
+          <ApartmentsPromo cards={ items?.slice(0, 10) }
             pathPage={ pathPages.long }
           />
           <ul className={ classNames(styles['long-page'], 'container') }>
-            {data?.slice(-10).map((el: IApartmentsData) => (
+            {items?.slice(-10).map((el: IApartmentItem) => (
               <li key={ el['id'] }>
                 <ApartmentCard { ...el }
                   pathPage={ pathPages.long }

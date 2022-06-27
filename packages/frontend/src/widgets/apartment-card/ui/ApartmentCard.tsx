@@ -30,15 +30,15 @@ const MetroInfo = (subwayStation: string, timeFoot: number, timeVehicle: number)
 
 export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
   const {
-    price_per_month,
-    security_deposit_long,
-    time_to_subway_by_foot,
-    time_to_subway_by_vehicle,
-    subway_station,
+    pricePerMonth,
+    securityDepositLong,
+    timeToSubwayByFoot,
+    timeToSubwayByVehicle,
+    subwayStation,
     name,
-    rooms_num,
+    roomsNum,
     storey,
-    total_storeys,
+    totalStoreys,
     area,
     id,
     mode,
@@ -71,22 +71,22 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
           }
         >
           <p className={ styles.card__price }>
-            {`${price_per_month}₽ / месяц`}
+            {`${pricePerMonth}₽ / месяц`}
           </p>
 
           { mode !== 'promo' && (
             <p className={ styles.card__deposit }>
-              {`Депозит: ${security_deposit_long}`}
+              {`Депозит: ${securityDepositLong}`}
             </p>)
           }
           <p className={ styles.card__details }>
-            {`${rooms_num} комн · ${area} м2 · этаж ${storey}/${total_storeys}`}
+            {`${roomsNum} комн · ${area} м2 · этаж ${storey}/${totalStoreys}`}
           </p>
           <p className={ styles['card__location'] }>
             {name}
           </p>
           <ul>
-            {MetroInfo(subway_station, time_to_subway_by_foot, time_to_subway_by_vehicle)}
+            {MetroInfo(subwayStation, timeToSubwayByFoot, timeToSubwayByVehicle)}
           </ul>
           <ButtonIcon
             classProps={ classNames(styles.card__favourite) }

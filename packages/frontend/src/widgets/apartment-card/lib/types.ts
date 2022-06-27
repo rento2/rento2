@@ -1,6 +1,6 @@
-import { IApartmentsData } from '@shared/api'
+import { IApartmentItem } from '@shared/api'
 
-export interface IApartmentCard extends IApartmentsData {
+export interface IApartmentCard extends IApartmentItem {
   mode?: 'promo'
   pathPage: string
 }

@@ -4,12 +4,12 @@ import SwiperCore, { Navigation, Pagination } from 'swiper'
 import classNames from 'classnames'
 
 import { IconArrowLeft, IconArrowRight, ButtonIcon } from '@shared/ui'
-import { IApartmentsData } from '@shared/api'
+import { IApartmentItem } from '@shared/api'
 import { ApartmentCard } from '@widgets/apartment-card'
 import { titleSlider } from './model/constants'
 import styles from './ApartmentsPromo.module.scss'
 
-export const ApartmentsPromo = ({ cards, pathPage }: {cards: IApartmentsData[], pathPage: string}): JSX.Element => {
+export const ApartmentsPromo = ({ cards, pathPage }: {cards: IApartmentItem[], pathPage: string}): JSX.Element => {
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
 
