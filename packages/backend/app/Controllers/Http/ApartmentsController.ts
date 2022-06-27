@@ -47,14 +47,15 @@ export default class ApartmentsController {
 
       return JSON.parse(cachedRawResult)
     }
-    const [popular, rentoChoose, inCityCenter, newlyAdded, nearTheSubway] = await Promise.all([
+    const wrappedQueriesList = [
       Apartment.query().where('isPopular', true).orderBy('createdAt', 'desc').limit(10),
       Apartment.query().where('isRentoChoose', true).orderBy('createdAt', 'desc').limit(10),
       Apartment.query().whereIn('subwayStation', ['station1']).orderBy('createdAt', 'desc').limit(10), // todo put the correct metro stations here
       Apartment.query().orderBy('createdAt', 'desc').limit(10),
       Apartment.query().where('timeToSubwayByFoot', '<=', 7).orderByRaw('random()').limit(10),
-    ].map(async query => await cacheWrapped(query)))
+    ].map(async query => await cacheWrapped(query))
 
+    const [popular, rentoChoose, inCityCenter, newlyAdded, nearTheSubway] = await Promise.all(wrappedQueriesList)
     const fetchedApartments = await apartments.paginate(request.param('page', 1))
     return response
       .status(HttpStatusCode.OK)
