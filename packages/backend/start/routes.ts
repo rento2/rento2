@@ -99,7 +99,7 @@ Route
       })
       .prefix('apartments')
   })
-  .prefix('/api/v1')
+  .prefix('/api/v1').middleware('apiAuth')
 
 Route
   .group(() => {
