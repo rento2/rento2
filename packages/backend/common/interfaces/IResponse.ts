@@ -29,6 +29,6 @@ export interface IPaginatedResponse {
   }
   data: {
     items: LucidRow[]
-    additionals: Object | null
+    additionals: Record<string, unknown> | null
   }
 }
