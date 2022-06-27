@@ -16,8 +16,11 @@ import Term from '../../common/enums/Term'
 import Banner from './Banner'
 import Order from './Order'
 import SleepingPlace from './SleepingPlace'
+import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class Apartment extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true })
   public id!: number
 
@@ -158,6 +161,12 @@ export default class Apartment extends BaseModel {
 
   @column()
   public petsAllowed!: boolean | null
+
+  @column()
+  public isPopular!: boolean
+
+  @column()
+  public isRentoChoose!: boolean
 
   @column()
   public maxAdults!: number | null
