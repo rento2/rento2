@@ -8,6 +8,8 @@ export default class Apartments extends BaseSchema {
       table.bigIncrements('id').primary()
       table.string('type', 32)
       table.boolean('is_active')
+      table.boolean('is_popular').defaultTo(false)
+      table.boolean('is_rento_choose').defaultTo(false)
       table.string('name', 255)
       table.string('latin_name', 255).nullable()
       table.string('description', 1024)
