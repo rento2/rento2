@@ -39,7 +39,7 @@ export default class ApartmentsController {
       const cachedRawResult = await Redis.get(queryCacheKey)
       if (!cachedRawResult) {
         const fetchedRows = await query
-        await Redis.publish(queryCacheKey, JSON.stringify(fetchedRows))
+        await Redis.set(queryCacheKey, JSON.stringify(fetchedRows))
         await Redis.expire(queryCacheKey, 30 * 60) // 30 minutes
 
         return fetchedRows
