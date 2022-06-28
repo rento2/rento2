@@ -1,11 +1,11 @@
-@use 'src/app/styles/core/colors' as *;
+@use 'src/app/styles/core/variables' as *;
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
 .filter {
   position: sticky;
   top: -160px;
-  z-index: 2;
+  z-index: $zindex-sticky;
   display: flex;
   align-items: flex-end;
   width: 100%;
@@ -75,6 +75,11 @@
   &__item {
     margin-right: 10px;
   }
+}
+
+.double,
+.chip-box {
+  background-color: $gray-blue-50;
 }
 
 .select {

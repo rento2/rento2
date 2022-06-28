@@ -2,8 +2,11 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 import { QueueTaskStatus } from './../../common/enums/QueueTaskStatus'
 import * as handlers from 'queue/index'
+import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class Task extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true })
   public id!: number
 

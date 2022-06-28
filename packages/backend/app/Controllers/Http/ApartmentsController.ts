@@ -9,6 +9,9 @@ import {
 import { schema } from '@ioc:Adonis/Core/Validator'
 import ApartmentValidator from 'App/Validators/ApartmentValidator'
 import subwayStationToLine from '../../../common/helpers/subwayStationToLine'
+import { ModelQueryBuilderContract } from '@ioc:Adonis/Lucid/Orm'
+import Redis from '@ioc:Adonis/Addons/Redis'
+import murmurhash from 'murmurhash'
 
 export default class ApartmentsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
@@ -18,9 +21,6 @@ export default class ApartmentsController {
         fields: schema.string.optional(),
       }),
     })
-    const selectedFields = []
-
-    fields ? selectedFields.push('id', 'name', ...fields.split(',')) : selectedFields.push('*')
 
     let apartments = Apartment.query()
       .preload('accommodations')
@@ -28,18 +28,43 @@ export default class ApartmentsController {
       .preload('services')
       .preload('banners')
       .preload('photos')
-      .select(selectedFields)
+      .select(fields?.split(',').length ? ['id', 'name', ...fields?.split(',')] : ['*'])
 
     if (search) {
       apartments = apartments.where('name', 'ilike', `%${search}%`)
     }
 
+    const cacheWrapped = async (query: ModelQueryBuilderContract<typeof Apartment, Apartment>): Promise<Apartment[]> => {
+      const queryCacheKey = `rento:apartments-collections:${murmurhash.v3(query.toQuery())}`
+      const cachedRawResult = await Redis.get(queryCacheKey)
+      if (!cachedRawResult) {
+        const fetchedRows = await query
+        await Redis.set(queryCacheKey, JSON.stringify(fetchedRows))
+        await Redis.expire(queryCacheKey, 30 * 60) // 30 minutes
+
+        return fetchedRows
+      }
+
+      return JSON.parse(cachedRawResult)
+    }
+    const wrappedQueriesList = [
+      Apartment.query().where('isPopular', true).orderBy('createdAt', 'desc').limit(10),
+      Apartment.query().where('isRentoChoose', true).orderBy('createdAt', 'desc').limit(10),
+      Apartment.query().whereIn('subwayStation', ['station1']).orderBy('createdAt', 'desc').limit(10), // todo put the correct metro stations here
+      Apartment.query().orderBy('createdAt', 'desc').limit(10),
+      Apartment.query().where('timeToSubwayByFoot', '<=', 7).orderByRaw('random()').limit(10),
+    ].map(async query => await cacheWrapped(query))
+
+    const [popular, rentoChoose, inCityCenter, newlyAdded, nearTheSubway] = await Promise.all(wrappedQueriesList)
+    const fetchedApartments = await apartments.paginate(request.param('page', 1))
     return response
       .status(HttpStatusCode.OK)
       .send(
-        creatingPaginatedList(
-          await apartments.paginate(request.param('page', 1))
-        )
+        creatingPaginatedList(fetchedApartments, {
+          collections: {
+            popular, rentoChoose, inCityCenter, newlyAdded, nearTheSubway
+          }
+        })
       )
   }
 
