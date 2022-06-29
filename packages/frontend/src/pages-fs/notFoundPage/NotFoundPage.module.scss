@@ -7,6 +7,9 @@
   flex-direction: column;
   justify-content: center;
   min-height: 80vh;
+  @include bp-479 {
+    max-width: 284px;
+  }
 }
 
 .content {

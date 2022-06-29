@@ -1,8 +1,8 @@
+import router from 'next/router'
+import classNames from 'classnames'
 import { ButtonGeneral, Layout } from '@shared/ui'
 import { Footer } from '@widgets/footer'
 import { Header } from '@widgets/header'
-import router from 'next/router'
-import classNames from 'classnames'
 import styles from './NotFoundPage.module.scss'
 
 export const NotFoundPage = (): JSX.Element => {
