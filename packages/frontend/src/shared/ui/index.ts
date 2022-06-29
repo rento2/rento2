@@ -1,4 +1,5 @@
 // Публичное АПИ
+export * from './preloader/Preloader'
 export * from './icons'
 export * from './Layout'
 export * from './buttons/ButtonGeneral'

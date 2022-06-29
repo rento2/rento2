@@ -1,0 +1,51 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.preloader {
+  width: 80px;
+  height: 80px;
+  background-image: url('/images/preloader/backgraund-r-80.svg');
+  background-repeat: no-repeat;
+  animation: pulsing  3.5s infinite;
+}
+
+.preloader-r {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('/images/preloader/R.svg');
+}
+
+@keyframes pulsing {
+  0% {
+    background-image: url('/images/preloader/backgraund-r-80.svg');
+  }
+
+  50% {
+    background-image: url('/images/preloader/backgraund-r-60.svg');
+  }
+
+  100% {
+    background-image: url('/images/preloader/backgraund-r-60.svg');
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: translate(45deg);
+  }
+
+  50% {
+    transform: translate(0deg);
+  }
+
+  100% {
+    transform: translate(30deg);
+  }
+}
