@@ -1,3 +1,4 @@
+import util from 'util'
 import {
   creatingErrMsg,
   creatingOkMsg,
@@ -42,15 +43,18 @@ export default class OrderService {
           paidOrder.payload.phone,
           response.paymentUrl
         )
+        return creatingOkMsg(paidOrder)
+      } else {
+        Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo, Bnovo response: '${util.inspect(response)}'`)
+        return creatingErrMsg('Failed bnovo response.', `Bnovo response: ${util.inspect(response)}`)
       }
-      return creatingOkMsg(paidOrder)
-    } catch (err) {
+    } catch (err: unknown) {
       if (err instanceof Error) {
-        const error = err
-        Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo`)
-        return creatingErrMsg('Failed bnovo response.', error.message)
+        Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo, error: '${err.message}'`)
+        return creatingErrMsg('Failed bnovo response.', err.message)
       }
-      return creatingErrMsg('Failed bnovo response.', 'Unknown error')
+      Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo, unknown error: '${util.inspect(err)}'`)
+      return creatingErrMsg('Failed bnovo response.', `Unknown error: ${util.inspect(err)}`)
     }
   }
 }
