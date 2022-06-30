@@ -31,7 +31,7 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     totalStoreys: faker.datatype.number({ min: 1, max: 19, precision: 1 }),
     area: faker.datatype.number({ min: 20, max: 300, precision: 1 }),
     kitchenArea: faker.datatype.number({ min: 4, max: 25, precision: 1 }),
-    distanceFromCenter: faker.datatype.number({ min: 0, max: 25, precision: 1}),
+    distanceFromCenter: faker.datatype.number({ min: 0, max: 25, precision: 1 }),
     admArea: faker.random.arrayElement(Object.values(AdminDistrictsOfMoscow)),
     district: faker.address.city(),
     sellingPoint: faker.lorem.words(5),

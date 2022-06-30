@@ -1,0 +1,86 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.description {
+  position: relative;
+  min-width: 290px;
+  max-width: 753px;
+  padding: 20px;
+  background-color: $neutral-0;
+
+  @include bp-479 {
+    padding-top: 43px;
+  }
+
+  &__heading {
+    @include  headline-5;
+    padding-bottom: 10px;
+    color: $orange-a500;
+  }
+
+  &__text {
+    @include  body-5;
+    padding-right: 113px;
+    color: $gray-blue-600;
+
+    @mixin bp-743 {
+      padding-right: 107px;
+    }
+
+    @include bp-479 {
+      padding-right: 0;
+    }
+  }
+
+  &__text_visible {
+    display: (-webkit-box);
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  &__key-circle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    justify-self: end;
+    width: 58px;
+    height: 58px;
+    padding-top: 6px;
+    margin: 16px;
+    background-color: $iris-100;
+    border-radius: 50%;
+
+    @include bp-479 {
+      top: 0;
+      right: 0;
+      width: 45px;
+      height: 45px;
+      padding-top: 4px;
+      margin: 12px;
+    }
+  }
+
+  &__key {
+    object-position: 2px;
+
+    @include bp-479 {
+      object-position: 1px;
+    }
+  }
+
+  &__btn {
+    @include  body-6;
+    width: 107px;
+    height: 32px;
+    margin-right: 0;
+    margin-left: auto;
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 2px;
+    }
+  }
+}
