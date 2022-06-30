@@ -8,16 +8,17 @@ export interface IButton {
   href?: string
   disabled?: boolean
   round?: boolean
-  grade?: 'primary' | 'secondary' | 'neutral'
-  full?: 'filled' | 'stroke'
-  font: 'l' | 'm' | 's'
+  grade?: 'primary' | 'secondary' | 'neutral' | 'accent' // accent нужен для текстовых кнопок
+  full?: 'filled' | 'outlined' | 'text' | 'icon'
+  font: 'l' | 'm' | 's' | 'xs'
   height: '56' | '48' | '44' | '40'
   classProps?: string
   onClick?: () => void
   children: React.ReactNode | string
+  form?: string
 }
 
-export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, onClick, children }) => {
+export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round = false, grade = 'primary', full = 'filled', font, height, classProps, onClick, children, form }) => {
   const Component = href != null ? 'a' : 'button'
 
   const stylesRound = styles['round'] ?? ''
@@ -38,6 +39,7 @@ export const ButtonGeneral: FC<IButton> = ({ type, href, disabled = false, round
         }
       ) }
       disabled={ disabled }
+      form={ form }
       href={ href }
       type={ type }
       onClick={ onClick }

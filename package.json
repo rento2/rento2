@@ -20,7 +20,9 @@
     "precommit": "npm-run-all precommit:*",
     "start:admin": "cd packages/admin && npm run start",
     "start:backend": "cd packages/backend && npm run dev",
-    "start:frontend": "cd packages/frontend && npm run dev"
+    "start:frontend": "cd packages/frontend && npm run dev",
+    "db:reset": "cd packages/backend && node ace db:reset",
+    "start:swagger": "cd packages/backend && npm run start:swagger"
   },
   "volta": {
     "node": "16.13.1",

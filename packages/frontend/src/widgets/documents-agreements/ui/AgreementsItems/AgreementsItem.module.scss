@@ -1,0 +1,62 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.title-container {
+  @include headline-5;
+  margin-bottom: 19px;
+}
+
+.item-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 14px 36px 14px 12px;
+  text-align: left;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid $neutral-50;
+
+  &:first-child {
+    border-top: 2px solid $neutral-50;
+  }
+
+  &::after {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    margin-left: calc(100% - 35px);
+    content: '';
+    background-image: url('/images/docs/agreements-arrow.svg');
+    background-repeat: no-repeat;
+  }
+
+  &:hover ::after {
+    position: absolute;
+    right: 3px;
+    width: 32px;
+    height: 32px;
+    margin-left: calc(100% - 42px);
+    content: '';
+    background-color: $iris-100;
+    border-radius: 8px;
+  }
+
+  &__link {
+    @include body-4;
+
+    &:focus::after {
+      position: absolute;
+      right: 3px;
+      width: 32px;
+      height: 32px;
+      margin-left: calc(100% - 42px);
+      color: $iris-700;
+      content: '';
+      background-color: $iris-100;
+      border-radius: 8px;
+    }
+  }
+}

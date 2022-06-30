@@ -1,0 +1,58 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.title {
+  position: relative;
+  margin: 59px 0 0 100px;
+
+  @include bp-1279 {
+    max-width: 688px;
+  }
+
+  @include bp-1059 {
+    width: 688px;
+    padding-bottom: 24px;
+    margin: 92px auto 0;
+  }
+
+  @include bp-767 {
+    max-width: 100%;
+    padding-left: 20px;
+  }
+
+  @include bp-479 {
+    padding-left: 0;
+  }
+
+  @include bp-320 {
+    padding-left: 16px;
+  }
+
+  &__text {
+    @include headline-5;
+    color: $gray-blue-500;
+  }
+
+  &__update {
+    @include body-4;
+    padding-top: 11px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: -20px;
+    left: calc(100% - 68px);
+    width: 60px;
+    height: 60px;
+  }
+
+  &__icon-button {
+    position: absolute;
+    bottom: 20px;
+    left: calc(100% - 68px);
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+  }
+}

@@ -1,62 +1,61 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .document {
   &__list {
     padding: 0;
-    list-style: none;
     counter-reset: count;
   }
 
-  &__title {
-    @include headline-4;
-    margin: 0 0 12px;
+  &__text {
+    padding: 0;
+  }
 
-    @include bp-399 {
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 22px;
+  &__general {
+    @include subtitle-2;
+    display: flex;
+    align-items: center;
+    padding: 22px 0 22px 32px;
+
+    @include bp-479 {
+      padding: 22px 0 22px 16px;
     }
 
-    &::before {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 26px;
-      content: counters(count, '.') '.';
-      counter-increment: count;
-
-      @include bp-399 {
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 22px;
-      }
+    &:first-child {
+      border-top: 2px solid $neutral-50;
     }
   }
 
-  &__text {
-    margin: 12px 0;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 31px;
-    color: $gray-blue-500;
+  &__title {
+    @include subtitle-2;
+    display: flex;
+    align-items: center;
+    padding: 22px 0 22px 32px;
 
-    @include bp-399 {
-      font-size: 16px;
-      line-height: 25px;
+    @include bp-479 {
+      padding: 22px 0 22px 16px;
+    }
+
+    &::before {
+      @include subtitle-2;
+      margin: 0 5px 0 0;
+      content: counters(count, '.') '.';
+      counter-increment: count;
+    }
+
+    &:first-child {
+      border-top: 2px solid $neutral-50;
     }
   }
 
   &__list-2 {
-    padding: 0;
-    list-style: none;
     counter-reset: count;
   }
 
-  &__item-2 {
+  &__item-2-listed {
     @include subtitle-2;
     margin: 0 0 12px;
-
-    @include bp-399 {
-      font-size: 16px;
-      line-height: 25px;
-    }
 
     &::before {
       margin: 0 5px 0 0;
@@ -65,10 +64,41 @@
     }
   }
 
+  &__item-2-listed-ordinary {
+    @include body-4;
+    margin: 0 0 12px;
+
+    &::before {
+      margin: 0 5px 0 0;
+      content: counters(count, '.') '.';
+      counter-increment: count;
+    }
+  }
+
+  &__item-2-default {
+    @include body-4;
+    margin: 0 0 12px;
+
+    &::before {
+      margin: 0 5px 0 0;
+      content: counters(count, '.') '.';
+      counter-increment: count;
+    }
+  }
+
+  &__item-2-unnumbered {
+    @include body-4;
+    margin: 0 0 12px;
+  }
+
+  &__item-bold {
+    @include subtitle-2;
+    margin: 0 0 12px;
+  }
+
   &__list-3 {
     padding: 0;
     margin: 12px 0 0;
-    list-style: none;
     counter-reset: count;
   }
 
@@ -85,11 +115,129 @@
     }
   }
 
+  &__list-4 {
+    padding: 0;
+    margin: 12px 0 0;
+    counter-reset: count;
+  }
+
+  &__item-4 {
+    @include body-4;
+
+    &::before {
+      content: counters(count, '.') '.' ' ';
+      counter-increment: count;
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 12px;
+    }
+  }
+
+  &__list-unordered {
+    padding: 0;
+    margin: 0 0 0 18px;
+  }
+
+  &__item-unordered {
+    @include body-4;
+    display: list-item;
+    margin: 0 0 12px;
+    list-style-type: disc;
+  }
+
   &__btn-modal {
     padding: 0;
     color: $iris-500;
     cursor: pointer;
     background-color: transparent;
     border: 0;
+  }
+}
+
+.item {
+  &__title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 48px 0 0;
+    color: $gray-blue-500;
+    text-align: start;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+
+    &::after {
+      position: absolute;
+      left: 93.5%;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      content: '';
+      background-image: url('/images/owners/cross.svg');
+      background-repeat: no-repeat;
+      transition: transform 0.35s ease-in-out;
+    }
+
+    &.active::after {
+      transform: rotate(45deg);
+    }
+
+    &:hover::after,
+    &:focus::after {
+      background-color: $iris-100;
+      border-radius: 50%;
+    }
+  }
+
+  &__description {
+    @include body-4;
+    width: 90%;
+    padding: 0 0 32px;
+    color: $gray-blue-400;
+  }
+
+  &__description-open {
+    animation: collapse-faq 0.35s ease-in-out both;
+  }
+
+  &__description-closed {
+    animation: collapse-faq-closed 0.35s ease-in-out both;
+  }
+
+  &__container {
+    padding: 0 0 0 32px;
+    overflow: hidden;
+    border-bottom: 2px solid $neutral-50;
+    transition: height 0.35s ease-in-out;
+
+    @include bp-479 {
+      padding: 0 0 0 16px;
+    }
+  }
+}
+
+@keyframes collapse-faq {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 0% 0%;
+  }
+}
+@keyframes collapse-faq-closed {
+  0% {
+    transform: scale(1);
+    transform-origin: 0% 0%;
+  }
+
+  100% {
+    transform: scale(0.5);
+    transform-origin: 0% 0%;
   }
 }

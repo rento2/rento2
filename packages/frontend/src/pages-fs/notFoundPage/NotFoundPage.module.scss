@@ -1,0 +1,180 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh;
+  @include bp-479 {
+    max-width: 284px;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  margin-bottom: 50px;
+  @include bp-743 {
+    margin: 0;
+  }
+}
+
+.key {
+  position: absolute;
+  top: 135px;
+  left: 287px;
+  width: 124px;
+  height: 115px;
+  background-image: url('/images/notFoundPage/rectangle.png');
+  @include bp-1279 {
+    left: 187px;
+  }
+  @include bp-1023 {
+    top: 100px;
+    left: 61px;
+  }
+  @include bp-743 {
+    top: 48px;
+    left: 40px;
+    width: 82px;
+    height: 76px;
+    background-image: url('/images/notFoundPage/rectangle320.png');
+    background-repeat: no-repeat;
+  }
+
+  @include bp-479 {
+    top: 3px;
+    left: 3px;
+  }
+}
+
+.error {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+  @include bp-743 {
+    margin: 38px auto;
+  }
+
+  &_text__wrapper {
+    display: flex;
+    flex-direction: column;
+    @include bp-743 {
+      position: absolute;
+      top: 128px;
+    }
+    @include bp-479 {
+      top: 192px;
+    }
+  }
+
+  &_notFound {
+    position: absolute;
+    z-index: 1;
+    width: 340px;
+    height: 167px;
+    background-image: url('/images/notFoundPage/img-404.png');
+    background-repeat: no-repeat;
+    background-position-x: 3px;
+    @include bp-743 {
+      top: 30px;
+      width: 195px;
+      height: 100px;
+      background-image: url('/images/notFoundPage/img-404-320.png');
+      background-repeat: no-repeat;
+    }
+    @include bp-479 {
+      top: 30px;
+    }
+  }
+
+  &_bg {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-image: url('/images/notFoundPage/pagenotfould-bg.png');
+    background-repeat: no-repeat;
+    @include bp-743 {
+      position: static;
+      width: 170px;
+      height: 170px;
+      background-image: url('/images/notFoundPage/pagenotfould-bg320.png');
+      background-repeat: no-repeat;
+    }
+    @include bp-479 {
+      position: static;
+    }
+  }
+
+  &_title {
+    @include headline-5;
+    z-index: 1;
+    margin: 367px 0 4px;
+    color: $gray-blue-500;
+    @include bp-743 {
+      @include subtitle-1;
+      min-width: 284px;
+      margin: 0;
+    }
+    @include bp-479 {
+      min-width: 284px;
+      margin: 0;
+    }
+  }
+
+  &_description {
+    @include body-3;
+    z-index: 1;
+    max-width: 300px;
+    color: $gray-blue-500;
+    @include bp-743 {
+      @include body-4;
+    }
+  }
+}
+
+.tag {
+  position: absolute;
+  right: 260px;
+  bottom: 143px;
+  width: 99px;
+  height: 97px;
+  background-image: url('/images/notFoundPage/tag.png');
+  @include bp-1279 {
+    right: 172px;
+  }
+  @include bp-1023 {
+    right: 46px;
+    bottom: 80px;
+  }
+  @include bp-743 {
+    right: 0;
+    bottom: 178px;
+    width: 65px;
+    height: 60px;
+    background-image: url('/images/notFoundPage/tag320.png');
+    background-repeat: no-repeat;
+  }
+  @include bp-479 {
+    right: 12px;
+    bottom: 150px;
+  }
+}
+
+.button {
+  @include btn-4;
+  width: 170px;
+  margin-top: 92px;
+  @include bp-743 {
+    margin: 79px 0 45px;
+  }
+  @include bp-479 {
+    margin: 168px 0 45px;
+  }
+}

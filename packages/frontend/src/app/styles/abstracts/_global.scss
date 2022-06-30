@@ -1,11 +1,15 @@
 @use '../core/breakpoints' as *;
-@use '../core/colors' as *;
+@use '../core/variables' as *;
 @use '../core/typography' as *;
 
 html,
 body {
   color: $gray-blue-600;
   background-color: $neutral-05;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 a {
@@ -103,4 +107,31 @@ a {
   overflow: hidden;
   clip: rect(0 0 0 0);
   border: 0;
+}
+
+button {
+  color: $gray-blue-600;
+}
+
+.modal-open {
+  padding-right: 20px;
+  overflow: hidden;
+
+  @include bp-479 {
+    padding-right: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: $neutral-0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-blue-100;
+  border: 5px solid $neutral-0;
+  border-radius: 100px;
 }

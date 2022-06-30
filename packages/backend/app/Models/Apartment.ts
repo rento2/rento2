@@ -16,15 +16,24 @@ import Term from '../../common/enums/Term'
 import Banner from './Banner'
 import Order from './Order'
 import SleepingPlace from './SleepingPlace'
+import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class Apartment extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true })
   public id!: number
 
-  @manyToMany(() => Service, { pivotTable: 'services_to_apartments', pivotTimestamps: true })
+  @manyToMany(() => Service, {
+    pivotTable: 'services_to_apartments',
+    pivotTimestamps: true,
+  })
   public services!: ManyToMany<typeof Service>
 
-  @manyToMany(() => Banner, { pivotTable: 'banners_to_apartments', pivotTimestamps: true })
+  @manyToMany(() => Banner, {
+    pivotTable: 'banners_to_apartments',
+    pivotTimestamps: true,
+  })
   public banners!: ManyToMany<typeof Banner>
 
   @hasMany(() => Order)
@@ -40,19 +49,22 @@ export default class Apartment extends BaseModel {
   public name!: string
 
   @column()
-  public latinName!: string
+  public latinName!: string | null
 
   @column()
   public description!: string
 
   @column()
-  public bnovoId!: number
+  public bnovoId!: number | null
 
   @column()
-  public price!: number
+  public inparsId!: number | null
 
   @column()
-  public pricePerMonth!: number
+  public price!: number | null
+
+  @column()
+  public pricePerMonth!: number | null
 
   @column()
   public discount!: number
@@ -106,7 +118,13 @@ export default class Apartment extends BaseModel {
   public subwayStation!: string
 
   @column()
-  public timeToSubway!: number
+  public subwayLine!: string | null
+
+  @column()
+  public timeToSubwayByFoot!: number
+
+  @column()
+  public timeToSubwayByVehicle!: number
 
   @column()
   public repairs!: number
@@ -124,31 +142,37 @@ export default class Apartment extends BaseModel {
   public totalRating!: number
 
   @column()
-  public checkInStart!: DateTime
+  public checkInStart!: DateTime | null
 
   @column()
-  public checkInEnd!: DateTime
+  public checkInEnd!: DateTime | null
 
   @column()
-  public checkOutEnd!: DateTime
+  public checkOutEnd!: DateTime | null
 
   @column()
-  public smokingAllowed!: boolean
+  public smokingAllowed!: boolean | null
 
   @column()
-  public partyingAllowed!: boolean
+  public partyingAllowed!: boolean | null
 
   @column()
-  public childrenAllowed!: boolean
+  public childrenAllowed!: boolean | null
 
   @column()
-  public petsAllowed!: boolean
+  public petsAllowed!: boolean | null
 
   @column()
-  public maxAdults!: number
+  public isPopular!: boolean
 
   @column()
-  public maxChildren!: number
+  public isRentoChoose!: boolean
+
+  @column()
+  public maxAdults!: number | null
+
+  @column()
+  public maxChildren!: number | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
@@ -167,7 +191,7 @@ export default class Apartment extends BaseModel {
   @manyToMany(() => SleepingPlace, {
     pivotColumns: ['number'],
     pivotTable: 'sleeping_places_to_apartments',
-    pivotTimestamps: true
+    pivotTimestamps: true,
   })
   public sleepingPlaces!: ManyToMany<typeof SleepingPlace>
 }

@@ -1,0 +1,16 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 0 333px;
+  @include bp-1059 {
+    margin-top: 90px;
+  }
+
+  .contract {
+    margin-bottom: 40px;
+  }
+}

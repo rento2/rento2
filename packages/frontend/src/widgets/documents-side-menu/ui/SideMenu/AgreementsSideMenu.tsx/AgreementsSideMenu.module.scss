@@ -1,0 +1,57 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.container-agreements {
+  display: flex;
+  width: 320px;
+  height: 1018px;
+  padding-left: 84px;
+  border: 2px solid $neutral-50;
+  @include bp-1439 {
+    width: max-content;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+.comback-buton {
+  position: relative;
+  width: 320px;
+  height: 58px;
+  padding-left: 85px;
+  margin: 21px 0 19px -85px;
+  cursor: pointer;
+  border-bottom: 2px solid $neutral-50;
+}
+
+.left-arrow {
+  @include body-4;
+  width: 10px;
+  height: 18px;
+  color: $gray-blue-300;
+}
+
+.left-arrow::after {
+  position: absolute;
+  top: 0;
+  right: 260px;
+  width: 10px;
+  height: 18px;
+  content: '';
+  background-image: url('/images/docs/left_arrow.svg');
+  background-repeat: no-repeat;
+}
+
+.list-item {
+  @include body-4;
+  display: flex;
+  flex-wrap: wrap;
+  width: 195px;
+  margin-bottom: 24px;
+  color: $gray-blue-300;
+}
+
+.active {
+  color: $iris-500;
+}

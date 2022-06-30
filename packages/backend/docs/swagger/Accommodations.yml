@@ -1,0 +1,100 @@
+/api/v1/accommodations/one/{id}:
+    get:
+      summary: "Gives the one accommodation. (AccommodationsController::one)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        200:
+          $ref: '#components/accommodationsResponses/ONE'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/accommodations/delete/{id}:
+    delete:
+      summary: " (AccommodationsController::delete)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        200:
+          $ref: '#components/responses/ENTITY_DELETED'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+/api/v1/accommodations/create:
+    post:
+      summary: " (AccommodationsController::create)"
+      description: ""
+      parameters: []
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+/api/v1/accommodations/list/{page}:
+    get:
+      summary: "Gives the accommodations page. (AccommodationsController::list)"
+      description: ""
+      parameters:
+        - in: "path"
+          name: "page"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "ACCOMMODATIONS"
+      responses:
+        200:
+          $ref: '#components/accommodationsResponses/LIST'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+      security:
+        - bearerAuth: []
+/api/v1/accommodations/update:
+    post:
+      summary: "Update accommodations (AccommodationsController::update)"
+      description: ""
+      parameters: []
+      tags:
+        - "ACCOMMODATIONS"
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json: {}
+
+      responses:
+        200:
+          description: 'TODO: ADD ITEM'
+        401:
+          $ref: '#components/responses/NOT_AUTHORIZED'
+        404:
+          $ref: '#components/responses/ENTITY_NOT_FOUND'

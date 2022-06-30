@@ -1,0 +1,22 @@
+@use 'src/app/styles/core/variables' as *;
+
+.modal {
+  &__header {
+    position: sticky;
+    top: 0;
+    min-height: 30px;
+    background-color: $neutral-0;
+
+    &::before {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      width: 80px;
+      height: 4px;
+      content: '';
+      background-color: $iris-300;
+      border-radius: 4px;
+      transform: translate(-50%, 0);
+    }
+  }
+}

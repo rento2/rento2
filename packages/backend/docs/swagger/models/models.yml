@@ -1,0 +1,453 @@
+definitions:
+    Accommodation:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 350
+        name!:
+          type: "string"
+          example: "string"
+        nameEn!:
+          type: "string"
+          example: "string"
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        apartments!:
+          type: "array"
+          items:
+            $ref: '#definitions/Apartment'
+            example: "string"
+      description: "Model"
+    Apartment:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 279
+        services!:
+          type: "array"
+          items:
+            $ref: '#definitions/Service'
+            example: "string"
+        banners!:
+          type: "array"
+          items:
+            $ref: '#definitions/Banner'
+            example: "string"
+        orders!:
+          type: "array"
+          items:
+            $ref: '#definitions/Order'
+            example: "string"
+        type!:
+          $ref: '#definitions/Term'
+          example: "string"
+        isActive!:
+          type: "boolean"
+          example: true
+        name!:
+          type: "string"
+          example: "string"
+        latinName!:
+          type: "string"
+          example: "string"
+        description!:
+          type: "string"
+          example: "string"
+        bnovoId!:
+          type: "number"
+          example: 32
+        price!:
+          type: "number"
+          example: 245
+        pricePerMonth!:
+          type: "number"
+          example: 650
+        discount!:
+          type: "number"
+          example: 172
+        commission!:
+          type: "number"
+          example: 675
+        utilityBills!:
+          type: "number"
+          example: 282
+        securityDepositShort!:
+          type: "number"
+          example: 910
+        securityDepositLong!:
+          type: "number"
+          example: 216
+        roomsNum!:
+          type: "number"
+          example: 304
+        storey!:
+          type: "number"
+          example: 846
+        totalStoreys!:
+          type: "number"
+          example: 64
+        area!:
+          type: "number"
+          example: 967
+        kitchenArea!:
+          type: "number"
+          example: 239
+        distanceFromCenter!:
+          type: "number"
+          example: 180
+        admArea!:
+          $ref: '#definitions/AdminDistrictsOfMoscow'
+          example: "string"
+        district!:
+          type: "string"
+          example: "string"
+        sellingPoint!:
+          type: "string"
+          example: "string"
+        geoCoordinateX!:
+          type: "string"
+          example: "string"
+        geoCoordinateY!:
+          type: "string"
+          example: "string"
+        subwayStation!:
+          type: "string"
+          example: "string"
+        subwayLine!:
+          type: "string"
+          example: "string"
+        timeToSubway!:
+          type: "number"
+          example: 919
+        repairs!:
+          type: "number"
+          example: 324
+        purity!:
+          type: "number"
+          example: 153
+        location!:
+          type: "number"
+          example: 375
+        priceQuality!:
+          type: "number"
+          example: 862
+        totalRating!:
+          type: "number"
+          example: 422
+        checkInStart!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        checkInEnd!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        checkOutEnd!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        smokingAllowed!:
+          type: "boolean"
+          example: true
+        partyingAllowed!:
+          type: "boolean"
+          example: true
+        childrenAllowed!:
+          type: "boolean"
+          example: true
+        petsAllowed!:
+          type: "boolean"
+          example: true
+        maxAdults!:
+          type: "number"
+          example: 688
+        maxChildren!:
+          type: "number"
+          example: 62
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        accommodations!:
+          type: "array"
+          items:
+            $ref: '#definitions/Accommodation'
+            example: "string"
+        photos!:
+          type: "array"
+          items:
+            $ref: '#definitions/Photo'
+            example: "string"
+        sleepingPlaces!:
+          type: "array"
+          items:
+            $ref: '#definitions/SleepingPlace'
+            example: "string"
+      description: "Model"
+    Banner:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 710
+        name!:
+          type: "string"
+          example: "string"
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Model"
+    Order:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 952
+        apartmentId!:
+          type: "number"
+          example: 751
+        name!:
+          type: "string"
+          example: "string"
+        email!:
+          type: "string"
+          example: "string"
+        phone!:
+          type: "string"
+          example: "string"
+        dateFrom!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        dateTo!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        fixedPrice!:
+          type: "number"
+          example: 280
+        fixedTotalPrice!:
+          type: "number"
+          example: 280
+        nightsNumber!:
+          type: "number"
+          example: 263
+        paymentType!:
+          $ref: '#definitions/Pay'
+          example: "string"
+        prices!:
+          $ref: '#definitions/Array< price>'
+          example: "string"
+        adults!:
+          type: "number"
+          example: 799
+        children!:
+          type: "number"
+          example: 984
+        babies!:
+          type: "number"
+          example: 137
+        pets!:
+          type: "boolean"
+          example: true
+        paidPart!:
+          type: "number"
+          example: 269
+        number!:
+          type: "string"
+          example: "string"
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        apartments!:
+          $ref: '#definitions/Apartment'
+          example: "string"
+        deleted_at:
+          type: "string"
+          format: "date-time"
+          example: "2021-03-23T16:13:08.489+01:00"
+      description: "Model"
+    Photo:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 795
+        apartment!:
+          $ref: '#definitions/Apartment'
+          example: "string"
+        apartmentId!:
+          type: "number"
+          example: 114
+        link!:
+          type: "string"
+          example: "string"
+        path!:
+          type: "string"
+          example: "string"
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Model"
+    Review:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 716
+        apartment!:
+          $ref: '#definitions/Apartment'
+          example: "string"
+        apartmentId!:
+          type: "number"
+          example: 601
+        author!:
+          type: "string"
+          example: "string"
+        avatar!:
+          type: "string"
+          example: "string"
+        repairs!:
+          type: "number"
+          example: 25
+        purity!:
+          type: "number"
+          example: 876
+        location!:
+          type: "number"
+          example: 839
+        priceQuality!:
+          type: "number"
+          example: 69
+        comment!:
+          type: "string"
+          example: "string"
+        isApproved!:
+          type: "boolean"
+          example: true
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Model"
+    Service:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 139
+        type!:
+          $ref: '#definitions/Term'
+          example: "string"
+        name!:
+          type: "string"
+          example: "string"
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Model"
+    SleepingPlace:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 241
+        name!:
+          type: "string"
+          example: "string"
+        type!:
+          $ref: '#definitions/SleepingPlaceType'
+          example: "string"
+        size!:
+          type: "number"
+          example: 182
+        pivotNumber!:
+          type: "number"
+          example: 649
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Model"
+    User:
+      type: "object"
+      properties:
+        id!:
+          type: "number"
+          example: 821
+        email!:
+          type: "string"
+          example: "string"
+        createdAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updatedAt!:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Model"
+    index:
+      type: "object"
+      properties: {}
+      description: "Model"
+    AdminDistrictsOfMoscow:
+      type: "string"
+      example: "north_eastern"
+      description: "Model"
+    Term:
+      type: "string"
+      example: "long"
+      description: "Model"
+    SleepingPlaceType:
+      type: "string"
+      example: "sofa"
+      description: "Model"
+    Pay:
+      type: "string"
+      example: "full_payment"
+      description: "Model"
+    Array< price>:
+      type: "Array"
+      example: [223, 452, 852]
+      description: "Model"

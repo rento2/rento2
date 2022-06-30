@@ -1,0 +1,64 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.switch {
+  display: flex;
+  align-items: center;
+
+  &__toggle {
+    position: relative;
+  }
+
+  &__inner {
+    box-sizing: border-box;
+    display: block;
+    width: 40px;
+    height: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: $gray-blue-50;
+    border: 1px solid $gray-blue-400;
+    border-radius: 40px;
+    transition: background-color 0.2s;
+  }
+
+  &__dot {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 16px;
+    margin: 2px;
+    background-color: $gray-blue-400;
+    border-radius: 40px;
+    transition: left 0.2s linear 0s;
+  }
+
+  &__text-label-right {
+    @include body-5;
+    margin-left: 10px;
+  }
+
+  &__text-label-left {
+    @include body-5;
+    margin-right: 10px;
+  }
+
+  &__hidden-checkbox {
+    position: absolute;
+    z-index: -1;
+    outline: none;
+    opacity: 0;
+
+    &:checked + .switch__inner {
+      background-color: $iris-900;
+      border: 1px solid $iris-300;
+    }
+
+    &:checked + .switch__inner .switch__dot {
+      left: 20px;
+      background-color: $iris-300;
+    }
+  }
+}

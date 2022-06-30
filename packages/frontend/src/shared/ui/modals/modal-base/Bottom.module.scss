@@ -1,0 +1,213 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: $zindex-modal;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  max-height: calc(100vh - 80px);
+  margin: 0 auto;
+  background-color: $neutral-0;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+
+  @include bp-743 {
+    width: 400px;
+  }
+  @include bp-479 {
+    width: 310px;
+  }
+
+  &__header {
+    display: flex;
+    flex: 0 0 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  &__header--mobile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-fixed;
+    width: 100%;
+    padding: 14px 20px;
+    background-color: $neutral-0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+    @include bp-743 {
+      padding: 10px;
+    }
+  }
+
+  &__title {
+    @include body-5;
+    color: $gray-blue-300;
+  }
+}
+
+.button-close {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background-color: $neutral-0;
+  border: 0;
+  border-radius: 8px;
+  outline: 0;
+  transition: background-color 0.2s;
+
+  &::before {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    content: ' ';
+    border: 1px solid $neutral-900;
+    border-radius: 8px;
+  }
+
+  &__icon {
+    position: absolute;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $iris-100;
+
+    .button-close__icon {
+      stroke: $iris-500;
+    }
+
+    &::before {
+      border-color: $iris-500;
+    }
+  }
+}
+
+.button-close--mobile {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  background-color: $neutral-0;
+  border: 0;
+  border-radius: 8px;
+  outline: 0;
+
+  &__icon {
+    position: absolute;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $iris-100;
+
+    .button-close__icon {
+      stroke: $iris-500;
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+  width: 100%;
+  height: 100vh;
+  visibility: hidden;
+  background-color: $overlay;
+  opacity: 0;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  transition-property: visibility, opacity;
+
+  &--visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// CSSTransition
+
+.enter {
+  top: 150%;
+}
+
+.enter-active {
+  top: 50%;
+  transition: top 300ms ease-in-out;
+}
+
+.exit {
+  top: 50%;
+}
+
+.exit-active {
+  top: 150%;
+  transition: top 300ms ease-in-out;
+}
+
+// BottomSheet
+
+.bottom-sheet {
+  > div:first-child {
+    background-color: $overlay;
+  }
+
+  [role='dialog'] > div:first-child {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 8px;
+    text-align: center;
+    cursor: auto;
+    user-select: none;
+    box-shadow: none;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 40px;
+      height: 3px;
+      content: '';
+      background: $gray-blue-200;
+      border-radius: 4px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

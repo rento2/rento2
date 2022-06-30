@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { IconLocation, IconCall } from '@shared/ui/index'
+import { IconLocation, IconCallOutgoing } from '@shared/ui/index'
 import LongInfoDetails from './details/LongInfoDetails'
 import LongInfoParameters from './parameters/LongInfoParameters'
 import LongInfoAdress from './adress/LongInfoAdress'
@@ -48,13 +48,14 @@ export function LongInfo ({
         <ButtonGeneral
           classProps={ classNames(styles['btn'], styles['btn_first']) }
           font="m"
-          full="stroke"
+          full="filled"
+          grade='neutral'
           height="44"
           onClick={ () => {} }
         >
           {widthWindow >= 480
             ? (
-              <IconCall classProps={ classNames(styles['icon-call']) } />
+              <IconCallOutgoing classProps={ classNames(styles['icon-call']) } />
               )
             : (
                 'Позвонить'

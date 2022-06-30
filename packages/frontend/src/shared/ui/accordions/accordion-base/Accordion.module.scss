@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .item {
   padding: 0 0 0 40px;
   border-bottom: 2px solid $neutral-50;
@@ -11,14 +15,15 @@
   }
 
   &-title {
-    @include body-4;
+    @include subtitle-2;
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 22px 0;
     cursor: pointer;
-    background-color: $neutral-0;
+    background-color: transparent;
     border: 0;
     outline: 0;
 
@@ -30,29 +35,33 @@
       width: 95%;
     }
 
-    &::after {
-      position: absolute;
-      top: 20px;
-      left: 93%;
-      width: 21px;
-      height: 21px;
-      cursor: pointer;
-      content: '';
-      background-image: url('/images/owners/cross.svg');
-      background-repeat: no-repeat;
+    &__closed-btn {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+
+      &::before {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 20px;
+        height: 20px;
+        content: '';
+        background-image: url('/images/owners/cross.svg');
+        background-repeat: no-repeat;
+      }
+    }
+
+    &:hover &__closed-btn,
+    &:focus &__closed-btn {
+      background-color: $iris-100;
+    }
+
+    &.active
+    &__closed-btn::before {
       transition: transform 0.35s ease-in-out;
-    }
-
-    &.active::after {
       transform: rotate(45deg);
-    }
-
-    &:hover::after,
-    &:focus::after {
-      width: 21px;
-      height: 21px;
-      background-color: rgba($iris-500, 0.2);
-      border-radius: 100%;
     }
   }
 

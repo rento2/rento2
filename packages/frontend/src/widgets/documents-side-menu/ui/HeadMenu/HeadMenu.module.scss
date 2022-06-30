@@ -1,3 +1,7 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .title {
   @include body-4;
   position: relative;
@@ -7,12 +11,13 @@
   min-height: 60px;
   padding-left: 40px;
   margin-bottom: 24px;
+  color: $gray-blue-300;
   background: $neutral-0;
   border: 0;
   border-bottom: 2px solid $neutral-50;
   outline: 0;
-
-  @include bp-479 {
+  @include bp-743 {
+    @include body-5;
     padding-left: 16px;
   }
 
@@ -20,13 +25,16 @@
     flex-direction: column;
     align-items: baseline;
     justify-content: center;
-    padding-left: 16px;
   }
 
   &__text {
-
     @include body-4;
+    position: relative;
     color: $gray-blue-300;
+    text-align: left;
+    @include bp-479 {
+      @include body-5;
+    }
   }
 
   &::after {
@@ -41,7 +49,7 @@
     @include bp-929 {
       left: 92%;
     }
-    @include bp-767 {
+    @include bp-743 {
       left: 91%;
     }
 
@@ -55,6 +63,34 @@
 
   &.active::after {
     transform: rotate(-180deg);
+  }
+}
+
+.agreements-title {
+  @include body-4;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 60px;
+  padding-left: 72px;
+  margin-bottom: 24px;
+  color: $gray-blue-300;
+  background: $neutral-0;
+  border: 0;
+  border-bottom: 2px solid $neutral-50;
+  outline: 0;
+  @include bp-1023 {
+    padding-left: 88px;
+  }
+  @include bp-767 {
+    @include body-5;
+    padding-left: 48px;
+  }
+
+  @include bp-359 {
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
   }
 }
 
@@ -93,9 +129,36 @@
 .menu {
   @include body-4;
   margin: 0 0 24px 40px;
-  color: $gray-blue-300;
+  color: $gray-blue-500;
   background: $neutral-0;
-  @include bp-479 {
+  @include bp-767 {
     margin: 0 0 24px 16px;
   }
+}
+
+.comback-buton {
+  position: relative;
+  margin: 21px 0 19px;
+  cursor: pointer;
+  border-bottom: 2px solid $neutral-50;
+}
+
+.left-arrow {
+  @include body-4;
+  min-height: 60px;
+  color: $gray-blue-300;
+
+  @include bp-767 {
+    @include body-5;
+  }
+}
+
+.left-arrow::after {
+  position: absolute;
+  left: 24px;
+  width: 10px;
+  height: 18px;
+  content: '';
+  background-image: url('/images/docs/left_arrow.svg');
+  background-repeat: no-repeat;
 }

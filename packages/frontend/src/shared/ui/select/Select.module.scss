@@ -1,0 +1,76 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.styled-select {
+  @include body-6;
+  color: $neutral-900;
+
+  [class^='styled-select__control'] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 8px 10px;
+    cursor: pointer;
+    border: 1px solid $gray-blue-100;
+    border-radius: 4px;
+    outline: 0;
+    box-shadow: none;
+
+    &:hover {
+      border-color: $iris-300;
+    }
+  }
+
+  [class*='styled-select__control--is-focused'] {
+    border-color: $iris-300;
+  }
+
+  [class^='styled-select__menu'] {
+    margin: 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  [class^='styled-select__menu-list'] {
+    padding: 10px 4px;
+  }
+
+  [class^='styled-select__single-value'] {
+    color: $neutral-900;
+  }
+
+  [class^='styled-select__indicator-separator'],
+  [class^='styled-select__clear-indicator'] {
+    display: none;
+  }
+
+  [class^='styled-select__option'] {
+    padding: 11px 16px;
+    cursor: pointer;
+  }
+
+  [class^='styled-select__option']:active,
+  [class*='styled-select__option--is-focused'] {
+    background-color: $gray-blue-50;
+  }
+
+  [class*='styled-select__option--is-selected'] {
+    position: relative;
+    color: $neutral-900;
+    background-color: $gray-blue-50;
+
+    &::before {
+      position: absolute;
+      top: 11px;
+      right: 13px;
+      display: block;
+      width: 6px;
+      height: 6px;
+      content: '';
+      background-color: $gray-blue-600;
+      border-radius: 10px;
+    }
+  }
+}

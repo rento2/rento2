@@ -1,40 +1,54 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
 .modal {
-  &__header {
+  &__title {
+    @include subtitle-2;
+    padding: 0 0 22px;
     border-bottom: 2px solid $iris-50;
-
-    @include bp-849 {
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    @include bp-767 {
-      justify-content: flex-start;
-    }
   }
 
-  &__dialog {
-    width: 688px;
-    padding: 0 40px 90px;
+  &__list {
+    border-bottom: 2px solid $iris-50;
+  }
 
-    @include bp-849 {
-      width: 100%;
-      margin: 110px auto 0;
-      border-radius: 16px 16px 0 0;
-    }
-
-    @include bp-767 {
-      padding: 0 24px 90px;
-      margin: 80px auto 0;
-    }
+  &__item-title {
+    @include subtitle-3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 41px;
 
     @include bp-479 {
-      padding: 0 20px 60px;
+      grid-template-columns: 57% 43%;
     }
   }
 
-  &__body {
-    @include bp-849 {
-      min-height: 740px;
+  &__item {
+    @include body-5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 32px;
+
+    @include bp-479 {
+      grid-template-columns: 57% 43%;
+    }
+
+    &_color {
+      background-color: $iris-50;
+    }
+  }
+
+  &__cell-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 8px;
+
+    &:first-child {
+      border-right: 2px solid $iris-100;
     }
   }
 }

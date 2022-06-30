@@ -4,7 +4,20 @@ networks:
   rento2:
     name: rento2
 
+volumes:
+  dbdata:
+    name: rento2_dbdata
+
 services:
+  rabbitmq:
+    image: rabbitmq:3.10.1-management
+    container_name: rento2_rabbitmq
+    restart: unless-stopped
+    ports:
+      - ${RABBITMQ_PORT}:5672
+    networks:
+      rento2:
+
   redis:
     image: redis:6.2.4-alpine
     container_name: rento2_redis
@@ -26,6 +39,6 @@ services:
     ports:
       - ${POSTGRES_PORT}:5432
     volumes:
-      - ./_docker/data/postgres:/data/postgres
+      - dbdata:/data/postgres
     networks:
       rento2:

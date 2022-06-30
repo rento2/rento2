@@ -3,11 +3,21 @@
     "target": "es5",
     "baseUrl": "src",
     "paths": {
-      "@app/*": ["app/*"],
-      "@features/*": ["features/*"],
-      "@pages-fs/*": ["pages-fs/*"],
-      "@shared/*": ["shared/*"],
-      "@widgets/*": ["widgets/*"],
+      "@app/*": [
+        "app/*"
+      ],
+      "@features/*": [
+        "features/*"
+      ],
+      "@pages-fs/*": [
+        "pages-fs/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ],
+      "@widgets/*": [
+        "widgets/*"
+      ]
     },
     "lib": [
       "dom",
@@ -36,7 +46,13 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowJs": true
+    "allowJs": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",

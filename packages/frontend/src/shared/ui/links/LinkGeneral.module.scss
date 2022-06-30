@@ -1,0 +1,22 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.link {
+  @include body-5;
+  display: flex;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    color: $iris-700;
+  }
+
+  &:active {
+    color: $iris-500;
+  }
+
+  &:disabled {
+    color: $iris-500;
+  }
+}

@@ -1,123 +1,143 @@
-import { FC, useEffect, useRef, useState } from 'react'
-import ReactDOM from 'react-dom'
+import { FC, ReactNode, useCallback, useEffect, useRef } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import FocusLock from 'react-focus-lock'
-import styles from './ModalBase.module.scss'
 import classNames from 'classnames'
-import { useWindowDimensions, useRenderCompleted } from '@shared/lib'
-import { IStyleMove } from '../types/IStyleMove'
-import { IModal } from '../types/IModal'
+import { BottomSheet } from 'react-spring-bottom-sheet'
+import 'react-spring-bottom-sheet/dist/style.css'
 
-interface ModalProps extends IModal {
-  elementPortal?: Element
-  handleHeight?: (height: number) => void
-  headerContent?: JSX.Element
-  style?: IStyleMove
+import { IconClose } from './icons/IconClose'
+import { useWindowDimensions } from '@shared/lib'
+
+import bottomStyles from './Bottom.module.scss'
+import rightStyles from './Right.module.scss'
+
+interface IModal {
+  isOpen: boolean
+  onClose: () => void
+  title?: string
+  translate?: 'right' | 'bottom'
+  isSwipe?: boolean
+  footer?: ReactNode
 }
 
-export const ModalBase: FC<ModalProps> = ({
-  isShown,
-  elementPortal,
-  handleHeight,
-  hide,
-  bodyContent,
-  headerContent,
-  labelledbyText,
-  style,
-  classes
+const paddingBottom = 40
+
+export const ModalBase: FC<IModal> = ({
+  isOpen,
+  onClose,
+  children,
+  translate = 'bottom',
+  title,
+  isSwipe = false,
+  footer
 }) => {
-  const isMounted = useRenderCompleted()
-  const elementRef = useRef<HTMLDivElement>(null)
-  const { widthWindow, heightWindow } = useWindowDimensions()
+  const { widthWindow } = useWindowDimensions()
 
-  const [heightModal, setHeight] = useState(0)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  const onKeyDown = useCallback((event: KeyboardEvent): void => {
+    if (event.code === 'Escape' && isOpen) onClose()
+  }, [isOpen, onClose])
+
   useEffect(() => {
-    if (isShown) {
-      const { offsetHeight, offsetTop } = elementRef.current ?? { offsetHeight: 0, offsetTop: 0 }
-
-      setHeight(offsetHeight - offsetTop)
+    let timer: NodeJS.Timeout
+    document.addEventListener('keydown', onKeyDown, false)
+    if (isOpen) document.body.classList.add('modal-open')
+    else {
+      timer = setTimeout(() => {
+        document.body.classList.remove('modal-open')
+      }, 300)
     }
-  }, [isShown, heightWindow, widthWindow])
 
-  const [height, setHeightModal] = useState(0)
-  useEffect(() => {
-    const offsetTop = elementRef.current?.offsetTop ?? 0
-    setHeightModal(heightWindow - offsetTop)
-
-    if (handleHeight != null) {
-      handleHeight(height)
+    return () => {
+      clearTimeout(timer)
+      document.removeEventListener('keydown', onKeyDown)
     }
-  }, [heightModal, isShown, heightWindow, widthWindow])
+  }, [isOpen, onKeyDown])
 
-  const onKeyDown = (event: KeyboardEvent): void => {
-    if (event.code === 'Escape' && isShown) {
-      hide()
-    }
+  const styles = translate === 'bottom' ? bottomStyles : rightStyles
+
+  if (isSwipe && widthWindow < 480) {
+    return (
+      <BottomSheet
+        expandOnContentDrag
+        skipInitialTransition
+        className={ classNames(styles['bottom-sheet']) }
+        header={
+          <div className={ styles['modal__header--mobile'] }>
+            <button
+              className={ styles['button-close--mobile'] }
+              tabIndex={ -1 }
+              type='button'
+              onClick={ onClose }
+            >
+              <IconClose classProps={ classNames(styles['button-close__icon']) } />
+            </button>
+          </div>
+        }
+        open={ isOpen }
+        snapPoints={ ({ maxHeight }) => contentRef.current != null
+          ? contentRef.current.offsetHeight + paddingBottom
+          : maxHeight }
+        onDismiss={ onClose }
+      >
+        <div ref={ contentRef }
+          className={ styles.modal__body }
+        >
+          {children}
+        </div>
+        {footer != null && (
+          <div className={ styles.modal__footer }>
+            {footer}
+          </div>
+        )}
+      </BottomSheet>
+    )
   }
 
-  useEffect(() => {
-    isShown
-      ? classNames(document.body.style.overflow = 'hidden', document.body.style.touchAction = 'none', document.body.style.paddingRight = '17px')
-      : classNames(document.body.style.overflow = 'unset', document.body.style.touchAction = 'unset', document.body.style.paddingRight = '0')
-
-    document.addEventListener('keydown', onKeyDown, false)
-    return () => {
-      document.removeEventListener('keydown', onKeyDown, false)
-    }
-  }, [isShown])
-
-  const [element, setElement] = useState<Element>()
-  useEffect(() => {
-    setElement(elementPortal ?? document.body)
-  }, [isMounted])
-
-  const modal = (
-    <>
-      <div
-        className={ classNames(
-          styles['backdrop'],
-          classes?.backdrop) }
-        onClick={ hide }
-      />
-      <FocusLock autoFocus={ false }>
+  return (
+    <FocusLock autoFocus={ false }>
+      <CSSTransition
+        unmountOnExit
+        classNames={ {
+          enterActive: styles['enter-active'],
+          enter: styles.enter,
+          exitActive: styles['exit-active'],
+          exit: styles.exit
+        } }
+        in={ isOpen }
+        timeout={ 300 }
+      >
         <div
           aria-modal
-          aria-labelledby={ labelledbyText }
-          className={ classNames(
-            classes?.modal,
-            styles['modal'],
-            heightModal >= heightWindow && isShown ? classes?.position ?? styles['modal__position'] : '') }
-          role='dialog'
-          style={ style }
-          tabIndex={ -1 }
-          onClick={ hide }
+          className={ styles.modal }
         >
-          <div
-            ref={ elementRef }
-            className={ classNames(
-              classes?.dialog,
-              styles['modal__dialog'],
-              heightModal >= heightWindow && isShown ? classes?.positionDialog ?? styles['modal__position-dialog'] : '') }
-            onClick={ (e) => e.stopPropagation() }
-          >
-            {
-              (headerContent != null)
-                ? (
-                  <>
-                    {headerContent}
-                  </>
-                  )
-                : ''
-            }
-            <div className={ classNames(
-              classes?.body) }
+          <div className={ styles.modal__header }>
+            <span className={ styles.modal__title }>
+              {title}
+            </span>
+            <button
+              className={ styles['button-close'] }
+              type='button'
+              onClick={ onClose }
             >
-              {bodyContent}
-            </div>
+              <IconClose classProps={ classNames(styles['button-close__icon']) } />
+            </button>
           </div>
+          <div className={ styles.modal__body }>
+            {children}
+          </div>
+          {footer != null && (
+            <div className={ styles.modal__footer }>
+              {footer}
+            </div>
+          )}
         </div>
-      </FocusLock>
-    </>
+      </CSSTransition>
+      <div
+        className={ classNames(styles.backdrop, { [styles['backdrop--visible']]: isOpen }) }
+        onClick={ onClose }
+      />
+    </FocusLock>
   )
-
-  return isShown && (element != null) ? ReactDOM.createPortal(modal, element) : null
 }
