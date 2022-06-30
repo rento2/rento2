@@ -8,11 +8,13 @@
 }
 
 .preloader {
+  position: absolute;
   width: 80px;
   height: 80px;
   background-image: url('/images/preloader/backgraund-r-80.svg');
   background-repeat: no-repeat;
-  animation: pulsing  3.5s infinite;
+  animation: pulsing  2.2s infinite;
+  animation-delay: 200ms;
 }
 
 .preloader-r {
@@ -24,28 +26,30 @@
 
 @keyframes pulsing {
   0% {
-    background-image: url('/images/preloader/backgraund-r-80.svg');
+    transform: scale(0.7);
+  }
+
+  30% {
+    transform: scale(0.7);
+  }
+
+  35% {
+    transform: rotate(-45deg);
   }
 
   50% {
-    background-image: url('/images/preloader/backgraund-r-60.svg');
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+
+  85% {
+    transform: rotate(45deg);
   }
 
   100% {
-    background-image: url('/images/preloader/backgraund-r-60.svg');
-  }
-}
-
-@keyframes circle {
-  0% {
-    transform: translate(45deg);
-  }
-
-  50% {
-    transform: translate(0deg);
-  }
-
-  100% {
-    transform: translate(30deg);
+    transform: scale(0.7);
   }
 }
