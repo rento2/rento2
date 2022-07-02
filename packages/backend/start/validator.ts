@@ -1,18 +1,20 @@
 import { validator } from '@ioc:Adonis/Core/Validator'
 import { Apartment } from 'App/Models'
 
-validator.rule('fieldNames', (value: string[], _, options) => {
-  if (!Array.isArray(value)) {
-    return
-  }
+validator.rule('fieldNames', (value: string, _, options) => {
+  const values = value.split(',')
 
   if (options.field) {
-    value.forEach((item) => {
-      if (!Apartment.$hasColumn(item)) {
+    values.forEach((item) => {
+      const trimItem = item.trim()
+      console.log(`*${item}*`)
+      console.log(`*${trimItem}*`)
+      if (!Apartment.$hasColumn(trimItem)) {
+        console.log(trimItem)
         options.errorReporter.report(
           options.pointer,
           'fieldNames',
-          'fieldNames validation failed',
+          `Incorrect field name '${trimItem}' in validation`,
           options.arrayExpressionPointer
         )
       }
