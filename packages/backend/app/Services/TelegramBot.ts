@@ -2,15 +2,13 @@ import axios from 'axios'
 import { DateTime } from 'luxon'
 
 import util from 'util'
-import { IMsgToTelegram } from './../../common/interfaces/IMsgToTelegram'
+// import { IMsgToTelegram } from '../../common/interfaces/IMsgToTelegram'
 import Logger from '@ioc:Adonis/Core/Logger'
-import { IPositiveResponse, INegativeResponse } from '../../common/interfaces/IResponse'
-import { ITelegram } from '../../common/interfaces/Itelegram'
 import telegramConfiguration from 'Config/telegram'
-import { creatingErrMsg, creatingOkMsg } from '../../common/helpers/creatingResponse'
+// import { Response } from '@adonisjs/core/build/standalone'
 
 export default class TelegramBot {
-  private readonly config: ITelegram
+  private readonly config: typeof telegramConfiguration
   constructor () {
     this.config = telegramConfiguration
   }
@@ -24,12 +22,9 @@ export default class TelegramBot {
 
   private async sendRequest (
     path: string,
-    _data?: IMsgToTelegram
-  ): Promise<{ ok: boolean } & IMsgToTelegram> {
-    const response = await axios.get(
-      `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
-    )
-    return response.data
+  ): Promise<void> {
+    const request: string = `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
+    await axios.get(request)
   }
 
   public async sendMsgToTelegram (
@@ -41,7 +36,7 @@ export default class TelegramBot {
     name: string,
     phone: string,
     paymentUrl: string
-  ): Promise<INegativeResponse | IPositiveResponse<IMsgToTelegram>> {
+  ): Promise<void> {
     const msg = this.createMessageBody(
       id,
       apartmentAddress,
@@ -54,17 +49,13 @@ export default class TelegramBot {
     )
 
     try {
-      const telegramResponse = await this.sendRequest(
-        `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
-      )
-      return creatingOkMsg(telegramResponse)
+      const request: string = `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
+      await this.sendRequest(request)
     } catch (err: unknown) {
       if (err instanceof Error) {
         Logger.error(`Order '${id}' not sent via telegram bot, error: '${err.message}'`)
-        return creatingErrMsg('Failed telegram response.', err.message)
       } else {
         Logger.error(`Order '${id}' not sent via telegram bot. Unknown error: ${util.inspect(err)}`)
-        return creatingErrMsg('Failed telegram response.', `Unknown error: ${util.inspect(err)}`)
       }
     }
   }

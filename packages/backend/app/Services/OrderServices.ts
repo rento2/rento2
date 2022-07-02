@@ -8,19 +8,17 @@ import {
   INegativeResponse,
 } from '../../common/interfaces/IResponse'
 import Logger from '@ioc:Adonis/Core/Logger'
-import TelegramBot from 'App/Services/Telegram'
+import TelegramBot from 'App/Services/TelegramBot'
 import Bnovo from 'App/Services/Bnovo'
 import { IPaidOrder } from '../../common/interfaces/IPaidOrder'
 
 export default class OrderService {
-  bnovo
-  telegramBot
-  constructor () {
+  constructor (private readonly bnovo: Bnovo, private readonly telegramBot: TelegramBot) {
     this.bnovo = new Bnovo()
     this.telegramBot = new TelegramBot()
   }
 
-  public async notifyPayment (
+  public async sendBookingNotification (
     paidOrder: IPaidOrder
   ): Promise<INegativeResponse | IPositiveResponse<IPaidOrder>> {
     try {
@@ -45,16 +43,16 @@ export default class OrderService {
         )
         return creatingOkMsg(paidOrder)
       } else {
-        Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo, Bnovo response: '${util.inspect(response)}'`)
-        return creatingErrMsg('Failed bnovo response.', `Bnovo response: ${util.inspect(response)}`)
+        Logger.error(`Order '${paidOrder.id}': failed to book (${paidOrder.apartmentAddress}) in Bnovo, Bnovo response: '${util.inspect(response)}'`)
+        return creatingErrMsg('error.', `failed to book (${paidOrder.apartmentAddress}) in Bnovo`)
       }
     } catch (err: unknown) {
       if (err instanceof Error) {
-        Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo, error: '${err.message}'`)
-        return creatingErrMsg('Failed bnovo response.', err.message)
+        Logger.error(`Order '${paidOrder.id}': failed to book (${paidOrder.apartmentAddress}) in Bnovo, error: '${err.message}'`)
+        return creatingErrMsg('error.', `failed to book (${paidOrder.apartmentAddress}) in Bnovo`)
       }
-      Logger.error(`Order '${paidOrder.id}' (${paidOrder.apartmentAddress}) not registered in Bnovo, unknown error: '${util.inspect(err)}'`)
-      return creatingErrMsg('Failed bnovo response.', `Unknown error: ${util.inspect(err)}`)
+      Logger.error(`Order '${paidOrder.id}': failed to book (${paidOrder.apartmentAddress}) in Bnovo, unknown error: '${util.inspect(err)}'`)
+      return creatingErrMsg('unknown error.', `failed to book (${paidOrder.apartmentAddress}) in Bnovo`)
     }
   }
 }
