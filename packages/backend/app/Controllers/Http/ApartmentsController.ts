@@ -6,7 +6,7 @@ import {
   creatingOkMsg,
   creatingPaginatedList,
 } from '../../../common/helpers/creatingResponse'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import ApartmentValidator from 'App/Validators/ApartmentValidator'
 import subwayStationToLine from '../../../common/helpers/subwayStationToLine'
 import { ModelQueryBuilderContract } from '@ioc:Adonis/Lucid/Orm'
@@ -18,7 +18,9 @@ export default class ApartmentsController {
     const { search, fields } = await request.validate({
       schema: schema.create({
         search: schema.string.optional(),
-        fields: schema.string.optional(),
+        fields: schema.string.optional({}, [
+          rules.fieldNames()
+        ])
       }),
     })
 
@@ -71,7 +73,9 @@ export default class ApartmentsController {
   public async one ({ request, response }: HttpContextContract): Promise<void> {
     const { fields } = await request.validate({
       schema: schema.create({
-        fields: schema.string.optional(),
+        fields: schema.string.optional({}, [
+          rules.fieldNames()
+        ]),
       }),
     })
     const selectedFields = []
