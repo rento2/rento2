@@ -8,7 +8,6 @@ import {
 } from '../../../common/helpers/creatingResponse'
 import { schema } from '@ioc:Adonis/Core/Validator'
 import ApartmentValidator from 'App/Validators/ApartmentValidator'
-import subwayStationToLine from '../../../common/helpers/subwayStationToLine'
 import { ModelQueryBuilderContract } from '@ioc:Adonis/Lucid/Orm'
 import Redis from '@ioc:Adonis/Addons/Redis'
 import murmurhash from 'murmurhash'
@@ -99,14 +98,15 @@ export default class ApartmentsController {
     response,
   }: HttpContextContract): Promise<void> {
     const apartmentPayload = await request.validate(ApartmentValidator)
-    const subwayLine = subwayStationToLine(apartmentPayload.subway_station)
-    apartmentPayload.subway_line = subwayLine
     const apartment = await Apartment.create(apartmentPayload)
 
     await Promise.all([
       apartment
         .related('accommodations')
         .attach(apartmentPayload.accommodations.map(({ id }) => id)),
+      apartment
+        .related('metroStations')
+        .attach(apartmentPayload.metroStations.map(({ id }) => id)),
       apartment.related('sleepingPlaces').attach(
         apartmentPayload.sleepingPlaces.reduce(
           (prev, { id, number }) => ({
