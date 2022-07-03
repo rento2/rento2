@@ -19,10 +19,9 @@ jobs:
       with:
         node-version: 16.0.0
 
-
-    - uses: stefanoeb/eslint-action@1.0.2
-      with:
-        files: ./packages/backend
+    - name: Lint backend
+      working-directory: ./packages/backend
+      run: npm i && ./node_modules/.bin/eslint ./ --ext .ts
 
     - name: Lint frontend
       working-directory: ./packages/frontend
