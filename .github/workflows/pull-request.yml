@@ -29,11 +29,11 @@ jobs:
 
     - name: Lint frontend
       working-directory: ./packages/frontend
-      run: npm i && eslint ./ --ext .tsx,.ts,.js,.jsx
+      run: npm i && npm run lint
 
     - name: Lint admin
       working-directory: ./packages/admin
-      run: npm ci && eslint ./ --ext .tsx,.ts,.js,.jsx
+      run: npm ci && npm run lint
 
   build:
     runs-on: ubuntu-latest
