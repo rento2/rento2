@@ -35,6 +35,7 @@ jobs:
       run: npm ci && npm run lint
 
   build:
+    environment: code-quality
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
