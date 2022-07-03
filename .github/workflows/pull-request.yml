@@ -1,8 +1,11 @@
 name: Check pull request's code quality
 
 on:
-  pull_request:
-    types: [review_requested]
+  push:
+    branches:
+      - '**'
+      - '!master'
+      - '!develop'
 
 jobs:
   lint:
