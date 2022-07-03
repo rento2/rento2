@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: montudor/action-zip@v1
 
     - name: Install Node.JS
       uses: actions/setup-node@v3
@@ -22,7 +21,7 @@ jobs:
 
     - name: Lint backend
       working-directory: ./packages/backend
-      run: npm ci && npm run lint
+      run: npm i && npm run lint
 
     - name: Lint frontend
       working-directory: ./packages/frontend
