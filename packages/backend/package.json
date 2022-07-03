@@ -20,7 +20,7 @@
     "@types/proxy-addr": "^2.0.0",
     "@types/source-map-support": "^0.5.4",
     "@types/supertest": "^2.0.11",
-    "@types/uuid": "^8.3.4",g
+    "@types/uuid": "^8.3.4",
     "adonis-preset-ts": "^2.1.0",
     "eslint": "^8.19.0",
     "execa": "^5.1.1",
