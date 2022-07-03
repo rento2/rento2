@@ -6,7 +6,7 @@ validator.rule('fieldNames', (value: string, _, options) => {
     options.errorReporter.report(
       options.pointer,
       'fieldNames',
-      `Incorrect request '${value}' in validation`,
+      'Whitespace is not allowed in field name',
       options.arrayExpressionPointer
     )
     return
@@ -20,7 +20,7 @@ validator.rule('fieldNames', (value: string, _, options) => {
         options.errorReporter.report(
           options.pointer,
           'fieldNames',
-          `Incorrect field name '${trimItem}' in validation`,
+          `Field '${trimItem}' is unavailable`,
           options.arrayExpressionPointer
         )
       }
