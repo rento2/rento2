@@ -10,7 +10,7 @@ export const MetroStationsFactory = Factory
     return {
       metroLineId,
       isCentral: faker.datatype.boolean(),
-      name: faker.lorem.words(2),
+      name: faker.address.streetName(),
       lat: faker.datatype.float({
         min: 0,
         max: 90,
