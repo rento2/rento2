@@ -21,7 +21,7 @@ jobs:
 
     - name: Lint backend
       working-directory: ./packages/backend
-      run: npm i && ./node_modules/.bin/eslint ./ --ext .ts
+      run: npm i && ./node_modules/.bin/eslint ./ --ext .ts -c ./.eslintrc.json
 
     - name: Lint frontend
       working-directory: ./packages/frontend
