@@ -2,10 +2,8 @@ import axios from 'axios'
 import { DateTime } from 'luxon'
 
 import util from 'util'
-// import { IMsgToTelegram } from '../../common/interfaces/IMsgToTelegram'
 import Logger from '@ioc:Adonis/Core/Logger'
 import telegramConfiguration from 'Config/telegram'
-// import { Response } from '@adonisjs/core/build/standalone'
 
 export default class TelegramBot {
   private readonly config: typeof telegramConfiguration
