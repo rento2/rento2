@@ -18,7 +18,7 @@
     "./start/routes",
     "./start/kernel",
     {
-      "file": "./start/validator",
+      "file": "./app/Validators/FieldNamesValidator.ts",
       "environment": [
         "web"
       ]

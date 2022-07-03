@@ -24,13 +24,18 @@ export default class ApartmentsController {
       }),
     })
 
-    let apartments = Apartment.query()
-      .preload('accommodations')
-      .preload('sleepingPlaces')
-      .preload('services')
-      .preload('banners')
-      .preload('photos')
-      .select(fields?.split(',').length ? ['id', 'name', ...fields?.split(',')] : ['*'])
+    let apartments
+    if (fields) {
+      apartments = Apartment.query()
+        .select(['id', 'name', ...fields?.split(',')])
+    } else {
+      apartments = Apartment.query()
+        .preload('accommodations')
+        .preload('sleepingPlaces')
+        .preload('services')
+        .preload('banners')
+        .preload('photos')
+    }
 
     if (search) {
       apartments = apartments.where('name', 'ilike', `%${search}%`)
@@ -78,18 +83,21 @@ export default class ApartmentsController {
         ]),
       }),
     })
-    const selectedFields = []
-    fields ? selectedFields.push('id', ...fields.split(',')) : selectedFields.push('*')
 
-    const apartment = await Apartment
-      .query()
-      .preload('accommodations')
-      .preload('sleepingPlaces')
-      .preload('services')
-      .preload('banners')
-      .preload('photos')
-      .select(selectedFields)
-      .where('id', request.param('id')).first()
+    let apartment
+    if (fields) {
+      apartment = await Apartment.query()
+        .select(['id', 'name', ...fields?.split(',')])
+        .where('id', request.param('id')).first()
+    } else {
+      apartment = await Apartment.query()
+        .preload('accommodations')
+        .preload('sleepingPlaces')
+        .preload('services')
+        .preload('banners')
+        .preload('photos')
+        .where('id', request.param('id')).first()
+    }
 
     if (!apartment) {
       return response.send(creatingErrMsg('error', 'Apartment not found'))
