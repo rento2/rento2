@@ -21,15 +21,15 @@ jobs:
 
     - name: Lint backend
       working-directory: ./packages/backend
-      run: npm i && eslint . --ext .tsx,.ts,.js,.jsx
+      run: npm i && eslint ./ --ext .ts
 
     - name: Lint frontend
       working-directory: ./packages/frontend
-      run: npm ci && npm run lint
+      run: npm i && eslint ./ --ext .tsx,.ts,.js,.jsx
 
     - name: Lint admin
       working-directory: ./packages/admin
-      run: npm ci && npm run lint
+      run: npm ci && eslint ./ --ext .tsx,.ts,.js,.jsx
 
   build:
     runs-on: ubuntu-latest
