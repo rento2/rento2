@@ -19,9 +19,8 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install deps
-      working-directory: ./
-      run: npm i
+    - name: Install root dependencies
+      run: npm ci
 
     - name: Lint backend
       working-directory: ./packages/backend
