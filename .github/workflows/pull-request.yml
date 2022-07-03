@@ -9,6 +9,7 @@ on:
 
 jobs:
   lint:
+    environment: code-quality
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -27,7 +28,7 @@ jobs:
 
     - name: Lint frontend
       working-directory: ./packages/frontend
-      run: npm i && npm run lint
+      run: npm сi && npm run lint
 
     - name: Lint admin
       working-directory: ./packages/admin
