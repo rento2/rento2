@@ -80,10 +80,6 @@ export default class ApartmentValidator extends ValidatorMessages {
       rules.minLength(3),
       rules.maxLength(255),
     ]),
-    subway_line: schema.string.nullableAndOptional({ trim: true }, [
-      rules.minLength(3),
-      rules.maxLength(255),
-    ]),
     time_to_subway_by_foot: schema.number([
       rules.unsigned(),
       rules.range(0, 9999999.99),
@@ -112,6 +108,12 @@ export default class ApartmentValidator extends ValidatorMessages {
     max_children: schema.number([rules.unsigned(), rules.range(0, 99)]),
 
     accommodations: schema.array().members(
+      schema.object().members({
+        id: schema.number([rules.unsigned()]),
+      })
+    ),
+
+    metroStations: schema.array().members(
       schema.object().members({
         id: schema.number([rules.unsigned()]),
       })
