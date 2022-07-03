@@ -7,11 +7,9 @@ on:
       - '!master'
       - '!develop'
       - '!release'
-  # pull_request:
-  #   types: [review_requested]
 
 jobs:
-  code-quality:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -24,21 +22,15 @@ jobs:
 
     - name: Lint backend
       working-directory: ./packages/backend
-      run: |
-        npm ci
-        npm run lint
+      run: npm ci && npm run lint
 
     - name: Lint frontend
       working-directory: ./packages/frontend
-      run: |
-        npm ci
-        npm run lint
+      run: npm ci && npm run lint
 
     - name: Lint admin
       working-directory: ./packages/admin
-      run: |
-        npm ci
-        npm run lint
+      run: npm ci && npm run lint
 
   build:
     runs-on: ubuntu-latest
