@@ -3,6 +3,7 @@ name: Check pull request's code quality
 on:
   push:
     branches:
+      - '*/*'
       - !master
       - !develop
       - !release
