@@ -19,6 +19,10 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Install deps
+      working-directory: ./
+      run: npm i
+
     - name: Lint backend
       working-directory: ./packages/backend
       run: npm i && ./node_modules/.bin/eslint ./ --ext .ts -c ./.eslintrc.json
