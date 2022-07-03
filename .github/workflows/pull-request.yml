@@ -21,7 +21,7 @@ jobs:
 
     - name: Lint backend
       working-directory: ./packages/backend
-      run: npm i && npm run lint
+      run: npm i && eslint . --ext .tsx,.ts,.js,.jsx
 
     - name: Lint frontend
       working-directory: ./packages/frontend
