@@ -28,7 +28,7 @@ jobs:
 
     - name: Lint frontend
       working-directory: ./packages/frontend
-      run: npm сi && npm run lint
+      run: npm ci && npm run lint
 
     - name: Lint admin
       working-directory: ./packages/admin
