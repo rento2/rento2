@@ -1,8 +1,7 @@
 {
   "root": true,
   "extends": [
-    "eslint:recommended",
-    "standard-with-typescript"
+    "eslint:recommended"
   ],
   "overrides": [
     {"files": ["*.{jsx, ts, tsx}"]}

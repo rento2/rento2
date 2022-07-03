@@ -27,7 +27,7 @@ export default class ApartmentsController {
       .preload('services')
       .preload('banners')
       .preload('photos')
-      .select(fields?.split(',').length ? ['id', 'name', ...fields?.split(',')] : ['*'])
+      .select(fields?.split(',').length ? ['id', 'name', ...(fields ?? '').split(',')] : ['*'])
 
     if (search) {
       apartments = apartments.where('name', 'ilike', `%${search}%`)
