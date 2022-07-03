@@ -1,3 +1,4 @@
+import { IResponseBnovo } from './../../common/interfaces/IResponseBnovo'
 import { buildUrl, IQueryParams } from 'build-url-ts'
 import bnovoConfiguration from 'Config/bnovo'
 import axios from 'axios'
@@ -147,7 +148,7 @@ export default class Bnovo {
     return response
   }
 
-  protected bookApartment = async (
+  public bookApartment = async (
     from: DateTime,
     to: DateTime,
     apartmentId: number,
@@ -158,7 +159,7 @@ export default class Bnovo {
       email: string
       phone: string
     }
-  ): Promise<any> => {
+  ): Promise<IResponseBnovo> => {
     const token = await this.getAuthToken()
     const data = {
       token,

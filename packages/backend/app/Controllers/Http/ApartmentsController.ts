@@ -6,7 +6,7 @@ import {
   creatingOkMsg,
   creatingPaginatedList,
 } from '../../../common/helpers/creatingResponse'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import ApartmentValidator from 'App/Validators/ApartmentValidator'
 import { ModelQueryBuilderContract } from '@ioc:Adonis/Lucid/Orm'
 import Redis from '@ioc:Adonis/Addons/Redis'
@@ -17,17 +17,24 @@ export default class ApartmentsController {
     const { search, fields } = await request.validate({
       schema: schema.create({
         search: schema.string.optional(),
-        fields: schema.string.optional(),
+        fields: schema.string.optional({}, [
+          rules.fieldNames()
+        ])
       }),
     })
 
-    let apartments = Apartment.query()
-      .preload('accommodations')
-      .preload('sleepingPlaces')
-      .preload('services')
-      .preload('banners')
-      .preload('photos')
-      .select(fields?.split(',').length ? ['id', 'name', ...(fields ?? '').split(',')] : ['*'])
+    let apartments
+    if (fields) {
+      apartments = Apartment.query()
+        .select(['id', 'name', ...fields?.split(',')])
+    } else {
+      apartments = Apartment.query()
+        .preload('accommodations')
+        .preload('sleepingPlaces')
+        .preload('services')
+        .preload('banners')
+        .preload('photos')
+    }
 
     if (search) {
       apartments = apartments.where('name', 'ilike', `%${search}%`)
@@ -70,21 +77,26 @@ export default class ApartmentsController {
   public async one ({ request, response }: HttpContextContract): Promise<void> {
     const { fields } = await request.validate({
       schema: schema.create({
-        fields: schema.string.optional(),
+        fields: schema.string.optional({}, [
+          rules.fieldNames()
+        ]),
       }),
     })
-    const selectedFields = []
-    fields ? selectedFields.push('id', ...fields.split(',')) : selectedFields.push('*')
 
-    const apartment = await Apartment
-      .query()
-      .preload('accommodations')
-      .preload('sleepingPlaces')
-      .preload('services')
-      .preload('banners')
-      .preload('photos')
-      .select(selectedFields)
-      .where('id', request.param('id')).first()
+    let apartment
+    if (fields) {
+      apartment = await Apartment.query()
+        .select(['id', 'name', ...fields?.split(',')])
+        .where('id', request.param('id')).first()
+    } else {
+      apartment = await Apartment.query()
+        .preload('accommodations')
+        .preload('sleepingPlaces')
+        .preload('services')
+        .preload('banners')
+        .preload('photos')
+        .where('id', request.param('id')).first()
+    }
 
     if (!apartment) {
       return response.send(creatingErrMsg('error', 'Apartment not found'))
