@@ -1,6 +1,7 @@
 import { ButtonGeneral, Checkbox, ModalBase, SwitchBase } from '@shared/ui'
 import classNames from 'classnames'
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { useWindowSize } from 'react-use'
 
 import styles from './PersonalSearchForm.module.scss'
@@ -11,34 +12,33 @@ interface IPersonalSearchForm {
 }
 
 export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): JSX.Element {
-  const [phoneInput, setPhoneInput] = useState('') // значение в инпуте
-  const [phoneNumber, setPhoneNumber] = useState<null | number>(null) // номер для отправки на бэк
-  const [telegramInput, setTelegramInput] = useState('')
-  const [switchState, setSwitchState] = useState(false)
-  const [checkboxState, setCheckboxState] = useState(false)
-  const [isFormValid, setIsFormValid] = useState(false)
+  const defaultValues = {
+    'use-telegram': false,
+    number: '',
+    telegram: '',
+    'agreement-checkbox': false
+  }
+
+  const [phoneInput, setPhoneInput] = useState('')
   const { width } = useWindowSize()
+
+  const { register, handleSubmit, control, formState: { isValid }, watch } = useForm({ mode: 'onChange', defaultValues })
+  const switchState = watch('use-telegram', false)
 
   function handleInputChange (e: ChangeEvent<HTMLInputElement>): void {
     const value = e.target.value
-    const inputName = e.target.name
-    if (inputName === 'number-input') {
-      // чистим строку от всего лишнего
-      const { phoneNumber, phoneString } = maskPhoneNumber(value)
+    // чистим строку от всего лишнего
+    const phoneString = maskPhoneNumber(value)
 
-      setPhoneNumber(phoneNumber)
-      setPhoneInput(phoneString)
-    } else if (inputName === 'telegram-input') {
-      setTelegramInput(value)
-    }
+    setPhoneInput(phoneString)
   }
 
   // // маскирование номера (шоб красиво было)
-  function maskPhoneNumber (number: string): {phoneNumber: number | null, phoneString: string} {
+  function maskPhoneNumber (number: string): string {
     const phoneValue = number
       .replace('+7', '').replace(/\D/g, '')
       .match(/(\d{1,3})(\d{0,3})(\d{0,4})/)
-    let str, num
+    let str
 
     if (phoneValue !== null) {
       if (phoneValue[2] === undefined || phoneValue[2] === '') {
@@ -47,39 +47,13 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
         str = `+7(${phoneValue[1] ?? ''})-${phoneValue[2]}`
         if (phoneValue[3] !== undefined && phoneValue[3] !== '') str += `-${phoneValue[3] ?? ''}`
       }
-
-      num = phoneValue.input !== undefined ? +phoneValue.input : null
+      // num = phoneValue.input !== undefined ? +phoneValue.input : null
     }
 
-    return {
-      phoneNumber: num ?? null,
-      phoneString: str ?? ''
-    }
+    return str ?? ''
   }
 
-  function handleSubmit (e: FormEvent<HTMLFormElement>): void {
-    e.preventDefault()
-
-    if (checkboxState) {
-      const body = {
-        phone: phoneNumber,
-        telegram: telegramInput
-      }
-
-      console.log(body)
-    }
-  }
-
-  function checkValidity (): void {
-    if (switchState) {
-      setIsFormValid(checkboxState && telegramInput.length > 3)
-    } else {
-      setIsFormValid(checkboxState && phoneNumber?.toString().length === 10)
-    }
-  }
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => checkValidity(), [phoneInput, telegramInput, checkboxState, switchState])
+  const onFormSubmit = (data: any): void => console.log(data)
 
   return (
     <ModalBase
@@ -87,7 +61,7 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
       onClose={ onClose }
     >
       <form className={ classNames(styles['form']) }
-        onSubmit={ handleSubmit }
+        onSubmit={ handleSubmit(onFormSubmit) }
       >
         <p className={ classNames(styles['title']) }>
           {width >= 479
@@ -99,15 +73,23 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
               )}
         </p>
         {width < 479 && (
-          <p className={ styles.subtitle }>
+          <p className={ styles['subtitle'] }>
             Закажите Персональный поиск от Ренто
           </p>
         )}
-        <SwitchBase
-          containerClass={ styles.switch }
-          labelText="Использовать для связи Telegram"
-          name='personal-search-switch'
-          onChange={ e => setSwitchState(e.target.checked) }
+        <Controller
+          control={ control }
+          name='use-telegram'
+          render={ ({
+            field: { onChange, name }
+          }) => (
+            <SwitchBase
+              containerClass={ styles['switch'] ?? '' }
+              labelText="Использовать для связи Telegram"
+              name={ name }
+              onChange={ onChange }
+            />
+          ) }
         />
 
         {!switchState
@@ -115,7 +97,7 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
             <>
               <label
                 className={ classNames(styles['label']) }
-                htmlFor='number-input'
+                htmlFor='number'
               >
                 Телефон для связи*
               </label>
@@ -123,13 +105,12 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
                 required
                 autoComplete="off"
                 className={ classNames(styles['input']) }
-                id='number-input'
+                id='number'
                 maxLength={ 16 }
-                name='number-input'
                 placeholder="+7 (___)-___-____"
                 type="tel"
                 value={ phoneInput }
-                onChange={ handleInputChange }
+                { ...register('number', { required: true, onChange: e => handleInputChange(e) }) }
               />
             </>
             )
@@ -137,7 +118,7 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
             <>
               <label
                 className={ classNames(styles['label']) }
-                htmlFor='telegram-input'
+                htmlFor='telegram'
               >
                 Никнейм в Telegram*
               </label>
@@ -145,25 +126,31 @@ export function PersonalSearchForm ({ isOpen, onClose }: IPersonalSearchForm): J
                 required
                 autoComplete="off"
                 className={ classNames(styles['input']) }
-                id='telegram-input'
-                name='telegram-input'
+                id='telegram'
                 placeholder="@nickname"
-                value={ telegramInput }
-                onChange={ handleInputChange }
+                { ...register('telegram', { required: true }) }
               />
             </>
             )}
 
-        <Checkbox
-          conatinerClass={ styles['checkbox'] }
-          id="agreement-checkbox"
-          label="Я согласен на Обработку персональных данных"
-          onChange={ e => setCheckboxState(e.target.checked) }
+        <Controller control={ control }
+          name="agreement-checkbox"
+          render={ ({
+            field: { onChange, name }
+          }) => (
+            <Checkbox
+              conatinerClass={ styles['checkbox'] ?? '' }
+              id={ name }
+              label="Я согласен на Обработку персональных данных"
+              onChange={ onChange }
+            />
+          ) }
+          rules={ { required: true } }
         />
 
         <ButtonGeneral
           round
-          disabled={ !isFormValid }
+          disabled={ !isValid }
           font='l'
           height={ width <= 479 ? '44' : '48' }
           type='submit'
