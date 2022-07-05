@@ -47,7 +47,16 @@ $orange-a500: #ff6b3d;
 
 $overlay-a05: rgba($gray-blue-500, 0.5);
 $overlay: rgba(0, 0, 0, 0.2);
-$soft-003: rgba(0, 0, 0, 0.1);
+
+// SHADOW
+
+$soft-001: 0 0 20px rgba(0, 0, 0, 0.1);
+$soft-002: 0 10px 20px rgba(0, 0, 0, 0.1);
+$soft-003: 0 10px 20px rgba(0, 0, 0, 0.1);
+$soft-004: 0 30px 40px rgba(0, 0, 0, 0.05);
+
+$hard-001: 0 0 2px rgba(0, 0, 0, 0.2);
+$hard-002: 0 1px 0 rgba(0, 0, 0, 0.2);
 
 // Z-INDEX
 
