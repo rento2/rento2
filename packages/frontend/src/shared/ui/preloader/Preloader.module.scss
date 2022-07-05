@@ -9,12 +9,12 @@
 
 .preloader {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-image: url('/images/preloader/backgraund-r-80.svg');
   background-repeat: no-repeat;
-  animation: pulsing  2.2s infinite;
-  animation-delay: 200ms;
+  background-size: cover;
+  animation: pulsing  2000ms ease-in-out infinite both;
 }
 
 .preloader-r {
@@ -25,31 +25,15 @@
 }
 
 @keyframes pulsing {
-  0% {
-    transform: scale(0.7);
+  43% {
+    transform: scale(1.33) rotate(90deg);
   }
 
-  30% {
-    transform: scale(0.7);
-  }
-
-  35% {
-    transform: rotate(-45deg);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-
-  80% {
-    transform: scale(1);
-  }
-
-  85% {
-    transform: rotate(45deg);
+  57% {
+    transform: scale(1.33) rotate(90deg);
   }
 
   100% {
-    transform: scale(0.7);
+    transform: scale(1) rotate(180deg);
   }
 }
