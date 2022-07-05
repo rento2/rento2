@@ -55,6 +55,26 @@ Route
 
     Route
       .group(() => {
+        Route.get('/one/:id', 'MetroLinesController.one')
+        Route.delete('/delete/:id', 'MetroLinesController.delete')
+        Route.post('/create', 'MetroLinesController.create')
+        Route.get('/list/:page', 'MetroLinesController.list')
+        Route.post('/update/:id', 'MetroLinesController.update')
+      })
+      .prefix('metro-lines')
+
+    Route
+      .group(() => {
+        Route.get('/one/:id', 'MetroStationsController.one')
+        Route.delete('/delete/:id', 'MetroStationsController.delete')
+        Route.post('/create', 'MetroStationsController.create')
+        Route.get('/list/:page', 'MetroStationsController.list')
+        Route.post('/update/:id', 'MetroStationsController.update')
+      })
+      .prefix('metro-stations')
+
+    Route
+      .group(() => {
         Route.get('/one/:id', 'OrdersController.one')
         Route.delete('/delete/:id', 'OrdersController.delete')
         Route.post('/create', 'OrdersController.create')
