@@ -1,22 +1,95 @@
-import { Layout } from '@shared/ui'
+import classNames from 'classnames'
+
+import { Layout, PriceShort, DetailsShort } from '@shared/ui'
+import { IApartmentsDataList, IApartmentItem } from '@shared/api'
+import { pathPages } from '@shared/config'
+import { numbersUtils } from '@shared/lib'
+
+import { ApartmentCard } from '@entities/cards/ApartmentCard'
+import { CollectionsCard } from '@entities/cards/CollectionsCard'
+import { MetroInfo } from '@entities/MetroInfo'
+
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-// import { AgreementShortList } from '@modules/docs/AgreementShort/AgreementShortList'
+import { ApartmentsPromo } from '@widgets/apartments-promo'
 
-const titlePage = 'Снять квартиру посуточно в центре Москвы &#128156;'
+import styles from './ShortPage.module.scss'
 
-export const ShortPage = (): JSX.Element => {
+const titlePage = 'Снять хорошую квартиру от 6 месяцев &#128156;'
+
+// TODO: Здесь формируется ссылка и передается в компоненты
+// TODO: Изменить название стилей с long на short
+export const ShortPage = ({ data }: { data: IApartmentsDataList}): JSX.Element => {
+  const { items } = data
+
+  const ApartmentCardShort = ({ apartmentData }: {apartmentData: IApartmentItem}): JSX.Element => {
+    const area = numbersUtils.roundInteger(numbersUtils.convertNumber(apartmentData.area))
+
+    return (
+      <ApartmentCard { ...apartmentData }
+        detailsInfo={ DetailsShort({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey }) }
+        metroInfo={ <MetroInfo subwayStation={ apartmentData.subwayStation }
+          timeFoot={ apartmentData.timeToSubwayByFoot }
+          timeVehicle={ apartmentData.timeToSubwayByVehicle }
+        /> }
+        pathPage={ pathPages.short }
+        priceInfo={ PriceShort(apartmentData.price) }
+      />
+    )
+  }
+
+  const CollectionsCardLong = ({ apartmentData }: {apartmentData: IApartmentItem}): JSX.Element => {
+    const area = numbersUtils.roundInteger(numbersUtils.convertNumber(apartmentData.area))
+
+    return (
+      <CollectionsCard { ...apartmentData }
+        detailsInfo={ DetailsShort({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey }) }
+        metroInfo={ <MetroInfo classSubway={ classNames(styles['long-page__subway']) }
+          subwayStation={ apartmentData.subwayStation }
+          timeFoot={ apartmentData.timeToSubwayByFoot }
+          timeVehicle={ apartmentData.timeToSubwayByVehicle }
+        /> }
+        pathPage={ pathPages.short }
+        priceInfo={ PriceShort(apartmentData.price) }
+      />
+    )
+  }
+
   return (
     <Layout footer={ <Footer /> }
       header={ <Header /> }
       titlePage={ titlePage }
     >
       <main>
-        <section className='container'>
-          <h1>
+        <section>
+          <h1 className='visually-hidden'>
             Краткосрочная аренда
           </h1>
-          {/* <AgreementShortList /> */}
+
+          <ul className={ classNames(styles['long-page'], 'container') }>
+            {items?.slice(0, 10).map((el) => (
+              <li key={ el['id'] }>
+                <ApartmentCardShort apartmentData={ el } />
+              </li>
+            ))}
+          </ul>
+
+          <ApartmentsPromo cards={ items?.slice(0, 10) }
+            pathPage={ pathPages.short }
+            titleCollection="inCityCenter"
+          >
+            {apartment => (
+              <CollectionsCardLong apartmentData={ apartment } />
+            )}
+          </ApartmentsPromo>
+
+          <ul className={ classNames(styles['long-page'], 'container') }>
+            {items?.slice(-10).map((el) => (
+              <li key={ el['id'] }>
+                <ApartmentCardShort apartmentData={ el } />
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
     </Layout>
