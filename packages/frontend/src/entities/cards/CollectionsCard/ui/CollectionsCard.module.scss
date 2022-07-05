@@ -1,0 +1,73 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.card {
+  @include body-5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 260px;
+  height: 100%;
+  overflow: hidden;
+  background: $neutral-0;
+  border-radius: 8px;
+  outline: 0;
+  box-shadow: 0 0 2px $overlay;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    box-shadow: $soft-003;
+  }
+
+  &__image {
+    width: 260px;
+    height: 147px;
+  }
+
+  &__info {
+    height: 100%;
+    padding: 8px 10px 20px;
+
+    @include bp-1023 {
+      padding: 30px 10px 16px;
+    }
+
+    @include bp-743 {
+      padding: 12px 10px 10px;
+    }
+
+    @include bp-479 {
+      padding: 22px 10px 10px 16px;
+    }
+  }
+
+  &__price {
+    @include subtitle-3;
+  }
+
+  &__deposit {
+    @include body-6;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__details {
+    @include subtitle-2;
+    margin-bottom: 4px;
+  }
+
+  &__location {
+    margin: 0 0 2px;
+  }
+
+  &__favourite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    padding: 6px 0;
+  }
+}
