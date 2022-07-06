@@ -6,4 +6,6 @@ export interface IApartmentCard extends IApartmentItem {
   detailsInfo: string
   priceInfo: string
   metroInfo: JSX.Element
+  media: JSX.Element
+  classCard?: string
 }

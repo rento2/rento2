@@ -26,13 +26,6 @@
     flex-direction: column;
   }
 
-  @include hover-supported {
-    &:hover .btn-hover,
-    &:focus .btn-hover {
-      display: flex;
-    }
-  }
-
   &:hover,
   &:focus {
     color: inherit;
@@ -120,8 +113,4 @@
     z-index: 5;
     padding: 6px 0;
   }
-}
-
-.btn-hover {
-  display: none;
 }

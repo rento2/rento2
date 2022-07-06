@@ -28,6 +28,29 @@
     margin-bottom: 50px;
   }
 
+  &__card {
+    @include hover-supported {
+      &:hover .long-page__btn-hover,
+      &:focus .long-page__btn-hover {
+        display: flex;
+      }
+    }
+  }
+
+  &__btn-hover {
+    display: none;
+  }
+
+  &__metro-wrapper {
+    @include bp-743 {
+      display: none;
+    }
+
+    @include bp-479 {
+      display: block;
+    }
+  }
+
   &__subway {
     @include body-6;
   }

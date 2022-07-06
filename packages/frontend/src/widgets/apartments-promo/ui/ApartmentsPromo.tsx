@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
 import classNames from 'classnames'
 
@@ -17,11 +17,17 @@ export const ApartmentsPromo = ({ cards, titleCollection, children }: {cards: IA
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
 
-  const initSwiperParams = {
+  const initSwiperParams: SwiperProps = {
     className: styles['promo__slider'],
     modules: [Navigation],
-    slidesPerView: 4,
+    slidesPerView: 'auto',
+    centeredSlides: false,
     spaceBetween: 10,
+    breakpoints: {
+      1280: {
+        slidesPerView: 4
+      }
+    },
     onBeforeInit: onBeforeInit
   }
 
@@ -34,9 +40,9 @@ export const ApartmentsPromo = ({ cards, titleCollection, children }: {cards: IA
   }
 
   return (
-    <div className={ styles['promo'] }>
-      <div className={ styles['promo__wrapper'] }>
-        <h2 className={ styles['promo__title'] }>
+    <div className={ styles.promo }>
+      <div className={ styles.promo__wrapper }>
+        <h2 className={ styles.promo__title }>
           {titleSlider[titleCollection]}
         </h2>
 

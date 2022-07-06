@@ -27,31 +27,33 @@ export const CollectionsCard = (props: ICollectionsCard): JSX.Element => {
       <a className={ styles.card }>
         <div className={ styles.card__image }>
           <Image alt='room1'
-            height={ 147 }
-            layout="responsive"
+            layout='fill'
+            objectFit='cover'
             src='/images/long/room1.jpg'
-            width={ 260 }
           />
         </div>
         <div
           className={ styles.card__info }
         >
-          <p className={ styles.card__price }>
-            { priceInfo }
-          </p>
-
-          { isDeposit && (
-            <p className={ styles.card__deposit }>
-              {`Депозит: ${securityDepositLong}`}
-            </p>)
-          }
-          <p className={ styles['card__location'] }>
-            {name}
-          </p>
-          {metroInfo}
-          <p className={ styles.card__details }>
-            {detailsInfo}
-          </p>
+          <div className={ styles['card__price-wrapper'] }>
+            <p className={ styles.card__price }>
+              { priceInfo }
+            </p>
+            { isDeposit && (
+              <p className={ styles.card__deposit }>
+                {`Депозит: ${securityDepositLong}`}
+              </p>)
+            }
+          </div>
+          <div className={ styles.card__inner }>
+            <p className={ styles.card__location }>
+              {name}
+            </p>
+            {metroInfo}
+            <p className={ styles.card__details }>
+              {detailsInfo}
+            </p>
+          </div>
           <ButtonIcon
             classProps={ classNames(styles.card__favourite) }
             full='stroke'

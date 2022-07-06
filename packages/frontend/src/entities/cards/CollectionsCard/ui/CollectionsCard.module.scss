@@ -16,32 +16,50 @@
   outline: 0;
   box-shadow: 0 0 2px $overlay;
 
-  &:hover,
-  &:focus {
-    color: inherit;
-    box-shadow: $soft-003;
+  @include bp-743 {
+    width: 200px;
+  }
+
+  @include bp-479 {
+    width: 260px;
+  }
+
+  @include hover-supported {
+    &:hover,
+    &:focus {
+      color: inherit;
+      box-shadow: $soft-003;
+    }
   }
 
   &__image {
+    position: relative;
+    flex: 0 0 auto;
     width: 260px;
     height: 147px;
+
+    @include bp-743 {
+      width: 200px;
+      height: 115px;
+    }
+
+    @include bp-479 {
+      width: 260px;
+      height: 147px;
+    }
   }
 
   &__info {
     height: 100%;
-    padding: 8px 10px 20px;
-
-    @include bp-1023 {
-      padding: 30px 10px 16px;
-    }
+    padding: 10px 10px 11px;
 
     @include bp-743 {
-      padding: 12px 10px 10px;
+      min-height: 60px;
     }
+  }
 
-    @include bp-479 {
-      padding: 22px 10px 10px 16px;
-    }
+  &__price-wrapper {
+    margin: 0 0 8px;
   }
 
   &__price {
@@ -50,17 +68,58 @@
 
   &__deposit {
     @include body-6;
-    display: block;
     margin-bottom: 4px;
   }
 
-  &__details {
-    @include subtitle-2;
-    margin-bottom: 4px;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 79px;
+
+    @include bp-1023 {
+      min-height: 80px;
+    }
+
+    @include bp-743 {
+      min-height: 60px;
+    }
+
+    @include bp-479 {
+      min-height: 80px;
+    }
   }
 
   &__location {
+    display: (-webkit-box);
     margin: 0 0 2px;
+    overflow: hidden;
+    color: $gray-blue-400;
+    text-overflow: ellipsis;
+    -ms-line-clamp: 1;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+
+    @include bp-743 {
+      order: 2;
+    }
+
+    @include bp-479 {
+      order: unset;
+    }
+  }
+
+  &__details {
+    @include subtitle-3;
+
+    @include bp-743 {
+      order: 1;
+    }
+
+    @include bp-479 {
+      order: unset;
+    }
   }
 
   &__favourite {

@@ -4,8 +4,6 @@ import classNames from 'classnames'
 
 import { IconHeart, ButtonIcon } from '@shared/ui'
 
-import { CardSlider } from './card-slider/CardSlider'
-import { mockPhotos } from '../model/mockData'
 import { IApartmentCard } from '../lib/types'
 import styles from './ApartmentCard.module.scss'
 
@@ -19,17 +17,23 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
     pathPage,
     priceInfo,
     detailsInfo,
-    metroInfo
+    metroInfo,
+    media,
+    classCard
   } = props
+
+  // const stylesObject = {
+  //   apartment: styles
+  // }
+
+  // const stylesClass = stylesObject.apartment
 
   const click = (e: MouseEvent<HTMLButtonElement>): void => { e.preventDefault() }
 
   return (
     <Link href={ `/${pathPage}/${id}` }>
-      <a className={ styles.card }>
-        <CardSlider classHoverParent={ classNames(styles['btn-hover']) }
-          images={ mockPhotos }
-        />
+      <a className={ classNames(styles.card, classCard) }>
+        {media}
         <div className={ styles.card__info }>
           <div className={ styles['card__price-wrapper'] }>
             <p className={ styles.card__price }>
