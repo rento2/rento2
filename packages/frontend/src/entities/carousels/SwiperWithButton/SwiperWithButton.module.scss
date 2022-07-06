@@ -1,0 +1,94 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+
+.slider {
+  position: relative;
+  flex: 0 0 295px;
+  width: 295px;
+  min-height: 220px;
+  overflow: hidden;
+
+  @include bp-1279 {
+    flex: 0 0 194px;
+    width: 194px;
+  }
+
+  @include bp-1023 {
+    flex: 0 0 170px;
+    width: 340px;
+    height: 170px;
+    min-height: unset;
+  }
+
+  @include bp-743 {
+    flex: 0 0 154px;
+    width: 154px;
+    height: 150px;
+  }
+
+  @include bp-479 {
+    flex: 0 0 170px;
+    width: 100%;
+    height: 170px;
+  }
+
+  &__btn-prev,
+  &__btn-next {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+  }
+
+  &__btn-prev {
+    left: 4px;
+  }
+
+  &__btn-next {
+    right: 4px;
+  }
+
+  &__btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  [class~='swiper-pagination-bullets'] {
+    bottom: 7px;
+  }
+
+  &__bullet {
+    position: relative;
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin: 0 2px;
+    background-color: $neutral-0;
+    border-radius: 50%;
+    opacity: 1;
+
+    &[class~='swiper-pagination-bullet-active'] {
+      transform: scale(1.5);
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+
+    @include bp-1023 {
+      height: 170px;
+      min-height: unset;
+    }
+
+    @include bp-743 {
+      height: 150px;
+    }
+
+    @include bp-479 {
+      height: 170px;
+    }
+  }
+}
