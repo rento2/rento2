@@ -8,11 +8,13 @@ import { numbersUtils } from '@shared/lib'
 import { ApartmentCard } from '@entities/cards/ApartmentCard'
 import { CollectionsCard } from '@entities/cards/CollectionsCard'
 import { MetroInfo } from '@entities/MetroInfo'
+import { SwiperWithButton } from '@entities/carousels/SwiperWithButton'
 
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
 import { ApartmentsPromo } from '@widgets/apartments-promo'
 
+import { mockPhotos } from './model/mockData'
 import styles from './ShortPage.module.scss'
 
 const titlePage = 'Снять хорошую квартиру от 6 месяцев &#128156;'
@@ -27,7 +29,11 @@ export const ShortPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =
 
     return (
       <ApartmentCard { ...apartmentData }
+        classCard={ classNames(styles['long-page__card']) }
         detailsInfo={ DetailsShort({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey }) }
+        media={ <SwiperWithButton classBtnHover={ classNames(styles['long-page__btn-hover']) }
+          images={ mockPhotos }
+        /> }
         metroInfo={ <MetroInfo subwayStation={ apartmentData.subwayStation }
           timeFoot={ apartmentData.timeToSubwayByFoot }
           timeVehicle={ apartmentData.timeToSubwayByVehicle }
@@ -45,6 +51,7 @@ export const ShortPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =
       <CollectionsCard { ...apartmentData }
         detailsInfo={ DetailsShort({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey }) }
         metroInfo={ <MetroInfo classSubway={ classNames(styles['long-page__subway']) }
+          classWrapper={ classNames(styles['long-page__metro-wrapper']) }
           subwayStation={ apartmentData.subwayStation }
           timeFoot={ apartmentData.timeToSubwayByFoot }
           timeVehicle={ apartmentData.timeToSubwayByVehicle }
