@@ -8,17 +8,21 @@ import { IApartmentItem } from '@shared/api'
 
 import { titleSlider } from '../model/constants'
 import { ITitleSlider } from '../lib/types'
-import styles from './ApartmentsPromo.module.scss'
+import styles from './CollectionApartments.module.scss'
+
+interface ICollectionApartments {
+  cards: IApartmentItem[]
+  titleCollection: keyof ITitleSlider
+  children: (apartment: IApartmentItem) => JSX.Element
+}
 
 // TODO: Создать оболочку entities для слайдера, где будет onBeforeInit, кнопки(?), инициализация, которая через пропс будет передаваться
-// TODO: Вынести пропс в интерфейс
-// TODO: Переименуй компонент и стили внутри в CollectionApartments
-export const ApartmentsPromo = ({ cards, titleCollection, children }: {cards: IApartmentItem[], pathPage: string, titleCollection: keyof ITitleSlider, children: (apartment: IApartmentItem) => JSX.Element}): JSX.Element => {
+export const CollectionApartments = ({ cards, titleCollection, children }: ICollectionApartments): JSX.Element => {
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
 
   const initSwiperParams: SwiperProps = {
-    className: styles['promo__slider'],
+    className: styles.collection__slider,
     modules: [Navigation],
     slidesPerView: 'auto',
     centeredSlides: false,
@@ -40,13 +44,13 @@ export const ApartmentsPromo = ({ cards, titleCollection, children }: {cards: IA
   }
 
   return (
-    <div className={ styles.promo }>
-      <div className={ styles.promo__wrapper }>
-        <h2 className={ styles.promo__title }>
+    <div className={ styles.collection }>
+      <div className={ styles.collection__wrapper }>
+        <h2 className={ styles.collection__title }>
           {titleSlider[titleCollection]}
         </h2>
 
-        <ButtonIcon classProps={ classNames(styles['promo__button-prev']) }
+        <ButtonIcon classProps={ classNames(styles['collection__button-prev']) }
           full='stroke'
           refProp={ prevRef }
           size='40'
@@ -54,7 +58,7 @@ export const ApartmentsPromo = ({ cards, titleCollection, children }: {cards: IA
           <IconArrowLeft />
         </ButtonIcon>
 
-        <ButtonIcon classProps={ classNames(styles['promo__button-next']) }
+        <ButtonIcon classProps={ classNames(styles['collection__button-next']) }
           full='stroke'
           refProp={ nextRef }
           size='40'
@@ -65,7 +69,7 @@ export const ApartmentsPromo = ({ cards, titleCollection, children }: {cards: IA
         <Swiper { ...initSwiperParams }>
           {cards?.map((el) => (
             <SwiperSlide key={ el.id }
-              className={ styles.promo__slide }
+              className={ styles.collection__slide }
             >
               {children(el)}
             </SwiperSlide>

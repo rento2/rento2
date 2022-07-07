@@ -1,7 +1,7 @@
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
-.long-page {
+.card-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
@@ -27,18 +27,35 @@
     padding: 0 16px;
     margin-bottom: 50px;
   }
+}
 
-  &__card {
-    @include hover-supported {
-      &:hover .long-page__btn-hover,
-      &:focus .long-page__btn-hover {
-        display: flex;
-      }
+.card {
+  @include hover-supported {
+    &:hover .card__btn-hover,
+    &:focus .card__btn-hover {
+      display: flex;
     }
   }
 
   &__btn-hover {
     display: none;
+  }
+
+  &__image {
+    position: relative;
+    flex: 0 0 auto;
+    width: 260px;
+    height: 147px;
+
+    @include bp-743 {
+      width: 200px;
+      height: 115px;
+    }
+
+    @include bp-479 {
+      width: 260px;
+      height: 147px;
+    }
   }
 
   &__metro-wrapper {

@@ -2,7 +2,7 @@
 @use 'src/app/styles/core/breakpoints' as *;
 @use 'src/app/styles/core/typography' as *;
 
-.promo {
+.collection {
   position: relative;
   min-height: 500px;
   padding: 40px 0 70px 20px;
@@ -62,29 +62,10 @@
     position: absolute;
     top: 40%;
     z-index: 10;
-    background: $iris-50;
-    border-radius: 8px;
     transform: translateY(-50%);
 
     @include bp-1279 {
       display: none;
-    }
-
-    svg {
-      stroke: $iris-400;
-    }
-
-    &:hover,
-    &:focus {
-      background: $iris-100;
-    }
-
-    &:active {
-      background: $iris-50;
-    }
-
-    &:disabled {
-      background: $gray-blue-50;
     }
   }
 

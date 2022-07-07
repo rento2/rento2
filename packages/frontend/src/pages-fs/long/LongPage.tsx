@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import Image from 'next/image'
 
 import { Layout, PriceLong, DetailsLong } from '@shared/ui'
 import { IApartmentsDataList, IApartmentItem } from '@shared/api'
@@ -6,22 +7,24 @@ import { pathPages } from '@shared/config'
 import { numbersUtils } from '@shared/lib'
 
 import { ApartmentCard } from '@entities/cards/ApartmentCard'
-import { CollectionsCard } from '@entities/cards/CollectionsCard'
 import { MetroInfo } from '@entities/MetroInfo'
 import { SwiperWithButton } from '@entities/carousels/SwiperWithButton'
 
 import { Header } from '@widgets/header'
 import { Footer } from '@widgets/footer'
-import { ApartmentsPromo } from '@widgets/apartments-promo'
+import { CollectionApartments } from '@widgets/collection-apartments'
 
 import { mockPhotos } from './model/mockData'
 import styles from './LongPage.module.scss'
 
 const titlePage = 'Снять хорошую квартиру от 6 месяцев &#128156;'
 
-// TODO: Здесь формируется ссылка и передается в компоненты
 export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element => {
   const { items } = data
+
+  const getPath = (id: string): string => {
+    return `/${pathPages.long}/${id}`
+  }
 
   const ApartmentCardLong = ({ apartmentData }: {apartmentData: IApartmentItem}): JSX.Element => {
     const area = numbersUtils.roundInteger(numbersUtils.convertNumber(apartmentData.area))
@@ -29,35 +32,45 @@ export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =>
     return (
       <ApartmentCard { ...apartmentData }
         isDeposit
-        classCard={ classNames(styles['long-page__card']) }
+        classCard={ classNames(styles.card) }
         detailsInfo={ DetailsLong({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey, totalStoreys: apartmentData.totalStoreys }) }
-        media={ <SwiperWithButton classBtnHover={ classNames(styles['long-page__btn-hover']) }
+        media={ <SwiperWithButton classBtnHover={ classNames(styles['card__btn-hover']) }
           images={ mockPhotos }
         /> }
         metroInfo={ <MetroInfo subwayStation={ apartmentData.subwayStation }
           timeFoot={ apartmentData.timeToSubwayByFoot }
           timeVehicle={ apartmentData.timeToSubwayByVehicle }
         /> }
-        pathPage={ pathPages.long }
+        pathPage={ getPath(apartmentData.id) }
         priceInfo={ PriceLong(apartmentData.pricePerMonth) }
       />
     )
   }
 
-  const CollectionsCardLong = ({ apartmentData }: {apartmentData: IApartmentItem}): JSX.Element => {
+  // TODO: Изменить путь к картинке и alt, когда появится функционал на бэке
+  const CollectionCardLong = ({ apartmentData }: {apartmentData: IApartmentItem}): JSX.Element => {
     const area = numbersUtils.roundInteger(numbersUtils.convertNumber(apartmentData.area))
 
     return (
-      <CollectionsCard { ...apartmentData }
+      <ApartmentCard { ...apartmentData }
         detailsInfo={ DetailsLong({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey, totalStoreys: apartmentData.totalStoreys }) }
-        metroInfo={ <MetroInfo classSubway={ classNames(styles['long-page__subway']) }
-          classWrapper={ classNames(styles['long-page__metro-wrapper']) }
+        media={
+          <div className={ styles.card__image }>
+            <Image alt='room1'
+              layout='fill'
+              objectFit='cover'
+              src='/images/long/room1.jpg'
+            />
+          </div> }
+        metroInfo={ <MetroInfo classSubway={ classNames(styles.card__subway) }
+          classWrapper={ classNames(styles['card__metro-wrapper']) }
           subwayStation={ apartmentData.subwayStation }
           timeFoot={ apartmentData.timeToSubwayByFoot }
           timeVehicle={ apartmentData.timeToSubwayByVehicle }
         /> }
-        pathPage={ pathPages.long }
+        pathPage={ getPath(apartmentData.id) }
         priceInfo={ PriceLong(apartmentData.pricePerMonth) }
+        typeCard="collection"
       />
     )
   }
@@ -73,7 +86,7 @@ export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =>
             Долгосрочная аренда
           </h1>
 
-          <ul className={ classNames(styles['long-page'], 'container') }>
+          <ul className={ classNames(styles['card-list'], 'container') }>
             {items?.slice(0, 10).map((el: IApartmentItem) => (
               <li key={ el.id }>
                 <ApartmentCardLong apartmentData={ el } />
@@ -81,16 +94,15 @@ export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =>
             ))}
           </ul>
 
-          <ApartmentsPromo cards={ items?.slice(0, 10) }
-            pathPage={ pathPages.long }
+          <CollectionApartments cards={ items?.slice(0, 10) }
             titleCollection="inCityCenter"
           >
             {apartment => (
-              <CollectionsCardLong apartmentData={ apartment } />
+              <CollectionCardLong apartmentData={ apartment } />
             )}
-          </ApartmentsPromo>
+          </CollectionApartments>
 
-          <ul className={ classNames(styles['long-page'], 'container') }>
+          <ul className={ classNames(styles['card-list'], 'container') }>
             {items?.slice(-10).map((el: IApartmentItem) => (
               <li key={ el.id }>
                 <ApartmentCardLong apartmentData={ el } />

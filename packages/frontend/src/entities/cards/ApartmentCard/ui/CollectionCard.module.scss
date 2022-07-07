@@ -32,23 +32,6 @@
     }
   }
 
-  &__image {
-    position: relative;
-    flex: 0 0 auto;
-    width: 260px;
-    height: 147px;
-
-    @include bp-743 {
-      width: 200px;
-      height: 115px;
-    }
-
-    @include bp-479 {
-      width: 260px;
-      height: 147px;
-    }
-  }
-
   &__info {
     height: 100%;
     padding: 10px 10px 11px;

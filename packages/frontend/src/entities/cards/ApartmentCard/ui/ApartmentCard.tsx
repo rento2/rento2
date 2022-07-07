@@ -5,33 +5,36 @@ import classNames from 'classnames'
 import { IconHeart, ButtonIcon } from '@shared/ui'
 
 import { IApartmentCard } from '../lib/types'
-import styles from './ApartmentCard.module.scss'
+import stylesApartment from './ApartmentCard.module.scss'
+import stylesCollection from './CollectionCard.module.scss'
 
 // TODO: Добавить рейтинг (звезду) для краткосрока. Это будет необязательный параметр
 export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
   const {
     securityDepositLong,
     name,
-    id,
     isDeposit = false,
     pathPage,
     priceInfo,
     detailsInfo,
     metroInfo,
     media,
-    classCard
+    classCard,
+    typeCard = 'apartment'
   } = props
 
-  // const stylesObject = {
-  //   apartment: styles
-  // }
+  // TODO: Добавить стили для карточки, которая используется в карте
+  const stylesObject = {
+    apartment: stylesApartment,
+    collection: stylesCollection
+  }
 
-  // const stylesClass = stylesObject.apartment
+  const styles = stylesObject[typeCard]
 
   const click = (e: MouseEvent<HTMLButtonElement>): void => { e.preventDefault() }
 
   return (
-    <Link href={ `/${pathPage}/${id}` }>
+    <Link href={ pathPage }>
       <a className={ classNames(styles.card, classCard) }>
         {media}
         <div className={ styles.card__info }>

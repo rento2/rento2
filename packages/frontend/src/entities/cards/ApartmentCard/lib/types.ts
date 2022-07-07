@@ -8,4 +8,5 @@ export interface IApartmentCard extends IApartmentItem {
   metroInfo: JSX.Element
   media: JSX.Element
   classCard?: string
+  typeCard?: 'apartment' | 'collection'
 }
