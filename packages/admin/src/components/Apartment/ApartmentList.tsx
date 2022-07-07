@@ -1,13 +1,27 @@
+/* eslint-disable react/jsx-key */
 import { FC } from 'react'
-import { List, Datagrid, TextField, ListProps } from 'react-admin'
+import { List, Datagrid, TextField, ListProps, TextInput, SearchInput } from 'react-admin'
+
+const postFilters = [
+  <SearchInput alwaysOn
+    source="q"
+  />,
+  <TextInput defaultValue="Hello, World!"
+    label="type"
+    source="type"
+  />
+]
 
 const Apartments: FC<ListProps> = (props) => {
   return (
-    <List { ...props }>
+    <List { ...props }
+      filters={ postFilters }
+    >
       <Datagrid rowClick='edit'>
         <TextField source='id' />
         <TextField source='name' />
-        <TextField source='latin_name' />
+        <TextField source='type' />
+        <TextField source='bnovo_id' />
       </Datagrid>
     </List>
   )
