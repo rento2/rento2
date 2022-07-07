@@ -8,8 +8,9 @@
 - ``npm i``
 - ``npm i -g lerna`` (если не было установлено ранее)
 - ``lerna bootstrap``
-2. В директории ``packages/backend`` cоздать .env файл, согласно примеру (.env.example). Вбить свои пароли
-3. Поднять БД через Docker (в папке packages/backend): ``docker-compose up -d``
+2. В директории ``packages/backend`` cоздать ``.env`` файл, согласно примеру (.env.example). Вбить свои пароли
+3. В директории ``packages/frontend`` cоздать ``.env.local`` файл, согласно примеру (.env.example).
+4. Поднять БД через Docker (в папке packages/backend): ``docker-compose up -d``
 
 # Запуск Приложения
 - Запустить админку: ``npm run start:admin``
