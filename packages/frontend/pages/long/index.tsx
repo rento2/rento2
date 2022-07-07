@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { LongPage } from '@pages-fs/long/LongPage'
 import { getApartmentsList, IApartmentsDataList } from '@shared/api'
 
@@ -8,7 +8,7 @@ export default function Long ({ data }: { data: IApartmentsDataList}): JSX.Eleme
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await getApartmentsList()
 
   return { props: data }
