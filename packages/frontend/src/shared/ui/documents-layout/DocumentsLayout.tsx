@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { ErrorBackend } from '@widgets/popups/error/error-backend'
 import styles from './DocumentsLayout.module.scss'
 
 interface IDocumentsLayout {
@@ -22,6 +23,7 @@ export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {
           }
       <div className={ styles['doc-container'] }>
         {docTitle}
+        <ErrorBackend />
         <div className={ styles['wrapper-box'] }>
           {children}
         </div>
