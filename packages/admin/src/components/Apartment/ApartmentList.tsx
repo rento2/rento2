@@ -1,12 +1,16 @@
-/* eslint-disable react/jsx-key */
 import { FC } from 'react'
 import { List, Datagrid, TextField, ListProps, TextInput, SearchInput } from 'react-admin'
 
+const key1 = Math.random().toString(36).substr(2, 9)
+const key2 = Math.random().toString(36).substr(2, 9)
+
 const postFilters = [
-  <SearchInput alwaysOn
+  <SearchInput key={ key1 }
+    alwaysOn
     source="q"
   />,
-  <TextInput defaultValue="Hello, World!"
+  <TextInput key={ key2 }
+    defaultValue="Field search for type"
     label="type"
     source="type"
   />
