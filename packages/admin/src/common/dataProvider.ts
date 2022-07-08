@@ -20,7 +20,7 @@ export default (
     const url = `${apiUrl}/${resource}/list/${page}?${stringify(query)}`
 
     return httpClient(url).then(({ json }) => ({
-      data: json.data,
+      data: json.data.items,
       total: json.meta.pagination.total
     }))
   },
