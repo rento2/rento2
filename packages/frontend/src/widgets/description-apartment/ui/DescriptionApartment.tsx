@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 import { ButtonGeneral, IconArrowDown, IconArrowUp } from '@shared/ui'
@@ -6,11 +6,22 @@ import styles from './DescriptionApartment.module.scss'
 
 interface IDescriptionText {
   text: string
-  classProps?: string | undefined
+  classProps?: string
 }
 
 export const DescriptionApartment: FC<IDescriptionText> = ({ text, classProps }) => {
   const [isVisibleText, setIsVisibleText] = useState(true)
+  const [isVisibleButton, setIsVisibleButton] = useState(false)
+
+  useEffect(() => {
+    // не нашел другого способа для корректного чтения свойства высоты
+    setTimeout(() => {
+      const textElement = document.querySelector<HTMLParagraphElement>(`.${styles['description__text'].toString()}`)
+      if (textElement?.scrollHeight !== undefined) {
+        setIsVisibleButton(textElement?.scrollHeight > textElement?.clientHeight)
+      }
+    }, 100)
+  }, [])
 
   return (
     <section className={ classNames(styles['description'], classProps) }>
@@ -22,39 +33,40 @@ export const DescriptionApartment: FC<IDescriptionText> = ({ text, classProps })
         { text }
       </p>
       <div className={ classNames(styles['description__key-circle']) }>
-        <Image alt='Golden key'
+        <Image alt='Золотой ключик'
           className={ classNames(styles['description__key']) }
           height={ 68 }
           src='/images/long/golden-key.svg'
           width={ 59 }
         />
       </div>
-      <ButtonGeneral classProps={ classNames(styles['description__btn']) }
-        font='xs'
-        full='text'
-        grade='neutral'
-        height='40'
-        onClick={ () => setIsVisibleText(!isVisibleText) }
-      >
-        { isVisibleText
-          ? (
-            <>
-              Подробнее
-              <IconArrowDown
-                classProps={ classNames(styles['description__btn__icon']) }
-              />
-            </>
-            )
-          : (
-            <>
-              Свернуть
-              <IconArrowUp
-                classProps={ classNames(styles['description__btn__icon']) }
-              />
-            </>
-            )
+      { isVisibleButton && (
+        <ButtonGeneral classProps={ classNames(styles['description__btn']) }
+          font='xs'
+          full='text'
+          grade='neutral'
+          height='40'
+          onClick={ () => setIsVisibleText(!isVisibleText) }
+        >
+          { isVisibleText
+            ? (
+              <>
+                Подробнее
+                <IconArrowDown
+                  classProps={ classNames(styles['description__btn__icon']) }
+                />
+              </>
+              )
+            : (
+              <>
+                Свернуть
+                <IconArrowUp
+                  classProps={ classNames(styles['description__btn__icon']) }
+                />
+              </>
+              )
       }
-      </ButtonGeneral>
+        </ButtonGeneral>) }
     </section>
   )
 }

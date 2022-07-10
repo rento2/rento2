@@ -6,8 +6,10 @@
   position: relative;
   min-width: 290px;
   max-width: 753px;
+  min-height: 130px;
   padding: 20px;
   background-color: $neutral-0;
+  border-radius: 20px;
 
   @include bp-479 {
     padding-top: 43px;
@@ -44,7 +46,6 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    justify-self: end;
     width: 58px;
     height: 58px;
     padding-top: 6px;
@@ -71,9 +72,7 @@
   }
 
   &__btn {
-    @include  body-6;
     width: 107px;
-    height: 32px;
     margin-right: 0;
     margin-left: auto;
 
