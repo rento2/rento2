@@ -14,6 +14,7 @@
     "pretty": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "@typescript-eslint/restrict-template-expressions": false,
     // "exactOptionalPropertyTypes": true,
     // "noImplicitOverride": true,
     "noImplicitReturns": true,
