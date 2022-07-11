@@ -17,7 +17,6 @@ export default(
     const url = `${apiUrl}/${resource}/list/${page}?${stringify(query)}`
 
     return httpClient(url).then(({ json }) => {
-      console.info(json)
       return {
         data: json.data.items,
         total: json.meta.pagination.total
