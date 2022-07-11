@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next'
-import { ShortPage } from '@pages-fs/short/ShortPage'
+
 import { getApartmentsList, IApartmentsDataList } from '@shared/api'
+
+import { ShortPage } from '@pages-fs/short/ShortPage'
 
 export default function Short ({ data }: { data: IApartmentsDataList}): JSX.Element {
   return (<ShortPage data={ data } />)
