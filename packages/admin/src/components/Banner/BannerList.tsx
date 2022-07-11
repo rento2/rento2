@@ -1,9 +1,16 @@
 import { FC } from 'react'
-import { List, Datagrid, TextField, ListProps, EditButton, DateField } from 'react-admin'
+import { List, Datagrid, TextField, ListProps, EditButton, DateField, CreateButton, TopToolbar, DeleteButton } from 'react-admin'
+
+const Toolbar = () => (
+  <TopToolbar>
+      <CreateButton />
+      <DeleteButton />
+  </TopToolbar>
+);
 
 const BannerList: FC<ListProps> = (props) => {
   return (
-    <List { ...props }>
+    <List actions={<Toolbar />} { ...props }>
       <Datagrid rowClick='edit'>
         <TextField source='id' />
         <TextField source='name' />
