@@ -1,28 +1,27 @@
 import { stringify } from 'query-string'
 import { fetchUtils, DataProvider } from 'ra-core'
 
-export default (
+export default(
   apiUrl: string,
   httpClient = fetchUtils.fetchJson
 ): DataProvider => ({
   getList: async (resource, params) => {
-    const { page, perPage } = params.pagination
-    const { field, order } = params.sort
-
-    const rangeStart = (page - 1) * perPage
-    const rangeEnd = page * perPage - 1
+    const { page } = params.pagination
+    const { field: sortColumn, order: sortDirection } = params.sort
 
     const query = {
-      sort: JSON.stringify([field, order]),
-      range: JSON.stringify([rangeStart, rangeEnd]),
-      filter: JSON.stringify(params.filter)
+      sortDirection: sortDirection.toLowerCase(),
+      sortColumn,
+      page: page,
     }
     const url = `${apiUrl}/${resource}/list/${page}?${stringify(query)}`
 
-    return httpClient(url).then(({ json }) => ({
-      data: json.data,
-      total: json.meta.pagination.total
-    }))
+    return httpClient(url).then(({ json }) => {
+      return {
+        data: json.data.items,
+        total: json.meta.pagination.total
+      }
+    })
   },
 
   getOne: async (resource, params) =>
@@ -59,7 +58,7 @@ export default (
   },
   update: async (resource, params) =>
     await httpClient(`${apiUrl}/${resource}/update/${params.id}`, {
-      method: 'PUT',
+      method: 'POST',
       body: JSON.stringify(params.data)
     }).then(({ json }) => ({ data: json.data })),
 

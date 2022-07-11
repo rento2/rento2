@@ -14,6 +14,7 @@ import murmurhash from 'murmurhash'
 
 export default class ApartmentsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     const { search, fields } = await request.validate({
       schema: schema.create({
         search: schema.string.optional(),
@@ -56,13 +57,15 @@ export default class ApartmentsController {
     const wrappedQueriesList = [
       Apartment.query().where('isPopular', true).orderBy('createdAt', 'desc').limit(10),
       Apartment.query().where('isRentoChoose', true).orderBy('createdAt', 'desc').limit(10),
-      Apartment.query().whereIn('subwayStation', ['station1']).orderBy('createdAt', 'desc').limit(10), // todo put the correct metro stations here
+      Apartment.query().orderBy('createdAt', 'desc').limit(10), // todo put the correct metro stations here
       Apartment.query().orderBy('createdAt', 'desc').limit(10),
-      Apartment.query().where('timeToSubwayByFoot', '<=', 7).orderByRaw('random()').limit(10),
+      Apartment.query().orderByRaw('random()').limit(10),
     ].map(async query => await cacheWrapped(query))
 
     const [popular, rentoChoose, inCityCenter, newlyAdded, nearTheSubway] = await Promise.all(wrappedQueriesList)
-    const fetchedApartments = await apartments.paginate(request.param('page', 1))
+    const fetchedApartments = await apartments
+      .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+      .paginate(request.param('page', 1))
     return response
       .status(HttpStatusCode.OK)
       .send(
