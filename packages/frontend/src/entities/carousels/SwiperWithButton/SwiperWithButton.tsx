@@ -18,7 +18,16 @@ interface ISwiperWithButtonProps<T> {
   btnProps?: IButtonIcon
 }
 
-export const SwiperWithButton = <T,>({ elementData, children, initSwiperParams, classSlideWrapper, classBtnNext, classBtnPrev, classIcon, btnProps }: ISwiperWithButtonProps<T>): JSX.Element => {
+export const SwiperWithButton = <T,>({
+  elementData,
+  children,
+  initSwiperParams,
+  classSlideWrapper,
+  classBtnNext,
+  classBtnPrev,
+  classIcon,
+  btnProps
+}: ISwiperWithButtonProps<T>): JSX.Element => {
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
 
