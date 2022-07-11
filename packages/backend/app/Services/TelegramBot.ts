@@ -46,6 +46,11 @@ export default class TelegramBot {
       paymentUrl
     )
 
+    if(!this.config.telegram_chat_id) {
+      Logger.warn(`Telegram chat id is empty`)
+      return
+    }
+
     try {
       const request: string = `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
       await this.sendRequest(request)
