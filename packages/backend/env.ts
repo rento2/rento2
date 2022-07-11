@@ -35,6 +35,6 @@ export default Env.rules({
   S3_REGION: Env.schema.string(),
   S3_ENDPOINT: Env.schema.string.optional(),
 
-  TELEGRAM_BOT_TOKEN: Env.schema.string.optional(),
-  TELEGRAM_CHAT_ID: Env.schema.number.optional(),
+  TELEGRAM_BOT_TOKEN: Env.schema.string(),
+  TELEGRAM_CHAT_ID: Env.schema.string(),
 })
