@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import styles from './DocumentsLayout.module.scss'
-import { ErrorChoice } from '@widgets/popups/error/error-choice/ErrorChoice'
 
 interface IDocumentsLayout {
   children: JSX.Element
@@ -23,7 +22,6 @@ export function DocumentsLayout (props: IDocumentsLayout): JSX.Element {
           }
       <div className={ styles['doc-container'] }>
         {docTitle}
-        <ErrorChoice />
         <div className={ styles['wrapper-box'] }>
           {children}
         </div>
