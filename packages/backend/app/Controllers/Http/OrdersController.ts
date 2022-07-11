@@ -7,6 +7,7 @@ import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class OrdersController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     const { search } = await request.validate({
       schema: schema.create({
         search: schema.string.optional()
@@ -22,7 +23,9 @@ export default class OrdersController {
 
     return response.status(HttpStatusCode.OK).send(
       creatingPaginatedList(
-        await orders.paginate(request.param('page', 1))
+        await orders
+          .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+          .paginate(request.param('page', 1))
       )
     )
   }

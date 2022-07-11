@@ -12,9 +12,12 @@ import { v4 as uuidv4 } from 'uuid'
 
 export default class PhotosController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     return response.status(HttpStatusCode.OK).send(
       creatingPaginatedList(
-        await Photo.query().paginate(request.param('page', 1))
+        await Photo.query()
+          .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+          .paginate(request.param('page', 1))
       )
     )
   }
