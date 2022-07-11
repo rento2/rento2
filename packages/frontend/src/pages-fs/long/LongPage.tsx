@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Image from 'next/image'
+import { Navigation, Pagination } from 'swiper'
 
 import { Layout, PriceLong, DetailsLong } from '@shared/ui'
 import { IApartmentsDataList, IApartmentItem } from '@shared/api'
@@ -26,6 +27,42 @@ export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =>
     return `/${pathPages.long}/${id}`
   }
 
+  const SwiperCard = (): JSX.Element => {
+    const initParams = {
+      loop: true,
+      height: 220,
+      modules: [Navigation, Pagination],
+      pagination: {
+        dynamicBullets: true,
+        dynamicMainBullets: 4,
+        clickable: true,
+        bulletClass: classNames(styles.slider__bullet)
+      }
+    }
+    return (
+      <div className={ styles.slider }
+        onClick={ (e) => e.preventDefault() }
+      >
+        <SwiperWithButton btnProps={ { size: '24', full: 'stroke' } }
+          classBtnNext={ classNames(styles['slider__btn-next'], styles['card__btn-hover']) }
+          classBtnPrev={ classNames(styles['slider__btn-prev'], styles['card__btn-hover']) }
+          classIcon={ classNames(styles['slider__btn-icon']) }
+          classSlideWrapper={ classNames(styles.slider__image) }
+          elementData={ mockPhotos }
+          initSwiperParams={ initParams }
+        >
+          {(image) => (
+            <Image alt={ image.alt }
+              layout='fill'
+              objectFit='cover'
+              src={ image.src }
+            />
+          )}
+        </SwiperWithButton>
+      </div>
+    )
+  }
+
   const ApartmentCardLong = ({ apartmentData }: {apartmentData: IApartmentItem}): JSX.Element => {
     const area = numbersUtils.roundInteger(numbersUtils.convertNumber(apartmentData.area))
 
@@ -34,9 +71,7 @@ export const LongPage = ({ data }: { data: IApartmentsDataList}): JSX.Element =>
         isDeposit
         classCard={ classNames(styles.card) }
         detailsInfo={ DetailsLong({ roomsNum: apartmentData.roomsNum, area, storey: apartmentData.storey, totalStoreys: apartmentData.totalStoreys }) }
-        media={ <SwiperWithButton classBtnHover={ classNames(styles['card__btn-hover']) }
-          images={ mockPhotos }
-        /> }
+        media={ <SwiperCard /> }
         metroInfo={ <MetroInfo subwayStation={ apartmentData.subwayStation }
           timeFoot={ apartmentData.timeToSubwayByFoot }
           timeVehicle={ apartmentData.timeToSubwayByVehicle }

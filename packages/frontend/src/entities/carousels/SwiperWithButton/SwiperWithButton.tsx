@@ -1,34 +1,30 @@
 import { useRef } from 'react'
-import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation, Pagination } from 'swiper'
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
+import SwiperCore from 'swiper'
 import classNames from 'classnames'
 
-import { IconArrowLeft, IconArrowRight, ButtonIcon } from '@shared/ui'
+import { IconArrowLeft, IconArrowRight, ButtonIcon, IButtonIcon } from '@shared/ui'
 
 import styles from './SwiperWithButton.module.scss'
 
-interface IImage {
-  src: string
-  alt: string
+interface ISwiperWithButtonProps<T> {
+  elementData: T[]
+  children: (element: T) => JSX.Element
+  initSwiperParams?: SwiperProps
+  classSlideWrapper?: string
+  classBtnNext?: string
+  classBtnPrev?: string
+  classIcon?: string
+  btnProps?: IButtonIcon
 }
 
-// TODO: Вынести в отдельную сущность в карточку передавать через пропс. Сейчас здесь свайпер для карточки, а должна быть абстракция. Нужный свайпер формируем уже по месту требования
-export const SwiperWithButton = ({ images, classBtnHover }: { images: IImage[], classBtnHover?: string}): JSX.Element => {
+export const SwiperWithButton = <T,>({ elementData, children, initSwiperParams, classSlideWrapper, classBtnNext, classBtnPrev, classIcon, btnProps }: ISwiperWithButtonProps<T>): JSX.Element => {
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
 
-  const initSwiperParams = {
-    loop: true,
-    height: 220,
-    modules: [Navigation, Pagination],
-    pagination: {
-      dynamicBullets: true,
-      dynamicMainBullets: 4,
-      clickable: true,
-      bulletClass: classNames(styles.slider__bullet)
-    },
-    onBeforeInit: onBeforeInit
+  const initParams = {
+    onBeforeInit: onBeforeInit,
+    ...initSwiperParams
   }
 
   function onBeforeInit (Swiper: SwiperCore): void {
@@ -39,38 +35,34 @@ export const SwiperWithButton = ({ images, classBtnHover }: { images: IImage[], 
     }
   }
   return (
-    <div className={ styles.slider }
-      onClick={ (e) => e.preventDefault() }
-    >
-      <ButtonIcon classProps={ classNames(styles['slider__btn-prev'], classBtnHover) }
+    <>
+      <ButtonIcon classProps={ classNames(styles['button-prev'], classBtnPrev) }
         full='stroke'
         refProp={ prevRef }
-        size='24'
+        size='40'
+        { ...btnProps }
       >
-        <IconArrowLeft classProps={ classNames(styles['slider__btn-icon']) } />
+        <IconArrowLeft classProps={ classNames(classIcon) } />
       </ButtonIcon>
 
-      <ButtonIcon classProps={ classNames(styles['slider__btn-next'], classBtnHover) }
+      <ButtonIcon classProps={ classNames(styles['button-next'], classBtnNext) }
         full='stroke'
         refProp={ nextRef }
-        size='24'
+        size='40'
+        { ...btnProps }
       >
-        <IconArrowRight classProps={ classNames(styles['slider__btn-icon']) } />
+        <IconArrowRight classProps={ classNames(classIcon) } />
       </ButtonIcon>
 
-      <Swiper { ...initSwiperParams }>
-        {images.map(({ src, alt }, idx) => (
-          <SwiperSlide key={ `${alt}-${idx}` }
-            className={ classNames(styles.slider__image) }
+      <Swiper { ...initParams }>
+        {elementData.map((item, idx) => (
+          <SwiperSlide key={ idx }
+            className={ classNames(classSlideWrapper) }
           >
-            <Image alt={ alt }
-              layout='fill'
-              objectFit='cover'
-              src={ src }
-            />
+            {children(item)}
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </>
   )
 }

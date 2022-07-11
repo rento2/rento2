@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { RefObject, MouseEvent } from 'react'
 import styles from './ButtonIcon.module.scss'
 
-interface IButtonIcon {
+export interface IButtonIcon {
   children?: JSX.Element
   size: '40' | '32' | '24'
   classProps?: string

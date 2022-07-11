@@ -20,7 +20,6 @@ export const Header = (): JSX.Element => {
           href='/'
         >
           <Image alt='Logo'
-            className={ styles['header__logo-img'] }
             height={ 14 }
             src='/images/logo.svg'
             width={ 60 }

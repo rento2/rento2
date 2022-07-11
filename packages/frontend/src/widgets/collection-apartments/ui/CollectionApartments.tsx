@@ -1,10 +1,10 @@
-import { useRef } from 'react'
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation } from 'swiper'
+import { SwiperProps } from 'swiper/react'
+import { Navigation } from 'swiper'
 import classNames from 'classnames'
 
-import { IconArrowLeft, IconArrowRight, ButtonIcon } from '@shared/ui'
 import { IApartmentItem } from '@shared/api'
+
+import { SwiperWithButton } from '@entities/carousels/SwiperWithButton'
 
 import { titleSlider } from '../model/constants'
 import { ITitleSlider } from '../lib/types'
@@ -16,12 +16,8 @@ interface ICollectionApartments {
   children: (apartment: IApartmentItem) => JSX.Element
 }
 
-// TODO: Создать оболочку entities для слайдера, где будет onBeforeInit, кнопки(?), инициализация, которая через пропс будет передаваться
 export const CollectionApartments = ({ cards, titleCollection, children }: ICollectionApartments): JSX.Element => {
-  const prevRef = useRef<HTMLButtonElement>(null)
-  const nextRef = useRef<HTMLButtonElement>(null)
-
-  const initSwiperParams: SwiperProps = {
+  const initParams: SwiperProps = {
     className: styles.collection__slider,
     modules: [Navigation],
     slidesPerView: 'auto',
@@ -31,15 +27,6 @@ export const CollectionApartments = ({ cards, titleCollection, children }: IColl
       1280: {
         slidesPerView: 4
       }
-    },
-    onBeforeInit: onBeforeInit
-  }
-
-  function onBeforeInit (Swiper: SwiperCore): void {
-    const navigation = Swiper.params.navigation
-    if (typeof navigation !== 'boolean' && typeof navigation !== 'undefined') {
-      navigation.prevEl = prevRef.current
-      navigation.nextEl = nextRef.current
     }
   }
 
@@ -50,32 +37,17 @@ export const CollectionApartments = ({ cards, titleCollection, children }: IColl
           {titleSlider[titleCollection]}
         </h2>
 
-        <ButtonIcon classProps={ classNames(styles['collection__button-prev']) }
-          full='stroke'
-          refProp={ prevRef }
-          size='40'
+        <SwiperWithButton
+          classBtnNext={ classNames(styles['collection__button-next']) }
+          classBtnPrev={ classNames(styles['collection__button-prev']) }
+          classSlideWrapper={ classNames(styles.collection__slide) }
+          elementData={ cards }
+          initSwiperParams={ initParams }
         >
-          <IconArrowLeft />
-        </ButtonIcon>
-
-        <ButtonIcon classProps={ classNames(styles['collection__button-next']) }
-          full='stroke'
-          refProp={ nextRef }
-          size='40'
-        >
-          <IconArrowRight />
-        </ButtonIcon>
-
-        <Swiper { ...initSwiperParams }>
-          {cards?.map((el) => (
-            <SwiperSlide key={ el.id }
-              className={ styles.collection__slide }
-            >
-              {children(el)}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
+          {card =>
+            children(card)
+          }
+        </SwiperWithButton>
       </div>
     </div>
   )

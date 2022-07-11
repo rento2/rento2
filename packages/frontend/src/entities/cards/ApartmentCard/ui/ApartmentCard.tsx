@@ -49,7 +49,7 @@ export const ApartmentCard = (props: IApartmentCard): JSX.Element => {
             }
           </div>
           <div className={ styles.card__inner }>
-            <div>
+            <div className={ styles['card__location-wrapper'] }>
               <p className={ styles.card__location }>
                 {name}
               </p>
