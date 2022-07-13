@@ -4,6 +4,7 @@
   "scripts": {
     "prepare": "husky install",
     "precommit": "npm run -ws precommit",
+    "precommit:frontend": "npm run -w packages/frontend precommit",
     "start:admin": "npm start -w packages/admin",
     "start:backend": "npm run dev -w packages/backend",
     "start:frontend": "npm run dev -w packages/frontend",
