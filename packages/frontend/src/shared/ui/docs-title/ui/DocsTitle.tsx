@@ -3,7 +3,7 @@ import styles from './DocsTitle.module.scss'
 interface IDocsTitle {
   containTitle?: string
   pathIcon?: string
-  update?: string|number
+  update?: string | number
 }
 
 const FAQ = 'Частые вопросы'

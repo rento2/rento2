@@ -32,7 +32,7 @@ export const SwiperWithButton = <T,>({
   const nextRef = useRef<HTMLButtonElement>(null)
 
   const initParams = {
-    onBeforeInit: onBeforeInit,
+    onBeforeInit,
     ...initSwiperParams
   }
 
