@@ -16,13 +16,7 @@
   },
   "preloads": [
     "./start/routes",
-    "./start/kernel",
-    {
-      "file": "./app/Validators/FieldNamesValidator.ts",
-      "environment": [
-        "web"
-      ]
-    }
+    "./start/kernel".
   ],
   "providers": [
     "./providers/AppProvider",
