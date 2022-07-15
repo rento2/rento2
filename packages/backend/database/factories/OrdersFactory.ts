@@ -12,7 +12,7 @@ export const OrdersFactory = Factory
     fixedPrice: faker.datatype.number(50_000),
     fixedTotalPrice: faker.datatype.number(100_000),
     nightsNumber: faker.datatype.number(365),
-    paymentType: faker.random.arrayElement(Object.values(Pay)),
+    paymentType: faker.helpers.arrayElement(Object.values(Pay)),
     prices: Array(5).fill({
       price: faker.datatype.number(50_000),
       date: faker.datatype.datetime()
