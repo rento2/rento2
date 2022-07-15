@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 import { ButtonGeneral, IconArrowDown, IconArrowUp } from '@shared/ui'
@@ -11,25 +11,26 @@ interface IDescriptionText {
 
 export const DescriptionApartment: FC<IDescriptionText> = ({ text, classProps }) => {
   const [isVisibleText, setIsVisibleText] = useState(true)
-  const [isVisibleButton, setIsVisibleButton] = useState(false)
+  const [isVisibleButton, setVisibleButton] = useState(false)
 
-  useEffect(() => {
-    // не нашел другого способа для корректного чтения свойства высоты
-    setTimeout(() => {
-      const textElement = document.querySelector<HTMLParagraphElement>(`.${styles['description__text'].toString()}`)
-      if (textElement?.scrollHeight !== undefined) {
-        setIsVisibleButton(textElement?.scrollHeight > textElement?.clientHeight)
-      }
-    }, 100)
-  }, [])
+  const loadHandler = (e: React.SyntheticEvent<HTMLParagraphElement>): void => {
+    const textElement = e.currentTarget.getElementsByTagName('p')[0]
+    if (textElement?.clientHeight !== undefined) {
+      setVisibleButton(textElement?.clientHeight < textElement?.scrollHeight)
+    }
+  }
 
   return (
-    <section className={ classNames(styles['description'], classProps) }>
+    <section className={ classNames(styles['description'], classProps) }
+      onLoad={ loadHandler }
+    >
 
       <h2 className={ classNames(styles['description__heading']) }>
         Описание
       </h2>
-      <p className={ classNames(styles['description__text'], { [styles['description__text_visible']]: isVisibleText }) }>
+      <p
+        className={ classNames(styles['description__text'], isVisibleText ? styles['description__text_visible'] : '') }
+      >
         { text }
       </p>
       <div className={ classNames(styles['description__key-circle']) }>
