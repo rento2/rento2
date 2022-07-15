@@ -27,7 +27,7 @@ export default class ApartmentsController {
     let apartments
     if (fields) {
       apartments = Apartment.query()
-        .select(['id', 'name', ...fields?.split(',')])
+        .select(['id', 'name', ...fields.split(',')])
     } else {
       apartments = Apartment.query()
         .preload('accommodations')
@@ -89,7 +89,7 @@ export default class ApartmentsController {
     let apartment
     if (fields) {
       apartment = await Apartment.query()
-        .select(['id', 'name', ...fields?.split(',')])
+        .select(['id', 'name', ...fields.split(',')])
         .where('id', request.param('id')).first()
     } else {
       apartment = await Apartment.query()

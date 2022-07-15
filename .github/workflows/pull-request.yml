@@ -56,7 +56,6 @@ jobs:
         npm -w packages/frontend run build
 
     - name: Process admin
-      working-directory: ./packages/admin
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
