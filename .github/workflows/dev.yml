@@ -25,7 +25,7 @@ jobs:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
       run: |
         npm -w packages/backend run build
-        echo "$ENV_BACKEND" > ./build/.env
+        echo "$ENV_BACKEND" > ./packages/backend/build/.env
 
     - name: Process frontend
       env:
