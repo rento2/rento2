@@ -45,7 +45,7 @@ jobs:
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
       run: |
-        npm ci
+        npm install
         npm run build
 
     - name: Process frontend
@@ -54,7 +54,7 @@ jobs:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
-        npm ci
+        npm install
         echo "$ENV_FRONTEND" >> ./.env.local
         unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
         npm run build
