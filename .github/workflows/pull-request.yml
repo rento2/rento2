@@ -44,15 +44,15 @@ jobs:
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
       run: |
-        npm install -w ./packages/backend
-        npm -w ./packages/backend run build
+        npm install -w packages/backend
+        npm -w packages/backend run build
 
     - name: Process frontend
       env:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
-        npm install -w ./packages/frontend
+        npm install -w packages/frontend
         cp ./packages/frontend/.env.example ./packages/frontend/.env.local
         echo "$ENV_FRONTEND" >> ./packages/frontend/.env.local
         unzip -qq -P "$ZIP_PASSWORD"  ./.github/fonts.zip -d ./packages/frontend/src/app/styles
@@ -62,6 +62,6 @@ jobs:
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
-        npm install -w ./packages/admin
+        npm install -w packages/admin
         echo "$ENV_ADMIN" >> ./packages/admin/.env
         npm -w packages/admin run build
