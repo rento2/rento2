@@ -1,2 +1,2 @@
-// Публичное АПИ
-export {}
+export * from './envVars'
+export { pathPages } from './constants'

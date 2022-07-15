@@ -65,4 +65,4 @@ jobs:
         port: ${{ secrets.DEV_PORT }}
         script: |
           pm2 restart /var/www/rento/ecosystem.config.js
-          node /var/www/rento/packages/backend/build/ace migration:run --force
+          node /var/www/rento/packages/backend/build/ace migration:refresh --force

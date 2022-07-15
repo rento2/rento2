@@ -1,2 +1,3 @@
 // Публичное АПИ
-export {}
+export * from './apartments'
+export * from './typesApi'

@@ -1,12 +1,12 @@
 import classNames from 'classnames'
-import { RefObject } from 'react'
+import { RefObject, MouseEvent } from 'react'
 import styles from './ButtonIcon.module.scss'
 
-interface IButtonIcon {
+export interface IButtonIcon {
   children?: JSX.Element
   size: '40' | '32' | '24'
   classProps?: string
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   grade?: 'iris' | 'neutral' // цвет кнопки с иконкой (пока только iris)
   full: 'filled' | 'stroke' // должна ли иконка быть заполнена или только контуром
   disabled?: boolean

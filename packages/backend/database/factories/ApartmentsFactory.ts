@@ -8,7 +8,7 @@ import { BannersFactory } from './BannersFactory'
 import { OrdersFactory } from './OrdersFactory'
 import { SleepingPlacesFactory } from './SleepingPlacesFactory'
 import { PhotoFactory } from './PhotoFactory'
-import { SubwayStations } from '../../common/constants/SubwayStations'
+import { MetroStationsFactory } from './MetroStationsFactory'
 
 export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
   return {
@@ -37,10 +37,8 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     sellingPoint: faker.lorem.words(5),
     geoCoordinateX: faker.address.latitude(56, 55, 4),
     geoCoordinateY: faker.address.longitude(38, 36, 4),
-    subwayStation: faker.random.arrayElement(SubwayStations).title,
-    subwayLine: faker.random.arrayElement(SubwayStations).line.title,
-    timeToSubwayByFoot: faker.datatype.number({ min: 0, max: 180, precision: 5 }),
-    timeToSubwayByVehicle: faker.datatype.number({ min: 0, max: 60, precision: 5 }),
+    metroAvailabilityByFoot: faker.datatype.number({ min: 0, max: 60 }),
+    metroAvailabilityByVehicle: faker.datatype.number({ min: 0, max: 60 }),
 
     repairs: +(Math.random() * (9 - 1) + 1).toFixed(1),
     purity: +(Math.random() * (9 - 1) + 1).toFixed(1),
@@ -59,9 +57,13 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
 
     max_adults: faker.datatype.number(10),
     max_children: faker.datatype.number(10),
+
+    isPopular: faker.datatype.boolean(),
+    isRentoChoose: faker.datatype.boolean(),
   }
 })
   .relation('accommodations', () => AccommodationsFactory)
+  .relation('metroStations', () => MetroStationsFactory)
   .relation('services', () => ServicesFactory)
   .relation('banners', () => BannersFactory)
   .relation('orders', () => OrdersFactory)

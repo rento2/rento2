@@ -5,6 +5,7 @@ export default class ApartmentSeeder extends BaseSeeder {
   public async run (): Promise<void> {
     await ApartmentsFactory
       .with('accommodations', 5)
+      .with('metroStations', 3)
       .with('services', 3)
       .with('banners', 3)
       .with('orders', 5)

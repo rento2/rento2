@@ -17,6 +17,7 @@ import Banner from './Banner'
 import Order from './Order'
 import SleepingPlace from './SleepingPlace'
 import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
+import MetroStation from './MetroStation'
 
 export default class Apartment extends BaseModel {
   public static namingStrategy = new CamelCaseNamingStrategy()
@@ -29,6 +30,12 @@ export default class Apartment extends BaseModel {
     pivotTimestamps: true,
   })
   public services!: ManyToMany<typeof Service>
+
+  @manyToMany(() => MetroStation, {
+    pivotTable: 'metro_stations_to_apartments',
+    pivotTimestamps: true,
+  })
+  public metroStations!: ManyToMany<typeof MetroStation>
 
   @manyToMany(() => Banner, {
     pivotTable: 'banners_to_apartments',
@@ -115,16 +122,10 @@ export default class Apartment extends BaseModel {
   public geoCoordinateY!: string
 
   @column()
-  public subwayStation!: string
+  public metroAvailabilityByFoot!: number
 
   @column()
-  public subwayLine!: string | null
-
-  @column()
-  public timeToSubwayByFoot!: number
-
-  @column()
-  public timeToSubwayByVehicle!: number
+  public metroAvailabilityByVehicle!: number
 
   @column()
   public repairs!: number
@@ -161,6 +162,12 @@ export default class Apartment extends BaseModel {
 
   @column()
   public petsAllowed!: boolean | null
+
+  @column()
+  public isPopular!: boolean
+
+  @column()
+  public isRentoChoose!: boolean
 
   @column()
   public maxAdults!: number | null

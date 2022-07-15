@@ -6,11 +6,14 @@ import AccommodationValidator from 'App/Validators/AccommodationValidator'
 
 export default class AccommodationsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
+    const items = await Accommodation.query()
+      .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+      .paginate(request.param('page', 1))
+
     return response
       .status(HttpStatusCode.OK).send(
-        creatingPaginatedList(
-          await Accommodation.query().paginate(request.param('page', 1))
-        )
+        creatingPaginatedList(items)
       )
   }
 

@@ -6,9 +6,12 @@ import CreateBannerValidator from 'App/Validators/BannerValidator'
 
 export default class BannersController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     return response.status(HttpStatusCode.OK).send(
       creatingPaginatedList(
-        await Banner.query().paginate(request.param('page', 1))
+        await Banner.query()
+          .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+          .paginate(request.param('page', 1))
       )
     )
   }
