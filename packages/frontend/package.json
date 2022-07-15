@@ -1,20 +1,19 @@
 {
-  "name": "learn-starter",
+  "name": "rento_frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "./node_modules/.bin/eslint . --ext .tsx,.ts,.js,.jsx && node checkTsErrors.js",
-    "lint-fix": "./node_modules/.bin/eslint . --ext .tsx,.ts,.js,.jsx --fix",
+    "lint": "eslint . --ext .tsx,.ts,.js,.jsx && node checkTsErrors.js",
+    "lint-fix": "eslint . --ext .tsx,.ts,.js,.jsx --fix",
     "lint:styles": "stylelint **/*{.css,.scss}",
     "lint:styles-fix": "stylelint **/*{.css,.scss} --fix",
-    "precommit": "npm run lint && npm run lint:styles",
-    "start:swagger": "cd ../backend/ && npm run start:swagger"
+    "precommit": "npm run lint && npm run lint:styles"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "date-fns": "^2.24.0",
     "gray-matter": "^4.0.3",
@@ -41,9 +40,9 @@
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.32",
     "@types/react-dom": "^17.0.11",
-    "eslint": "^7.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "stylelint": "^14.2.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-sass-guidelines": "^9.0.1",

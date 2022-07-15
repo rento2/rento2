@@ -6,7 +6,7 @@ export function creatingErrMsg (type: string, message: string = 'ERROR'): INegat
     meta: {
       result: type,
       error: {
-        message: message
+        message,
       }
     },
     data: null

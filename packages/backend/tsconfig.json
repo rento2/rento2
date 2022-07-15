@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/adonis-preset-ts/tsconfig",
+  "extends": "../../node_modules/adonis-preset-ts/tsconfig",
   "include": [
     "**/*"
   ],
@@ -10,6 +10,7 @@
   "compilerOptions": {
     "outDir": "build",
     "rootDir": "./",
+    "baseUrl": "./",
     "sourceMap": true,
     "pretty": true,
     "allowUnreachableCode": false,

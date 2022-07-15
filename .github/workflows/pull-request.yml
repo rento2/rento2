@@ -19,20 +19,11 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install root dependencies
+    - name: Install dependencies
       run: npm ci
 
-    - name: Lint backend
-      working-directory: ./packages/backend
-      run: npm ci && npm run lint
-
-    - name: Lint frontend
-      working-directory: ./packages/frontend
-      run: npm ci && npm run lint
-
-    - name: Lint admin
-      working-directory: ./packages/admin
-      run: npm ci && npm run lint
+    - name: Lint
+      run: npm run -ws precommit
 
   build:
     environment: code-quality
@@ -46,29 +37,27 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Install dependencies
+      run: npm ci
+
     - name: Process backend
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
-      working-directory: ./packages/backend
-      run: |
-        npm ci
-        node ./ace build --production
+      run: npm -w packages/backend run build
 
     - name: Process frontend
-      working-directory: ./packages/frontend
       env:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
-        echo "$ENV_FRONTEND" > ./.env
-        unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
-        npm ci
-        npm run build
+        cp ./packages/frontend/.env.example ./packages/frontend/.env.local
+        echo "$ENV_FRONTEND" >> ./packages/frontend/.env.local
+        unzip -qq -P "$ZIP_PASSWORD"  ./.github/fonts.zip -d ./packages/frontend/src/app/styles
+        npm -w packages/frontend run build
 
     - name: Process admin
-      working-directory: ./packages/admin
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
-        echo "$ENV_ADMIN" > ./.env
-        npm ci
+        echo "$ENV_ADMIN" >> ./packages/admin/.env
+        npm -w packages/admin run build

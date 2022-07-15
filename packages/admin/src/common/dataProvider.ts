@@ -1,7 +1,7 @@
 import { stringify } from 'query-string'
 import { fetchUtils, DataProvider } from 'ra-core'
 
-export default(
+export default (
   apiUrl: string,
   httpClient = fetchUtils.fetchJson
 ): DataProvider => ({
@@ -12,7 +12,7 @@ export default(
     const query = {
       sortDirection: sortDirection.toLowerCase(),
       sortColumn,
-      page: page,
+      page
     }
     const url = `${apiUrl}/${resource}/list/${page}?${stringify(query)}`
 
