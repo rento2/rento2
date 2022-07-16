@@ -8,7 +8,7 @@ const Apartments: FC<ListProps> = (props) => {
         <TextField source='id' />
         <FunctionField
           label="Срок"
-          render={ (record: any) => record.type === 'short' ? 'краткосрок' : 'долгосрок' }
+          render={(record: any) => record.type === 'short' ? 'краткосрок' : 'долгосрок'}
         />
         <TextField label="Название"
           source='name'
@@ -16,12 +16,12 @@ const Apartments: FC<ListProps> = (props) => {
 
         <NumberField label="Цена"
           locales="ru-RU"
-          options={ { style: 'currency', currency: 'RUB' } }
+          options={{ style: 'currency', currency: 'RUB' }}
           source="price"
         />
         <NumberField label="Цена в месяц"
           locales="ru-RU"
-          options={ { style: 'currency', currency: 'RUB' } }
+          options={{ style: 'currency', currency: 'RUB' }}
           source="pricePerMonth"
         />
       </Datagrid>
