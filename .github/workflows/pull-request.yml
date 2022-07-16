@@ -69,6 +69,7 @@ jobs:
   build-backend:
     environment: code-quality
     runs-on: ubuntu-latest
+    needs: lint-backend
     steps:
     - uses: actions/checkout@v2
     - uses: montudor/action-zip@v1
@@ -90,6 +91,7 @@ jobs:
   build-frontend:
     environment: code-quality
     runs-on: ubuntu-latest
+    needs: lint-frontend
     steps:
     - uses: actions/checkout@v2
     - uses: montudor/action-zip@v1
@@ -114,6 +116,7 @@ jobs:
   build-admin:
     environment: code-quality
     runs-on: ubuntu-latest
+    needs: lint-admin
     steps:
     - uses: actions/checkout@v2
     - uses: montudor/action-zip@v1
