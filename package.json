@@ -2,28 +2,9 @@
   "name": "rento_root",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
-    "precommit": "npm run -ws precommit",
-    "precommit:frontend": "npm run -w packages/frontend precommit",
-    "start:admin": "npm start -w packages/admin",
-    "start:backend": "npm run dev -w packages/backend",
-    "start:frontend": "npm run dev -w packages/frontend",
-    "dc:up": "npm run dc:up -w packages/backend",
-    "db:reset": "npm run db:reset -w packages/backend",
-    "start:swagger": "npm run start:swagger -w packages/backend"
+    "prepare": "husky install"
   },
-  "workspaces": [
-    "packages/admin",
-    "packages/backend",
-    "packages/frontend"
-  ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "eslint": "^8.19.0",
-    "eslint-config-standard-with-typescript": "^22.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
     "husky": "^8.0.1"
   },
   "volta": {

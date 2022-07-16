@@ -17,32 +17,37 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install dependencies
-      run: npm ci
-
     - name: Process backend
+      working-directory: ./packages/backend
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
       run: |
-        npm -w packages/backend run build
-        echo "$ENV_BACKEND" > ./packages/backend/build/.env
+        npm ci
+        npm install
+        npm run build
+        echo "$ENV_BACKEND" > ./build/.env
 
     - name: Process frontend
+      working-directory: ./packages/frontend
       env:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
-        cp ./packages/frontend/.env.example ./packages/frontend/.env.local
-        echo "$ENV_FRONTEND" >> ./packages/frontend/.env.local
-        unzip -qq -P "$ZIP_PASSWORD"  ./.github/fonts.zip -d ./packages/frontend/src/app/styles
-        npm -w packages/frontend run build
+        npm ci
+        npm install
+        echo "$ENV_FRONTEND" >> ./.env.local
+        unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
+        npm run build
 
     - name: Process admin
+      working-directory: ./packages/admin
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
-        echo "$ENV_ADMIN" >> ./packages/admin/.env
-        npm -w packages/admin run build
+        npm ci
+        npm install
+        echo "$ENV_ADMIN" >> ./.env
+        npm run build
 
     - name: Deploy
       uses: appleboy/scp-action@master

@@ -4,21 +4,20 @@
  
 # Install
 1. Установка
-- ``git clone git@github.com:rento2/rento2.git``
-- ``npm i``
+- ``git clone git@github.com:rento2/rento2.git && cd rento2``
+- ``npm i`` в директории каждого пакета и в корне(``./rento``), packages/backend|frontend|admin
 2. В директории ``packages/backend`` cоздать файл .env: ``cp .env.example .env``
 3. В директории ``packages/frontend`` cоздать файл .env.local: ``cp .env.example .env.local``
 4. Поднять БД через Docker: ``npm run dc:up``
 
 # Запуск Приложения
-- Запустить админку: ``npm run start:admin``
-- Запустить бэк: ``npm run start:backend``
-- Запустить фронт: ``npm run start:frontend``
-- Запустить swagger: ``npm run start:swagger``, залогиниться в AUTH (значения по умолчанию можно не менять) и вставить полученный токен (зелёная кнопка Authorize).
+- Запустить админку: ``cd ./packages/admin && npm run start``
+- Запустить бэк: ``cd ./packages/backend && npm run start`
+- Запустить фронт: ``cd ./packages/frontend && npm run start`
+- Запустить swagger: ``cd ./packages/backend && npm run start:swagger`, залогиниться в AUTH (значения по умолчанию можно не менять) и вставить полученный токен (зелёная кнопка Authorize).
 
 # Особенности монорепозитория
-- Если несколько проектов имеют зависимости одинаковой версии, то она находится в корневых node_modules.  
-Если версии разные, то в node_modules каждого проекта
+- Каждый субпроект имеет свои зависимости, они устанавливаются отдельно в папке каждого субпроекта, в корне нет продовых зависимостей, только dev - на данный момент это husky, возможно, в будущем будут добавлены еще пакеты.
 
 # Дополнительная информация
 - Файлы шрифтов получаем по запросу (необходимы для работы на фронте)
