@@ -30,6 +30,7 @@
 # Удалить БД и создать с нуля
 - ``npm run db:reset``
 
+
 # Todo
 - Add commit message standard (see cz-conventional-changelog)
 - Add https://www.npmjs.com/package/lint-staged
