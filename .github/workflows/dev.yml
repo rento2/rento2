@@ -17,14 +17,12 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install dependencies
-      run: npm ci
-
     - name: Process backend
       working-directory: ./packages/backend
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
       run: |
+        npm ci
         npm install
         npm run build
         echo "$ENV_BACKEND" > ./build/.env
@@ -35,6 +33,7 @@ jobs:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
+        npm ci
         npm install
         echo "$ENV_FRONTEND" >> ./.env.local
         unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
@@ -45,6 +44,7 @@ jobs:
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
+        npm ci
         npm install
         echo "$ENV_ADMIN" >> ./.env
         npm run build
