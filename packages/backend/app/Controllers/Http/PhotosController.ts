@@ -49,10 +49,10 @@ export default class PhotosController {
       )
     }
 
-    // await image.moveToDisk(uploadedCellPath, {
-    //   name: `${uploadedPhotoIdentifier}.${uploadedPhotoExtension}`,
-    //   visibility: 'public',
-    // }, 's3')
+    await image.moveToDisk(uploadedCellPath, {
+      name: `${uploadedPhotoIdentifier}.${uploadedPhotoExtension}`,
+      visibility: 'public',
+    }, 's3')
 
     const s3Filepath = `${uploadedCellPath}/${uploadedPhotoIdentifier}.${uploadedPhotoExtension}`
     const photo = await Photo.create({
