@@ -38,6 +38,9 @@
     ],
     "eqeqeq": ["error", "smart"],
     "no-return-await": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/return-await": "off",
     "react/self-closing-comp": "error",
     "react/sort-comp": "error",
@@ -74,6 +77,13 @@
       "shorthandFirst": true,
       "ignoreCase": true,
       "reservedFirst": true
-    }]
+    }],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ]
   }
 }

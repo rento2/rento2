@@ -3,7 +3,7 @@ import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import MetroLine from './MetroLine'
 
 export default class MetroStation extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serialize: (v) => Number(v) })
   public id!: number
 
   @column()

@@ -1,4 +1,4 @@
-import { Admin, Resource } from 'react-admin'
+import { Admin, EditGuesser, ListGuesser, Resource } from 'react-admin'
 import restProvider from './common/dataProvider'
 import PostIcon from '@material-ui/icons/Book'
 import BannerIcon from '@material-ui/icons/AirplanemodeActive'
@@ -16,19 +16,44 @@ const App = (): JSX.Element => (
     loginPage={ LoginPage }
   >
     <Resource
-      create={ ApartmentCreate }
-      edit={ ApartmentEdit }
-      icon={ PostIcon }
-      list={ ApartmentList }
+      create={ApartmentCreate}
+      edit={ApartmentEdit}
+      icon={PostIcon}
+      list={ApartmentList}
       name='apartments'
     />
 
     <Resource
-      create={ BannerCreate }
-      edit={ BannerEdit }
-      icon={ BannerIcon }
-      list={ BannerList }
+      create={BannerCreate}
+      edit={BannerEdit}
+      icon={BannerIcon}
+      list={BannerList}
       name='banners'
+    />
+
+    <Resource
+      list={ListGuesser}
+      name='metro-stations'
+    />
+
+    <Resource
+      edit={EditGuesser}
+      list={ListGuesser}
+      name='metro-lines'
+    />
+
+    <Resource
+      list={ListGuesser}
+      name='accommodations'
+    />
+
+    <Resource
+      list={ListGuesser}
+      name='sleeping-places'
+    />
+
+    <Resource
+      name='photos'
     />
   </Admin>
 )

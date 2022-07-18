@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { List, Datagrid, TextField, ListProps, FunctionField, NumberField } from 'react-admin'
+import { List, Datagrid, TextField, ListProps, FunctionField, NumberField, EditButton } from 'react-admin'
 
 const Apartments: FC<ListProps> = (props) => {
   return (
@@ -24,6 +24,7 @@ const Apartments: FC<ListProps> = (props) => {
           options={{ style: 'currency', currency: 'RUB' }}
           source="pricePerMonth"
         />
+        <EditButton />
       </Datagrid>
     </List>
   )
