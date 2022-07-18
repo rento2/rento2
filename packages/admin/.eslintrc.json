@@ -52,6 +52,7 @@
     "react/jsx-equals-spacing": ["error", "never"],
     "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-handler-names": "error",
+    "@typescript-eslint/no-misused-promises": "off",
     "react/jsx-indent": ["error", 2, {"checkAttributes": true, "indentLogicalExpressions": true}],
     "react/jsx-indent-props": ["error", 2],
     "react/jsx-max-props-per-line": ["error"],
