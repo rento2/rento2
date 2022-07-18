@@ -16,6 +16,7 @@ import {
 } from 'react-admin'
 
 import { FilePond } from 'react-filepond'
+import { FilePondFile } from 'filepond'
 
 const ApartmentEdit: FC<ListProps> = props => {
   const dataProvider = useDataProvider()
@@ -44,6 +45,22 @@ const ApartmentEdit: FC<ListProps> = props => {
       filter: {}
     }).then(({ data }) => setSleepingPlaces(data))
   }, [dataProvider])
+
+  const handleUploadFile = async (file: FilePondFile, apartmentId: number): Promise<void> => {
+    const result = (dataProvider as any).uploadPhoto({
+      file: file.source,
+      apartmentId
+    })
+
+    file.setMetadata('id', result.id)
+    setFiles([...files, file])
+  }
+
+  const handleDeleteFile = async (file: FilePondFile): Promise<void> => {
+    dataProvider.delete('photos', {
+      id: file.getMetadata()?.id
+    })
+  }
 
   return (
     <Edit { ...props }>
@@ -242,7 +259,7 @@ const ApartmentEdit: FC<ListProps> = props => {
                 <FilePond
                   allowMultiple={true}
                   files={[
-                    ...formData.photos.map((v: any) => ({
+                    ...formData.photos.map((v: { link: string, id: string }) => ({
                       source: v.link,
                       options: {
                         metadata: { id: v.id }
@@ -253,21 +270,8 @@ const ApartmentEdit: FC<ListProps> = props => {
                   imagePreviewHeight={180}
                   labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
                   maxFiles={20}
-                  name="files"
-                  onaddfilestart={(file) => {
-                    (dataProvider as any).uploadPhoto({
-                      file: file.source,
-                      apartmentId: formData.id
-                    }).then((result: any) => {
-                      file.setMetadata('id', result.id)
-                      setFiles([...files, file])
-                    })
-                  }}
-                  onremovefile={(_, file) => {
-                    dataProvider.delete('photos', {
-                      id: file.getMetadata()?.id
-                    })
-                  }}
+                  onaddfilestart={async (file) => handleUploadFile(file, formData.id)}
+                  onremovefile={async (_, file) => handleDeleteFile(file)}
                   onupdatefiles={() => {}}
                 />
               )}
