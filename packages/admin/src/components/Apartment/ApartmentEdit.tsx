@@ -17,6 +17,8 @@ import {
 
 import { FilePond } from 'react-filepond'
 import { FilePondFile } from 'filepond'
+import { AdminDistrictsOfMoscow } from 'common/enums/AdminDistrictsOfMoscow'
+import Term from 'common/enums/Term'
 
 const ApartmentEdit: FC<ListProps> = props => {
   const dataProvider = useDataProvider()
@@ -93,11 +95,7 @@ const ApartmentEdit: FC<ListProps> = props => {
               source='checkOutEnd'
             />
             <SelectInput fullWidth
-              choices={[
-                { id: 'short', name: 'Краткосрочная аренда' },
-                { id: 'long', name: 'Долгосрочная аренда' },
-                { id: 'all', name: 'Любой срок' }
-              ]}
+              choices={Object.entries(Term).map(([id, name]) => ({ id, name }))}
               source='type'
             />
             <NumberInput fullWidth
@@ -218,19 +216,9 @@ const ApartmentEdit: FC<ListProps> = props => {
             <NumberInput fullWidth
               source='distanceFromCenter'
             />
-            <SelectInput fullWidth
-              choices={[
-                { id: 'central', name: 'Центр' },
-                { id: 'northern', name: 'Север' },
-                { id: 'north_eastern', name: 'Северо-восток' },
-                { id: 'eastern', name: 'Восток' },
-                { id: 'south_eastern', name: 'Юго-восток' },
-                { id: 'southern', name: 'Юг' },
-                { id: 'south_western', name: 'Юго-западный' },
-                { id: 'western', name: 'Запад' },
-                { id: 'north_western', name: 'Северо-запад' },
-                { id: 'zelenograd', name: 'Зеленоград' }
-              ]}
+            <SelectInput
+              fullWidth
+              choices={Object.entries(AdminDistrictsOfMoscow).map(([id, name]) => ({ id, name }))}
               source='admArea'
             />
             <TextInput fullWidth

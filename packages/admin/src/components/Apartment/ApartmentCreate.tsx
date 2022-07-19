@@ -1,3 +1,5 @@
+import { AdminDistrictsOfMoscow } from 'common/enums/AdminDistrictsOfMoscow'
+import Term from 'common/enums/Term'
 import { FC } from 'react'
 import {
   Create,
@@ -12,11 +14,8 @@ import {
 const ApartmentCreate: FC<ListProps> = props => (
   <Create { ...props }>
     <SimpleForm>
-      <SelectInput choices={[
-        { id: 'short', name: 'Краткосрочная аренда' },
-        { id: 'long', name: 'Долгосрочная аренда' },
-        { id: 'all', name: 'Любой срок' }
-      ]}
+      <SelectInput
+        choices={Object.entries(Term).map(([id, name]) => ({ id, name }))}
         source='type'
       />
       <BooleanInput label="Показывать пользователям"
@@ -39,18 +38,8 @@ const ApartmentCreate: FC<ListProps> = props => (
       <NumberInput source='area' />
       <NumberInput source='kitchenArea' />
       <NumberInput source='distanceFromCenter' />
-      <SelectInput choices={[
-        { id: 'central', name: 'Центр' },
-        { id: 'northern', name: 'Север' },
-        { id: 'north_eastern', name: 'Северо-восток' },
-        { id: 'eastern', name: 'Восток' },
-        { id: 'south_eastern', name: 'Юго-восток' },
-        { id: 'southern', name: 'Юг' },
-        { id: 'south_western', name: 'Юго-западный' },
-        { id: 'western', name: 'Запад' },
-        { id: 'north_western', name: 'Северо-запад' },
-        { id: 'zelenograd', name: 'Зеленоград' }
-      ]}
+      <SelectInput
+        choices={Object.entries(AdminDistrictsOfMoscow).map(([id, name]) => ({ id, name }))}
         source='admArea'
       />
       <TextInput source='district' />
