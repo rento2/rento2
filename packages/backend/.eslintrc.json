@@ -8,11 +8,16 @@
     "project": "./tsconfig.json"
   },
   "overrides": [
-    {"files": ["*.{ts}"]}
+    {
+      "files": [
+        "*.{ts}"
+      ]
+    }
   ],
   "rules": {
     "comma-dangle": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/dot-notation": 0,
     "no-unused-vars": [
       "error",
@@ -22,6 +27,12 @@
         "ignoreRestSiblings": true,
         "vars": "all",
         "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
       }
     ]
   }
