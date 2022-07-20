@@ -1,21 +1,27 @@
 import { FC } from 'react'
 import { List, Datagrid, TextField, ListProps, EditButton, DateField, CreateButton, TopToolbar, DeleteButton } from 'react-admin'
 
-const Toolbar = () => (
+const Toolbar = (): JSX.Element => (
   <TopToolbar>
-      <CreateButton />
-      <DeleteButton />
+    <CreateButton />
+    <DeleteButton />
   </TopToolbar>
-);
+)
 
 const BannerList: FC<ListProps> = (props) => {
   return (
-    <List actions={<Toolbar />} { ...props }>
+    <List actions={ <Toolbar /> }
+      { ...props }
+    >
       <Datagrid rowClick='edit'>
         <TextField source='id' />
         <TextField source='name' />
-        <DateField source='createdAt' showTime />
-+       <EditButton />
+        <DateField showTime
+          source='createdAt'
+        />
+        +
+        {' '}
+        <EditButton />
       </Datagrid>
     </List>
   )

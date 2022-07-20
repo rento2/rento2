@@ -1,5 +1,6 @@
+import Term from 'common/enums/Term'
 import { FC } from 'react'
-import { List, Datagrid, TextField, ListProps, FunctionField, NumberField } from 'react-admin'
+import { List, Datagrid, TextField, ListProps, FunctionField, NumberField, EditButton } from 'react-admin'
 
 const Apartments: FC<ListProps> = (props) => {
   return (
@@ -7,13 +8,24 @@ const Apartments: FC<ListProps> = (props) => {
       <Datagrid rowClick='edit'>
         <TextField source='id' />
         <FunctionField
-            label="Срок"
-            render={(record: any) => record.type === 'short' ? 'краткосрок' : 'долгосрок'}
+          label="Срок"
+          render={(record: any) => Term[record.type as keyof typeof Term]}
         />
-        <TextField label="Название" source='name' />
+        <TextField label="Название"
+          source='name'
+        />
 
-        <NumberField source="price" locales="ru-RU" label="Цена" options={{ style: 'currency', currency: 'RUB' }} />
-        <NumberField source="pricePerMonth" locales="ru-RU" label="Цена в месяц" options={{ style: 'currency', currency: 'RUB' }} />
+        <NumberField label="Цена"
+          locales="ru-RU"
+          options={{ style: 'currency', currency: 'RUB' }}
+          source="price"
+        />
+        <NumberField label="Цена в месяц"
+          locales="ru-RU"
+          options={{ style: 'currency', currency: 'RUB' }}
+          source="pricePerMonth"
+        />
+        <EditButton />
       </Datagrid>
     </List>
   )

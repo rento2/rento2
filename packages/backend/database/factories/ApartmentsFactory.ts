@@ -12,7 +12,7 @@ import { MetroStationsFactory } from './MetroStationsFactory'
 
 export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
   return {
-    type: faker.random.arrayElement(Object.values(Term)),
+    type: faker.helpers.arrayElement(Object.values(Term)),
     isActive: faker.datatype.boolean(),
     name: faker.internet.userName(),
     latinName: faker.name.findName(),
@@ -32,11 +32,11 @@ export const ApartmentsFactory = Factory.define(Apartment, ({ faker }) => {
     area: faker.datatype.number({ min: 20, max: 300, precision: 1 }),
     kitchenArea: faker.datatype.number({ min: 4, max: 25, precision: 1 }),
     distanceFromCenter: faker.datatype.number({ min: 0, max: 25, precision: 1 }),
-    admArea: faker.random.arrayElement(Object.values(AdminDistrictsOfMoscow)),
+    admArea: faker.helpers.arrayElement(Object.values(AdminDistrictsOfMoscow)),
     district: faker.address.city(),
     sellingPoint: faker.lorem.words(5),
-    geoCoordinateX: faker.address.latitude(56, 55, 4),
-    geoCoordinateY: faker.address.longitude(38, 36, 4),
+    geoCoordinateX: Number(faker.address.latitude(56, 55, 4)),
+    geoCoordinateY: Number(faker.address.longitude(38, 36, 4)),
     metroAvailabilityByFoot: faker.datatype.number({ min: 0, max: 60 }),
     metroAvailabilityByVehicle: faker.datatype.number({ min: 0, max: 60 }),
 

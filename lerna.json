@@ -2,5 +2,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "independent"
+  "useNx": true,
+  "useWorkspaces": false,
+  "version": "0.1.0"
 }

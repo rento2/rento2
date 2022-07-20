@@ -18,7 +18,7 @@ export default class ReviewsController {
       }),
     })
 
-    let reviews =  await Review.query()
+    let reviews = Review.query()
       .preload('apartment', (apartmentQuery) => {
         apartmentQuery.select('name',).preload('photos', (photos) => {
           photos.select('link', 'path')

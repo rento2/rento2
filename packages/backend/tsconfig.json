@@ -10,6 +10,7 @@
   "compilerOptions": {
     "outDir": "build",
     "rootDir": "./",
+    "baseUrl": "./",
     "sourceMap": true,
     "pretty": true,
     "allowUnreachableCode": false,

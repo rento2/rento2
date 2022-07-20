@@ -1,7 +1,8 @@
 import { stringify } from 'query-string'
 import { fetchUtils, DataProvider } from 'ra-core'
+import { HttpError } from 'react-admin'
 
-export default(
+export default (
   apiUrl: string,
   httpClient = fetchUtils.fetchJson
 ): DataProvider => ({
@@ -12,7 +13,7 @@ export default(
     const query = {
       sortDirection: sortDirection.toLowerCase(),
       sortColumn,
-      page: page,
+      page
     }
     const url = `${apiUrl}/${resource}/list/${page}?${stringify(query)}`
 
@@ -33,7 +34,8 @@ export default(
     const query = {
       filter: JSON.stringify({ id: params.ids })
     }
-    const url = `${apiUrl}/${resource}?${stringify(query)}`
+    // todo implement get many on backend
+    const url = `${apiUrl}/${resource}/1?${stringify(query)}`
     return await httpClient(url).then(({ json }) => ({ data: json }))
   },
 
@@ -60,7 +62,14 @@ export default(
     await httpClient(`${apiUrl}/${resource}/update/${params.id}`, {
       method: 'POST',
       body: JSON.stringify(params.data)
-    }).then(({ json }) => ({ data: json.data })),
+    }).then(({ json }) => ({ data: json.data })).catch((err: HttpError) => {
+      const errorsList = err.body?.meta?.error?.message
+      if (Array.isArray(errorsList) && errorsList.length) {
+        throw new Error(`Ошибка валидации, поле ${errorsList[0]?.field}, ошибка: ${errorsList[0]?.message}`)
+      }
+
+      throw new Error('Неизвестная ошибка сервера')
+    }),
 
   updateMany: async (resource, params) =>
     await Promise.all(
@@ -79,6 +88,23 @@ export default(
     }).then(({ json }) => ({
       data: { ...params.data, id: json.id }
     })),
+
+  uploadPhoto: async (params: {
+    file: Blob
+    apartmentId: string
+  }) => {
+    const formData = new FormData()
+
+    formData.append('image', params.file)
+    formData.append('apartmentId', params.apartmentId)
+
+    return httpClient(`${apiUrl}/photos/create`, {
+      method: 'POST',
+      body: formData
+    }).then(({ json }) => ({
+      data: { id: json.id }
+    }))
+  },
 
   delete: async (resource, params) =>
     httpClient(`${apiUrl}/${resource}/delete/${params.id}`, {
