@@ -2,7 +2,8 @@
   "name": "rento_root",
   "private": true,
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "precommit": "npm run precommit --prefix packages/backend && npm run precommit --prefix packages/frontend && npm run precommit --prefix packages/admin"
   },
   "devDependencies": {
     "husky": "^8.0.1"
