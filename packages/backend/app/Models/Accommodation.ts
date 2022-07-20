@@ -6,7 +6,7 @@ import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 export default class Accommodation extends BaseModel {
   public static namingStrategy = new CamelCaseNamingStrategy()
 
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serialize: (v) => Number(v) })
   public id!: number
 
   @column()

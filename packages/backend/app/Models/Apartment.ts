@@ -116,10 +116,10 @@ export default class Apartment extends BaseModel {
   public sellingPoint!: string
 
   @column()
-  public geoCoordinateX!: string
+  public geoCoordinateX!: number
 
   @column()
-  public geoCoordinateY!: string
+  public geoCoordinateY!: number
 
   @column()
   public metroAvailabilityByFoot!: number

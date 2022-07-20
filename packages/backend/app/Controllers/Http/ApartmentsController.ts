@@ -142,10 +142,36 @@ export default class ApartmentsController {
     response,
     request,
   }: HttpContextContract): Promise<void> {
-    const apartment = await Apartment.findOrFail(request.param('id', null))
+    const apartment = await Apartment.query()
+      .preload('accommodations')
+      .preload('sleepingPlaces').preload('metroStations')
+      .where('id', request.param('id', null)).first()
+
+    if (!apartment) {
+      return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', 'Apartments not found'))
+    }
+
+    const modifiedApartmentPayload = await request.validate(ApartmentValidator)
+    await Promise.all([
+      apartment.related('accommodations')
+        .detach(apartment.accommodations.map(({ id }) => id)),
+      apartment.related('metroStations')
+        .detach(apartment.metroStations.map(({ id }) => id)),
+      apartment.related('sleepingPlaces')
+        .detach(apartment.sleepingPlaces.map(({ id }) => id)),
+    ])
+
+    await Promise.all([
+      apartment.related('accommodations')
+        .attach(modifiedApartmentPayload.accommodations.map(({ id }) => id)),
+      apartment.related('metroStations')
+        .attach(modifiedApartmentPayload.metroStations.map(({ id }) => id)),
+      apartment.related('sleepingPlaces')
+        .attach(modifiedApartmentPayload.sleepingPlaces.map(({ id }) => id)),
+    ])
 
     const updatedApartment = await apartment
-      .merge(await request.validate(ApartmentValidator))
+      .merge(modifiedApartmentPayload)
       .save()
 
     return response
