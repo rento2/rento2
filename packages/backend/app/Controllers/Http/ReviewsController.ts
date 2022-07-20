@@ -22,10 +22,8 @@ export default class ReviewsController {
       .preload('apartment', (apartmentQuery) => {
         apartmentQuery.select('name',).preload('photos', (photos) => {
           photos.select('link', 'path')
-        }
-        )
-      }
-      )
+        })
+      })
 
     if (search) {
       reviews = reviews.andWhere('author', 'ilike', `%${search}%`)

@@ -6,12 +6,23 @@
     "source.fixAll": true
   },
   "stylelint.configFile": "packages/frontend/.stylelintrc.json",
-  "stylelint.validate": ["scss"],
+  "stylelint.validate": [
+    "scss"
+  ],
   "eslint.enable": true,
   "eslint.workingDirectories": [
-    { "directory": "packages/frontend", "changeProcessCWD": true },
-    { "directory": "packages/backend", "changeProcessCWD": true },
-    { "directory": "packages/admin", "changeProcessCWD": true }
+    {
+      "directory": "packages/frontend",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "packages/backend",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "packages/admin",
+      "changeProcessCWD": true
+    }
   ],
   "typescript.tsdk": "./packages/frontend/node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
