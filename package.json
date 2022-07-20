@@ -3,10 +3,21 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "precommit": "npm run precommit --prefix packages/backend && npm run precommit --prefix packages/frontend && npm run precommit --prefix packages/admin"
+    "clean": "lerna clean -y && rm -rf ./node_modules",
+    "bootstrap": "npm i && npx lerna bootstrap --nohoist '**'",
+    "precommit": "lerna run precommit",
+    "start:admin": "lerna run --scope *admin start",
+    "start:backend": "lerna run --scope *backend dev",
+    "start:frontend": "lerna run --scope *frontend dev",
+    "dc:up": "lerna run --scope *backend dc:up",
+    "dc:down": "lerna run --scope *backend dc:down",
+    "db:reset": "lerna run --scope *backend db:reset",
+    "full-reset": "npm run clean && npm run bootstrap && npm run dc:up && npm run db:reset"
   },
   "devDependencies": {
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "lerna": "^5.1.8",
+    "nx": "^14.4.3"
   },
   "volta": {
     "node": "16.16.0",

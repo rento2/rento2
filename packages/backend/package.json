@@ -12,6 +12,7 @@
     "coverage": "nyc npm run test",
     "precommit": "npm run lint",
     "dc:up": "docker-compose up -d",
+    "dc:down": "docker-compose down",
     "db:reset": "node ace db:reset",
     "start:swagger": "npm run dev & start http://127.0.0.1:3333/docs/index.html & xdg-open http://127.0.0.1:3333/docs/index.html & open http://127.0.0.1:3333/docs/index.html"
   },
@@ -44,8 +45,13 @@
     "@types/source-map-support": "^0.5.4",
     "@types/supertest": "^2.0.11",
     "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
     "adonis-preset-ts": "^2.1.0",
     "eslint": "^8.19.0",
+    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
     "execa": "^5.1.1",
     "get-port": "^5.1.1",
     "japa": "^3.1.1",
@@ -54,11 +60,6 @@
     "supertest": "^6.1.6",
     "typescript": "~4.2",
     "youch": "^2.2.2",
-    "youch-terminal": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "eslint-config-standard-with-typescript": "^22.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0"
+    "youch-terminal": "^1.1.1"
   }
 }
