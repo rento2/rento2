@@ -10,7 +10,7 @@ import {
 const SleepingPlacesCreate: React.FC<ListProps> = props => (
   <Create { ...props }>
     <TabbedForm>
-      <FormTab label="Step 1">
+      <FormTab label="Данные о спальном месте">
         <TextInput source='name' />
         <TextInput source='type' />
         <TextInput source='size' />
