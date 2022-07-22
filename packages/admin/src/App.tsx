@@ -2,11 +2,13 @@ import { Admin, EditGuesser, ListGuesser, Resource } from 'react-admin'
 import restProvider from './common/dataProvider'
 import PostIcon from '@material-ui/icons/Book'
 import BannerIcon from '@material-ui/icons/AirplanemodeActive'
+import BedIcon from '@material-ui/icons/KingBed'
 import { ApartmentList, ApartmentCreate, ApartmentEdit } from './components/Apartment'
 import { authProvider } from 'common'
 import LoginPage from 'components/LoginPage/LoginPage'
 import { httpClient } from 'common/httpClient'
 import { BannerCreate, BannerEdit, BannerList } from 'components/Banner'
+import { SleepingPlacesCreate, SleepingPlacesEdit, SleepingPlacesList } from 'components/SleepingPlaces'
 
 const dataProvider = restProvider(String(process.env['REACT_APP_SERVER_URL']), httpClient)
 
@@ -48,7 +50,10 @@ const App = (): JSX.Element => (
     />
 
     <Resource
-      list={ListGuesser}
+      create={SleepingPlacesCreate}
+      edit={SleepingPlacesEdit}
+      icon={BedIcon}
+      list={SleepingPlacesList}
       name='sleeping-places'
     />
 
