@@ -47,7 +47,7 @@ export default class GenerateModelsInterface extends BaseCommand {
 
     await fs.remove('./_generated').catch(() => {})
 
-    fs.mkdir('./_generated')
+    fs.mkdirSync('./_generated')
     fs.writeFileSync('./_generated/models.ts', ts)
     fs.copySync('./common', './_generated/common')
   }
