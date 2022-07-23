@@ -6,10 +6,13 @@ import CreateServiceValidator from 'App/Validators/ServiceValidator'
 
 export default class ServicesController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     return response
       .status(HttpStatusCode.OK).send(
         creatingPaginatedList(
-          await Service.query().paginate(request.param('page', 1))
+          await Service.query()
+            .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+            .paginate(request.param('page', 1))
         )
       )
   }

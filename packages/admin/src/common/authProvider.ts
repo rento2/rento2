@@ -19,8 +19,7 @@ const authProvider = {
 
       return await Promise.resolve()
     } catch (err) {
-      const error = err as Error
-      return await Promise.reject(new Error('Something went wrong: ' + error.message))
+      return await Promise.reject(new Error('Something went wrong: ' + String(err)))
     }
   },
   logout: async () => {
@@ -31,8 +30,7 @@ const authProvider = {
 
       return await Promise.resolve()
     } catch (err) {
-      const error = err as Error
-      return await Promise.reject(new Error(error.message))
+      return await Promise.reject(new Error('Something went wrong: ' + String(err)))
     }
   },
   checkError: async ({ status }: { status: number }) => {
@@ -66,8 +64,7 @@ const authProvider = {
 
       return await Promise.resolve()
     } catch (err) {
-      const error = err as Error
-      return await Promise.reject(new Error('Something went wrong: ' + error.message))
+      return await Promise.reject(new Error('Something went wrong: ' + String(err)))
     }
   },
   // called when the user navigates to a new location, to check for permissions / roles

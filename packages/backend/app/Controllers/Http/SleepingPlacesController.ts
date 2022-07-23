@@ -6,10 +6,13 @@ import SleepingPlaceValidator from 'App/Validators/SleepingPlaceValidator'
 
 export default class SleepingPlacesController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     return response
       .status(HttpStatusCode.OK).send(
         creatingPaginatedList(
-          await SleepingPlace.query().paginate(request.param('page', 1))
+          await SleepingPlace.query()
+            .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+            .paginate(request.param('page', 1))
         )
       )
   }

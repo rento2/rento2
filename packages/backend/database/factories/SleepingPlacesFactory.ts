@@ -6,7 +6,7 @@ export const SleepingPlacesFactory = Factory
   .define(SleepingPlace, ({ faker }) => {
     return {
       name: faker.lorem.sentence(),
-      type: faker.random.arrayElement(Object.values(SleepingPlaceType)),
+      type: faker.helpers.arrayElement(Object.values(SleepingPlaceType)),
       size: faker.datatype.number(3),
     }
   })

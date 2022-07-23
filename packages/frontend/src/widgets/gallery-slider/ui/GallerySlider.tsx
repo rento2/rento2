@@ -33,7 +33,7 @@ export function GallerySlider ({ images }: IGalleryPorps): JSX.Element {
     modules: [FreeMode, Navigation, Thumbs],
     spaceBetween: 10,
     thumbs,
-    onBeforeInit: onBeforeInit,
+    onBeforeInit,
     onRealIndexChange: onIndexChange
   }
 

@@ -14,6 +14,7 @@ import murmurhash from 'murmurhash'
 
 export default class ApartmentsController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     const { search, fields } = await request.validate({
       schema: schema.create({
         search: schema.string.optional(),
@@ -26,7 +27,7 @@ export default class ApartmentsController {
     let apartments
     if (fields) {
       apartments = Apartment.query()
-        .select(['id', 'name', ...fields?.split(',')])
+        .select(['id', 'name', ...fields.split(',')])
     } else {
       apartments = Apartment.query()
         .preload('accommodations')
@@ -56,13 +57,15 @@ export default class ApartmentsController {
     const wrappedQueriesList = [
       Apartment.query().where('isPopular', true).orderBy('createdAt', 'desc').limit(10),
       Apartment.query().where('isRentoChoose', true).orderBy('createdAt', 'desc').limit(10),
-      Apartment.query().whereIn('subwayStation', ['station1']).orderBy('createdAt', 'desc').limit(10), // todo put the correct metro stations here
+      Apartment.query().orderBy('createdAt', 'desc').limit(10), // todo put the correct metro stations here
       Apartment.query().orderBy('createdAt', 'desc').limit(10),
-      Apartment.query().where('timeToSubwayByFoot', '<=', 7).orderByRaw('random()').limit(10),
+      Apartment.query().orderByRaw('random()').limit(10),
     ].map(async query => await cacheWrapped(query))
 
     const [popular, rentoChoose, inCityCenter, newlyAdded, nearTheSubway] = await Promise.all(wrappedQueriesList)
-    const fetchedApartments = await apartments.paginate(request.param('page', 1))
+    const fetchedApartments = await apartments
+      .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+      .paginate(request.param('page', 1))
     return response
       .status(HttpStatusCode.OK)
       .send(
@@ -86,7 +89,7 @@ export default class ApartmentsController {
     let apartment
     if (fields) {
       apartment = await Apartment.query()
-        .select(['id', 'name', ...fields?.split(',')])
+        .select(['id', 'name', ...fields.split(',')])
         .where('id', request.param('id')).first()
     } else {
       apartment = await Apartment.query()
@@ -139,10 +142,36 @@ export default class ApartmentsController {
     response,
     request,
   }: HttpContextContract): Promise<void> {
-    const apartment = await Apartment.findOrFail(request.param('id', null))
+    const apartment = await Apartment.query()
+      .preload('accommodations')
+      .preload('sleepingPlaces').preload('metroStations')
+      .where('id', request.param('id', null)).first()
+
+    if (!apartment) {
+      return response.status(HttpStatusCode.NotFound).send(creatingErrMsg('error', 'Apartments not found'))
+    }
+
+    const modifiedApartmentPayload = await request.validate(ApartmentValidator)
+    await Promise.all([
+      apartment.related('accommodations')
+        .detach(apartment.accommodations.map(({ id }) => id)),
+      apartment.related('metroStations')
+        .detach(apartment.metroStations.map(({ id }) => id)),
+      apartment.related('sleepingPlaces')
+        .detach(apartment.sleepingPlaces.map(({ id }) => id)),
+    ])
+
+    await Promise.all([
+      apartment.related('accommodations')
+        .attach(modifiedApartmentPayload.accommodations.map(({ id }) => id)),
+      apartment.related('metroStations')
+        .attach(modifiedApartmentPayload.metroStations.map(({ id }) => id)),
+      apartment.related('sleepingPlaces')
+        .attach(modifiedApartmentPayload.sleepingPlaces.map(({ id }) => id)),
+    ])
 
     const updatedApartment = await apartment
-      .merge(await request.validate(ApartmentValidator))
+      .merge(modifiedApartmentPayload)
       .save()
 
     return response

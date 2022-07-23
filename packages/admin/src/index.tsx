@@ -4,6 +4,14 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import 'filepond/dist/filepond.min.css'
+
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+import { registerPlugin } from 'react-filepond'
+
+// Register the plugins
+registerPlugin(FilePondPluginImagePreview)
 
 ReactDOM.render(
   <React.StrictMode>

@@ -6,9 +6,12 @@ import MetroLine from 'App/Models/MetroLine'
 
 export default class MetroLinesController {
   public async list ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
     return response.status(HttpStatusCode.OK).send(
       creatingPaginatedList(
-        await MetroLine.query().paginate(request.param('page', 1))
+        await MetroLine.query()
+          .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+          .paginate(request.param('page', 1))
       )
     )
   }

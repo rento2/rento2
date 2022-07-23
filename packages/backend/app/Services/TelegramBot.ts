@@ -6,11 +6,6 @@ import Logger from '@ioc:Adonis/Core/Logger'
 import telegramConfiguration from 'Config/telegram'
 
 export default class TelegramBot {
-  private readonly config: typeof telegramConfiguration
-  constructor () {
-    this.config = telegramConfiguration
-  }
-
   protected formatDate = (date: DateTime): string => {
     return date
       .setLocale('ru')
@@ -21,7 +16,7 @@ export default class TelegramBot {
   private async sendRequest (
     path: string,
   ): Promise<void> {
-    const request: string = `https://api.telegram.org/bot${this.config.telegram_bot_token}${path}`
+    const request: string = `https://api.telegram.org/bot${telegramConfiguration.telegram_bot_token}${path}`
     await axios.get(request)
   }
 
@@ -46,8 +41,13 @@ export default class TelegramBot {
       paymentUrl
     )
 
+    if (!telegramConfiguration.telegram_chat_id) {
+      Logger.warn('Telegram chat id is empty')
+      return
+    }
+
     try {
-      const request: string = `/sendMessage?&chat_id=${this.config.telegram_chat_id}&parse_mode=html&text=${msg}`
+      const request: string = `/sendMessage?&chat_id=${telegramConfiguration.telegram_chat_id}&parse_mode=html&text=${msg}`
       await this.sendRequest(request)
     } catch (err: unknown) {
       if (err instanceof Error) {

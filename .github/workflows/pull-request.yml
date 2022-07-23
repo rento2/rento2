@@ -8,7 +8,7 @@ on:
       - '!develop'
 
 jobs:
-  lint:
+  lint-backend:
     environment: code-quality
     runs-on: ubuntu-latest
     steps:
@@ -19,24 +19,57 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install root dependencies
+    - name: Install dependencies
+      working-directory: ./packages/backend
       run: npm ci
 
-    - name: Lint backend
+    - name: Lint
       working-directory: ./packages/backend
-      run: npm ci && npm run lint
+      run: npm run lint
 
-    - name: Lint frontend
-      working-directory: ./packages/frontend
-      run: npm ci && npm run lint
-
-    - name: Lint admin
-      working-directory: ./packages/admin
-      run: npm ci && npm run lint
-
-  build:
+  lint-admin:
     environment: code-quality
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Node.JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.0.0
+
+    - name: Install dependencies
+      working-directory: ./packages/admin
+      run: npm ci
+
+    - name: Lint
+      working-directory: ./packages/admin
+      run: npm run lint
+
+  lint-frontend:
+    environment: code-quality
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Node.JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.0.0
+
+    - name: Install dependencies
+      working-directory: ./packages/frontend
+      run: npm ci
+
+    - name: Lint
+      working-directory: ./packages/frontend
+      run: npm run lint
+
+
+  build-backend:
+    environment: code-quality
+    runs-on: ubuntu-latest
+    needs: lint-backend
     steps:
     - uses: actions/checkout@v2
     - uses: montudor/action-zip@v1
@@ -46,29 +79,58 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Process backend
+    - name: Build
+      working-directory: ./packages/backend
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
-      working-directory: ./packages/backend
       run: |
         npm ci
-        node ./ace build --production
+        npm install
+        npm run build
 
-    - name: Process frontend
+  build-frontend:
+    environment: code-quality
+    runs-on: ubuntu-latest
+    needs: lint-frontend
+    steps:
+    - uses: actions/checkout@v2
+    - uses: montudor/action-zip@v1
+
+    - name: Install Node.JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.0.0
+
+    - name: Build
       working-directory: ./packages/frontend
       env:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
-        echo "$ENV_FRONTEND" > ./.env
-        unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
         npm ci
+        echo "$ENV_FRONTEND" >> ./.env.local
+        unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
         npm run build
 
-    - name: Process admin
+
+  build-admin:
+    environment: code-quality
+    runs-on: ubuntu-latest
+    needs: lint-admin
+    steps:
+    - uses: actions/checkout@v2
+    - uses: montudor/action-zip@v1
+
+    - name: Install Node.JS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.0.0
+
+    - name: Build
       working-directory: ./packages/admin
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
-        echo "$ENV_ADMIN" > ./.env
         npm ci
+        echo "$ENV_ADMIN" >> ./.env
+        npm run build

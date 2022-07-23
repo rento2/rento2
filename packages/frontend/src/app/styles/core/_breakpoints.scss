@@ -37,6 +37,13 @@
   }
 }
 
+// Миксин для задания эффектов наведения для устройств, кроме мобильного
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    @content;
+  }
+}
+
 // Старые брэкпоинты. Не использовать! Со временем удалить!!!
 @mixin bp-1919 {
   @media (max-width: 1919px) {

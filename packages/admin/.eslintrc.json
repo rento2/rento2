@@ -1,11 +1,17 @@
 {
+  "root": true,
   "extends": [
+    "eslint:recommended",
+    "standard-with-typescript",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended"
   ],
   "plugins": [
     "react"
+  ],
+  "overrides": [
+    {"files": ["*.{jsx, ts, tsx}"]}
   ],
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -19,8 +25,22 @@
     }
   },
   "rules": {
+    "@typescript-eslint/dot-notation": 0,
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none",
+        "caughtErrors": "none",
+        "ignoreRestSiblings": true,
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ],
     "eqeqeq": ["error", "smart"],
     "no-return-await": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/return-await": "off",
     "react/self-closing-comp": "error",
     "react/sort-comp": "error",
@@ -29,10 +49,10 @@
     "react/jsx-closing-bracket-location": ["error", "line-aligned"],
     "react/jsx-closing-tag-location": "error",
     "react/jsx-curly-brace-presence": ["error", "never"],
-    "react/jsx-curly-spacing": ["error", { "when": "always" }],
     "react/jsx-equals-spacing": ["error", "never"],
     "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-handler-names": "error",
+    "@typescript-eslint/no-misused-promises": "off",
     "react/jsx-indent": ["error", 2, {"checkAttributes": true, "indentLogicalExpressions": true}],
     "react/jsx-indent-props": ["error", 2],
     "react/jsx-max-props-per-line": ["error"],
@@ -58,6 +78,13 @@
       "shorthandFirst": true,
       "ignoreCase": true,
       "reservedFirst": true
-    }]
+    }],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ]
   }
 }

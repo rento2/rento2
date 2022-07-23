@@ -44,6 +44,7 @@ export const Filter: FC = () => {
       <div className={ classNames(styles.filter, { [styles.sticky]: showHeader }) }>
         <form
           className={ classNames(styles.filter__container, { container: isHeaderMode }) }
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onSubmit={ onSubmit }
         >
           <fieldset className={ styles.fieldset }>

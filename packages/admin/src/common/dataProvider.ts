@@ -1,28 +1,28 @@
 import { stringify } from 'query-string'
 import { fetchUtils, DataProvider } from 'ra-core'
+import { HttpError } from 'react-admin'
 
 export default (
   apiUrl: string,
   httpClient = fetchUtils.fetchJson
 ): DataProvider => ({
   getList: async (resource, params) => {
-    const { page, perPage } = params.pagination
-    const { field, order } = params.sort
-
-    const rangeStart = (page - 1) * perPage
-    const rangeEnd = page * perPage - 1
+    const { page } = params.pagination
+    const { field: sortColumn, order: sortDirection } = params.sort
 
     const query = {
-      sort: JSON.stringify([field, order]),
-      range: JSON.stringify([rangeStart, rangeEnd]),
-      filter: JSON.stringify(params.filter)
+      sortDirection: sortDirection.toLowerCase(),
+      sortColumn,
+      page
     }
     const url = `${apiUrl}/${resource}/list/${page}?${stringify(query)}`
 
-    return httpClient(url).then(({ json }) => ({
-      data: json.data,
-      total: json.meta.pagination.total
-    }))
+    return httpClient(url).then(({ json }) => {
+      return {
+        data: json.data.items,
+        total: json.meta.pagination.total
+      }
+    })
   },
 
   getOne: async (resource, params) =>
@@ -34,7 +34,8 @@ export default (
     const query = {
       filter: JSON.stringify({ id: params.ids })
     }
-    const url = `${apiUrl}/${resource}?${stringify(query)}`
+    // todo implement get many on backend
+    const url = `${apiUrl}/${resource}/1?${stringify(query)}`
     return await httpClient(url).then(({ json }) => ({ data: json }))
   },
 
@@ -59,9 +60,16 @@ export default (
   },
   update: async (resource, params) =>
     await httpClient(`${apiUrl}/${resource}/update/${params.id}`, {
-      method: 'PUT',
+      method: 'POST',
       body: JSON.stringify(params.data)
-    }).then(({ json }) => ({ data: json.data })),
+    }).then(({ json }) => ({ data: json.data })).catch((err: HttpError) => {
+      const errorsList = err.body?.meta?.error?.message
+      if (Array.isArray(errorsList) && errorsList.length) {
+        throw new Error(`Ошибка валидации, поле ${errorsList[0]?.field}, ошибка: ${errorsList[0]?.message}`)
+      }
+
+      throw new Error('Неизвестная ошибка сервера')
+    }),
 
   updateMany: async (resource, params) =>
     await Promise.all(
@@ -80,6 +88,23 @@ export default (
     }).then(({ json }) => ({
       data: { ...params.data, id: json.id }
     })),
+
+  uploadPhoto: async (params: {
+    file: Blob
+    apartmentId: string
+  }) => {
+    const formData = new FormData()
+
+    formData.append('image', params.file)
+    formData.append('apartmentId', params.apartmentId)
+
+    return httpClient(`${apiUrl}/photos/create`, {
+      method: 'POST',
+      body: formData
+    }).then(({ json }) => ({
+      data: { id: json.id }
+    }))
+  },
 
   delete: async (resource, params) =>
     httpClient(`${apiUrl}/${resource}/delete/${params.id}`, {

@@ -17,6 +17,9 @@
       ],
       "@widgets/*": [
         "widgets/*"
+      ],
+      "@entities/*": [
+        "entities/*"
       ]
     },
     "lib": [

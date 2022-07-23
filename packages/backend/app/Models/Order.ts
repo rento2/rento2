@@ -70,7 +70,7 @@ export default class Order extends compose(BaseModel, SoftDeletes) {
   public updatedAt!: DateTime
 
   @column({ serializeAs: null })
-  public deletedAt: DateTime|null = null
+  public deletedAt: DateTime | null = null
 
   @belongsTo(() => Apartment, {
     localKey: 'id'

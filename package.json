@@ -1,31 +1,26 @@
 {
-  "name": "root",
+  "name": "rento_root",
   "private": true,
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "eslint": "^7.0.0",
-    "eslint-config-standard-with-typescript": "^21.0.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.0.0",
-    "husky": "^7.0.0",
-    "lerna": "^4.0.0",
-    "npm-run-all": "^4.1.5"
-  },
   "scripts": {
     "prepare": "husky install",
-    "precommit:admin": "cd packages/admin && npm run precommit",
-    "precommit:backend": "cd packages/backend && npm run precommit",
-    "precommit:frontend": "cd packages/frontend && npm run precommit",
-    "precommit": "npm-run-all precommit:*",
-    "start:admin": "cd packages/admin && npm run start",
-    "start:backend": "cd packages/backend && npm run dev",
-    "start:frontend": "cd packages/frontend && npm run dev",
-    "db:reset": "cd packages/backend && node ace db:reset",
-    "start:swagger": "cd packages/backend && npm run start:swagger"
+    "clean": "lerna clean -y && rm -rf ./node_modules",
+    "bootstrap": "npm i && npx lerna bootstrap --nohoist '**'",
+    "precommit": "lerna run precommit",
+    "start:admin": "lerna run --scope *admin start",
+    "start:backend": "lerna run --scope *backend dev",
+    "start:frontend": "lerna run --scope *frontend dev",
+    "dc:up": "lerna run --scope *backend dc:up",
+    "dc:down": "lerna run --scope *backend dc:down",
+    "db:reset": "lerna run --scope *backend db:reset",
+    "full-reset": "npm run clean && npm run bootstrap && npm run dc:up && npm run db:reset"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lerna": "^5.1.8",
+    "nx": "^14.4.3"
   },
   "volta": {
-    "node": "16.13.1",
-    "npm": "8.1.2"
+    "node": "16.16.0",
+    "npm": "8.13.2"
   }
 }

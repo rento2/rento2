@@ -1,0 +1,15 @@
+.button-next,
+.button-prev {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+.button-next {
+  right: -62px;
+}
+
+.button-prev {
+  left: -62px;
+}

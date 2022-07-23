@@ -1,0 +1,39 @@
+.preloader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.preloader__iner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url('/images/preloader/background-preload.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: pulsing  2000ms ease-in-out infinite both;
+}
+
+.preloader__img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('/images/preloader/img-preload.svg');
+}
+
+@keyframes pulsing {
+  43% {
+    transform: scale(1.33) rotate(90deg);
+  }
+
+  57% {
+    transform: scale(1.33) rotate(90deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(180deg);
+  }
+}

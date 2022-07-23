@@ -30,7 +30,7 @@ export interface IEstate {
 
 export interface IEstateResponse {
   data: IEstate[]
-  nextPage: number|null
+  nextPage: number | null
 }
 
 export default class Inpars {
