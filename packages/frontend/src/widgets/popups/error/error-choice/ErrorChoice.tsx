@@ -1,4 +1,5 @@
 import { ModalBase, ButtonGeneral } from '@shared/ui'
+import classNames from 'classnames'
 
 import style from './ErrorChoice.module.scss'
 
@@ -14,9 +15,9 @@ export const ErrorChoice = (): JSX.Element => {
       onClose={ handleCloseModal }
     >
       <div className={ style.error }>
-        <h1 className={ style.error__title }>
+        <p className={ style.error__title }>
           Сообщить об ошибке
-        </h1>
+        </p>
         <ButtonGeneral
           font="s"
           grade='neutral'
@@ -26,7 +27,7 @@ export const ErrorChoice = (): JSX.Element => {
 
         </ButtonGeneral>
         <ButtonGeneral
-          classProps={ style.secondary_btn }
+          classProps={ classNames(style.secondary_btn) }
           font="s"
           grade='secondary'
           height="40"

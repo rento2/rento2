@@ -1,4 +1,5 @@
 import { ModalBase, ButtonGeneral } from '@shared/ui'
+import classNames from 'classnames'
 import styles from './ErrorMassege.module.scss'
 
 export const ErrorMassage = (): JSX.Element => {
@@ -13,9 +14,9 @@ export const ErrorMassage = (): JSX.Element => {
       onClose={ handleCloseModal }
     >
       <div className={ styles.error }>
-        <h1 className={ styles.error__title }>
+        <p className={ styles.error__title }>
           Сообщение
-        </h1>
+        </p>
         <form action="?error=massege"
           method='post'
         >
@@ -25,7 +26,7 @@ export const ErrorMassage = (): JSX.Element => {
           />
 
           <ButtonGeneral
-            classProps={ styles.secondary_btn }
+            classProps={ classNames(styles.secondary_btn) }
             font="s"
             grade='secondary'
             height="40"

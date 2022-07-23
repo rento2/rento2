@@ -1,1 +1,1 @@
-export * from './pageThanks'
+export * from './PageThanks'

@@ -22,15 +22,27 @@
 
 .error__description {
   @include body-3;
-  max-width: 380px;
   margin-bottom: 40px;
   color: $gray-blue-600;
   text-align: center;
   @include bp-743 {
     @include body-4;
-    max-width: 354px;
   }
   @include bp-479 {
-    max-width: 238px;
+    width: 238px;
+  }
+
+  &_str1 {
+    width: 354px;
+    @include bp-479 {
+      width: 238px;
+    }
+  }
+
+  &_str2 {
+    width: 380px;
+    @include bp-479 {
+      width: 238px;
+    }
   }
 }

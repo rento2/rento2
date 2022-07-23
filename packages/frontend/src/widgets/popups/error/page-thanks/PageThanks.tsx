@@ -13,9 +13,9 @@ export const PageThanks = (): JSX.Element => {
       onClose={ handleCloseModal }
     >
       <div className={ styles.error }>
-        <h1 className={ styles.error__title }>
+        <p className={ styles.error__title }>
           Спасибо
-        </h1>
+        </p>
         <p className={ styles.error__description }>
           Скоро всё починим
         </p>

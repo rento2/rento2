@@ -1,10 +1,7 @@
 import { ButtonGeneral, ModalBase } from '@shared/ui'
-// import { useState } from 'react'
 import style from './ErrorBackend.module.scss'
 
 export const ErrorBackend = (): JSX.Element => {
-  // const [open, isOpen] = useState<boolean>(true)
-
   function handleCloseModal (): void {
 
   }
@@ -16,14 +13,17 @@ export const ErrorBackend = (): JSX.Element => {
       onClose={ handleCloseModal }
     >
       <div className={ style.error }>
-        <h1 className={ style.error__title }>
+        <p className={ style.error__title }>
           Что-то пошло не так
-        </h1>
-        <p className={ style.error__description }>
-          Скоро всё исправим.
-          <br />
-          Попробуйте ещё раз немного позже.
         </p>
+        <div className={ style.error__description }>
+          <p className={ style.error__description_str1 }>
+            Скоро всё исправим.
+          </p>
+          <p className={ style.error__description_str2 }>
+            Попробуйте ещё раз немного позже.
+          </p>
+        </div>
         <ButtonGeneral
           font="s"
           grade='neutral'
