@@ -31,12 +31,11 @@ export default (
     })),
 
   getMany: async (resource, params) => {
-    const query = {
-      filter: JSON.stringify({ id: params.ids })
-    }
-    // todo implement get many on backend
-    const url = `${apiUrl}/${resource}/1?${stringify(query)}`
-    return await httpClient(url).then(({ json }) => ({ data: json }))
+    const url = `${apiUrl}/${resource}/many`
+    return await httpClient(url, {
+      body: JSON.stringify({ ids: params.ids }),
+      method: 'POST'
+    }).then(({ json }) => ({ data: json.data.items }))
   },
 
   getManyReference: async (resource, params) => {
