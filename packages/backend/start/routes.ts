@@ -60,6 +60,7 @@ Route
         Route.post('/create', 'MetroLinesController.create')
         Route.get('/list/:page', 'MetroLinesController.list')
         Route.post('/update/:id', 'MetroLinesController.update')
+        Route.post('/many', 'MetroLinesController.many')
       })
       .prefix('metro-lines')
 
