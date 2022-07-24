@@ -91,9 +91,7 @@ jobs:
       working-directory: ./packages/backend
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
-      run: |
-        npm install
-        npm run build
+      run: npm run build
 
   build-frontend:
     environment: code-quality
