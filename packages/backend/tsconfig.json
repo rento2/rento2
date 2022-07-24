@@ -23,7 +23,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true,
-    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
