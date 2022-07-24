@@ -19,6 +19,9 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Bootstrap
+      run: lerna bootstrap
+
     - name: Install dependencies
       working-directory: ./packages/backend
       run: npm ci
@@ -38,6 +41,9 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Bootstrap
+      run: lerna bootstrap
+
     - name: Install dependencies
       working-directory: ./packages/admin
       run: npm ci
@@ -56,6 +62,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.0.0
+
+    - name: Bootstrap
+      run: lerna bootstrap
 
     - name: Install dependencies
       working-directory: ./packages/frontend
