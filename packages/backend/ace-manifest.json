@@ -14,7 +14,8 @@
     },
     "generate:commons": {
       "settings": {
-        "loadApp": true
+        "loadApp": true,
+        "stayAlive": false
       },
       "commandPath": "./commands/GenerateCommons",
       "commandName": "generate:commons",

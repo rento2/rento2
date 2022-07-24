@@ -7,7 +7,7 @@ export default class GenerateModelsInterface extends BaseCommand {
   public static description = 'Generate commons'
 
   public static settings = {
-    loadApp: false,
+    loadApp: true,
     stayAlive: false,
   }
 
@@ -51,5 +51,7 @@ export default class GenerateModelsInterface extends BaseCommand {
     fs.mkdirSync('./_generated')
     fs.writeFileSync('./_generated/models.ts', ts)
     fs.copySync('./common', './_generated/common')
+
+    this.logger.success('Commons generated successfully')
   }
 }
