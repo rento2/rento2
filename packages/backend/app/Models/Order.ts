@@ -1,7 +1,7 @@
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import { SoftDeletes } from '@ioc:Adonis/Addons/LucidSoftDeletes'
 import { compose } from '@ioc:Adonis/Core/Helpers'
-import Pay from './../../common/enums/Pay'
+import { Pay } from './../../common/enums/Pay'
 import { DateTime } from 'luxon'
 import { Apartment } from './'
 import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
