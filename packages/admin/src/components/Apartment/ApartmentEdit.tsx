@@ -15,7 +15,6 @@ import {
   FormDataConsumer
 } from 'react-admin'
 
-import { MetroStation, Accommodation, SleepingPlace } from 'rento-common/models'
 import { FilePond } from 'react-filepond'
 import { FilePondFile } from 'filepond'
 import { AdminDistrictsOfMoscow } from 'common/enums/AdminDistrictsOfMoscow'
@@ -24,25 +23,25 @@ import Term from 'common/enums/Term'
 const ApartmentEdit: FC<ListProps> = props => {
   const dataProvider = useDataProvider()
 
-  const [metroStations, setMetroStations] = useState<MetroStation[]>([])
-  const [accommodations, setAccommodations] = useState<Accommodation[]>([])
-  const [sleepingPlaces, setSleepingPlaces] = useState<SleepingPlace[]>([])
+  const [metroStations, setMetroStations] = useState<any[]>([])
+  const [accommodations, setAccommodations] = useState<any[]>([])
+  const [sleepingPlaces, setSleepingPlaces] = useState<any[]>([])
   const [files, setFiles] = useState<any[]>([])
 
   useEffect(() => {
-    dataProvider.getList<MetroStation>('metro-stations', {
+    dataProvider.getList('metro-stations', {
       pagination: { page: 1, perPage: 20 },
       sort: { field: 'name', order: 'asc' },
       filter: {}
     }).then(({ data }) => setMetroStations(data))
 
-    dataProvider.getList<Accommodation>('accommodations', {
+    dataProvider.getList('accommodations', {
       pagination: { page: 1, perPage: 20 },
       sort: { field: 'name', order: 'asc' },
       filter: {}
     }).then(({ data }) => setAccommodations(data))
 
-    dataProvider.getList<SleepingPlace>('sleeping-places', {
+    dataProvider.getList('sleeping-places', {
       pagination: { page: 1, perPage: 20 },
       sort: { field: 'name', order: 'asc' },
       filter: {}
