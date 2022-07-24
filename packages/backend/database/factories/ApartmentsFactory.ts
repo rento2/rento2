@@ -1,7 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Apartment from 'App/Models/Apartment'
 import { AccommodationsFactory } from 'Database/factories/AccommodationsFactory'
-import Term from '../../common/enums/Term'
+import { Term } from '../../common/enums/Term'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 import { ServicesFactory } from './ServicesFactory'
 import { BannersFactory } from './BannersFactory'

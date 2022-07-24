@@ -1,5 +1,5 @@
 import { IAccommodation } from './IAccommodation'
-import Term from '../enums/Term'
+import { Term } from '../enums/Term'
 
 export interface IApartment {
   id: number
