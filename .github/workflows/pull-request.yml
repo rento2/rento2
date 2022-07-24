@@ -20,7 +20,9 @@ jobs:
         node-version: 16.0.0
 
     - name: Bootstrap
-      run: lerna bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Install dependencies
       working-directory: ./packages/backend
@@ -42,7 +44,9 @@ jobs:
         node-version: 16.0.0
 
     - name: Bootstrap
-      run: lerna bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Install dependencies
       working-directory: ./packages/admin
@@ -64,7 +68,9 @@ jobs:
         node-version: 16.0.0
 
     - name: Bootstrap
-      run: lerna bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Install dependencies
       working-directory: ./packages/frontend
@@ -89,7 +95,9 @@ jobs:
         node-version: 16.0.0
 
     - name: Bootstrap
-      run: lerna bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Build
       working-directory: ./packages/backend
@@ -114,8 +122,9 @@ jobs:
         node-version: 16.0.0
 
     - name: Bootstrap
-      run: lerna bootstrap
-
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Build
       working-directory: ./packages/frontend
@@ -143,7 +152,9 @@ jobs:
         node-version: 16.0.0
 
     - name: Bootstrap
-      run: lerna bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Build
       working-directory: ./packages/admin
