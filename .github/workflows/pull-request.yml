@@ -79,6 +79,9 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Bootstrap
+      run: lerna bootstrap
+
     - name: Build
       working-directory: ./packages/backend
       env:
@@ -100,6 +103,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.0.0
+
+    - name: Bootstrap
+      run: lerna bootstrap
+
 
     - name: Build
       working-directory: ./packages/frontend
@@ -125,6 +132,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16.0.0
+
+    - name: Bootstrap
+      run: lerna bootstrap
 
     - name: Build
       working-directory: ./packages/admin
