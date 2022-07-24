@@ -7,7 +7,8 @@ export default class GenerateModelsInterface extends BaseCommand {
   public static description = 'Generate commons'
 
   public static settings = {
-    loadApp: true,
+    loadApp: false,
+    stayAlive: false,
   }
 
   public async run (): Promise<void> {
