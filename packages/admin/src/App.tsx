@@ -19,9 +19,9 @@ import { MetroStationCreate, MetroStationEdit, MetroStationList } from 'componen
 const dataProvider = restProvider(String(process.env['REACT_APP_SERVER_URL']), httpClient)
 
 const App = (): JSX.Element => (
-  <Admin authProvider={ authProvider }
-    dataProvider={ dataProvider }
-    loginPage={ LoginPage }
+  <Admin authProvider={authProvider}
+    dataProvider={dataProvider}
+    loginPage={LoginPage}
   >
     <Resource
       create={ApartmentCreate}

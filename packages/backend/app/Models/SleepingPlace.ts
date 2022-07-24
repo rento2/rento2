@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-import SleepingPlaceType from '../../common/enums/SleepingPlaceType'
+import { SleepingPlaceType } from '../../common/enums/SleepingPlaceType'
 import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class SleepingPlace extends BaseModel {

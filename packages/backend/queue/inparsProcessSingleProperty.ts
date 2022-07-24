@@ -1,6 +1,6 @@
 import { Apartment } from 'App/Models'
 import { IEstate } from 'App/Services/Inpars'
-import Term from '../common/enums/Term'
+import { Term } from '../common/enums/Term'
 import { Process } from '../common/interfaces/ITask'
 import Photo from 'App/Models/Photo'
 

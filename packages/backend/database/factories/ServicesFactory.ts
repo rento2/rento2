@@ -1,6 +1,6 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Service from 'App/Models/Service'
-import Term from '../../common/enums/Term'
+import { Term } from '../../common/enums/Term'
 
 export const ServicesFactory = Factory
   .define(Service, ({ faker }) => {
