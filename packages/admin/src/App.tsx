@@ -3,12 +3,14 @@ import restProvider from './common/dataProvider'
 import PostIcon from '@material-ui/icons/Book'
 import BannerIcon from '@material-ui/icons/AirplanemodeActive'
 import BedIcon from '@material-ui/icons/KingBed'
+import AccommodationsIcon from '@material-ui/icons/Apartment'
 import { ApartmentList, ApartmentCreate, ApartmentEdit } from './components/Apartment'
 import { authProvider } from 'common'
 import LoginPage from 'components/LoginPage/LoginPage'
 import { httpClient } from 'common/httpClient'
 import { BannerCreate, BannerEdit, BannerList } from 'components/Banner'
 import { SleepingPlacesCreate, SleepingPlacesEdit, SleepingPlacesList } from 'components/SleepingPlaces'
+import { AccommodationsCreate, AccommodationsEdit, AccommodationsList } from 'components/Accommodations'
 
 const dataProvider = restProvider(String(process.env['REACT_APP_SERVER_URL']), httpClient)
 
@@ -45,7 +47,10 @@ const App = (): JSX.Element => (
     />
 
     <Resource
-      list={ListGuesser}
+      create={AccommodationsCreate}
+      edit={AccommodationsEdit}
+      icon={AccommodationsIcon}
+      list={AccommodationsList}
       name='accommodations'
     />
 
