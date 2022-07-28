@@ -12,7 +12,7 @@ import { DateTime } from 'luxon'
 import Accommodation from 'App/Models/Accommodation'
 import { AdminDistrictsOfMoscow } from '../../common/enums/AdminDistrictsOfMoscow'
 import Service from './Service'
-import Term from '../../common/enums/Term'
+import { Term } from '../../common/enums/Term'
 import Banner from './Banner'
 import Order from './Order'
 import SleepingPlace from './SleepingPlace'
@@ -22,7 +22,7 @@ import MetroStation from './MetroStation'
 export default class Apartment extends BaseModel {
   public static namingStrategy = new CamelCaseNamingStrategy()
 
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serialize: (v) => Number(v) })
   public id!: number
 
   @manyToMany(() => Service, {

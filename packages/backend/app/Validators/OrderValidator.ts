@@ -1,7 +1,7 @@
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import ValidatorMessages from 'App/Validators/ValidatorMessages'
-import Pay from '../../common/enums/Pay'
+import { Pay } from '../../common/enums/Pay'
 
 export default class OrderValidator extends ValidatorMessages {
   constructor (protected ctx: HttpContextContract) {

@@ -77,6 +77,31 @@ export default class ApartmentsController {
       )
   }
 
+  public async many ({ response, request }: HttpContextContract): Promise<void> {
+    const { sortDirection } = request.qs()
+    const { ids } = await request.validate({
+      schema: schema.create({
+        ids: schema.array().members(schema.number()),
+      }),
+    })
+
+    const apartments = Apartment.query()
+      .preload('accommodations')
+      .preload('sleepingPlaces')
+      .preload('services')
+      .preload('banners')
+      .preload('photos')
+      .orderBy('createdAt', sortDirection === 'asc' ? 'asc' : 'desc')
+      .whereIn('id', ids)
+      .paginate(1, 100)
+
+    return response
+      .status(HttpStatusCode.OK)
+      .send(
+        creatingPaginatedList(await apartments)
+      )
+  }
+
   public async one ({ request, response }: HttpContextContract): Promise<void> {
     const { fields } = await request.validate({
       schema: schema.create({

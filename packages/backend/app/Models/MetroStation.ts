@@ -1,8 +1,11 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import MetroLine from './MetroLine'
+import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class MetroStation extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true, serialize: (v) => Number(v) })
   public id!: number
 

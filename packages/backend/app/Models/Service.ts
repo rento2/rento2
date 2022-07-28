@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-import Term from '../../common/enums/Term'
+import { Term } from '../../common/enums/Term'
 import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 
 export default class Service extends BaseModel {

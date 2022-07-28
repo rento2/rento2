@@ -19,9 +19,10 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install dependencies
-      working-directory: ./packages/backend
-      run: npm ci
+    - name: Bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Lint
       working-directory: ./packages/backend
@@ -38,9 +39,10 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install dependencies
-      working-directory: ./packages/admin
-      run: npm ci
+    - name: Bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Lint
       working-directory: ./packages/admin
@@ -57,9 +59,10 @@ jobs:
       with:
         node-version: 16.0.0
 
-    - name: Install dependencies
-      working-directory: ./packages/frontend
-      run: npm ci
+    - name: Bootstrap
+      run: |
+        npm i
+        lerna bootstrap
 
     - name: Lint
       working-directory: ./packages/frontend
@@ -79,14 +82,16 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Bootstrap
+      run: |
+        npm i
+        lerna bootstrap
+
     - name: Build
       working-directory: ./packages/backend
       env:
         ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
-      run: |
-        npm ci
-        npm install
-        npm run build
+      run: npm run build
 
   build-frontend:
     environment: code-quality
@@ -101,13 +106,17 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Bootstrap
+      run: |
+        npm i
+        lerna bootstrap
+
     - name: Build
       working-directory: ./packages/frontend
       env:
         ENV_FRONTEND: ${{ secrets.ENV_FRONTEND }}
         ZIP_PASSWORD: ${{ secrets.FONTS_ZIP_PASSWORD }}
       run: |
-        npm ci
         echo "$ENV_FRONTEND" >> ./.env.local
         unzip -qq -P "$ZIP_PASSWORD"  ./../../.github/fonts.zip -d ./src/app/styles
         npm run build
@@ -126,11 +135,15 @@ jobs:
       with:
         node-version: 16.0.0
 
+    - name: Bootstrap
+      run: |
+        npm i
+        lerna bootstrap
+
     - name: Build
       working-directory: ./packages/admin
       env:
         ENV_ADMIN: ${{ secrets.ENV_ADMIN }}
       run: |
-        npm ci
         echo "$ENV_ADMIN" >> ./.env
         npm run build
