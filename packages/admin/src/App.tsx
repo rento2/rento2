@@ -1,8 +1,9 @@
-import { Admin, ListGuesser, Resource } from 'react-admin'
+import { Admin, Resource } from 'react-admin'
 import restProvider from './common/dataProvider'
 import PostIcon from '@material-ui/icons/Book'
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
 import BedIcon from '@material-ui/icons/KingBed'
+import AccommodationsIcon from '@material-ui/icons/Apartment'
 import RateReview from '@material-ui/icons/RateReview'
 import SubwayIcon from '@material-ui/icons/Subway'
 
@@ -15,6 +16,7 @@ import { SleepingPlacesCreate, SleepingPlacesEdit, SleepingPlacesList } from 'co
 import { ReviewEdit, ReviewList } from 'components/Review'
 import { MetroLineCreate, MetroLineEdit, MetroLineList } from 'components/MetroLine'
 import { MetroStationCreate, MetroStationEdit, MetroStationList } from 'components/MetroStation'
+import { AccommodationsCreate, AccommodationsEdit, AccommodationsList } from 'components/Accommodations'
 
 const dataProvider = restProvider(String(process.env['REACT_APP_SERVER_URL']), httpClient)
 
@@ -63,7 +65,10 @@ const App = (): JSX.Element => (
     />
 
     <Resource
-      list={ListGuesser}
+      create={AccommodationsCreate}
+      edit={AccommodationsEdit}
+      icon={AccommodationsIcon}
+      list={AccommodationsList}
       name='accommodations'
     />
 
