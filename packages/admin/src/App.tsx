@@ -3,6 +3,7 @@ import restProvider from './common/dataProvider'
 import PostIcon from '@material-ui/icons/Book'
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
 import BedIcon from '@material-ui/icons/KingBed'
+import AccommodationsIcon from '@material-ui/icons/Apartment'
 import RateReview from '@material-ui/icons/RateReview'
 import SubwayIcon from '@material-ui/icons/Subway'
 
@@ -66,7 +67,7 @@ const App = (): JSX.Element => (
     <Resource
       create={AccommodationsCreate}
       edit={AccommodationsEdit}
-      icon={AccommodationsEdit}
+      icon={AccommodationsIcon}
       list={AccommodationsList}
       name='accommodations'
     />
