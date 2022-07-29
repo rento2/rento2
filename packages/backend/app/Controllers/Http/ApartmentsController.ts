@@ -102,6 +102,10 @@ export default class ApartmentsController {
       )
   }
 
+  public async filter ({ request }: HttpContextContract): Promise<Apartment[]> {
+    return await Apartment.filter(request.qs()).exec()
+  }
+
   public async one ({ request, response }: HttpContextContract): Promise<void> {
     const { fields } = await request.validate({
       schema: schema.create({

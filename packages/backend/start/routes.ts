@@ -129,6 +129,7 @@ Route
       .group(() => {
         Route.get('/one/:id', 'ApartmentsController.one')
         Route.get('/list/:page', 'ApartmentsController.list')
+        Route.get('/filter', 'ApartmentsController.filter')
       })
       .prefix('apartments')
   })

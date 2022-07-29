@@ -7,6 +7,9 @@ import {
   manyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
 import Photo from 'App/Models/Photo'
+import { compose } from '@ioc:Adonis/Core/Helpers'
+import { Filterable } from '@ioc:Adonis/Addons/LucidFilter'
+import ApartmentFilter from 'App/Models/Filters/ApartmentFilter'
 
 import { DateTime } from 'luxon'
 import Accommodation from 'App/Models/Accommodation'
@@ -19,8 +22,9 @@ import SleepingPlace from './SleepingPlace'
 import CamelCaseNamingStrategy from './NamingStrategy/CamelCaseNamingStrategy'
 import MetroStation from './MetroStation'
 
-export default class Apartment extends BaseModel {
+export default class Apartment extends compose(BaseModel, Filterable) {
   public static namingStrategy = new CamelCaseNamingStrategy()
+  public static $filter = (): typeof ApartmentFilter => ApartmentFilter
 
   @column({ isPrimary: true, serialize: (v) => Number(v) })
   public id!: number
