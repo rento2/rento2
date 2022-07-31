@@ -1,3 +1,4 @@
+import telegramConfiguration from 'Config/telegram'
 import util from 'util'
 import {
   creatingErrMsg,
@@ -30,7 +31,7 @@ export default class OrderService {
         paidOrder.payload
       )
 
-      if (response.bookings) {
+      if (response.bookings && telegramConfiguration.telegram_bot_token) {
         await this.telegramBot.sendMsgToTelegram(
           paidOrder.id,
           paidOrder.apartmentAddress,
