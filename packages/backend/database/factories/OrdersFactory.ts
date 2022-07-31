@@ -1,6 +1,6 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Order from 'App/Models/Order'
-import Pay from '../../common/enums/Pay'
+import { Pay } from '../../common/enums/Pay'
 
 export const OrdersFactory = Factory
   .define(Order, ({ faker }) => ({

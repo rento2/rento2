@@ -60,6 +60,7 @@ Route
         Route.post('/create', 'MetroLinesController.create')
         Route.get('/list/:page', 'MetroLinesController.list')
         Route.post('/update/:id', 'MetroLinesController.update')
+        Route.post('/many', 'MetroLinesController.many')
       })
       .prefix('metro-lines')
 
@@ -115,6 +116,7 @@ Route
       .group(() => {
         Route.delete('/delete/:id', 'ApartmentsController.delete')
         Route.post('/create', 'ApartmentsController.create')
+        Route.post('/many', 'ApartmentsController.many')
         Route.post('/update/:id', 'ApartmentsController.update')
       })
       .prefix('apartments')

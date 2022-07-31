@@ -1,6 +1,6 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import SleepingPlace from 'App/Models/SleepingPlace'
-import SleepingPlaceType from '../../common/enums/SleepingPlaceType'
+import { SleepingPlaceType } from '../../common/enums/SleepingPlaceType'
 
 export const SleepingPlacesFactory = Factory
   .define(SleepingPlace, ({ faker }) => {
