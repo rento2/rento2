@@ -124,7 +124,7 @@ export const ModalBase: FC<IModal> = ({
               <IconClose classProps={ classNames(styles['button-close__icon']) } />
             </button>
           </div>
-          <div className={ styles.modal__body }>
+          <div className={ classNames(styles.modal__body) }>
             {children}
           </div>
           {footer != null && (

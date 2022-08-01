@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { FC } from 'react'
+import { FC, MouseEvent } from 'react'
 import styles from './ButtonGeneral.module.scss'
 
 // Ширину указываем отдельно для каждой кнопки через classProps (можно передать любой класс)
@@ -13,7 +13,7 @@ export interface IButton {
   font: 'l' | 'm' | 's' | 'xs'
   height: '56' | '48' | '44' | '40'
   classProps?: string
-  onClick?: () => void
+  onClick?: (e?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
   children: React.ReactNode | string
   form?: string
 }
