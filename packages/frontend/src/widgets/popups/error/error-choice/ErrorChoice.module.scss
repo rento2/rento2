@@ -1,0 +1,26 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  margin: 60px 0 100px;
+}
+
+.error__title {
+  @include headline-4;
+  margin-bottom: 40px;
+  color: $gray-blue-600;
+  @include bp-479 {
+    @include headline-5;
+  }
+}
+
+.secondary_btn {
+  padding: 0 24px;
+  margin-top: 10px;
+}

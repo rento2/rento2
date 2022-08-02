@@ -1,0 +1,43 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  margin: 78px 0 75px;
+  @include bp-743 {
+    margin: 40px 0 75px;
+  }
+  @include bp-479 {
+    margin: 60px 0 75px;
+  }
+}
+
+.error__title {
+  @include headline-4;
+  margin-bottom: 10px;
+  color: $gray-blue-600;
+}
+
+.error__description {
+  @include body-2;
+  max-width: 380px;
+  min-height: 168px;
+  margin-bottom: 30px;
+  color: $gray-blue-600;
+  text-align: center;
+  background-image: url('/images/popups/error/star-tag.png');
+  background-repeat: no-repeat;
+  background-position: 29px 30px;
+  @include bp-743 {
+    max-width: 354px;
+  }
+  @include bp-479 {
+    max-width: 238px;
+    background-position: 29px 50px;
+  }
+}
