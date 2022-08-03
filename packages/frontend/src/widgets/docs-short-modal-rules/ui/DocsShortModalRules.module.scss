@@ -3,29 +3,31 @@
 @use 'src/app/styles/core/typography' as *;
 
 .modal {
-  &__body{
+  &__body {
     padding: 20px;
-
   }
+
   &__title {
     @include subtitle-2;
-    &_sub{
+
+    &_sub {
       @include subtitle-3;
-      padding: 31px 0px 12px 0px;
+      padding: 31px 0 12px;
     }
   }
+
   &__text {
     @include body-5;
-    padding-top:  10px;
+    padding-top: 10px;
 
-    &_list{
-      padding-top:  10px;
+    &_list {
+      padding-top: 10px;
     }
 
-    &_list_li{
+    &_list_li {
       @include body-5;
-      list-style: disc;
       margin-left: 20px;
+      list-style: disc;
     }
   }
 
