@@ -1,0 +1,76 @@
+@use 'src/app/styles/core/variables' as *;
+@use 'src/app/styles/core/breakpoints' as *;
+@use 'src/app/styles/core/typography' as *;
+
+.modal {
+  &__body {
+    padding: 20px;
+  }
+
+  &__title {
+    @include subtitle-2;
+
+    &_sub {
+      @include subtitle-3;
+      padding: 31px 0 12px;
+    }
+  }
+
+  &__text {
+    @include body-5;
+    padding-top: 10px;
+
+    &_list {
+      padding-top: 10px;
+    }
+
+    &_list_li {
+      @include body-5;
+      margin-left: 20px;
+      list-style: disc;
+    }
+  }
+
+  &__list {
+    border-bottom: 2px solid $iris-50;
+  }
+
+  &__item-title {
+    @include subtitle-3;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    min-height: 41px;
+
+    @include bp-479 {
+      grid-template-columns: 57% 43%;
+    }
+  }
+
+  &__item {
+    @include body-5;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    min-height: 32px;
+
+    @include bp-479 {
+      grid-template-columns: 57% 43%;
+    }
+
+    &_color:nth-child(odd) {
+      background-color: $iris-50;
+    }
+  }
+
+  &__cell--inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 8px;
+
+    &:first-child {
+      border-right: 2px solid $iris-100;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { useToggle, useWindowDimensions } from '@shared/lib'
 import { DocsList, DocsListContext } from '@widgets/docs-list'
 import { dataAgreementsTenants, HeadMenu, SideMenu } from '@widgets/documents-side-menu'
 import { DocsShortModalPrice } from '@widgets/docs-short-modal-price'
+import { DocsShortModalRules } from '@widgets/docs-short-modal-rules'
 import { agreementShortData } from './model/agreementShortData'
 import { useMemo } from 'react'
 
@@ -35,6 +36,9 @@ export const AgreementShortPage = (): JSX.Element => {
             <DocsList items={ agreementShortData } />
           </DocumentsLayout>
 
+          <DocsShortModalRules hideProps={ setShownRules }
+            isShownProps={ isShownRules }
+          />
           <DocsShortModalPrice hideProps={ setShownRules }
             isShownProps={ isShownRules }
           />
